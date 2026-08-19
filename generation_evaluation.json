@@ -1,0 +1,33 @@
+{
+  "version": "0.1",
+  "generated_file": "generated_signature.png",
+  "knowledge_file": "signature_unified_knowledge.json",
+  "actual_features": {
+    "width": 1000,
+    "height": 350,
+    "aspect_ratio": 2.857143,
+    "ink_density": 0.023129,
+    "content_aspect_ratio": 4.21875,
+    "bbox_fill_ratio": 0.052051,
+    "left_margin": 0.089,
+    "right_margin": 0.101,
+    "top_margin": 0.242857,
+    "bottom_margin": 0.208571
+  },
+  "comparison": {
+    "differences": {
+      "aspect_ratio": 1.0,
+      "content_aspect_ratio": 1.0,
+      "bbox_fill_ratio": 1.0,
+      "ink_density": 1.0,
+      "left_margin": 1.0,
+      "right_margin": 1.0,
+      "top_margin": 1.0,
+      "bottom_margin": 1.0
+    },
+    "average_difference": 1.0,
+    "score": 0.0
+  },
+  "structural_score": 100.0,
+  "final_score": 15.0
+}
