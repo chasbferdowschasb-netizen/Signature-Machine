@@ -1,0 +1,1512 @@
+{
+  "analyzer_version": "0.6.1",
+  "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+  "expected": 20,
+  "sample_count": 20,
+  "successful": 20,
+  "failed": 0,
+  "source": "exact_samples_from_test_visual_results_v04.json",
+  "results": [
+    {
+      "filename": "s (1).jpg",
+      "path": "library\\s (1).jpg",
+      "file_hash": "904971fbab2c16bf3b50469067143acb4474be7ecdeed9f6109a834b9063d066",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\904971fbab2c16bf_foreground.png",
+        "signature_mask": "test_debug_v06_1\\904971fbab2c16bf_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\904971fbab2c16bf_skeleton.png",
+        "overlay": "test_debug_v06_1\\904971fbab2c16bf_overlay.png"
+      }
+    },
+    {
+      "filename": "s (1).png",
+      "path": "library\\s (1).png",
+      "file_hash": "c140ff1e16d67b37751efef0ab669431bc8c14d44042e99792903bc898664378",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_ink_on_dark_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "ignored_low_alpha_artifact",
+        "alpha_visible_ratio": 0.034468,
+        "alpha_nonzero_ratio": 0.349198,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\c140ff1e16d67b37_foreground.png",
+        "signature_mask": "test_debug_v06_1\\c140ff1e16d67b37_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\c140ff1e16d67b37_skeleton.png",
+        "overlay": "test_debug_v06_1\\c140ff1e16d67b37_overlay.png"
+      }
+    },
+    {
+      "filename": "s (113).png",
+      "path": "library\\s (113).png",
+      "file_hash": "6bff6d981b49cc79f809b194793beb43d338f3a6add294669bbd6dc87eb1292a",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_global_fallback",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "ignored_low_alpha_artifact",
+        "alpha_visible_ratio": 0.029528,
+        "alpha_nonzero_ratio": 0.036371,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\6bff6d981b49cc79_foreground.png",
+        "signature_mask": "test_debug_v06_1\\6bff6d981b49cc79_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\6bff6d981b49cc79_skeleton.png",
+        "overlay": "test_debug_v06_1\\6bff6d981b49cc79_overlay.png"
+      }
+    },
+    {
+      "filename": "s (1258).png",
+      "path": "library\\s (1258).png",
+      "file_hash": "48189fb8a000f2890639a9937bac3d371e53c6124e490aab4a61e7398e7d11af",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\48189fb8a000f289_foreground.png",
+        "signature_mask": "test_debug_v06_1\\48189fb8a000f289_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\48189fb8a000f289_skeleton.png",
+        "overlay": "test_debug_v06_1\\48189fb8a000f289_overlay.png"
+      }
+    },
+    {
+      "filename": "s (1362).png",
+      "path": "library\\s (1362).png",
+      "file_hash": "f97a3fe9c175a6538b346aa91530856cc566a165a1c82840bdc20e9fdb6e297b",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_ink_on_dark_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 0.832073,
+        "alpha_nonzero_ratio": 0.833943,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\f97a3fe9c175a653_foreground.png",
+        "signature_mask": "test_debug_v06_1\\f97a3fe9c175a653_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\f97a3fe9c175a653_skeleton.png",
+        "overlay": "test_debug_v06_1\\f97a3fe9c175a653_overlay.png"
+      }
+    },
+    {
+      "filename": "s (1625).png",
+      "path": "library\\s (1625).png",
+      "file_hash": "c5bbbbd18ab058a82e5bc5b5f61fd79c459c8abf36670a87d45c64558948334b",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\c5bbbbd18ab058a8_foreground.png",
+        "signature_mask": "test_debug_v06_1\\c5bbbbd18ab058a8_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\c5bbbbd18ab058a8_skeleton.png",
+        "overlay": "test_debug_v06_1\\c5bbbbd18ab058a8_overlay.png"
+      }
+    },
+    {
+      "filename": "s (1628).png",
+      "path": "library\\s (1628).png",
+      "file_hash": "68dc3acc9866f75c677560835a417f3ff1bd2e29e40f72c9311cff5835b7b3ce",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_ink_on_dark_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\68dc3acc9866f75c_foreground.png",
+        "signature_mask": "test_debug_v06_1\\68dc3acc9866f75c_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\68dc3acc9866f75c_skeleton.png",
+        "overlay": "test_debug_v06_1\\68dc3acc9866f75c_overlay.png"
+      }
+    },
+    {
+      "filename": "s (176).png",
+      "path": "library\\s (176).png",
+      "file_hash": "3e18ec16407a52e9621bd401507bc0f4e7c7eec49888c7d2929e55b9b0c90c2b",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\3e18ec16407a52e9_foreground.png",
+        "signature_mask": "test_debug_v06_1\\3e18ec16407a52e9_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\3e18ec16407a52e9_skeleton.png",
+        "overlay": "test_debug_v06_1\\3e18ec16407a52e9_overlay.png"
+      }
+    },
+    {
+      "filename": "s (1907).png",
+      "path": "library\\s (1907).png",
+      "file_hash": "f6eeb11bebe366d4274810d184f309a745e8bc41b272d293f59ffb2940bcaba7",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_global_fallback",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\f6eeb11bebe366d4_foreground.png",
+        "signature_mask": "test_debug_v06_1\\f6eeb11bebe366d4_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\f6eeb11bebe366d4_skeleton.png",
+        "overlay": "test_debug_v06_1\\f6eeb11bebe366d4_overlay.png"
+      }
+    },
+    {
+      "filename": "s (2).jpg",
+      "path": "library\\s (2).jpg",
+      "file_hash": "7a21c24a90b438b7d6227ff33f0b6f1741ecb577599e691b034c7888fdcf76d0",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\7a21c24a90b438b7_foreground.png",
+        "signature_mask": "test_debug_v06_1\\7a21c24a90b438b7_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\7a21c24a90b438b7_skeleton.png",
+        "overlay": "test_debug_v06_1\\7a21c24a90b438b7_overlay.png"
+      }
+    },
+    {
+      "filename": "s (2).png",
+      "path": "library\\s (2).png",
+      "file_hash": "c22c04d5577a9761cff0cc6f8d573776aab6d96aaea96747d1caea8f64e335d6",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_ink_on_dark_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\c22c04d5577a9761_foreground.png",
+        "signature_mask": "test_debug_v06_1\\c22c04d5577a9761_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\c22c04d5577a9761_skeleton.png",
+        "overlay": "test_debug_v06_1\\c22c04d5577a9761_overlay.png"
+      }
+    },
+    {
+      "filename": "s (2039).png",
+      "path": "library\\s (2039).png",
+      "file_hash": "58b3619c3a380885803d3fb3d93aacbdd715b4ee16d255f19b2bde28a318fc84",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_ink_on_dark_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 0.596058,
+        "alpha_nonzero_ratio": 0.6001,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\58b3619c3a380885_foreground.png",
+        "signature_mask": "test_debug_v06_1\\58b3619c3a380885_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\58b3619c3a380885_skeleton.png",
+        "overlay": "test_debug_v06_1\\58b3619c3a380885_overlay.png"
+      }
+    },
+    {
+      "filename": "s (26).png",
+      "path": "library\\s (26).png",
+      "file_hash": "f9c703ded17525e2de1b55cb873912e81b4d187955bb5ae1b981fc31189d41af",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\f9c703ded17525e2_foreground.png",
+        "signature_mask": "test_debug_v06_1\\f9c703ded17525e2_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\f9c703ded17525e2_skeleton.png",
+        "overlay": "test_debug_v06_1\\f9c703ded17525e2_overlay.png"
+      }
+    },
+    {
+      "filename": "s (29).jpg",
+      "path": "library\\s (29).jpg",
+      "file_hash": "02e13d43f140734205b2e37c16c2c60116e83623732bb6591d8778b328b0cedb",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\02e13d43f1407342_foreground.png",
+        "signature_mask": "test_debug_v06_1\\02e13d43f1407342_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\02e13d43f1407342_skeleton.png",
+        "overlay": "test_debug_v06_1\\02e13d43f1407342_overlay.png"
+      }
+    },
+    {
+      "filename": "s (470).jpg",
+      "path": "library\\s (470).jpg",
+      "file_hash": "3cb02fd6df15aeb46f6f216056c71e64a248d2b9960086c31d1d630a2afced42",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\3cb02fd6df15aeb4_foreground.png",
+        "signature_mask": "test_debug_v06_1\\3cb02fd6df15aeb4_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\3cb02fd6df15aeb4_skeleton.png",
+        "overlay": "test_debug_v06_1\\3cb02fd6df15aeb4_overlay.png"
+      }
+    },
+    {
+      "filename": "s (536).png",
+      "path": "library\\s (536).png",
+      "file_hash": "80890e4550c0b4e25eafb7d247cd9f492b179b12f1834bf1888c74169a0333bd",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\80890e4550c0b4e2_foreground.png",
+        "signature_mask": "test_debug_v06_1\\80890e4550c0b4e2_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\80890e4550c0b4e2_skeleton.png",
+        "overlay": "test_debug_v06_1\\80890e4550c0b4e2_overlay.png"
+      }
+    },
+    {
+      "filename": "s (541).png",
+      "path": "library\\s (541).png",
+      "file_hash": "4b678f12e0d3677336e0ac2eb64b7d051d7b2f41a6c71ad0aa76c4bc1753485b",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_global_fallback",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\4b678f12e0d36773_foreground.png",
+        "signature_mask": "test_debug_v06_1\\4b678f12e0d36773_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\4b678f12e0d36773_skeleton.png",
+        "overlay": "test_debug_v06_1\\4b678f12e0d36773_overlay.png"
+      }
+    },
+    {
+      "filename": "s (85).png",
+      "path": "library\\s (85).png",
+      "file_hash": "f12ae0a00805cbf20f10f6746cd808bd2fb7e8e1f30aa45d114d96e8250a7eb2",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_ink_on_dark_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\f12ae0a00805cbf2_foreground.png",
+        "signature_mask": "test_debug_v06_1\\f12ae0a00805cbf2_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\f12ae0a00805cbf2_skeleton.png",
+        "overlay": "test_debug_v06_1\\f12ae0a00805cbf2_overlay.png"
+      }
+    },
+    {
+      "filename": "s (9).png",
+      "path": "library\\s (9).png",
+      "file_hash": "e81c33b51910d2921a43dfd6bbda4a03e08f8343887c12323542b5d79c9a51dc",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "dark_ink_on_light_or_colored_background",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\e81c33b51910d292_foreground.png",
+        "signature_mask": "test_debug_v06_1\\e81c33b51910d292_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\e81c33b51910d292_skeleton.png",
+        "overlay": "test_debug_v06_1\\e81c33b51910d292_overlay.png"
+      }
+    },
+    {
+      "filename": "s (94).png",
+      "path": "library\\s (94).png",
+      "file_hash": "4c54f0bbc58edec45085fb1dc176e43b308958c206d18950bbbbcaa332a092dc",
+      "analyzer_version": "0.6.1",
+      "pipeline_version": "signature_only_v6_1_safe_layout_strip_graph",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0,
+        "skeleton_pixels": 0,
+        "graph": {
+          "nodes": 0,
+          "endpoints": 0,
+          "junctions": 0,
+          "graph_components": 0,
+          "loops": 0
+        },
+        "traced_paths": 0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "polarity": "light_global_fallback",
+        "contrast_threshold": 35.0,
+        "border_fraction": 0.0,
+        "foreground_ratio_before_cleanup": 0.0,
+        "alpha_mode": "trusted",
+        "alpha_visible_ratio": 1.0,
+        "alpha_nonzero_ratio": 1.0,
+        "removed_components": 0,
+        "kept_components": 0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "signature_pixels": 0
+      },
+      "debug": {
+        "foreground": "test_debug_v06_1\\4c54f0bbc58edec4_foreground.png",
+        "signature_mask": "test_debug_v06_1\\4c54f0bbc58edec4_signature_mask.png",
+        "skeleton": "test_debug_v06_1\\4c54f0bbc58edec4_skeleton.png",
+        "overlay": "test_debug_v06_1\\4c54f0bbc58edec4_overlay.png"
+      }
+    }
+  ],
+  "failed_files": []
+}

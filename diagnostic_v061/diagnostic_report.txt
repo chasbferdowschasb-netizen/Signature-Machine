@@ -1,0 +1,53 @@
+==============================================================================
+SIGNATURE CLEANER V0.6.1 DIAGNOSTIC
+==============================================================================
+IMAGE: test_debug\3cb02fd6df15aeb4_candidate.png
+
+[1] RAW LOAD
+RGB: shape=(1420, 1491, 3), dtype=uint8, min=0, max=255, nonzero=766899, ratio=0.12073993, unique=[0, 255]
+GRAY: shape=(1420, 1491), dtype=uint8, min=0, max=255, nonzero=255633, ratio=0.12073993, unique=[0, 255]
+ALPHA: shape=(1420, 1491), dtype=uint8, min=255, max=255, nonzero=2117220, ratio=1.00000000, unique=[255]
+alpha>=16 ratio=1.00000000
+alpha>0  ratio=1.00000000
+
+[2] _detect_polarity
+CANDIDATE: shape=(1420, 1491), dtype=uint8, min=0, max=1, nonzero=139477, ratio=0.06587742, unique=[0, 1]
+polarity=light_ink_on_dark_or_colored_background
+contrast_threshold=35.0
+border_fraction=0.013099
+foreground_ratio_before_cleanup=0.065877
+alpha_mode=trusted
+alpha_visible_ratio=1.0
+alpha_nonzero_ratio=1.0
+
+[3] _morph
+MORPHED: shape=(1420, 1491), dtype=uint8, min=0, max=1, nonzero=147526, ratio=0.06967911, unique=[0, 1]
+pixels: 139477 -> 147526
+
+[4] _cleanup_layout
+CLEANED: shape=(1420, 1491), dtype=uint8, min=0, max=1, nonzero=29838, ratio=0.01409301, unique=[0, 1]
+component_count=29
+removed_components=14
+kept_components=15
+
+[5] POST COMPONENT FILTER
+FILTERED: shape=(1420, 1491), dtype=uint8, min=0, max=1, nonzero=29838, ratio=0.01409301, unique=[0, 1]
+components=15
+min_area=8
+kept=15
+
+[6] SKELETONIZE
+SKELETON: shape=(1420, 1491), dtype=uint8, min=0, max=1, nonzero=1311, ratio=0.00061921, unique=[0, 1]
+
+[7] FINAL VERDICT
+candidate: 139477
+morphed: 147526
+cleaned: 29838
+filtered: 29838
+skeleton: 1311
+
+PASS: extraction remains non-empty through every stage.
+
+Diagnostic folder: F:\signature-machine\diagnostic_v061
+Report: F:\signature-machine\diagnostic_v061\diagnostic_report.txt
+==============================================================================

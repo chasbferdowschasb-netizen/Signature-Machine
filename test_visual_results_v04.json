@@ -1,0 +1,1350 @@
+{
+  "test_library": "test_library",
+  "analyzer_version": "0.4",
+  "pipeline_version": "signature_only_v3_shape_aware",
+  "total": 20,
+  "successful": 20,
+  "failed": [],
+  "results": [
+    {
+      "filename": "s (1).jpg",
+      "file_hash": "904971fbab2c16bf3b50469067143acb4474be7ecdeed9f6109a834b9063d066",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 629068,
+        "ink_ratio": 0.29712,
+        "bbox_width_ratio": 0.960429,
+        "bbox_height_ratio": 0.961268,
+        "bbox_aspect_ratio": 1.049084,
+        "fill_ratio": 0.321827
+      },
+      "projection": {
+        "horizontal_max": 1432,
+        "vertical_max": 1114,
+        "horizontal_mean": 443.005634,
+        "vertical_mean": 421.910127,
+        "horizontal_variation": 348.40414,
+        "vertical_variation": 239.588637
+      },
+      "center": {
+        "center_x": 0.490717,
+        "center_y": 0.533452
+      },
+      "direction": {
+        "dominant_angle": 71.809789,
+        "directional_variation": 0.497991
+      },
+      "curvature": {
+        "curvature_proxy": 0.803768,
+        "direction_changes": 224,
+        "path_length_proxy": 10.705682
+      },
+      "density_zones": {
+        "top_left": 0.298575,
+        "top_right": 0.270789,
+        "bottom_left": 0.320898,
+        "bottom_right": 0.298252
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.860429,
+        "vertical_symmetry": 0.781519
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2117220,
+        "candidate_pixels": 629068,
+        "signature_pixels": 629068,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.29712,
+        "signature_ratio": 0.29712,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\904971fbab2c16bf_candidate.png",
+        "signature_mask": "test_debug_v04\\904971fbab2c16bf_signature_mask.png",
+        "skeleton": "test_debug_v04\\904971fbab2c16bf_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1).png",
+      "file_hash": "c140ff1e16d67b37751efef0ab669431bc8c14d44042e99792903bc898664378",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "canvas_pixels": 552311,
+        "candidate_pixels": 0,
+        "signature_pixels": 0,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 0,
+            "kept_components": 0
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\c140ff1e16d67b37_candidate.png",
+        "signature_mask": "test_debug_v04\\c140ff1e16d67b37_signature_mask.png",
+        "skeleton": "test_debug_v04\\c140ff1e16d67b37_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (113).png",
+      "file_hash": "6bff6d981b49cc79f809b194793beb43d338f3a6add294669bbd6dc87eb1292a",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5787648,
+        "candidate_pixels": 0,
+        "signature_pixels": 0,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 0,
+            "kept_components": 0
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\6bff6d981b49cc79_candidate.png",
+        "signature_mask": "test_debug_v04\\6bff6d981b49cc79_signature_mask.png",
+        "skeleton": "test_debug_v04\\6bff6d981b49cc79_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1258).png",
+      "file_hash": "48189fb8a000f2890639a9937bac3d371e53c6124e490aab4a61e7398e7d11af",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 170471,
+        "ink_ratio": 0.146151,
+        "bbox_width_ratio": 0.894444,
+        "bbox_height_ratio": 0.902778,
+        "bbox_aspect_ratio": 0.990769,
+        "fill_ratio": 0.180996
+      },
+      "projection": {
+        "horizontal_max": 540,
+        "vertical_max": 344,
+        "horizontal_mean": 157.843519,
+        "vertical_mean": 157.843519,
+        "horizontal_variation": 150.932971,
+        "vertical_variation": 108.549743
+      },
+      "center": {
+        "center_x": 0.468966,
+        "center_y": 0.370892
+      },
+      "direction": {
+        "dominant_angle": 152.496674,
+        "directional_variation": 0.226137
+      },
+      "curvature": {
+        "curvature_proxy": 0.799207,
+        "direction_changes": 122,
+        "path_length_proxy": 3.49756
+      },
+      "density_zones": {
+        "top_left": 0.154914,
+        "top_right": 0.224846,
+        "bottom_left": 0.174084,
+        "bottom_right": 0.030761
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.755914,
+        "vertical_symmetry": 0.729978
+      },
+      "signature_extraction": {
+        "canvas_pixels": 1166400,
+        "candidate_pixels": 170471,
+        "signature_pixels": 170471,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.146151,
+        "signature_ratio": 0.146151,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\48189fb8a000f289_candidate.png",
+        "signature_mask": "test_debug_v04\\48189fb8a000f289_signature_mask.png",
+        "skeleton": "test_debug_v04\\48189fb8a000f289_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1362).png",
+      "file_hash": "f97a3fe9c175a6538b346aa91530856cc566a165a1c82840bdc20e9fdb6e297b",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 565203,
+        "ink_ratio": 0.140626,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.728516,
+        "bbox_aspect_ratio": 0.841823,
+        "fill_ratio": 0.193031
+      },
+      "projection": {
+        "horizontal_max": 1198,
+        "vertical_max": 1097,
+        "horizontal_mean": 220.782422,
+        "vertical_mean": 360.001911,
+        "horizontal_variation": 279.445286,
+        "vertical_variation": 255.693991
+      },
+      "center": {
+        "center_x": 0.505465,
+        "center_y": 0.487932
+      },
+      "direction": {
+        "dominant_angle": 132.053636,
+        "directional_variation": 0.494509
+      },
+      "curvature": {
+        "curvature_proxy": 0.828929,
+        "direction_changes": 391,
+        "path_length_proxy": 8.936487
+      },
+      "density_zones": {
+        "top_left": 0.146607,
+        "top_right": 0.148436,
+        "bottom_left": 0.135925,
+        "bottom_right": 0.131536
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.958729,
+        "vertical_symmetry": 0.896675
+      },
+      "signature_extraction": {
+        "canvas_pixels": 4019200,
+        "candidate_pixels": 565203,
+        "signature_pixels": 565203,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.140626,
+        "signature_ratio": 0.140626,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\f97a3fe9c175a653_candidate.png",
+        "signature_mask": "test_debug_v04\\f97a3fe9c175a653_signature_mask.png",
+        "skeleton": "test_debug_v04\\f97a3fe9c175a653_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1625).png",
+      "file_hash": "c5bbbbd18ab058a82e5bc5b5f61fd79c459c8abf36670a87d45c64558948334b",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 650205,
+        "ink_ratio": 0.307103,
+        "bbox_width_ratio": 0.983233,
+        "bbox_height_ratio": 0.961268,
+        "bbox_aspect_ratio": 1.073993,
+        "fill_ratio": 0.324925
+      },
+      "projection": {
+        "horizontal_max": 1432,
+        "vertical_max": 1102,
+        "horizontal_mean": 457.890845,
+        "vertical_mean": 436.086519,
+        "horizontal_variation": 326.54561,
+        "vertical_variation": 253.800319
+      },
+      "center": {
+        "center_x": 0.51374,
+        "center_y": 0.552993
+      },
+      "direction": {
+        "dominant_angle": 32.070025,
+        "directional_variation": 0.472301
+      },
+      "curvature": {
+        "curvature_proxy": 0.80844,
+        "direction_changes": 274,
+        "path_length_proxy": 12.763477
+      },
+      "density_zones": {
+        "top_left": 0.261647,
+        "top_right": 0.234909,
+        "bottom_left": 0.322486,
+        "bottom_right": 0.409331
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.834124,
+        "vertical_symmetry": 0.744859
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2117220,
+        "candidate_pixels": 650205,
+        "signature_pixels": 650205,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.307103,
+        "signature_ratio": 0.307103,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\c5bbbbd18ab058a8_candidate.png",
+        "signature_mask": "test_debug_v04\\c5bbbbd18ab058a8_signature_mask.png",
+        "skeleton": "test_debug_v04\\c5bbbbd18ab058a8_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1628).png",
+      "file_hash": "68dc3acc9866f75c677560835a417f3ff1bd2e29e40f72c9311cff5835b7b3ce",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 2115308,
+        "ink_ratio": 0.365487,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.992839,
+        "bbox_aspect_ratio": 0.617705,
+        "fill_ratio": 0.368123
+      },
+      "projection": {
+        "horizontal_max": 1679,
+        "vertical_max": 2373,
+        "horizontal_mean": 688.576823,
+        "vertical_mean": 1122.774947,
+        "horizontal_variation": 365.799811,
+        "vertical_variation": 428.634851
+      },
+      "center": {
+        "center_x": 0.506289,
+        "center_y": 0.505291
+      },
+      "direction": {
+        "dominant_angle": 88.569645,
+        "directional_variation": 0.229854
+      },
+      "curvature": {
+        "curvature_proxy": 0.82505,
+        "direction_changes": 651,
+        "path_length_proxy": 21.368882
+      },
+      "density_zones": {
+        "top_left": 0.385147,
+        "top_right": 0.346025,
+        "bottom_left": 0.345329,
+        "bottom_right": 0.385446
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.8382,
+        "vertical_symmetry": 0.751659
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5787648,
+        "candidate_pixels": 2115308,
+        "signature_pixels": 2115308,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.365487,
+        "signature_ratio": 0.365487,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\68dc3acc9866f75c_candidate.png",
+        "signature_mask": "test_debug_v04\\68dc3acc9866f75c_signature_mask.png",
+        "skeleton": "test_debug_v04\\68dc3acc9866f75c_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (176).png",
+      "file_hash": "3e18ec16407a52e9621bd401507bc0f4e7c7eec49888c7d2929e55b9b0c90c2b",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 375038,
+        "ink_ratio": 0.347257,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 1.0,
+        "bbox_aspect_ratio": 0.925926,
+        "fill_ratio": 0.347257
+      },
+      "projection": {
+        "horizontal_max": 1000,
+        "vertical_max": 530,
+        "horizontal_mean": 347.257407,
+        "vertical_mean": 375.038,
+        "horizontal_variation": 413.024385,
+        "vertical_variation": 71.042386
+      },
+      "center": {
+        "center_x": 0.487884,
+        "center_y": 0.527297
+      },
+      "direction": {
+        "dominant_angle": 91.88566,
+        "directional_variation": 0.287498
+      },
+      "curvature": {
+        "curvature_proxy": 0.816675,
+        "direction_changes": 55,
+        "path_length_proxy": 3.089268
+      },
+      "density_zones": {
+        "top_left": 0.275604,
+        "top_right": 0.284744,
+        "bottom_left": 0.443267,
+        "bottom_right": 0.385415
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.907685,
+        "vertical_symmetry": 0.840696
+      },
+      "signature_extraction": {
+        "canvas_pixels": 1080000,
+        "candidate_pixels": 375038,
+        "signature_pixels": 375038,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.347257,
+        "signature_ratio": 0.347257,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\3e18ec16407a52e9_candidate.png",
+        "signature_mask": "test_debug_v04\\3e18ec16407a52e9_signature_mask.png",
+        "skeleton": "test_debug_v04\\3e18ec16407a52e9_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1907).png",
+      "file_hash": "f6eeb11bebe366d4274810d184f309a745e8bc41b272d293f59ffb2940bcaba7",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 1937838,
+        "ink_ratio": 0.994974,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 1.0,
+        "bbox_aspect_ratio": 1.517211,
+        "fill_ratio": 0.994974
+      },
+      "projection": {
+        "horizontal_max": 1719,
+        "vertical_max": 1133,
+        "horizontal_mean": 1710.360106,
+        "vertical_mean": 1127.30541,
+        "horizontal_variation": 12.850113,
+        "vertical_variation": 16.669051
+      },
+      "center": {
+        "center_x": 0.497863,
+        "center_y": 0.499565
+      },
+      "direction": {
+        "dominant_angle": 179.998252,
+        "directional_variation": 0.304352
+      },
+      "curvature": {
+        "curvature_proxy": 0.800859,
+        "direction_changes": 69,
+        "path_length_proxy": 581.032665
+      },
+      "density_zones": {
+        "top_left": 1.0,
+        "top_right": 0.987721,
+        "bottom_left": 1.0,
+        "bottom_right": 0.992182
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.989948,
+        "vertical_symmetry": 0.99131
+      },
+      "signature_extraction": {
+        "canvas_pixels": 1947627,
+        "candidate_pixels": 1937838,
+        "signature_pixels": 1937838,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.994974,
+        "signature_ratio": 0.994974,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\f6eeb11bebe366d4_candidate.png",
+        "signature_mask": "test_debug_v04\\f6eeb11bebe366d4_signature_mask.png",
+        "skeleton": "test_debug_v04\\f6eeb11bebe366d4_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (2).jpg",
+      "file_hash": "7a21c24a90b438b7d6227ff33f0b6f1741ecb577599e691b034c7888fdcf76d0",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 668362,
+        "ink_ratio": 0.315679,
+        "bbox_width_ratio": 0.960429,
+        "bbox_height_ratio": 0.961268,
+        "bbox_aspect_ratio": 1.049084,
+        "fill_ratio": 0.341929
+      },
+      "projection": {
+        "horizontal_max": 1432,
+        "vertical_max": 1114,
+        "horizontal_mean": 470.677465,
+        "vertical_mean": 448.264252,
+        "horizontal_variation": 314.144297,
+        "vertical_variation": 274.594634
+      },
+      "center": {
+        "center_x": 0.501718,
+        "center_y": 0.537348
+      },
+      "direction": {
+        "dominant_angle": 31.100066,
+        "directional_variation": 0.476273
+      },
+      "curvature": {
+        "curvature_proxy": 0.797615,
+        "direction_changes": 221,
+        "path_length_proxy": 9.478873
+      },
+      "density_zones": {
+        "top_left": 0.259983,
+        "top_right": 0.300021,
+        "bottom_left": 0.348373,
+        "bottom_right": 0.354308
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.789938,
+        "vertical_symmetry": 0.739757
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2117220,
+        "candidate_pixels": 668362,
+        "signature_pixels": 668362,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.315679,
+        "signature_ratio": 0.315679,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\7a21c24a90b438b7_candidate.png",
+        "signature_mask": "test_debug_v04\\7a21c24a90b438b7_signature_mask.png",
+        "skeleton": "test_debug_v04\\7a21c24a90b438b7_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (2).png",
+      "file_hash": "c22c04d5577a9761cff0cc6f8d573776aab6d96aaea96747d1caea8f64e335d6",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 44002,
+        "ink_ratio": 0.132374,
+        "bbox_width_ratio": 0.738019,
+        "bbox_height_ratio": 0.755179,
+        "bbox_aspect_ratio": 1.15212,
+        "fill_ratio": 0.237512
+      },
+      "projection": {
+        "horizontal_max": 252,
+        "vertical_max": 290,
+        "horizontal_mean": 82.86629,
+        "vertical_mean": 70.290735,
+        "horizontal_variation": 70.80348,
+        "vertical_variation": 74.77377
+      },
+      "center": {
+        "center_x": 0.552155,
+        "center_y": 0.489972
+      },
+      "direction": {
+        "dominant_angle": 40.577672,
+        "directional_variation": 0.364128
+      },
+      "curvature": {
+        "curvature_proxy": 0.792878,
+        "direction_changes": 28,
+        "path_length_proxy": 1.841935
+      },
+      "density_zones": {
+        "top_left": 0.108903,
+        "top_right": 0.140708,
+        "bottom_left": 0.06672,
+        "bottom_right": 0.213109
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.80087,
+        "vertical_symmetry": 0.831567
+      },
+      "signature_extraction": {
+        "canvas_pixels": 332406,
+        "candidate_pixels": 44002,
+        "signature_pixels": 44002,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.132374,
+        "signature_ratio": 0.132374,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\c22c04d5577a9761_candidate.png",
+        "signature_mask": "test_debug_v04\\c22c04d5577a9761_signature_mask.png",
+        "skeleton": "test_debug_v04\\c22c04d5577a9761_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (2039).png",
+      "file_hash": "58b3619c3a380885803d3fb3d93aacbdd715b4ee16d255f19b2bde28a318fc84",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 1507229,
+        "ink_ratio": 0.260422,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.992839,
+        "bbox_aspect_ratio": 0.617705,
+        "fill_ratio": 0.2623
+      },
+      "projection": {
+        "horizontal_max": 1655,
+        "vertical_max": 2069,
+        "horizontal_mean": 490.63444,
+        "vertical_mean": 800.015393,
+        "horizontal_variation": 358.944022,
+        "vertical_variation": 379.595719
+      },
+      "center": {
+        "center_x": 0.499938,
+        "center_y": 0.517848
+      },
+      "direction": {
+        "dominant_angle": 91.019541,
+        "directional_variation": 0.21445
+      },
+      "curvature": {
+        "curvature_proxy": 0.829088,
+        "direction_changes": 469,
+        "path_length_proxy": 16.160344
+      },
+      "density_zones": {
+        "top_left": 0.248624,
+        "top_right": 0.254967,
+        "bottom_left": 0.276699,
+        "bottom_right": 0.261397
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.925162,
+        "vertical_symmetry": 0.801229
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5787648,
+        "candidate_pixels": 1507229,
+        "signature_pixels": 1507229,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.260422,
+        "signature_ratio": 0.260422,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\58b3619c3a380885_candidate.png",
+        "signature_mask": "test_debug_v04\\58b3619c3a380885_signature_mask.png",
+        "skeleton": "test_debug_v04\\58b3619c3a380885_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (26).png",
+      "file_hash": "f9c703ded17525e2de1b55cb873912e81b4d187955bb5ae1b981fc31189d41af",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 442415,
+        "ink_ratio": 0.20882,
+        "bbox_width_ratio": 0.960456,
+        "bbox_height_ratio": 0.961268,
+        "bbox_aspect_ratio": 1.049817,
+        "fill_ratio": 0.226178
+      },
+      "projection": {
+        "horizontal_max": 1433,
+        "vertical_max": 803,
+        "horizontal_mean": 311.559859,
+        "vertical_mean": 296.524799,
+        "horizontal_variation": 383.780336,
+        "vertical_variation": 197.407847
+      },
+      "center": {
+        "center_x": 0.485724,
+        "center_y": 0.554305
+      },
+      "direction": {
+        "dominant_angle": 105.574298,
+        "directional_variation": 0.475848
+      },
+      "curvature": {
+        "curvature_proxy": 0.805085,
+        "direction_changes": 188,
+        "path_length_proxy": 7.78211
+      },
+      "density_zones": {
+        "top_left": 0.152175,
+        "top_right": 0.190921,
+        "bottom_left": 0.265327,
+        "bottom_right": 0.226859
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.912989,
+        "vertical_symmetry": 0.862254
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2118640,
+        "candidate_pixels": 442415,
+        "signature_pixels": 442415,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.20882,
+        "signature_ratio": 0.20882,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\f9c703ded17525e2_candidate.png",
+        "signature_mask": "test_debug_v04\\f9c703ded17525e2_signature_mask.png",
+        "skeleton": "test_debug_v04\\f9c703ded17525e2_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (29).jpg",
+      "file_hash": "02e13d43f140734205b2e37c16c2c60116e83623732bb6591d8778b328b0cedb",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 593049,
+        "ink_ratio": 0.280107,
+        "bbox_width_ratio": 0.959759,
+        "bbox_height_ratio": 0.959859,
+        "bbox_aspect_ratio": 1.04989,
+        "fill_ratio": 0.304057
+      },
+      "projection": {
+        "horizontal_max": 860,
+        "vertical_max": 722,
+        "horizontal_mean": 417.640141,
+        "vertical_mean": 397.752515,
+        "horizontal_variation": 243.182507,
+        "vertical_variation": 166.763309
+      },
+      "center": {
+        "center_x": 0.504024,
+        "center_y": 0.552516
+      },
+      "direction": {
+        "dominant_angle": 45.913137,
+        "directional_variation": 0.44238
+      },
+      "curvature": {
+        "curvature_proxy": 0.810518,
+        "direction_changes": 152,
+        "path_length_proxy": 5.298203
+      },
+      "density_zones": {
+        "top_left": 0.304161,
+        "top_right": 0.165882,
+        "bottom_left": 0.258438,
+        "bottom_right": 0.391951
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.781565,
+        "vertical_symmetry": 0.761709
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2117220,
+        "candidate_pixels": 593049,
+        "signature_pixels": 593049,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.280107,
+        "signature_ratio": 0.280107,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\02e13d43f1407342_candidate.png",
+        "signature_mask": "test_debug_v04\\02e13d43f1407342_signature_mask.png",
+        "skeleton": "test_debug_v04\\02e13d43f1407342_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (470).jpg",
+      "file_hash": "3cb02fd6df15aeb46f6f216056c71e64a248d2b9960086c31d1d630a2afced42",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 298463,
+        "ink_ratio": 0.140969,
+        "bbox_width_ratio": 0.959759,
+        "bbox_height_ratio": 0.959859,
+        "bbox_aspect_ratio": 1.04989,
+        "fill_ratio": 0.153022
+      },
+      "projection": {
+        "horizontal_max": 689,
+        "vertical_max": 371,
+        "horizontal_mean": 210.185211,
+        "vertical_mean": 200.176392,
+        "horizontal_variation": 279.023696,
+        "vertical_variation": 152.702748
+      },
+      "center": {
+        "center_x": 0.478443,
+        "center_y": 0.5037
+      },
+      "direction": {
+        "dominant_angle": 90.128668,
+        "directional_variation": 0.466591
+      },
+      "curvature": {
+        "curvature_proxy": 0.804236,
+        "direction_changes": 53,
+        "path_length_proxy": 1.692569
+      },
+      "density_zones": {
+        "top_left": 0.163331,
+        "top_right": 0.117602,
+        "bottom_left": 0.165834,
+        "bottom_right": 0.117173
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.943602,
+        "vertical_symmetry": 0.969075
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2117220,
+        "candidate_pixels": 298463,
+        "signature_pixels": 298463,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.140969,
+        "signature_ratio": 0.140969,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\3cb02fd6df15aeb4_candidate.png",
+        "signature_mask": "test_debug_v04\\3cb02fd6df15aeb4_signature_mask.png",
+        "skeleton": "test_debug_v04\\3cb02fd6df15aeb4_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (536).png",
+      "file_hash": "80890e4550c0b4e25eafb7d247cd9f492b179b12f1834bf1888c74169a0333bd",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 82090,
+        "ink_ratio": 0.352629,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 1.0,
+        "bbox_aspect_ratio": 0.985597,
+        "fill_ratio": 0.352629
+      },
+      "projection": {
+        "horizontal_max": 447,
+        "vertical_max": 452,
+        "horizontal_mean": 168.909465,
+        "vertical_mean": 171.377871,
+        "horizontal_variation": 95.371852,
+        "vertical_variation": 104.780221
+      },
+      "center": {
+        "center_x": 0.583518,
+        "center_y": 0.487336
+      },
+      "direction": {
+        "dominant_angle": 98.503146,
+        "directional_variation": 0.475422
+      },
+      "curvature": {
+        "curvature_proxy": 0.799034,
+        "direction_changes": 84,
+        "path_length_proxy": 5.284477
+      },
+      "density_zones": {
+        "top_left": 0.201526,
+        "top_right": 0.509345,
+        "bottom_left": 0.247826,
+        "bottom_right": 0.450754
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.61548,
+        "vertical_symmetry": 0.673634
+      },
+      "signature_extraction": {
+        "canvas_pixels": 232794,
+        "candidate_pixels": 82090,
+        "signature_pixels": 82090,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.352629,
+        "signature_ratio": 0.352629,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\80890e4550c0b4e2_candidate.png",
+        "signature_mask": "test_debug_v04\\80890e4550c0b4e2_signature_mask.png",
+        "skeleton": "test_debug_v04\\80890e4550c0b4e2_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (541).png",
+      "file_hash": "4b678f12e0d3677336e0ac2eb64b7d051d7b2f41a6c71ad0aa76c4bc1753485b",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 150284,
+        "ink_ratio": 0.037392,
+        "bbox_width_ratio": 0.573885,
+        "bbox_height_ratio": 0.214844,
+        "bbox_aspect_ratio": 1.638182,
+        "fill_ratio": 0.303267
+      },
+      "projection": {
+        "horizontal_max": 761,
+        "vertical_max": 441,
+        "horizontal_mean": 58.704687,
+        "vertical_mean": 95.722293,
+        "horizontal_variation": 159.069758,
+        "vertical_variation": 113.547383
+      },
+      "center": {
+        "center_x": 0.557135,
+        "center_y": 0.515587
+      },
+      "direction": {
+        "dominant_angle": 4.484452,
+        "directional_variation": 0.179099
+      },
+      "curvature": {
+        "curvature_proxy": 0.796781,
+        "direction_changes": 24,
+        "path_length_proxy": 0.789855
+      },
+      "density_zones": {
+        "top_left": 0.025344,
+        "top_right": 0.025539,
+        "bottom_left": 0.035598,
+        "bottom_right": 0.063084
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.961945,
+        "vertical_symmetry": 0.958813
+      },
+      "signature_extraction": {
+        "canvas_pixels": 4019200,
+        "candidate_pixels": 150284,
+        "signature_pixels": 150284,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.037392,
+        "signature_ratio": 0.037392,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\4b678f12e0d36773_candidate.png",
+        "signature_mask": "test_debug_v04\\4b678f12e0d36773_signature_mask.png",
+        "skeleton": "test_debug_v04\\4b678f12e0d36773_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (85).png",
+      "file_hash": "f12ae0a00805cbf20f10f6746cd808bd2fb7e8e1f30aa45d114d96e8250a7eb2",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 2265079,
+        "ink_ratio": 0.391364,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.992839,
+        "bbox_aspect_ratio": 0.617705,
+        "fill_ratio": 0.394187
+      },
+      "projection": {
+        "horizontal_max": 1730,
+        "vertical_max": 2433,
+        "horizontal_mean": 737.330404,
+        "vertical_mean": 1202.271231,
+        "horizontal_variation": 370.630458,
+        "vertical_variation": 451.366566
+      },
+      "center": {
+        "center_x": 0.504672,
+        "center_y": 0.523658
+      },
+      "direction": {
+        "dominant_angle": 89.051611,
+        "directional_variation": 0.232632
+      },
+      "curvature": {
+        "curvature_proxy": 0.824955,
+        "direction_changes": 710,
+        "path_length_proxy": 22.203303
+      },
+      "density_zones": {
+        "top_left": 0.356918,
+        "top_right": 0.356733,
+        "bottom_left": 0.42042,
+        "bottom_right": 0.431386
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.823019,
+        "vertical_symmetry": 0.738693
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5787648,
+        "candidate_pixels": 2265079,
+        "signature_pixels": 2265079,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.391364,
+        "signature_ratio": 0.391364,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\f12ae0a00805cbf2_candidate.png",
+        "signature_mask": "test_debug_v04\\f12ae0a00805cbf2_signature_mask.png",
+        "skeleton": "test_debug_v04\\f12ae0a00805cbf2_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (9).png",
+      "file_hash": "e81c33b51910d2921a43dfd6bbda4a03e08f8343887c12323542b5d79c9a51dc",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 4009431,
+        "ink_ratio": 0.692757,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.992839,
+        "bbox_aspect_ratio": 0.617705,
+        "fill_ratio": 0.697753
+      },
+      "projection": {
+        "horizontal_max": 1884,
+        "vertical_max": 2944,
+        "horizontal_mean": 1305.15332,
+        "vertical_mean": 2128.148089,
+        "horizontal_variation": 512.613689,
+        "vertical_variation": 639.441269
+      },
+      "center": {
+        "center_x": 0.502782,
+        "center_y": 0.508762
+      },
+      "direction": {
+        "dominant_angle": 90.114554,
+        "directional_variation": 0.247246
+      },
+      "curvature": {
+        "curvature_proxy": 0.834309,
+        "direction_changes": 475,
+        "path_length_proxy": 561.410791
+      },
+      "density_zones": {
+        "top_left": 0.676062,
+        "top_right": 0.685447,
+        "bottom_left": 0.702357,
+        "bottom_right": 0.70716
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.950107,
+        "vertical_symmetry": 0.887693
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5787648,
+        "candidate_pixels": 4009431,
+        "signature_pixels": 4009431,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.692757,
+        "signature_ratio": 0.692757,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\e81c33b51910d292_candidate.png",
+        "signature_mask": "test_debug_v04\\e81c33b51910d292_signature_mask.png",
+        "skeleton": "test_debug_v04\\e81c33b51910d292_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (94).png",
+      "file_hash": "4c54f0bbc58edec45085fb1dc176e43b308958c206d18950bbbbcaa332a092dc",
+      "analyzer_version": "0.4",
+      "pipeline_version": "signature_only_v3_shape_aware",
+      "mask_features": {
+        "ink_pixels": 1805812,
+        "ink_ratio": 0.994941,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 1.0,
+        "bbox_aspect_ratio": 1.505464,
+        "fill_ratio": 0.994941
+      },
+      "projection": {
+        "horizontal_max": 1653,
+        "vertical_max": 1098,
+        "horizontal_mean": 1644.637523,
+        "vertical_mean": 1092.445251,
+        "horizontal_variation": 12.900337,
+        "vertical_variation": 16.793401
+      },
+      "center": {
+        "center_x": 0.49786,
+        "center_y": 0.499575
+      },
+      "direction": {
+        "dominant_angle": 0.008906,
+        "directional_variation": 0.307684
+      },
+      "curvature": {
+        "curvature_proxy": 0.802723,
+        "direction_changes": 67,
+        "path_length_proxy": 554.937654
+      },
+      "density_zones": {
+        "top_left": 1.0,
+        "top_right": 0.988631,
+        "bottom_left": 1.0,
+        "bottom_right": 0.991146
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.989882,
+        "vertical_symmetry": 0.991434
+      },
+      "signature_extraction": {
+        "canvas_pixels": 1814994,
+        "candidate_pixels": 1805812,
+        "signature_pixels": 1805812,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.994941,
+        "signature_ratio": 0.994941,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ],
+        "frame_roi_count": 0,
+        "frame_rois": []
+      },
+      "debug": {
+        "candidate_mask": "test_debug_v04\\4c54f0bbc58edec4_candidate.png",
+        "signature_mask": "test_debug_v04\\4c54f0bbc58edec4_signature_mask.png",
+        "skeleton": "test_debug_v04\\4c54f0bbc58edec4_skeleton.png"
+      }
+    }
+  ]
+}

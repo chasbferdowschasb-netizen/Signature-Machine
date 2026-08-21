@@ -1,0 +1,1310 @@
+{
+  "test_library": "test_library",
+  "pipeline_version": "signature_only_v2_panel_aware",
+  "analyzer_version": "0.3",
+  "total": 20,
+  "successful": 20,
+  "failed": [],
+  "results": [
+    {
+      "filename": "s (1).jpg",
+      "file_hash": "904971fbab2c16bf3b50469067143acb4474be7ecdeed9f6109a834b9063d066",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 529194,
+        "ink_ratio": 0.249948,
+        "bbox_width_ratio": 0.953722,
+        "bbox_height_ratio": 0.952817,
+        "bbox_aspect_ratio": 1.050998,
+        "fill_ratio": 0.275054
+      },
+      "projection": {
+        "horizontal_max": 1422,
+        "vertical_max": 1070,
+        "horizontal_mean": 372.671831,
+        "vertical_mean": 354.925553,
+        "horizontal_variation": 329.242542,
+        "vertical_variation": 223.903509
+      },
+      "center": {
+        "center_x": 0.488182,
+        "center_y": 0.531414
+      },
+      "direction": {
+        "dominant_angle": 88.839827,
+        "directional_variation": 0.495545
+      },
+      "curvature": {
+        "curvature_proxy": 0.804172,
+        "direction_changes": 270,
+        "path_length_proxy": 12.276348
+      },
+      "density_zones": {
+        "top_left": 0.25437,
+        "top_right": 0.228299,
+        "bottom_left": 0.27006,
+        "bottom_right": 0.247094
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.865648,
+        "vertical_symmetry": 0.810831
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2117220,
+        "candidate_pixels": 529194,
+        "signature_pixels": 529194,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.249948,
+        "signature_ratio": 0.249948,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\904971fbab2c16bf_candidate.png",
+        "signature_mask": "test_debug\\904971fbab2c16bf_signature_mask.png",
+        "skeleton": "test_debug\\904971fbab2c16bf_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1).png",
+      "file_hash": "c140ff1e16d67b37751efef0ab669431bc8c14d44042e99792903bc898664378",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "canvas_pixels": 520302,
+        "candidate_pixels": 0,
+        "signature_pixels": 0,
+        "canvas_ratio": 0.942045,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 0,
+            "kept_components": 0
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\c140ff1e16d67b37_candidate.png",
+        "signature_mask": "test_debug\\c140ff1e16d67b37_signature_mask.png",
+        "skeleton": "test_debug\\c140ff1e16d67b37_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (113).png",
+      "file_hash": "6bff6d981b49cc79f809b194793beb43d338f3a6add294669bbd6dc87eb1292a",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 0,
+        "ink_ratio": 0.0,
+        "bbox_width_ratio": 0.0,
+        "bbox_height_ratio": 0.0,
+        "bbox_aspect_ratio": 0.0,
+        "fill_ratio": 0.0
+      },
+      "projection": {
+        "horizontal_max": 0,
+        "vertical_max": 0,
+        "horizontal_mean": 0.0,
+        "vertical_mean": 0.0,
+        "horizontal_variation": 0.0,
+        "vertical_variation": 0.0
+      },
+      "center": {
+        "center_x": 0.0,
+        "center_y": 0.0
+      },
+      "direction": {
+        "dominant_angle": 0.0,
+        "directional_variation": 0.0
+      },
+      "curvature": {
+        "curvature_proxy": 0.0,
+        "direction_changes": 0,
+        "path_length_proxy": 0.0
+      },
+      "density_zones": {
+        "top_left": 0.0,
+        "top_right": 0.0,
+        "bottom_left": 0.0,
+        "bottom_right": 0.0
+      },
+      "symmetry": {
+        "horizontal_symmetry": 1.0,
+        "vertical_symmetry": 1.0
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5787648,
+        "candidate_pixels": 0,
+        "signature_pixels": 0,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.0,
+        "signature_ratio": 0.0,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 0,
+            "kept_components": 0
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\6bff6d981b49cc79_candidate.png",
+        "signature_mask": "test_debug\\6bff6d981b49cc79_signature_mask.png",
+        "skeleton": "test_debug\\6bff6d981b49cc79_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1258).png",
+      "file_hash": "48189fb8a000f2890639a9937bac3d371e53c6124e490aab4a61e7398e7d11af",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 143866,
+        "ink_ratio": 0.123342,
+        "bbox_width_ratio": 0.888889,
+        "bbox_height_ratio": 0.632407,
+        "bbox_aspect_ratio": 1.405564,
+        "fill_ratio": 0.219415
+      },
+      "projection": {
+        "horizontal_max": 478,
+        "vertical_max": 321,
+        "horizontal_mean": 133.209259,
+        "vertical_mean": 133.209259,
+        "horizontal_variation": 133.88758,
+        "vertical_variation": 98.416033
+      },
+      "center": {
+        "center_x": 0.466546,
+        "center_y": 0.36823
+      },
+      "direction": {
+        "dominant_angle": 153.321525,
+        "directional_variation": 0.219014
+      },
+      "curvature": {
+        "curvature_proxy": 0.803745,
+        "direction_changes": 140,
+        "path_length_proxy": 4.186334
+      },
+      "density_zones": {
+        "top_left": 0.132387,
+        "top_right": 0.188649,
+        "bottom_left": 0.146862,
+        "bottom_right": 0.02547
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.788913,
+        "vertical_symmetry": 0.768488
+      },
+      "signature_extraction": {
+        "canvas_pixels": 1162326,
+        "candidate_pixels": 143866,
+        "signature_pixels": 143866,
+        "canvas_ratio": 0.996507,
+        "candidate_ratio": 0.123342,
+        "signature_ratio": 0.123342,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\48189fb8a000f289_candidate.png",
+        "signature_mask": "test_debug\\48189fb8a000f289_signature_mask.png",
+        "skeleton": "test_debug\\48189fb8a000f289_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1362).png",
+      "file_hash": "f97a3fe9c175a6538b346aa91530856cc566a165a1c82840bdc20e9fdb6e297b",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 425477,
+        "ink_ratio": 0.105861,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.639453,
+        "bbox_aspect_ratio": 0.959071,
+        "fill_ratio": 0.165549
+      },
+      "projection": {
+        "horizontal_max": 991,
+        "vertical_max": 804,
+        "horizontal_mean": 166.201953,
+        "vertical_mean": 271.004459,
+        "horizontal_variation": 215.037279,
+        "vertical_variation": 194.711884
+      },
+      "center": {
+        "center_x": 0.503969,
+        "center_y": 0.499826
+      },
+      "direction": {
+        "dominant_angle": 145.594641,
+        "directional_variation": 0.496513
+      },
+      "curvature": {
+        "curvature_proxy": 0.825149,
+        "direction_changes": 253,
+        "path_length_proxy": 7.798323
+      },
+      "density_zones": {
+        "top_left": 0.104002,
+        "top_right": 0.105404,
+        "bottom_left": 0.108665,
+        "bottom_right": 0.105373
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.940881,
+        "vertical_symmetry": 0.894959
+      },
+      "signature_extraction": {
+        "canvas_pixels": 3941019,
+        "candidate_pixels": 425477,
+        "signature_pixels": 425477,
+        "canvas_ratio": 0.980548,
+        "candidate_ratio": 0.105861,
+        "signature_ratio": 0.105861,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\f97a3fe9c175a653_candidate.png",
+        "signature_mask": "test_debug\\f97a3fe9c175a653_signature_mask.png",
+        "skeleton": "test_debug\\f97a3fe9c175a653_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1625).png",
+      "file_hash": "c5bbbbd18ab058a82e5bc5b5f61fd79c459c8abf36670a87d45c64558948334b",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 549641,
+        "ink_ratio": 0.259605,
+        "bbox_width_ratio": 0.977867,
+        "bbox_height_ratio": 0.953521,
+        "bbox_aspect_ratio": 1.076809,
+        "fill_ratio": 0.278422
+      },
+      "projection": {
+        "horizontal_max": 1422,
+        "vertical_max": 1066,
+        "horizontal_mean": 387.071127,
+        "vertical_mean": 368.639168,
+        "horizontal_variation": 307.336405,
+        "vertical_variation": 240.062031
+      },
+      "center": {
+        "center_x": 0.511808,
+        "center_y": 0.548997
+      },
+      "direction": {
+        "dominant_angle": 32.803416,
+        "directional_variation": 0.472335
+      },
+      "curvature": {
+        "curvature_proxy": 0.808681,
+        "direction_changes": 395,
+        "path_length_proxy": 16.457989
+      },
+      "density_zones": {
+        "top_left": 0.225674,
+        "top_right": 0.200942,
+        "bottom_left": 0.266715,
+        "bottom_right": 0.345053
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.844143,
+        "vertical_symmetry": 0.773307
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2112634,
+        "candidate_pixels": 549641,
+        "signature_pixels": 549641,
+        "canvas_ratio": 0.997834,
+        "candidate_ratio": 0.259605,
+        "signature_ratio": 0.259605,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\c5bbbbd18ab058a8_candidate.png",
+        "signature_mask": "test_debug\\c5bbbbd18ab058a8_signature_mask.png",
+        "skeleton": "test_debug\\c5bbbbd18ab058a8_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1628).png",
+      "file_hash": "68dc3acc9866f75c677560835a417f3ff1bd2e29e40f72c9311cff5835b7b3ce",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 1455253,
+        "ink_ratio": 0.251441,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.991536,
+        "bbox_aspect_ratio": 0.618516,
+        "fill_ratio": 0.253587
+      },
+      "projection": {
+        "horizontal_max": 1278,
+        "vertical_max": 1912,
+        "horizontal_mean": 473.715169,
+        "vertical_mean": 772.427282,
+        "horizontal_variation": 253.272561,
+        "vertical_variation": 324.515084
+      },
+      "center": {
+        "center_x": 0.501536,
+        "center_y": 0.514881
+      },
+      "direction": {
+        "dominant_angle": 88.09351,
+        "directional_variation": 0.215255
+      },
+      "curvature": {
+        "curvature_proxy": 0.824568,
+        "direction_changes": 547,
+        "path_length_proxy": 19.665909
+      },
+      "density_zones": {
+        "top_left": 0.268254,
+        "top_right": 0.22906,
+        "bottom_left": 0.23739,
+        "bottom_right": 0.271061
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.788954,
+        "vertical_symmetry": 0.729396
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5400872,
+        "candidate_pixels": 1455253,
+        "signature_pixels": 1455253,
+        "canvas_ratio": 0.933172,
+        "candidate_ratio": 0.251441,
+        "signature_ratio": 0.251441,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\68dc3acc9866f75c_candidate.png",
+        "signature_mask": "test_debug\\68dc3acc9866f75c_signature_mask.png",
+        "skeleton": "test_debug\\68dc3acc9866f75c_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (176).png",
+      "file_hash": "3e18ec16407a52e9621bd401507bc0f4e7c7eec49888c7d2929e55b9b0c90c2b",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 93769,
+        "ink_ratio": 0.086823,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.765741,
+        "bbox_aspect_ratio": 1.20919,
+        "fill_ratio": 0.113385
+      },
+      "projection": {
+        "horizontal_max": 1000,
+        "vertical_max": 223,
+        "horizontal_mean": 86.823148,
+        "vertical_mean": 93.769,
+        "horizontal_variation": 185.502968,
+        "vertical_variation": 57.008768
+      },
+      "center": {
+        "center_x": 0.451995,
+        "center_y": 0.613476
+      },
+      "direction": {
+        "dominant_angle": 109.807256,
+        "directional_variation": 0.400055
+      },
+      "curvature": {
+        "curvature_proxy": 0.81341,
+        "direction_changes": 74,
+        "path_length_proxy": 3.244173
+      },
+      "density_zones": {
+        "top_left": 0.029263,
+        "top_right": 0.034637,
+        "bottom_left": 0.173852,
+        "bottom_right": 0.109541
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.91902,
+        "vertical_symmetry": 0.861794
+      },
+      "signature_extraction": {
+        "canvas_pixels": 813348,
+        "candidate_pixels": 93769,
+        "signature_pixels": 93769,
+        "canvas_ratio": 0.7531,
+        "candidate_ratio": 0.086823,
+        "signature_ratio": 0.086823,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\3e18ec16407a52e9_candidate.png",
+        "signature_mask": "test_debug\\3e18ec16407a52e9_signature_mask.png",
+        "skeleton": "test_debug\\3e18ec16407a52e9_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (1907).png",
+      "file_hash": "f6eeb11bebe366d4274810d184f309a745e8bc41b272d293f59ffb2940bcaba7",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 337151,
+        "ink_ratio": 0.173109,
+        "bbox_width_ratio": 0.839442,
+        "bbox_height_ratio": 0.838482,
+        "bbox_aspect_ratio": 1.518947,
+        "fill_ratio": 0.245943
+      },
+      "projection": {
+        "horizontal_max": 857,
+        "vertical_max": 690,
+        "horizontal_mean": 297.573698,
+        "vertical_mean": 196.132054,
+        "horizontal_variation": 247.818755,
+        "vertical_variation": 195.908859
+      },
+      "center": {
+        "center_x": 0.417733,
+        "center_y": 0.305281
+      },
+      "direction": {
+        "dominant_angle": 3.335513,
+        "directional_variation": 0.206933
+      },
+      "curvature": {
+        "curvature_proxy": 0.809663,
+        "direction_changes": 103,
+        "path_length_proxy": 4.374882
+      },
+      "density_zones": {
+        "top_left": 0.444563,
+        "top_right": 0.143247,
+        "bottom_left": 0.070931,
+        "bottom_right": 0.034316
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.718646,
+        "vertical_symmetry": 0.727724
+      },
+      "signature_extraction": {
+        "canvas_pixels": 371662,
+        "candidate_pixels": 337151,
+        "signature_pixels": 337151,
+        "canvas_ratio": 0.190828,
+        "candidate_ratio": 0.173109,
+        "signature_ratio": 0.173109,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\f6eeb11bebe366d4_candidate.png",
+        "signature_mask": "test_debug\\f6eeb11bebe366d4_signature_mask.png",
+        "skeleton": "test_debug\\f6eeb11bebe366d4_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (2).jpg",
+      "file_hash": "7a21c24a90b438b7d6227ff33f0b6f1741ecb577599e691b034c7888fdcf76d0",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 573837,
+        "ink_ratio": 0.271033,
+        "bbox_width_ratio": 0.953722,
+        "bbox_height_ratio": 0.952817,
+        "bbox_aspect_ratio": 1.050998,
+        "fill_ratio": 0.298257
+      },
+      "projection": {
+        "horizontal_max": 1422,
+        "vertical_max": 1070,
+        "horizontal_mean": 404.110563,
+        "vertical_mean": 384.867203,
+        "horizontal_variation": 302.686322,
+        "vertical_variation": 258.366568
+      },
+      "center": {
+        "center_x": 0.498583,
+        "center_y": 0.534838
+      },
+      "direction": {
+        "dominant_angle": 28.939035,
+        "directional_variation": 0.479178
+      },
+      "curvature": {
+        "curvature_proxy": 0.802605,
+        "direction_changes": 285,
+        "path_length_proxy": 11.538125
+      },
+      "density_zones": {
+        "top_left": 0.224378,
+        "top_right": 0.258998,
+        "bottom_left": 0.304396,
+        "bottom_right": 0.296343
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.802597,
+        "vertical_symmetry": 0.761613
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2113425,
+        "candidate_pixels": 573837,
+        "signature_pixels": 573837,
+        "canvas_ratio": 0.998208,
+        "candidate_ratio": 0.271033,
+        "signature_ratio": 0.271033,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\7a21c24a90b438b7_candidate.png",
+        "signature_mask": "test_debug\\7a21c24a90b438b7_signature_mask.png",
+        "skeleton": "test_debug\\7a21c24a90b438b7_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (2).png",
+      "file_hash": "c22c04d5577a9761cff0cc6f8d573776aab6d96aaea96747d1caea8f64e335d6",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 37692,
+        "ink_ratio": 0.113391,
+        "bbox_width_ratio": 0.734824,
+        "bbox_height_ratio": 0.751412,
+        "bbox_aspect_ratio": 1.152882,
+        "fill_ratio": 0.205361
+      },
+      "projection": {
+        "horizontal_max": 214,
+        "vertical_max": 250,
+        "horizontal_mean": 70.983051,
+        "vertical_mean": 60.210863,
+        "horizontal_variation": 63.411294,
+        "vertical_variation": 62.652857
+      },
+      "center": {
+        "center_x": 0.554662,
+        "center_y": 0.487573
+      },
+      "direction": {
+        "dominant_angle": 37.248812,
+        "directional_variation": 0.370119
+      },
+      "curvature": {
+        "curvature_proxy": 0.799831,
+        "direction_changes": 31,
+        "path_length_proxy": 2.727575
+      },
+      "density_zones": {
+        "top_left": 0.088866,
+        "top_right": 0.125915,
+        "bottom_left": 0.058829,
+        "bottom_right": 0.179911
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.823072,
+        "vertical_symmetry": 0.843132
+      },
+      "signature_extraction": {
+        "canvas_pixels": 329062,
+        "candidate_pixels": 37692,
+        "signature_pixels": 37692,
+        "canvas_ratio": 0.98994,
+        "candidate_ratio": 0.113391,
+        "signature_ratio": 0.113391,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\c22c04d5577a9761_candidate.png",
+        "signature_mask": "test_debug\\c22c04d5577a9761_signature_mask.png",
+        "skeleton": "test_debug\\c22c04d5577a9761_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (2039).png",
+      "file_hash": "58b3619c3a380885803d3fb3d93aacbdd715b4ee16d255f19b2bde28a318fc84",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 1174590,
+        "ink_ratio": 0.202948,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.991536,
+        "bbox_aspect_ratio": 0.618516,
+        "fill_ratio": 0.20468
+      },
+      "projection": {
+        "horizontal_max": 1277,
+        "vertical_max": 1708,
+        "horizontal_mean": 382.353516,
+        "vertical_mean": 623.455414,
+        "horizontal_variation": 268.259295,
+        "vertical_variation": 322.769834
+      },
+      "center": {
+        "center_x": 0.497176,
+        "center_y": 0.527263
+      },
+      "direction": {
+        "dominant_angle": 91.085306,
+        "directional_variation": 0.20697
+      },
+      "curvature": {
+        "curvature_proxy": 0.823928,
+        "direction_changes": 397,
+        "path_length_proxy": 15.617013
+      },
+      "density_zones": {
+        "top_left": 0.19166,
+        "top_right": 0.194328,
+        "bottom_left": 0.219507,
+        "bottom_right": 0.206295
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.887268,
+        "vertical_symmetry": 0.791324
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5589016,
+        "candidate_pixels": 1174590,
+        "signature_pixels": 1174590,
+        "canvas_ratio": 0.96568,
+        "candidate_ratio": 0.202948,
+        "signature_ratio": 0.202948,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\58b3619c3a380885_candidate.png",
+        "signature_mask": "test_debug\\58b3619c3a380885_signature_mask.png",
+        "skeleton": "test_debug\\58b3619c3a380885_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (26).png",
+      "file_hash": "f9c703ded17525e2de1b55cb873912e81b4d187955bb5ae1b981fc31189d41af",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 374335,
+        "ink_ratio": 0.176686,
+        "bbox_width_ratio": 0.953083,
+        "bbox_height_ratio": 0.952817,
+        "bbox_aspect_ratio": 1.050998,
+        "fill_ratio": 0.194564
+      },
+      "projection": {
+        "horizontal_max": 1422,
+        "vertical_max": 758,
+        "horizontal_mean": 263.616197,
+        "vertical_mean": 250.894772,
+        "horizontal_variation": 351.801412,
+        "vertical_variation": 180.461841
+      },
+      "center": {
+        "center_x": 0.488227,
+        "center_y": 0.546941
+      },
+      "direction": {
+        "dominant_angle": 102.886849,
+        "directional_variation": 0.477553
+      },
+      "curvature": {
+        "curvature_proxy": 0.81255,
+        "direction_changes": 296,
+        "path_length_proxy": 11.87926
+      },
+      "density_zones": {
+        "top_left": 0.130501,
+        "top_right": 0.166932,
+        "bottom_left": 0.219577,
+        "bottom_right": 0.189737
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.918736,
+        "vertical_symmetry": 0.879594
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2118640,
+        "candidate_pixels": 374335,
+        "signature_pixels": 374335,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.176686,
+        "signature_ratio": 0.176686,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\f9c703ded17525e2_candidate.png",
+        "signature_mask": "test_debug\\f9c703ded17525e2_signature_mask.png",
+        "skeleton": "test_debug\\f9c703ded17525e2_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (29).jpg",
+      "file_hash": "02e13d43f140734205b2e37c16c2c60116e83623732bb6591d8778b328b0cedb",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 509005,
+        "ink_ratio": 0.240412,
+        "bbox_width_ratio": 0.953052,
+        "bbox_height_ratio": 0.951408,
+        "bbox_aspect_ratio": 1.051813,
+        "fill_ratio": 0.265138
+      },
+      "projection": {
+        "horizontal_max": 715,
+        "vertical_max": 617,
+        "horizontal_mean": 358.454225,
+        "vertical_mean": 341.384977,
+        "horizontal_variation": 231.682183,
+        "vertical_variation": 151.801525
+      },
+      "center": {
+        "center_x": 0.500117,
+        "center_y": 0.54712
+      },
+      "direction": {
+        "dominant_angle": 47.326321,
+        "directional_variation": 0.445403
+      },
+      "curvature": {
+        "curvature_proxy": 0.805576,
+        "direction_changes": 174,
+        "path_length_proxy": 6.53764
+      },
+      "density_zones": {
+        "top_left": 0.27044,
+        "top_right": 0.144228,
+        "bottom_left": 0.218306,
+        "bottom_right": 0.328684
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.795805,
+        "vertical_symmetry": 0.785546
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2110490,
+        "candidate_pixels": 509005,
+        "signature_pixels": 509005,
+        "canvas_ratio": 0.996821,
+        "candidate_ratio": 0.240412,
+        "signature_ratio": 0.240412,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\02e13d43f1407342_candidate.png",
+        "signature_mask": "test_debug\\02e13d43f1407342_signature_mask.png",
+        "skeleton": "test_debug\\02e13d43f1407342_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (470).jpg",
+      "file_hash": "3cb02fd6df15aeb46f6f216056c71e64a248d2b9960086c31d1d630a2afced42",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 263671,
+        "ink_ratio": 0.124536,
+        "bbox_width_ratio": 0.953052,
+        "bbox_height_ratio": 0.951408,
+        "bbox_aspect_ratio": 1.051813,
+        "fill_ratio": 0.137345
+      },
+      "projection": {
+        "horizontal_max": 668,
+        "vertical_max": 347,
+        "horizontal_mean": 185.683803,
+        "vertical_mean": 176.841717,
+        "horizontal_variation": 261.935248,
+        "vertical_variation": 143.055843
+      },
+      "center": {
+        "center_x": 0.477735,
+        "center_y": 0.499486
+      },
+      "direction": {
+        "dominant_angle": 88.72625,
+        "directional_variation": 0.466791
+      },
+      "curvature": {
+        "curvature_proxy": 0.79878,
+        "direction_changes": 69,
+        "path_length_proxy": 2.358912
+      },
+      "density_zones": {
+        "top_left": 0.147175,
+        "top_right": 0.104178,
+        "bottom_left": 0.145895,
+        "bottom_right": 0.100957
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.946968,
+        "vertical_symmetry": 0.969837
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2117220,
+        "candidate_pixels": 263671,
+        "signature_pixels": 263671,
+        "canvas_ratio": 1.0,
+        "candidate_ratio": 0.124536,
+        "signature_ratio": 0.124536,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\3cb02fd6df15aeb4_candidate.png",
+        "signature_mask": "test_debug\\3cb02fd6df15aeb4_signature_mask.png",
+        "skeleton": "test_debug\\3cb02fd6df15aeb4_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (536).png",
+      "file_hash": "80890e4550c0b4e25eafb7d247cd9f492b179b12f1834bf1888c74169a0333bd",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 50788,
+        "ink_ratio": 0.218167,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.993827,
+        "bbox_aspect_ratio": 0.991718,
+        "fill_ratio": 0.219522
+      },
+      "projection": {
+        "horizontal_max": 421,
+        "vertical_max": 428,
+        "horizontal_mean": 104.502058,
+        "vertical_mean": 106.029228,
+        "horizontal_variation": 77.717377,
+        "vertical_variation": 80.99096
+      },
+      "center": {
+        "center_x": 0.555325,
+        "center_y": 0.483209
+      },
+      "direction": {
+        "dominant_angle": 92.444183,
+        "directional_variation": 0.48191
+      },
+      "curvature": {
+        "curvature_proxy": 0.824586,
+        "direction_changes": 91,
+        "path_length_proxy": 7.015194
+      },
+      "density_zones": {
+        "top_left": 0.148096,
+        "top_right": 0.293896,
+        "bottom_left": 0.180364,
+        "bottom_right": 0.249863
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.765157,
+        "vertical_symmetry": 0.747914
+      },
+      "signature_extraction": {
+        "canvas_pixels": 210767,
+        "candidate_pixels": 50788,
+        "signature_pixels": 50788,
+        "canvas_ratio": 0.90538,
+        "candidate_ratio": 0.218167,
+        "signature_ratio": 0.218167,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\80890e4550c0b4e2_candidate.png",
+        "signature_mask": "test_debug\\80890e4550c0b4e2_signature_mask.png",
+        "skeleton": "test_debug\\80890e4550c0b4e2_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (541).png",
+      "file_hash": "4b678f12e0d3677336e0ac2eb64b7d051d7b2f41a6c71ad0aa76c4bc1753485b",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 125700,
+        "ink_ratio": 0.031275,
+        "bbox_width_ratio": 0.571338,
+        "bbox_height_ratio": 0.212891,
+        "bbox_aspect_ratio": 1.645872,
+        "fill_ratio": 0.257126
+      },
+      "projection": {
+        "horizontal_max": 748,
+        "vertical_max": 423,
+        "horizontal_mean": 49.101562,
+        "vertical_mean": 80.063694,
+        "horizontal_variation": 135.378583,
+        "vertical_variation": 100.721359
+      },
+      "center": {
+        "center_x": 0.566848,
+        "center_y": 0.516707
+      },
+      "direction": {
+        "dominant_angle": 3.19283,
+        "directional_variation": 0.190808
+      },
+      "curvature": {
+        "curvature_proxy": 0.799177,
+        "direction_changes": 35,
+        "path_length_proxy": 1.000639
+      },
+      "density_zones": {
+        "top_left": 0.016621,
+        "top_right": 0.020488,
+        "bottom_left": 0.03095,
+        "bottom_right": 0.05704
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.961464,
+        "vertical_symmetry": 0.962657
+      },
+      "signature_extraction": {
+        "canvas_pixels": 4014933,
+        "candidate_pixels": 125700,
+        "signature_pixels": 125700,
+        "canvas_ratio": 0.998938,
+        "candidate_ratio": 0.031275,
+        "signature_ratio": 0.031275,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\4b678f12e0d36773_candidate.png",
+        "signature_mask": "test_debug\\4b678f12e0d36773_signature_mask.png",
+        "skeleton": "test_debug\\4b678f12e0d36773_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (85).png",
+      "file_hash": "f12ae0a00805cbf20f10f6746cd808bd2fb7e8e1f30aa45d114d96e8250a7eb2",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 1574712,
+        "ink_ratio": 0.272082,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.991536,
+        "bbox_aspect_ratio": 0.618516,
+        "fill_ratio": 0.274404
+      },
+      "projection": {
+        "horizontal_max": 1278,
+        "vertical_max": 2041,
+        "horizontal_mean": 512.601562,
+        "vertical_mean": 835.834395,
+        "horizontal_variation": 247.55839,
+        "vertical_variation": 353.861779
+      },
+      "center": {
+        "center_x": 0.504125,
+        "center_y": 0.531761
+      },
+      "direction": {
+        "dominant_angle": 90.434492,
+        "directional_variation": 0.219587
+      },
+      "curvature": {
+        "curvature_proxy": 0.824691,
+        "direction_changes": 534,
+        "path_length_proxy": 20.469528
+      },
+      "density_zones": {
+        "top_left": 0.237157,
+        "top_right": 0.251086,
+        "bottom_left": 0.301288,
+        "bottom_right": 0.298796
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.7674,
+        "vertical_symmetry": 0.70224
+      },
+      "signature_extraction": {
+        "canvas_pixels": 5378620,
+        "candidate_pixels": 1574712,
+        "signature_pixels": 1574712,
+        "canvas_ratio": 0.929327,
+        "candidate_ratio": 0.272082,
+        "signature_ratio": 0.272082,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\f12ae0a00805cbf2_candidate.png",
+        "signature_mask": "test_debug\\f12ae0a00805cbf2_signature_mask.png",
+        "skeleton": "test_debug\\f12ae0a00805cbf2_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (9).png",
+      "file_hash": "e81c33b51910d2921a43dfd6bbda4a03e08f8343887c12323542b5d79c9a51dc",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 774474,
+        "ink_ratio": 0.133815,
+        "bbox_width_ratio": 1.0,
+        "bbox_height_ratio": 0.991536,
+        "bbox_aspect_ratio": 0.618516,
+        "fill_ratio": 0.134957
+      },
+      "projection": {
+        "horizontal_max": 1278,
+        "vertical_max": 1111,
+        "horizontal_mean": 252.107422,
+        "vertical_mean": 411.079618,
+        "horizontal_variation": 222.428629,
+        "vertical_variation": 254.171039
+      },
+      "center": {
+        "center_x": 0.496639,
+        "center_y": 0.524843
+      },
+      "direction": {
+        "dominant_angle": 89.879662,
+        "directional_variation": 0.17917
+      },
+      "curvature": {
+        "curvature_proxy": 0.829789,
+        "direction_changes": 259,
+        "path_length_proxy": 11.473214
+      },
+      "density_zones": {
+        "top_left": 0.127455,
+        "top_right": 0.127259,
+        "bottom_left": 0.140834,
+        "bottom_right": 0.139712
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.915363,
+        "vertical_symmetry": 0.83175
+      },
+      "signature_extraction": {
+        "canvas_pixels": 2662736,
+        "candidate_pixels": 774474,
+        "signature_pixels": 774474,
+        "canvas_ratio": 0.460072,
+        "candidate_ratio": 0.133815,
+        "signature_ratio": 0.133815,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\e81c33b51910d292_candidate.png",
+        "signature_mask": "test_debug\\e81c33b51910d292_signature_mask.png",
+        "skeleton": "test_debug\\e81c33b51910d292_skeleton.png"
+      }
+    },
+    {
+      "filename": "s (94).png",
+      "file_hash": "4c54f0bbc58edec45085fb1dc176e43b308958c206d18950bbbbcaa332a092dc",
+      "analyzer_version": "0.3",
+      "pipeline_version": "signature_only_v2_panel_aware",
+      "mask_features": {
+        "ink_pixels": 306042,
+        "ink_ratio": 0.168619,
+        "bbox_width_ratio": 0.840895,
+        "bbox_height_ratio": 0.837887,
+        "bbox_aspect_ratio": 1.51087,
+        "fill_ratio": 0.23932
+      },
+      "projection": {
+        "horizontal_max": 729,
+        "vertical_max": 600,
+        "horizontal_mean": 278.726776,
+        "vertical_mean": 185.143376,
+        "horizontal_variation": 252.125811,
+        "vertical_variation": 188.707309
+      },
+      "center": {
+        "center_x": 0.426806,
+        "center_y": 0.270938
+      },
+      "direction": {
+        "dominant_angle": 10.297133,
+        "directional_variation": 0.177704
+      },
+      "curvature": {
+        "curvature_proxy": 0.814305,
+        "direction_changes": 84,
+        "path_length_proxy": 12.27851
+      },
+      "density_zones": {
+        "top_left": 0.483646,
+        "top_right": 0.129515,
+        "bottom_left": 0.02579,
+        "bottom_right": 0.035732
+      },
+      "symmetry": {
+        "horizontal_symmetry": 0.705856,
+        "vertical_symmetry": 0.700781
+      },
+      "signature_extraction": {
+        "canvas_pixels": 337885,
+        "candidate_pixels": 306042,
+        "signature_pixels": 306042,
+        "canvas_ratio": 0.186163,
+        "candidate_ratio": 0.168619,
+        "signature_ratio": 0.168619,
+        "panel_count": 1,
+        "panels": [
+          {
+            "component_count": 1,
+            "kept_components": 1
+          }
+        ]
+      },
+      "debug": {
+        "candidate_mask": "test_debug\\4c54f0bbc58edec4_candidate.png",
+        "signature_mask": "test_debug\\4c54f0bbc58edec4_signature_mask.png",
+        "skeleton": "test_debug\\4c54f0bbc58edec4_skeleton.png"
+      }
+    }
+  ]
+}
