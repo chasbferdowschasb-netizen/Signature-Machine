@@ -1,0 +1,43 @@
+{
+  "schema_version": "customer_package_archive_v2_3",
+  "sample_id": "sample_000024",
+  "label": "پورتقی",
+  "engine_data_untouched": true,
+  "customer_package": {
+    "final_assets": [
+      "CUSTOMER_PACKAGE/01_FINAL_ASSETS/01_FINAL_BLACK_ON_WHITE.png",
+      "CUSTOMER_PACKAGE/01_FINAL_ASSETS/02_BLACK_TRANSPARENT.png",
+      "CUSTOMER_PACKAGE/01_FINAL_ASSETS/03_WHITE_ON_BLACK.png",
+      "CUSTOMER_PACKAGE/01_FINAL_ASSETS/04_WHITE_TRANSPARENT.png"
+    ],
+    "training": [
+      "CUSTOMER_PACKAGE/02_TRAINING/01_PRACTICE.pdf",
+      "CUSTOMER_PACKAGE/02_TRAINING/01_TRAINING.mp4"
+    ]
+  },
+  "practice_sheet": {
+    "format": "A4",
+    "copies": 20,
+    "layout": "4x5",
+    "print_faintness_alpha": 0.48
+  },
+  "training_video": null,
+  "final_assets": null,
+  "status": {
+    "assets": {
+      "01_FINAL_BLACK_ON_WHITE.png": true,
+      "02_BLACK_TRANSPARENT.png": true,
+      "03_WHITE_ON_BLACK.png": true,
+      "04_WHITE_TRANSPARENT.png": true
+    },
+    "training": {
+      "01_PRACTICE.pdf": true,
+      "01_TRAINING.mp4": true
+    },
+    "manifest": true,
+    "obsolete": [
+      "01_PRACTICE.pdf",
+      "01_TRAINING.mp4"
+    ]
+  }
+}

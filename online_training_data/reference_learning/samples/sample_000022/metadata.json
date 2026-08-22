@@ -1,0 +1,14 @@
+{
+  "schema_version": "reference_metadata_v0.3",
+  "sample_id": "sample_000022",
+  "training_status": "REFERENCE",
+  "label": "مهناز",
+  "created_at_unix": 1787390726.835965,
+  "point_count": 153,
+  "stroke_count": 8,
+  "duration_ms": 25686.39990234375,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ]
+}

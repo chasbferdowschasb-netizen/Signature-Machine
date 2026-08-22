@@ -1,0 +1,24 @@
+{
+  "schema_version": "reference_metadata_v0.3",
+  "sample_id": "sample_000023",
+  "training_status": "REFERENCE",
+  "label": "unlabeled",
+  "created_at_unix": 1787414528.0177193,
+  "point_count": 246,
+  "stroke_count": 6,
+  "duration_ms": 102519.2001953125,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ],
+  "render": {
+    "file": "render.png",
+    "scale": 4,
+    "crop_x": 309,
+    "crop_y": 35.5,
+    "crop_width": 526,
+    "crop_height": 436.5,
+    "source_width": 1336,
+    "source_height": 511.5
+  }
+}

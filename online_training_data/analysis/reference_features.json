@@ -1,0 +1,7457 @@
+{
+  "schema_version": "reference_features_v0.1",
+  "generated_at_unix": 1787392317.550555,
+  "read_only": true,
+  "dataset": {
+    "directory": "C:\\Signature-Machine\\online_training_data\\reference_learning\\samples",
+    "sample_count": 22,
+    "sample_ids": [
+      "sample_000001",
+      "sample_000002",
+      "sample_000003",
+      "sample_000004",
+      "sample_000005",
+      "sample_000006",
+      "sample_000007",
+      "sample_000008",
+      "sample_000009",
+      "sample_000010",
+      "sample_000011",
+      "sample_000012",
+      "sample_000013",
+      "sample_000014",
+      "sample_000015",
+      "sample_000016",
+      "sample_000017",
+      "sample_000018",
+      "sample_000019",
+      "sample_000020",
+      "sample_000021",
+      "sample_000022"
+    ]
+  },
+  "samples": [
+    {
+      "sample_id": "sample_000001",
+      "label": "unlabeled",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000001\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000001\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000001\\raw.png"
+      },
+      "composition": {
+        "label": "unlabeled",
+        "character_count": 9,
+        "has_persian": false,
+        "has_latin": true,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 517.0,
+        "height_px": 222.5,
+        "aspect_ratio": 2.323596,
+        "total_path_length_px": 2059.372
+      },
+      "motion": {
+        "duration_ms": 14046.1,
+        "average_stroke_speed_px_s": 339.65,
+        "max_segment_speed_px_s": 3671.785
+      },
+      "pressure": {
+        "point_count": 313,
+        "min": 0.123046875,
+        "max": 0.8935546875,
+        "mean": 0.612882
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 8,
+        "points": 313
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 103,
+          "duration_ms": 1697.7,
+          "path_length_px": 453.502,
+          "average_speed_px_s": 267.127,
+          "max_segment_speed_px_s": 902.686,
+          "start": {
+            "x": 483.5,
+            "y": 300.0
+          },
+          "end": {
+            "x": 567.0,
+            "y": 260.5
+          },
+          "net_displacement_px": 92.372,
+          "direction_deg": -25.317,
+          "bounding_box": {
+            "min_x": 483.0,
+            "max_x": 567.0,
+            "min_y": 228.5,
+            "max_y": 325.0,
+            "width": 84.0,
+            "height": 96.5
+          },
+          "pressure": {
+            "point_count": 103,
+            "min": 0.203125,
+            "max": 0.83203125,
+            "mean": 0.643555
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 6,
+          "duration_ms": 64.7,
+          "path_length_px": 2.707,
+          "average_speed_px_s": 41.841,
+          "max_segment_speed_px_s": 500.0,
+          "start": {
+            "x": 543.5,
+            "y": 233.0
+          },
+          "end": {
+            "x": 542.5,
+            "y": 234.0
+          },
+          "net_displacement_px": 1.414,
+          "direction_deg": 135.0,
+          "bounding_box": {
+            "min_x": 542.5,
+            "max_x": 543.5,
+            "min_y": 233.0,
+            "max_y": 234.0,
+            "width": 1.0,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.359375,
+            "max": 0.693359375,
+            "mean": 0.537435
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 33,
+          "duration_ms": 645.1,
+          "path_length_px": 409.14,
+          "average_speed_px_s": 634.227,
+          "max_segment_speed_px_s": 2532.434,
+          "start": {
+            "x": 456.0,
+            "y": 327.5
+          },
+          "end": {
+            "x": 743.0,
+            "y": 221.0
+          },
+          "net_displacement_px": 306.123,
+          "direction_deg": -20.359,
+          "bounding_box": {
+            "min_x": 455.5,
+            "max_x": 792.5,
+            "min_y": 209.5,
+            "max_y": 327.5,
+            "width": 337.0,
+            "height": 118.0
+          },
+          "pressure": {
+            "point_count": 33,
+            "min": 0.203125,
+            "max": 0.7509765625,
+            "mean": 0.632665
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 66,
+          "duration_ms": 1137.1,
+          "path_length_px": 161.396,
+          "average_speed_px_s": 141.936,
+          "max_segment_speed_px_s": 418.037,
+          "start": {
+            "x": 755.0,
+            "y": 200.0
+          },
+          "end": {
+            "x": 713.5,
+            "y": 191.0
+          },
+          "net_displacement_px": 42.465,
+          "direction_deg": -167.764,
+          "bounding_box": {
+            "min_x": 704.5,
+            "max_x": 755.0,
+            "min_y": 189.5,
+            "max_y": 219.0,
+            "width": 50.5,
+            "height": 29.5
+          },
+          "pressure": {
+            "point_count": 66,
+            "min": 0.123046875,
+            "max": 0.70703125,
+            "mean": 0.580211
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 6,
+          "duration_ms": 107.2,
+          "path_length_px": 2.914,
+          "average_speed_px_s": 27.185,
+          "max_segment_speed_px_s": 69.445,
+          "start": {
+            "x": 732.5,
+            "y": 171.0
+          },
+          "end": {
+            "x": 731.0,
+            "y": 172.0
+          },
+          "net_displacement_px": 1.803,
+          "direction_deg": 146.31,
+          "bounding_box": {
+            "min_x": 731.0,
+            "max_x": 732.5,
+            "min_y": 171.0,
+            "max_y": 172.5,
+            "width": 1.5,
+            "height": 1.5
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.3447265625,
+            "max": 0.75390625,
+            "mean": 0.53597
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 35,
+          "duration_ms": 535.1,
+          "path_length_px": 89.136,
+          "average_speed_px_s": 166.579,
+          "max_segment_speed_px_s": 1249.924,
+          "start": {
+            "x": 694.0,
+            "y": 188.5
+          },
+          "end": {
+            "x": 684.5,
+            "y": 193.5
+          },
+          "net_displacement_px": 10.735,
+          "direction_deg": 152.241,
+          "bounding_box": {
+            "min_x": 673.5,
+            "max_x": 695.0,
+            "min_y": 187.0,
+            "max_y": 221.0,
+            "width": 21.5,
+            "height": 34.0
+          },
+          "pressure": {
+            "point_count": 35,
+            "min": 0.138671875,
+            "max": 0.8046875,
+            "mean": 0.571233
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 8,
+          "duration_ms": 101.5,
+          "path_length_px": 48.04,
+          "average_speed_px_s": 473.298,
+          "max_segment_speed_px_s": 3671.785,
+          "start": {
+            "x": 695.5,
+            "y": 253.5
+          },
+          "end": {
+            "x": 736.5,
+            "y": 233.0
+          },
+          "net_displacement_px": 45.839,
+          "direction_deg": -26.565,
+          "bounding_box": {
+            "min_x": 695.0,
+            "max_x": 736.5,
+            "min_y": 233.0,
+            "max_y": 254.5,
+            "width": 41.5,
+            "height": 21.5
+          },
+          "pressure": {
+            "point_count": 8,
+            "min": 0.181640625,
+            "max": 0.7861328125,
+            "mean": 0.534912
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 56,
+          "duration_ms": 924.9,
+          "path_length_px": 892.537,
+          "average_speed_px_s": 965.009,
+          "max_segment_speed_px_s": 2868.286,
+          "start": {
+            "x": 466.0,
+            "y": 332.5
+          },
+          "end": {
+            "x": 818.0,
+            "y": 146.0
+          },
+          "net_displacement_px": 398.354,
+          "direction_deg": -27.916,
+          "bounding_box": {
+            "min_x": 464.0,
+            "max_x": 972.5,
+            "min_y": 120.0,
+            "max_y": 342.5,
+            "width": 508.5,
+            "height": 222.5
+          },
+          "pressure": {
+            "point_count": 56,
+            "min": 0.1953125,
+            "max": 0.8935546875,
+            "mean": 0.636806
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000002",
+      "label": "زهره shabani",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000002\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000002\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000002\\raw.png"
+      },
+      "composition": {
+        "label": "زهره shabani",
+        "character_count": 12,
+        "has_persian": true,
+        "has_latin": true,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 394.0,
+        "height_px": 207.5,
+        "aspect_ratio": 1.898795,
+        "total_path_length_px": 1724.5
+      },
+      "motion": {
+        "duration_ms": 45029.7,
+        "average_stroke_speed_px_s": 236.636,
+        "max_segment_speed_px_s": 3801.495
+      },
+      "pressure": {
+        "point_count": 356,
+        "min": 0.0576171875,
+        "max": 0.736328125,
+        "mean": 0.49442
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 9,
+        "points": 356
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 52,
+          "duration_ms": 801.7,
+          "path_length_px": 580.239,
+          "average_speed_px_s": 723.761,
+          "max_segment_speed_px_s": 1596.505,
+          "start": {
+            "x": 473.5,
+            "y": 191.0
+          },
+          "end": {
+            "x": 519.5,
+            "y": 239.0
+          },
+          "net_displacement_px": 66.483,
+          "direction_deg": 46.219,
+          "bounding_box": {
+            "min_x": 426.0,
+            "max_x": 566.0,
+            "min_y": 151.0,
+            "max_y": 305.0,
+            "width": 140.0,
+            "height": 154.0
+          },
+          "pressure": {
+            "point_count": 52,
+            "min": 0.216796875,
+            "max": 0.736328125,
+            "mean": 0.586651
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 93,
+          "duration_ms": 1507.5,
+          "path_length_px": 226.259,
+          "average_speed_px_s": 150.089,
+          "max_segment_speed_px_s": 2857.342,
+          "start": {
+            "x": 573.5,
+            "y": 250.5
+          },
+          "end": {
+            "x": 611.5,
+            "y": 268.5
+          },
+          "net_displacement_px": 42.048,
+          "direction_deg": 25.346,
+          "bounding_box": {
+            "min_x": 571.0,
+            "max_x": 623.5,
+            "min_y": 244.5,
+            "max_y": 278.5,
+            "width": 52.5,
+            "height": 34.0
+          },
+          "pressure": {
+            "point_count": 93,
+            "min": 0.1640625,
+            "max": 0.56640625,
+            "mean": 0.471627
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 80,
+          "duration_ms": 1393.8,
+          "path_length_px": 140.703,
+          "average_speed_px_s": 100.949,
+          "max_segment_speed_px_s": 785.706,
+          "start": {
+            "x": 630.5,
+            "y": 271.0
+          },
+          "end": {
+            "x": 671.0,
+            "y": 257.0
+          },
+          "net_displacement_px": 42.851,
+          "direction_deg": -19.069,
+          "bounding_box": {
+            "min_x": 625.0,
+            "max_x": 671.0,
+            "min_y": 257.0,
+            "max_y": 276.5,
+            "width": 46.0,
+            "height": 19.5
+          },
+          "pressure": {
+            "point_count": 80,
+            "min": 0.0576171875,
+            "max": 0.556640625,
+            "mean": 0.460046
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 3,
+          "duration_ms": 65.3,
+          "path_length_px": 1.0,
+          "average_speed_px_s": 15.314,
+          "max_segment_speed_px_s": 89.284,
+          "start": {
+            "x": 661.0,
+            "y": 229.5
+          },
+          "end": {
+            "x": 660.5,
+            "y": 230.0
+          },
+          "net_displacement_px": 0.707,
+          "direction_deg": 135.0,
+          "bounding_box": {
+            "min_x": 660.5,
+            "max_x": 661.0,
+            "min_y": 229.5,
+            "max_y": 230.0,
+            "width": 0.5,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.38671875,
+            "max": 0.6083984375,
+            "mean": 0.519206
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 51,
+          "duration_ms": 815.8,
+          "path_length_px": 629.46,
+          "average_speed_px_s": 771.586,
+          "max_segment_speed_px_s": 3801.495,
+          "start": {
+            "x": 514.0,
+            "y": 272.5
+          },
+          "end": {
+            "x": 806.0,
+            "y": 293.0
+          },
+          "net_displacement_px": 292.719,
+          "direction_deg": 4.016,
+          "bounding_box": {
+            "min_x": 412.0,
+            "max_x": 806.0,
+            "min_y": 264.0,
+            "max_y": 358.5,
+            "width": 394.0,
+            "height": 94.5
+          },
+          "pressure": {
+            "point_count": 51,
+            "min": 0.1689453125,
+            "max": 0.732421875,
+            "mean": 0.592467
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 16,
+          "duration_ms": 251.3,
+          "path_length_px": 22.997,
+          "average_speed_px_s": 91.514,
+          "max_segment_speed_px_s": 376.562,
+          "start": {
+            "x": 797.0,
+            "y": 279.0
+          },
+          "end": {
+            "x": 786.0,
+            "y": 289.5
+          },
+          "net_displacement_px": 15.207,
+          "direction_deg": 136.332,
+          "bounding_box": {
+            "min_x": 786.0,
+            "max_x": 799.5,
+            "min_y": 276.5,
+            "max_y": 289.5,
+            "width": 13.5,
+            "height": 13.0
+          },
+          "pressure": {
+            "point_count": 16,
+            "min": 0.13671875,
+            "max": 0.5947265625,
+            "mean": 0.450317
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 5,
+          "duration_ms": 84.1,
+          "path_length_px": 2.414,
+          "average_speed_px_s": 28.707,
+          "max_segment_speed_px_s": 500.0,
+          "start": {
+            "x": 804.5,
+            "y": 260.5
+          },
+          "end": {
+            "x": 804.0,
+            "y": 260.0
+          },
+          "net_displacement_px": 0.707,
+          "direction_deg": -135.0,
+          "bounding_box": {
+            "min_x": 804.0,
+            "max_x": 805.0,
+            "min_y": 260.0,
+            "max_y": 260.5,
+            "width": 1.0,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 5,
+            "min": 0.1103515625,
+            "max": 0.5390625,
+            "mean": 0.377734
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 40,
+          "duration_ms": 620.6,
+          "path_length_px": 102.057,
+          "average_speed_px_s": 164.449,
+          "max_segment_speed_px_s": 1249.924,
+          "start": {
+            "x": 774.0,
+            "y": 262.5
+          },
+          "end": {
+            "x": 746.5,
+            "y": 294.5
+          },
+          "net_displacement_px": 42.193,
+          "direction_deg": 130.675,
+          "bounding_box": {
+            "min_x": 746.5,
+            "max_x": 786.5,
+            "min_y": 262.5,
+            "max_y": 294.5,
+            "width": 40.0,
+            "height": 32.0
+          },
+          "pressure": {
+            "point_count": 40,
+            "min": 0.1171875,
+            "max": 0.55078125,
+            "mean": 0.429199
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 8,
+          "point_count": 16,
+          "duration_ms": 232.4,
+          "path_length_px": 19.371,
+          "average_speed_px_s": 83.352,
+          "max_segment_speed_px_s": 1009.871,
+          "start": {
+            "x": 750.5,
+            "y": 275.5
+          },
+          "end": {
+            "x": 749.5,
+            "y": 277.5
+          },
+          "net_displacement_px": 2.236,
+          "direction_deg": 116.565,
+          "bounding_box": {
+            "min_x": 746.5,
+            "max_x": 753.0,
+            "min_y": 274.5,
+            "max_y": 282.0,
+            "width": 6.5,
+            "height": 7.5
+          },
+          "pressure": {
+            "point_count": 16,
+            "min": 0.20703125,
+            "max": 0.4873046875,
+            "mean": 0.425476
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000003",
+      "label": "محسن پورتقی",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000003\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000003\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000003\\raw.png"
+      },
+      "composition": {
+        "label": "محسن پورتقی",
+        "character_count": 11,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 332.0,
+        "height_px": 198.0,
+        "aspect_ratio": 1.676768,
+        "total_path_length_px": 1317.296
+      },
+      "motion": {
+        "duration_ms": 25885.7,
+        "average_stroke_speed_px_s": 235.754,
+        "max_segment_speed_px_s": 2588.339
+      },
+      "pressure": {
+        "point_count": 274,
+        "min": 0.0234375,
+        "max": 0.8515625,
+        "mean": 0.511523
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 13,
+        "points": 274
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 43,
+          "duration_ms": 772.3,
+          "path_length_px": 111.825,
+          "average_speed_px_s": 144.795,
+          "max_segment_speed_px_s": 621.65,
+          "start": {
+            "x": 853.0,
+            "y": 188.0
+          },
+          "end": {
+            "x": 825.0,
+            "y": 227.0
+          },
+          "net_displacement_px": 48.01,
+          "direction_deg": 125.676,
+          "bounding_box": {
+            "min_x": 825.0,
+            "max_x": 862.5,
+            "min_y": 179.0,
+            "max_y": 227.0,
+            "width": 37.5,
+            "height": 48.0
+          },
+          "pressure": {
+            "point_count": 43,
+            "min": 0.15625,
+            "max": 0.72265625,
+            "mean": 0.524459
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 10,
+          "duration_ms": 161.4,
+          "path_length_px": 26.479,
+          "average_speed_px_s": 164.058,
+          "max_segment_speed_px_s": 833.198,
+          "start": {
+            "x": 833.5,
+            "y": 208.0
+          },
+          "end": {
+            "x": 813.0,
+            "y": 222.5
+          },
+          "net_displacement_px": 25.11,
+          "direction_deg": 144.728,
+          "bounding_box": {
+            "min_x": 813.0,
+            "max_x": 833.5,
+            "min_y": 207.5,
+            "max_y": 222.5,
+            "width": 20.5,
+            "height": 15.0
+          },
+          "pressure": {
+            "point_count": 10,
+            "min": 0.091796875,
+            "max": 0.5107421875,
+            "mean": 0.380176
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 9,
+          "duration_ms": 140.5,
+          "path_length_px": 24.271,
+          "average_speed_px_s": 172.747,
+          "max_segment_speed_px_s": 404.106,
+          "start": {
+            "x": 826.5,
+            "y": 205.5
+          },
+          "end": {
+            "x": 807.0,
+            "y": 219.0
+          },
+          "net_displacement_px": 23.717,
+          "direction_deg": 145.305,
+          "bounding_box": {
+            "min_x": 807.0,
+            "max_x": 826.5,
+            "min_y": 205.5,
+            "max_y": 219.0,
+            "width": 19.5,
+            "height": 13.5
+          },
+          "pressure": {
+            "point_count": 9,
+            "min": 0.07421875,
+            "max": 0.4609375,
+            "mean": 0.338976
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 13,
+          "duration_ms": 183.3,
+          "path_length_px": 42.282,
+          "average_speed_px_s": 230.669,
+          "max_segment_speed_px_s": 714.336,
+          "start": {
+            "x": 819.0,
+            "y": 201.5
+          },
+          "end": {
+            "x": 787.5,
+            "y": 222.5
+          },
+          "net_displacement_px": 37.858,
+          "direction_deg": 146.31,
+          "bounding_box": {
+            "min_x": 787.5,
+            "max_x": 820.5,
+            "min_y": 201.0,
+            "max_y": 222.5,
+            "width": 33.0,
+            "height": 21.5
+          },
+          "pressure": {
+            "point_count": 13,
+            "min": 0.0693359375,
+            "max": 0.646484375,
+            "mean": 0.426157
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 42,
+          "duration_ms": 736.8,
+          "path_length_px": 358.662,
+          "average_speed_px_s": 486.784,
+          "max_segment_speed_px_s": 1527.222,
+          "start": {
+            "x": 808.5,
+            "y": 173.0
+          },
+          "end": {
+            "x": 788.0,
+            "y": 246.5
+          },
+          "net_displacement_px": 76.305,
+          "direction_deg": 105.584,
+          "bounding_box": {
+            "min_x": 767.5,
+            "max_x": 808.5,
+            "min_y": 173.0,
+            "max_y": 339.5,
+            "width": 41.0,
+            "height": 166.5
+          },
+          "pressure": {
+            "point_count": 42,
+            "min": 0.1484375,
+            "max": 0.8515625,
+            "mean": 0.664179
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 3,
+          "duration_ms": 52.9,
+          "path_length_px": 2.118,
+          "average_speed_px_s": 40.038,
+          "max_segment_speed_px_s": 1249.924,
+          "start": {
+            "x": 792.0,
+            "y": 142.0
+          },
+          "end": {
+            "x": 792.0,
+            "y": 141.5
+          },
+          "net_displacement_px": 0.5,
+          "direction_deg": -90.0,
+          "bounding_box": {
+            "min_x": 791.0,
+            "max_x": 792.0,
+            "min_y": 141.5,
+            "max_y": 142.0,
+            "width": 1.0,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.181640625,
+            "max": 0.677734375,
+            "mean": 0.441406
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 68,
+          "duration_ms": 1113.7,
+          "path_length_px": 451.721,
+          "average_speed_px_s": 405.604,
+          "max_segment_speed_px_s": 2588.339,
+          "start": {
+            "x": 640.0,
+            "y": 257.0
+          },
+          "end": {
+            "x": 899.0,
+            "y": 228.5
+          },
+          "net_displacement_px": 260.563,
+          "direction_deg": -6.279,
+          "bounding_box": {
+            "min_x": 640.0,
+            "max_x": 972.0,
+            "min_y": 206.5,
+            "max_y": 257.0,
+            "width": 332.0,
+            "height": 50.5
+          },
+          "pressure": {
+            "point_count": 68,
+            "min": 0.1796875,
+            "max": 0.62890625,
+            "mean": 0.564195
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 14,
+          "duration_ms": 196.3,
+          "path_length_px": 22.119,
+          "average_speed_px_s": 112.679,
+          "max_segment_speed_px_s": 884.099,
+          "start": {
+            "x": 907.5,
+            "y": 216.5
+          },
+          "end": {
+            "x": 895.0,
+            "y": 224.0
+          },
+          "net_displacement_px": 14.577,
+          "direction_deg": 149.036,
+          "bounding_box": {
+            "min_x": 895.0,
+            "max_x": 910.5,
+            "min_y": 215.0,
+            "max_y": 224.5,
+            "width": 15.5,
+            "height": 9.5
+          },
+          "pressure": {
+            "point_count": 14,
+            "min": 0.1357421875,
+            "max": 0.4921875,
+            "mean": 0.38072
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 8,
+          "point_count": 34,
+          "duration_ms": 576.0,
+          "path_length_px": 148.063,
+          "average_speed_px_s": 257.053,
+          "max_segment_speed_px_s": 1683.754,
+          "start": {
+            "x": 908.5,
+            "y": 194.5
+          },
+          "end": {
+            "x": 954.0,
+            "y": 205.5
+          },
+          "net_displacement_px": 46.811,
+          "direction_deg": 13.591,
+          "bounding_box": {
+            "min_x": 874.0,
+            "max_x": 954.0,
+            "min_y": 194.0,
+            "max_y": 214.0,
+            "width": 80.0,
+            "height": 20.0
+          },
+          "pressure": {
+            "point_count": 34,
+            "min": 0.0234375,
+            "max": 0.6240234375,
+            "mean": 0.468319
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 9,
+          "point_count": 18,
+          "duration_ms": 261.8,
+          "path_length_px": 55.406,
+          "average_speed_px_s": 211.635,
+          "max_segment_speed_px_s": 850.343,
+          "start": {
+            "x": 928.5,
+            "y": 247.0
+          },
+          "end": {
+            "x": 958.0,
+            "y": 245.5
+          },
+          "net_displacement_px": 29.538,
+          "direction_deg": -2.911,
+          "bounding_box": {
+            "min_x": 926.5,
+            "max_x": 958.0,
+            "min_y": 239.0,
+            "max_y": 247.0,
+            "width": 31.5,
+            "height": 8.0
+          },
+          "pressure": {
+            "point_count": 18,
+            "min": 0.080078125,
+            "max": 0.5771484375,
+            "mean": 0.441081
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 10,
+          "point_count": 6,
+          "duration_ms": 78.8,
+          "path_length_px": 11.121,
+          "average_speed_px_s": 141.124,
+          "max_segment_speed_px_s": 312.481,
+          "start": {
+            "x": 879.0,
+            "y": 182.0
+          },
+          "end": {
+            "x": 889.5,
+            "y": 180.0
+          },
+          "net_displacement_px": 10.689,
+          "direction_deg": -10.784,
+          "bounding_box": {
+            "min_x": 879.0,
+            "max_x": 889.5,
+            "min_y": 180.0,
+            "max_y": 182.0,
+            "width": 10.5,
+            "height": 2.0
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.2509765625,
+            "max": 0.44921875,
+            "mean": 0.376302
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 11,
+          "point_count": 6,
+          "duration_ms": 78.9,
+          "path_length_px": 17.044,
+          "average_speed_px_s": 216.024,
+          "max_segment_speed_px_s": 444.768,
+          "start": {
+            "x": 902.0,
+            "y": 177.0
+          },
+          "end": {
+            "x": 919.0,
+            "y": 176.0
+          },
+          "net_displacement_px": 17.029,
+          "direction_deg": -3.366,
+          "bounding_box": {
+            "min_x": 902.0,
+            "max_x": 919.0,
+            "min_y": 176.0,
+            "max_y": 177.0,
+            "width": 17.0,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.2578125,
+            "max": 0.49609375,
+            "mean": 0.40153
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 12,
+          "point_count": 8,
+          "duration_ms": 95.9,
+          "path_length_px": 46.185,
+          "average_speed_px_s": 481.597,
+          "max_segment_speed_px_s": 2179.017,
+          "start": {
+            "x": 644.0,
+            "y": 263.0
+          },
+          "end": {
+            "x": 688.5,
+            "y": 256.0
+          },
+          "net_displacement_px": 45.047,
+          "direction_deg": -8.94,
+          "bounding_box": {
+            "min_x": 643.5,
+            "max_x": 688.5,
+            "min_y": 256.0,
+            "max_y": 263.0,
+            "width": 45.0,
+            "height": 7.0
+          },
+          "pressure": {
+            "point_count": 8,
+            "min": 0.27734375,
+            "max": 0.5615234375,
+            "mean": 0.471069
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000004",
+      "label": "رضا",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000004\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000004\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000004\\raw.png"
+      },
+      "composition": {
+        "label": "رضا",
+        "character_count": 3,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 398.5,
+        "height_px": 133.5,
+        "aspect_ratio": 2.985019,
+        "total_path_length_px": 1404.217
+      },
+      "motion": {
+        "duration_ms": 6677.6,
+        "average_stroke_speed_px_s": 593.342,
+        "max_segment_speed_px_s": 4260.14
+      },
+      "pressure": {
+        "point_count": 143,
+        "min": 0.1171875,
+        "max": 0.828125,
+        "mean": 0.595211
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 5,
+        "points": 143
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 16,
+          "duration_ms": 245.7,
+          "path_length_px": 39.051,
+          "average_speed_px_s": 158.939,
+          "max_segment_speed_px_s": 2000.0,
+          "start": {
+            "x": 725.0,
+            "y": 276.0
+          },
+          "end": {
+            "x": 704.5,
+            "y": 299.0
+          },
+          "net_displacement_px": 30.81,
+          "direction_deg": 131.711,
+          "bounding_box": {
+            "min_x": 704.5,
+            "max_x": 726.5,
+            "min_y": 272.5,
+            "max_y": 299.0,
+            "width": 22.0,
+            "height": 26.5
+          },
+          "pressure": {
+            "point_count": 16,
+            "min": 0.1171875,
+            "max": 0.6748046875,
+            "mean": 0.461609
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 79,
+          "duration_ms": 1323.2,
+          "path_length_px": 490.763,
+          "average_speed_px_s": 370.891,
+          "max_segment_speed_px_s": 1341.915,
+          "start": {
+            "x": 698.0,
+            "y": 286.0
+          },
+          "end": {
+            "x": 598.0,
+            "y": 255.5
+          },
+          "net_displacement_px": 104.548,
+          "direction_deg": -163.038,
+          "bounding_box": {
+            "min_x": 598.0,
+            "max_x": 719.5,
+            "min_y": 165.5,
+            "max_y": 298.0,
+            "width": 121.5,
+            "height": 132.5
+          },
+          "pressure": {
+            "point_count": 79,
+            "min": 0.134765625,
+            "max": 0.828125,
+            "mean": 0.644544
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 14,
+          "duration_ms": 212.7,
+          "path_length_px": 289.672,
+          "average_speed_px_s": 1361.882,
+          "max_segment_speed_px_s": 4260.14,
+          "start": {
+            "x": 586.5,
+            "y": 288.0
+          },
+          "end": {
+            "x": 857.5,
+            "y": 195.5
+          },
+          "net_displacement_px": 286.352,
+          "direction_deg": -18.846,
+          "bounding_box": {
+            "min_x": 585.0,
+            "max_x": 857.5,
+            "min_y": 195.5,
+            "max_y": 288.5,
+            "width": 272.5,
+            "height": 93.0
+          },
+          "pressure": {
+            "point_count": 14,
+            "min": 0.1796875,
+            "max": 0.6357421875,
+            "mean": 0.469099
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 3,
+          "duration_ms": 114.9,
+          "path_length_px": 2.5,
+          "average_speed_px_s": 21.758,
+          "max_segment_speed_px_s": 81.522,
+          "start": {
+            "x": 710.5,
+            "y": 227.0
+          },
+          "end": {
+            "x": 710.5,
+            "y": 224.5
+          },
+          "net_displacement_px": 2.5,
+          "direction_deg": -90.0,
+          "bounding_box": {
+            "min_x": 710.5,
+            "max_x": 710.5,
+            "min_y": 224.5,
+            "max_y": 227.0,
+            "width": 0.0,
+            "height": 2.5
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.3544921875,
+            "max": 0.6923828125,
+            "mean": 0.505208
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 31,
+          "duration_ms": 552.8,
+          "path_length_px": 582.231,
+          "average_speed_px_s": 1053.24,
+          "max_segment_speed_px_s": 3254.122,
+          "start": {
+            "x": 743.5,
+            "y": 242.0
+          },
+          "end": {
+            "x": 817.5,
+            "y": 215.0
+          },
+          "net_displacement_px": 78.772,
+          "direction_deg": -20.045,
+          "bounding_box": {
+            "min_x": 743.0,
+            "max_x": 983.5,
+            "min_y": 194.5,
+            "max_y": 286.0,
+            "width": 240.5,
+            "height": 91.5
+          },
+          "pressure": {
+            "point_count": 31,
+            "min": 0.18359375,
+            "max": 0.7900390625,
+            "mean": 0.604114
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000005",
+      "label": "صدرا sadra",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000005\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000005\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000005\\raw.png"
+      },
+      "composition": {
+        "label": "صدرا sadra",
+        "character_count": 10,
+        "has_persian": true,
+        "has_latin": true,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 277.0,
+        "height_px": 273.5,
+        "aspect_ratio": 1.012797,
+        "total_path_length_px": 1683.347
+      },
+      "motion": {
+        "duration_ms": 195165.9,
+        "average_stroke_speed_px_s": 320.651,
+        "max_segment_speed_px_s": 2258.756
+      },
+      "pressure": {
+        "point_count": 301,
+        "min": 0.0673828125,
+        "max": 0.8603515625,
+        "mean": 0.515687
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 6,
+        "points": 301
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 54,
+          "duration_ms": 913.2,
+          "path_length_px": 150.463,
+          "average_speed_px_s": 164.765,
+          "max_segment_speed_px_s": 736.272,
+          "start": {
+            "x": 431.0,
+            "y": 258.5
+          },
+          "end": {
+            "x": 399.0,
+            "y": 267.5
+          },
+          "net_displacement_px": 33.242,
+          "direction_deg": 164.291,
+          "bounding_box": {
+            "min_x": 399.0,
+            "max_x": 444.5,
+            "min_y": 218.5,
+            "max_y": 267.5,
+            "width": 45.5,
+            "height": 49.0
+          },
+          "pressure": {
+            "point_count": 54,
+            "min": 0.1328125,
+            "max": 0.662109375,
+            "mean": 0.560312
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 60,
+          "duration_ms": 1006.6,
+          "path_length_px": 451.969,
+          "average_speed_px_s": 449.006,
+          "max_segment_speed_px_s": 1585.668,
+          "start": {
+            "x": 396.0,
+            "y": 252.0
+          },
+          "end": {
+            "x": 302.0,
+            "y": 262.5
+          },
+          "net_displacement_px": 94.585,
+          "direction_deg": 173.626,
+          "bounding_box": {
+            "min_x": 258.0,
+            "max_x": 397.0,
+            "min_y": 199.5,
+            "max_y": 313.5,
+            "width": 139.0,
+            "height": 114.0
+          },
+          "pressure": {
+            "point_count": 60,
+            "min": 0.095703125,
+            "max": 0.65625,
+            "mean": 0.559342
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 47,
+          "duration_ms": 734.3,
+          "path_length_px": 651.254,
+          "average_speed_px_s": 886.905,
+          "max_segment_speed_px_s": 2258.756,
+          "start": {
+            "x": 258.0,
+            "y": 265.5
+          },
+          "end": {
+            "x": 434.0,
+            "y": 448.0
+          },
+          "net_displacement_px": 253.539,
+          "direction_deg": 46.039,
+          "bounding_box": {
+            "min_x": 257.5,
+            "max_x": 522.5,
+            "min_y": 182.5,
+            "max_y": 448.0,
+            "width": 265.0,
+            "height": 265.5
+          },
+          "pressure": {
+            "point_count": 47,
+            "min": 0.0673828125,
+            "max": 0.615234375,
+            "mean": 0.480531
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 97,
+          "duration_ms": 1616.0,
+          "path_length_px": 304.122,
+          "average_speed_px_s": 188.194,
+          "max_segment_speed_px_s": 657.313,
+          "start": {
+            "x": 440.5,
+            "y": 444.0
+          },
+          "end": {
+            "x": 497.5,
+            "y": 439.5
+          },
+          "net_displacement_px": 57.177,
+          "direction_deg": -4.514,
+          "bounding_box": {
+            "min_x": 432.0,
+            "max_x": 497.5,
+            "min_y": 411.0,
+            "max_y": 451.0,
+            "width": 65.5,
+            "height": 40.0
+          },
+          "pressure": {
+            "point_count": 97,
+            "min": 0.16015625,
+            "max": 0.58203125,
+            "mean": 0.466193
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 38,
+          "duration_ms": 584.3,
+          "path_length_px": 123.039,
+          "average_speed_px_s": 210.576,
+          "max_segment_speed_px_s": 529.242,
+          "start": {
+            "x": 512.0,
+            "y": 434.0
+          },
+          "end": {
+            "x": 534.5,
+            "y": 435.0
+          },
+          "net_displacement_px": 22.522,
+          "direction_deg": 2.545,
+          "bounding_box": {
+            "min_x": 495.5,
+            "max_x": 534.5,
+            "min_y": 427.5,
+            "max_y": 451.0,
+            "width": 39.0,
+            "height": 23.5
+          },
+          "pressure": {
+            "point_count": 38,
+            "min": 0.25390625,
+            "max": 0.779296875,
+            "mean": 0.548545
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 5,
+          "duration_ms": 102.2,
+          "path_length_px": 2.5,
+          "average_speed_px_s": 24.462,
+          "max_segment_speed_px_s": 555.465,
+          "start": {
+            "x": 374.5,
+            "y": 177.5
+          },
+          "end": {
+            "x": 374.0,
+            "y": 178.5
+          },
+          "net_displacement_px": 1.118,
+          "direction_deg": 116.565,
+          "bounding_box": {
+            "min_x": 374.0,
+            "max_x": 375.0,
+            "min_y": 177.5,
+            "max_y": 178.5,
+            "width": 1.0,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 5,
+            "min": 0.2744140625,
+            "max": 0.8603515625,
+            "mean": 0.550781
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000006",
+      "label": "هدی اشفته",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000006\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000006\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000006\\raw.png"
+      },
+      "composition": {
+        "label": "هدی اشفته",
+        "character_count": 9,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 213.5,
+        "height_px": 205.0,
+        "aspect_ratio": 1.041463,
+        "total_path_length_px": 1196.678
+      },
+      "motion": {
+        "duration_ms": 70096.2,
+        "average_stroke_speed_px_s": 235.319,
+        "max_segment_speed_px_s": 2221.861
+      },
+      "pressure": {
+        "point_count": 310,
+        "min": 0.04296875,
+        "max": 0.6787109375,
+        "mean": 0.423356
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 10,
+        "points": 310
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 21,
+          "duration_ms": 289.2,
+          "path_length_px": 109.014,
+          "average_speed_px_s": 376.95,
+          "max_segment_speed_px_s": 2221.861,
+          "start": {
+            "x": 561.0,
+            "y": 202.0
+          },
+          "end": {
+            "x": 560.0,
+            "y": 260.5
+          },
+          "net_displacement_px": 58.509,
+          "direction_deg": 90.979,
+          "bounding_box": {
+            "min_x": 560.0,
+            "max_x": 563.0,
+            "min_y": 177.0,
+            "max_y": 260.5,
+            "width": 3.0,
+            "height": 83.5
+          },
+          "pressure": {
+            "point_count": 21,
+            "min": 0.16015625,
+            "max": 0.6650390625,
+            "mean": 0.522414
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 33,
+          "duration_ms": 517.9,
+          "path_length_px": 338.909,
+          "average_speed_px_s": 654.391,
+          "max_segment_speed_px_s": 1914.477,
+          "start": {
+            "x": 544.5,
+            "y": 183.5
+          },
+          "end": {
+            "x": 664.0,
+            "y": 194.0
+          },
+          "net_displacement_px": 119.96,
+          "direction_deg": 5.021,
+          "bounding_box": {
+            "min_x": 491.5,
+            "max_x": 664.0,
+            "min_y": 180.5,
+            "max_y": 282.0,
+            "width": 172.5,
+            "height": 101.5
+          },
+          "pressure": {
+            "point_count": 33,
+            "min": 0.091796875,
+            "max": 0.630859375,
+            "mean": 0.5414
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 37,
+          "duration_ms": 596.3,
+          "path_length_px": 331.15,
+          "average_speed_px_s": 555.341,
+          "max_segment_speed_px_s": 1619.725,
+          "start": {
+            "x": 572.5,
+            "y": 235.0
+          },
+          "end": {
+            "x": 674.5,
+            "y": 77.0
+          },
+          "net_displacement_px": 188.064,
+          "direction_deg": -57.155,
+          "bounding_box": {
+            "min_x": 572.5,
+            "max_x": 705.0,
+            "min_y": 77.0,
+            "max_y": 235.0,
+            "width": 132.5,
+            "height": 158.0
+          },
+          "pressure": {
+            "point_count": 37,
+            "min": 0.0625,
+            "max": 0.6787109375,
+            "mean": 0.484137
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 58,
+          "duration_ms": 913.0,
+          "path_length_px": 102.341,
+          "average_speed_px_s": 112.094,
+          "max_segment_speed_px_s": 252.537,
+          "start": {
+            "x": 633.5,
+            "y": 174.0
+          },
+          "end": {
+            "x": 619.0,
+            "y": 199.5
+          },
+          "net_displacement_px": 29.334,
+          "direction_deg": 119.624,
+          "bounding_box": {
+            "min_x": 619.0,
+            "max_x": 654.5,
+            "min_y": 174.0,
+            "max_y": 199.5,
+            "width": 35.5,
+            "height": 25.5
+          },
+          "pressure": {
+            "point_count": 58,
+            "min": 0.04296875,
+            "max": 0.5341796875,
+            "mean": 0.424434
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 32,
+          "duration_ms": 505.3,
+          "path_length_px": 95.506,
+          "average_speed_px_s": 189.008,
+          "max_segment_speed_px_s": 660.6,
+          "start": {
+            "x": 615.0,
+            "y": 189.5
+          },
+          "end": {
+            "x": 616.0,
+            "y": 171.0
+          },
+          "net_displacement_px": 18.527,
+          "direction_deg": -86.906,
+          "bounding_box": {
+            "min_x": 604.0,
+            "max_x": 626.5,
+            "min_y": 171.0,
+            "max_y": 196.5,
+            "width": 22.5,
+            "height": 25.5
+          },
+          "pressure": {
+            "point_count": 32,
+            "min": 0.0859375,
+            "max": 0.6259765625,
+            "mean": 0.471802
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 15,
+          "duration_ms": 220.7,
+          "path_length_px": 24.658,
+          "average_speed_px_s": 111.726,
+          "max_segment_speed_px_s": 1874.886,
+          "start": {
+            "x": 635.0,
+            "y": 232.5
+          },
+          "end": {
+            "x": 635.5,
+            "y": 245.0
+          },
+          "net_displacement_px": 12.51,
+          "direction_deg": 87.709,
+          "bounding_box": {
+            "min_x": 635.0,
+            "max_x": 636.0,
+            "min_y": 226.5,
+            "max_y": 245.0,
+            "width": 1.0,
+            "height": 18.5
+          },
+          "pressure": {
+            "point_count": 15,
+            "min": 0.12890625,
+            "max": 0.48046875,
+            "mean": 0.360872
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 87,
+          "duration_ms": 1431.7,
+          "path_length_px": 150.2,
+          "average_speed_px_s": 104.91,
+          "max_segment_speed_px_s": 714.336,
+          "start": {
+            "x": 629.5,
+            "y": 237.5
+          },
+          "end": {
+            "x": 574.5,
+            "y": 275.0
+          },
+          "net_displacement_px": 66.568,
+          "direction_deg": 145.713,
+          "bounding_box": {
+            "min_x": 574.5,
+            "max_x": 630.0,
+            "min_y": 236.5,
+            "max_y": 275.0,
+            "width": 55.5,
+            "height": 38.5
+          },
+          "pressure": {
+            "point_count": 87,
+            "min": 0.1015625,
+            "max": 0.400390625,
+            "mean": 0.357871
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 6,
+          "duration_ms": 84.2,
+          "path_length_px": 9.265,
+          "average_speed_px_s": 110.038,
+          "max_segment_speed_px_s": 184.326,
+          "start": {
+            "x": 586.5,
+            "y": 240.5
+          },
+          "end": {
+            "x": 595.5,
+            "y": 238.5
+          },
+          "net_displacement_px": 9.22,
+          "direction_deg": -12.529,
+          "bounding_box": {
+            "min_x": 586.5,
+            "max_x": 595.5,
+            "min_y": 238.5,
+            "max_y": 240.5,
+            "width": 9.0,
+            "height": 2.0
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.068359375,
+            "max": 0.2626953125,
+            "mean": 0.176107
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 8,
+          "point_count": 4,
+          "duration_ms": 89.0,
+          "path_length_px": 1.707,
+          "average_speed_px_s": 19.181,
+          "max_segment_speed_px_s": 454.606,
+          "start": {
+            "x": 606.0,
+            "y": 233.5
+          },
+          "end": {
+            "x": 605.5,
+            "y": 233.0
+          },
+          "net_displacement_px": 0.707,
+          "direction_deg": -135.0,
+          "bounding_box": {
+            "min_x": 605.5,
+            "max_x": 606.0,
+            "min_y": 233.0,
+            "max_y": 233.5,
+            "width": 0.5,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.0673828125,
+            "max": 0.3603515625,
+            "mean": 0.251465
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 9,
+          "point_count": 17,
+          "duration_ms": 283.8,
+          "path_length_px": 33.928,
+          "average_speed_px_s": 119.549,
+          "max_segment_speed_px_s": 416.684,
+          "start": {
+            "x": 617.0,
+            "y": 233.5
+          },
+          "end": {
+            "x": 620.5,
+            "y": 233.5
+          },
+          "net_displacement_px": 3.5,
+          "direction_deg": 0.0,
+          "bounding_box": {
+            "min_x": 615.0,
+            "max_x": 625.0,
+            "min_y": 223.5,
+            "max_y": 233.5,
+            "width": 10.0,
+            "height": 10.0
+          },
+          "pressure": {
+            "point_count": 17,
+            "min": 0.14453125,
+            "max": 0.431640625,
+            "mean": 0.362649
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000007",
+      "label": "Ali رضایی",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000007\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000007\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000007\\raw.png"
+      },
+      "composition": {
+        "label": "Ali رضایی",
+        "character_count": 9,
+        "has_persian": true,
+        "has_latin": true,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 361.5,
+        "height_px": 166.0,
+        "aspect_ratio": 2.177711,
+        "total_path_length_px": 1091.603
+      },
+      "motion": {
+        "duration_ms": 49236.2,
+        "average_stroke_speed_px_s": 190.628,
+        "max_segment_speed_px_s": 2527.969
+      },
+      "pressure": {
+        "point_count": 224,
+        "min": 0.0634765625,
+        "max": 0.6728515625,
+        "mean": 0.48019
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 7,
+        "points": 224
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 130,
+          "duration_ms": 2208.9,
+          "path_length_px": 827.372,
+          "average_speed_px_s": 374.563,
+          "max_segment_speed_px_s": 2527.969,
+          "start": {
+            "x": 479.5,
+            "y": 271.5
+          },
+          "end": {
+            "x": 841.0,
+            "y": 141.0
+          },
+          "net_displacement_px": 384.334,
+          "direction_deg": -19.849,
+          "bounding_box": {
+            "min_x": 479.5,
+            "max_x": 841.0,
+            "min_y": 141.0,
+            "max_y": 298.0,
+            "width": 361.5,
+            "height": 157.0
+          },
+          "pressure": {
+            "point_count": 130,
+            "min": 0.140625,
+            "max": 0.6728515625,
+            "mean": 0.508541
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 4,
+          "duration_ms": 31.4,
+          "path_length_px": 2.0,
+          "average_speed_px_s": 63.694,
+          "max_segment_speed_px_s": 1111.232,
+          "start": {
+            "x": 554.0,
+            "y": 204.0
+          },
+          "end": {
+            "x": 553.0,
+            "y": 203.0
+          },
+          "net_displacement_px": 1.414,
+          "direction_deg": -135.0,
+          "bounding_box": {
+            "min_x": 553.0,
+            "max_x": 554.0,
+            "min_y": 203.0,
+            "max_y": 204.0,
+            "width": 1.0,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.0634765625,
+            "max": 0.6591796875,
+            "mean": 0.375
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 10,
+          "duration_ms": 180.7,
+          "path_length_px": 18.944,
+          "average_speed_px_s": 104.835,
+          "max_segment_speed_px_s": 510.189,
+          "start": {
+            "x": 699.0,
+            "y": 168.0
+          },
+          "end": {
+            "x": 689.5,
+            "y": 182.0
+          },
+          "net_displacement_px": 16.919,
+          "direction_deg": 124.16,
+          "bounding_box": {
+            "min_x": 689.5,
+            "max_x": 699.0,
+            "min_y": 167.0,
+            "max_y": 182.0,
+            "width": 9.5,
+            "height": 15.0
+          },
+          "pressure": {
+            "point_count": 10,
+            "min": 0.14453125,
+            "max": 0.5,
+            "mean": 0.377148
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 46,
+          "duration_ms": 731.4,
+          "path_length_px": 119.992,
+          "average_speed_px_s": 164.058,
+          "max_segment_speed_px_s": 505.071,
+          "start": {
+            "x": 681.0,
+            "y": 180.5
+          },
+          "end": {
+            "x": 673.5,
+            "y": 159.0
+          },
+          "net_displacement_px": 22.771,
+          "direction_deg": -109.231,
+          "bounding_box": {
+            "min_x": 657.0,
+            "max_x": 693.5,
+            "min_y": 155.0,
+            "max_y": 182.0,
+            "width": 36.5,
+            "height": 27.0
+          },
+          "pressure": {
+            "point_count": 46,
+            "min": 0.171875,
+            "max": 0.54296875,
+            "mean": 0.492548
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 22,
+          "duration_ms": 332.2,
+          "path_length_px": 78.805,
+          "average_speed_px_s": 237.222,
+          "max_segment_speed_px_s": 1397.457,
+          "start": {
+            "x": 667.0,
+            "y": 133.0
+          },
+          "end": {
+            "x": 674.0,
+            "y": 145.0
+          },
+          "net_displacement_px": 13.892,
+          "direction_deg": 59.744,
+          "bounding_box": {
+            "min_x": 641.5,
+            "max_x": 674.0,
+            "min_y": 132.0,
+            "max_y": 156.0,
+            "width": 32.5,
+            "height": 24.0
+          },
+          "pressure": {
+            "point_count": 22,
+            "min": 0.13671875,
+            "max": 0.50390625,
+            "mean": 0.401545
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 4,
+          "duration_ms": 110.5,
+          "path_length_px": 1.5,
+          "average_speed_px_s": 13.575,
+          "max_segment_speed_px_s": 78.126,
+          "start": {
+            "x": 694.0,
+            "y": 133.0
+          },
+          "end": {
+            "x": 693.5,
+            "y": 133.0
+          },
+          "net_displacement_px": 0.5,
+          "direction_deg": 180.0,
+          "bounding_box": {
+            "min_x": 693.5,
+            "max_x": 694.5,
+            "min_y": 133.0,
+            "max_y": 133.0,
+            "width": 1.0,
+            "height": 0.0
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.2353515625,
+            "max": 0.5625,
+            "mean": 0.40332
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 8,
+          "duration_ms": 114.2,
+          "path_length_px": 42.99,
+          "average_speed_px_s": 376.449,
+          "max_segment_speed_px_s": 1079.37,
+          "start": {
+            "x": 655.5,
+            "y": 211.0
+          },
+          "end": {
+            "x": 693.5,
+            "y": 195.0
+          },
+          "net_displacement_px": 41.231,
+          "direction_deg": -22.834,
+          "bounding_box": {
+            "min_x": 655.0,
+            "max_x": 693.5,
+            "min_y": 195.0,
+            "max_y": 211.5,
+            "width": 38.5,
+            "height": 16.5
+          },
+          "pressure": {
+            "point_count": 8,
+            "min": 0.21484375,
+            "max": 0.515625,
+            "mean": 0.384521
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000008",
+      "label": "مصطفی hoseini",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000008\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000008\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000008\\raw.png"
+      },
+      "composition": {
+        "label": "مصطفی hoseini",
+        "character_count": 13,
+        "has_persian": true,
+        "has_latin": true,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 446.0,
+        "height_px": 154.0,
+        "aspect_ratio": 2.896104,
+        "total_path_length_px": 1408.403
+      },
+      "motion": {
+        "duration_ms": 74441.8,
+        "average_stroke_speed_px_s": 245.612,
+        "max_segment_speed_px_s": 11601.599
+      },
+      "pressure": {
+        "point_count": 325,
+        "min": 0.01171875,
+        "max": 0.7509765625,
+        "mean": 0.369997
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 15,
+        "points": 325
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 66,
+          "duration_ms": 1068.0,
+          "path_length_px": 188.824,
+          "average_speed_px_s": 176.802,
+          "max_segment_speed_px_s": 587.11,
+          "start": {
+            "x": 803.0,
+            "y": 257.0
+          },
+          "end": {
+            "x": 734.0,
+            "y": 281.0
+          },
+          "net_displacement_px": 73.055,
+          "direction_deg": 160.821,
+          "bounding_box": {
+            "min_x": 734.0,
+            "max_x": 810.5,
+            "min_y": 253.0,
+            "max_y": 281.0,
+            "width": 76.5,
+            "height": 28.0
+          },
+          "pressure": {
+            "point_count": 66,
+            "min": 0.01171875,
+            "max": 0.45703125,
+            "mean": 0.373446
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 39,
+          "duration_ms": 611.3,
+          "path_length_px": 319.636,
+          "average_speed_px_s": 522.879,
+          "max_segment_speed_px_s": 4858.336,
+          "start": {
+            "x": 730.5,
+            "y": 269.5
+          },
+          "end": {
+            "x": 547.5,
+            "y": 267.0
+          },
+          "net_displacement_px": 183.017,
+          "direction_deg": -179.217,
+          "bounding_box": {
+            "min_x": 525.0,
+            "max_x": 733.5,
+            "min_y": 266.5,
+            "max_y": 311.5,
+            "width": 208.5,
+            "height": 45.0
+          },
+          "pressure": {
+            "point_count": 39,
+            "min": 0.11328125,
+            "max": 0.6865234375,
+            "mean": 0.472606
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 15,
+          "duration_ms": 196.4,
+          "path_length_px": 42.086,
+          "average_speed_px_s": 214.288,
+          "max_segment_speed_px_s": 1756.535,
+          "start": {
+            "x": 753.5,
+            "y": 219.5
+          },
+          "end": {
+            "x": 750.5,
+            "y": 254.0
+          },
+          "net_displacement_px": 34.63,
+          "direction_deg": 94.97,
+          "bounding_box": {
+            "min_x": 750.5,
+            "max_x": 753.5,
+            "min_y": 216.0,
+            "max_y": 254.0,
+            "width": 3.0,
+            "height": 38.0
+          },
+          "pressure": {
+            "point_count": 15,
+            "min": 0.0771484375,
+            "max": 0.640625,
+            "mean": 0.460612
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 6,
+          "duration_ms": 89.0,
+          "path_length_px": 3.207,
+          "average_speed_px_s": 36.035,
+          "max_segment_speed_px_s": 785.759,
+          "start": {
+            "x": 725.5,
+            "y": 239.5
+          },
+          "end": {
+            "x": 728.0,
+            "y": 238.5
+          },
+          "net_displacement_px": 2.693,
+          "direction_deg": -21.801,
+          "bounding_box": {
+            "min_x": 725.5,
+            "max_x": 728.0,
+            "min_y": 238.5,
+            "max_y": 239.5,
+            "width": 2.5,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.36328125,
+            "max": 0.7509765625,
+            "mean": 0.592611
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 16,
+          "duration_ms": 229.3,
+          "path_length_px": 37.199,
+          "average_speed_px_s": 162.231,
+          "max_segment_speed_px_s": 1000.0,
+          "start": {
+            "x": 762.0,
+            "y": 228.0
+          },
+          "end": {
+            "x": 760.5,
+            "y": 241.5
+          },
+          "net_displacement_px": 13.583,
+          "direction_deg": 96.34,
+          "bounding_box": {
+            "min_x": 760.5,
+            "max_x": 763.5,
+            "min_y": 216.5,
+            "max_y": 241.5,
+            "width": 3.0,
+            "height": 25.0
+          },
+          "pressure": {
+            "point_count": 16,
+            "min": 0.1328125,
+            "max": 0.609375,
+            "mean": 0.445068
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 12,
+          "duration_ms": 189.1,
+          "path_length_px": 151.696,
+          "average_speed_px_s": 802.201,
+          "max_segment_speed_px_s": 2883.756,
+          "start": {
+            "x": 736.5,
+            "y": 237.5
+          },
+          "end": {
+            "x": 884.0,
+            "y": 202.5
+          },
+          "net_displacement_px": 151.596,
+          "direction_deg": -13.349,
+          "bounding_box": {
+            "min_x": 736.5,
+            "max_x": 884.0,
+            "min_y": 202.5,
+            "max_y": 237.5,
+            "width": 147.5,
+            "height": 35.0
+          },
+          "pressure": {
+            "point_count": 12,
+            "min": 0.0830078125,
+            "max": 0.49609375,
+            "mean": 0.364746
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 21,
+          "duration_ms": 309.9,
+          "path_length_px": 59.076,
+          "average_speed_px_s": 190.63,
+          "max_segment_speed_px_s": 1010.223,
+          "start": {
+            "x": 884.0,
+            "y": 202.0
+          },
+          "end": {
+            "x": 878.0,
+            "y": 205.5
+          },
+          "net_displacement_px": 6.946,
+          "direction_deg": 149.744,
+          "bounding_box": {
+            "min_x": 875.5,
+            "max_x": 892.5,
+            "min_y": 198.5,
+            "max_y": 214.0,
+            "width": 17.0,
+            "height": 15.5
+          },
+          "pressure": {
+            "point_count": 21,
+            "min": 0.1171875,
+            "max": 0.4765625,
+            "mean": 0.355422
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 29,
+          "duration_ms": 440.1,
+          "path_length_px": 82.973,
+          "average_speed_px_s": 188.533,
+          "max_segment_speed_px_s": 1767.659,
+          "start": {
+            "x": 898.5,
+            "y": 199.5
+          },
+          "end": {
+            "x": 885.5,
+            "y": 203.5
+          },
+          "net_displacement_px": 13.601,
+          "direction_deg": 162.897,
+          "bounding_box": {
+            "min_x": 883.5,
+            "max_x": 911.0,
+            "min_y": 195.5,
+            "max_y": 217.5,
+            "width": 27.5,
+            "height": 22.0
+          },
+          "pressure": {
+            "point_count": 29,
+            "min": 0.0751953125,
+            "max": 0.41796875,
+            "mean": 0.322872
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 8,
+          "point_count": 23,
+          "duration_ms": 366.8,
+          "path_length_px": 46.053,
+          "average_speed_px_s": 125.553,
+          "max_segment_speed_px_s": 285.746,
+          "start": {
+            "x": 917.5,
+            "y": 198.0
+          },
+          "end": {
+            "x": 929.0,
+            "y": 200.5
+          },
+          "net_displacement_px": 11.769,
+          "direction_deg": 12.265,
+          "bounding_box": {
+            "min_x": 916.5,
+            "max_x": 929.0,
+            "min_y": 196.0,
+            "max_y": 205.0,
+            "width": 12.5,
+            "height": 9.0
+          },
+          "pressure": {
+            "point_count": 23,
+            "min": 0.0302734375,
+            "max": 0.3740234375,
+            "mean": 0.268937
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 9,
+          "point_count": 10,
+          "duration_ms": 132.4,
+          "path_length_px": 13.919,
+          "average_speed_px_s": 105.131,
+          "max_segment_speed_px_s": 500.0,
+          "start": {
+            "x": 935.0,
+            "y": 193.5
+          },
+          "end": {
+            "x": 936.0,
+            "y": 198.0
+          },
+          "net_displacement_px": 4.61,
+          "direction_deg": 77.471,
+          "bounding_box": {
+            "min_x": 930.0,
+            "max_x": 936.0,
+            "min_y": 193.5,
+            "max_y": 199.5,
+            "width": 6.0,
+            "height": 6.0
+          },
+          "pressure": {
+            "point_count": 10,
+            "min": 0.0546875,
+            "max": 0.3369140625,
+            "mean": 0.210938
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 10,
+          "point_count": 8,
+          "duration_ms": 88.4,
+          "path_length_px": 9.375,
+          "average_speed_px_s": 106.057,
+          "max_segment_speed_px_s": 1571.519,
+          "start": {
+            "x": 937.5,
+            "y": 196.0
+          },
+          "end": {
+            "x": 941.5,
+            "y": 197.5
+          },
+          "net_displacement_px": 4.272,
+          "direction_deg": 20.556,
+          "bounding_box": {
+            "min_x": 936.0,
+            "max_x": 941.5,
+            "min_y": 196.0,
+            "max_y": 199.0,
+            "width": 5.5,
+            "height": 3.0
+          },
+          "pressure": {
+            "point_count": 8,
+            "min": 0.0830078125,
+            "max": 0.23828125,
+            "mean": 0.186523
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 11,
+          "point_count": 4,
+          "duration_ms": 94.8,
+          "path_length_px": 2.0,
+          "average_speed_px_s": 21.097,
+          "max_segment_speed_px_s": 1428.173,
+          "start": {
+            "x": 936.0,
+            "y": 179.0
+          },
+          "end": {
+            "x": 935.0,
+            "y": 179.0
+          },
+          "net_displacement_px": 1.0,
+          "direction_deg": 180.0,
+          "bounding_box": {
+            "min_x": 934.5,
+            "max_x": 936.0,
+            "min_y": 179.0,
+            "max_y": 179.0,
+            "width": 1.5,
+            "height": 0.0
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.265625,
+            "max": 0.4404296875,
+            "mean": 0.343506
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 12,
+          "point_count": 45,
+          "duration_ms": 741.8,
+          "path_length_px": 73.307,
+          "average_speed_px_s": 98.824,
+          "max_segment_speed_px_s": 454.606,
+          "start": {
+            "x": 946.0,
+            "y": 190.5
+          },
+          "end": {
+            "x": 969.5,
+            "y": 188.5
+          },
+          "net_displacement_px": 23.585,
+          "direction_deg": -4.865,
+          "bounding_box": {
+            "min_x": 945.0,
+            "max_x": 969.5,
+            "min_y": 184.5,
+            "max_y": 198.5,
+            "width": 24.5,
+            "height": 14.0
+          },
+          "pressure": {
+            "point_count": 45,
+            "min": 0.05859375,
+            "max": 0.396484375,
+            "mean": 0.328928
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 13,
+          "point_count": 3,
+          "duration_ms": 63.9,
+          "path_length_px": 1.618,
+          "average_speed_px_s": 25.321,
+          "max_segment_speed_px_s": 859.994,
+          "start": {
+            "x": 971.0,
+            "y": 158.0
+          },
+          "end": {
+            "x": 970.5,
+            "y": 157.5
+          },
+          "net_displacement_px": 0.707,
+          "direction_deg": -135.0,
+          "bounding_box": {
+            "min_x": 970.0,
+            "max_x": 971.0,
+            "min_y": 157.5,
+            "max_y": 158.0,
+            "width": 1.0,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.31640625,
+            "max": 0.4931640625,
+            "mean": 0.424479
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 14,
+          "point_count": 28,
+          "duration_ms": 415.4,
+          "path_length_px": 377.434,
+          "average_speed_px_s": 908.604,
+          "max_segment_speed_px_s": 11601.599,
+          "start": {
+            "x": 623.5,
+            "y": 246.5
+          },
+          "end": {
+            "x": 664.0,
+            "y": 243.0
+          },
+          "net_displacement_px": 40.651,
+          "direction_deg": -4.939,
+          "bounding_box": {
+            "min_x": 549.0,
+            "max_x": 702.5,
+            "min_y": 239.5,
+            "max_y": 291.0,
+            "width": 153.5,
+            "height": 51.5
+          },
+          "pressure": {
+            "point_count": 28,
+            "min": 0.15625,
+            "max": 0.60546875,
+            "mean": 0.397984
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000009",
+      "label": "محمد خیری",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000009\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000009\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000009\\raw.png"
+      },
+      "composition": {
+        "label": "محمد خیری",
+        "character_count": 9,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 571.0,
+        "height_px": 230.0,
+        "aspect_ratio": 2.482609,
+        "total_path_length_px": 1807.559
+      },
+      "motion": {
+        "duration_ms": 50039.3,
+        "average_stroke_speed_px_s": 571.654,
+        "max_segment_speed_px_s": 22766.392
+      },
+      "pressure": {
+        "point_count": 293,
+        "min": 0.0634765625,
+        "max": 0.77734375,
+        "mean": 0.46464
+      },
+      "input": {
+        "pointer_types": [
+          "pen",
+          "touch"
+        ],
+        "touch_point_count": 1,
+        "touch_point_ratio": 0.003413
+      },
+      "counts": {
+        "strokes": 11,
+        "points": 293
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 76,
+          "duration_ms": 1262.4,
+          "path_length_px": 614.091,
+          "average_speed_px_s": 486.448,
+          "max_segment_speed_px_s": 2350.384,
+          "start": {
+            "x": 569.0,
+            "y": 163.5
+          },
+          "end": {
+            "x": 712.0,
+            "y": 227.5
+          },
+          "net_displacement_px": 156.668,
+          "direction_deg": 24.111,
+          "bounding_box": {
+            "min_x": 525.0,
+            "max_x": 742.5,
+            "min_y": 156.0,
+            "max_y": 368.0,
+            "width": 217.5,
+            "height": 212.0
+          },
+          "pressure": {
+            "point_count": 76,
+            "min": 0.0634765625,
+            "max": 0.76171875,
+            "mean": 0.498741
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 1,
+          "duration_ms": 0,
+          "path_length_px": 0.0,
+          "average_speed_px_s": 0,
+          "max_segment_speed_px_s": 0,
+          "start": {
+            "x": 943.5,
+            "y": 386.0
+          },
+          "end": {
+            "x": 943.5,
+            "y": 386.0
+          },
+          "net_displacement_px": 0.0,
+          "direction_deg": null,
+          "bounding_box": {
+            "min_x": 943.5,
+            "max_x": 943.5,
+            "min_y": 386.0,
+            "max_y": 386.0,
+            "width": 0.0,
+            "height": 0.0
+          },
+          "pressure": {
+            "point_count": 1,
+            "min": 0.5,
+            "max": 0.5,
+            "mean": 0.5
+          },
+          "pointer_types": [
+            "touch"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 47,
+          "duration_ms": 802.3,
+          "path_length_px": 100.693,
+          "average_speed_px_s": 125.506,
+          "max_segment_speed_px_s": 402.407,
+          "start": {
+            "x": 719.0,
+            "y": 233.5
+          },
+          "end": {
+            "x": 681.0,
+            "y": 247.0
+          },
+          "net_displacement_px": 40.327,
+          "direction_deg": 160.442,
+          "bounding_box": {
+            "min_x": 681.0,
+            "max_x": 719.0,
+            "min_y": 226.0,
+            "max_y": 247.0,
+            "width": 38.0,
+            "height": 21.0
+          },
+          "pressure": {
+            "point_count": 47,
+            "min": 0.11328125,
+            "max": 0.54296875,
+            "mean": 0.423018
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 35,
+          "duration_ms": 544.7,
+          "path_length_px": 412.095,
+          "average_speed_px_s": 756.554,
+          "max_segment_speed_px_s": 3499.163,
+          "start": {
+            "x": 684.0,
+            "y": 225.0
+          },
+          "end": {
+            "x": 372.5,
+            "y": 315.5
+          },
+          "net_displacement_px": 324.38,
+          "direction_deg": 163.8,
+          "bounding_box": {
+            "min_x": 372.5,
+            "max_x": 684.5,
+            "min_y": 224.0,
+            "max_y": 315.5,
+            "width": 312.0,
+            "height": 91.5
+          },
+          "pressure": {
+            "point_count": 35,
+            "min": 0.1396484375,
+            "max": 0.77734375,
+            "mean": 0.569503
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 14,
+          "duration_ms": 187.5,
+          "path_length_px": 100.329,
+          "average_speed_px_s": 535.088,
+          "max_segment_speed_px_s": 1873.31,
+          "start": {
+            "x": 380.0,
+            "y": 322.5
+          },
+          "end": {
+            "x": 469.0,
+            "y": 292.0
+          },
+          "net_displacement_px": 94.081,
+          "direction_deg": -18.916,
+          "bounding_box": {
+            "min_x": 377.0,
+            "max_x": 469.0,
+            "min_y": 292.0,
+            "max_y": 322.5,
+            "width": 92.0,
+            "height": 30.5
+          },
+          "pressure": {
+            "point_count": 14,
+            "min": 0.0859375,
+            "max": 0.533203125,
+            "mean": 0.297015
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 60,
+          "duration_ms": 1007.8,
+          "path_length_px": 125.699,
+          "average_speed_px_s": 124.726,
+          "max_segment_speed_px_s": 833.537,
+          "start": {
+            "x": 423.0,
+            "y": 280.0
+          },
+          "end": {
+            "x": 382.5,
+            "y": 303.0
+          },
+          "net_displacement_px": 46.575,
+          "direction_deg": 150.408,
+          "bounding_box": {
+            "min_x": 382.5,
+            "max_x": 438.0,
+            "min_y": 260.5,
+            "max_y": 303.0,
+            "width": 55.5,
+            "height": 42.5
+          },
+          "pressure": {
+            "point_count": 60,
+            "min": 0.109375,
+            "max": 0.578125,
+            "mean": 0.501514
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 32,
+          "duration_ms": 498.5,
+          "path_length_px": 80.393,
+          "average_speed_px_s": 161.269,
+          "max_segment_speed_px_s": 785.546,
+          "start": {
+            "x": 396.5,
+            "y": 268.5
+          },
+          "end": {
+            "x": 394.0,
+            "y": 271.0
+          },
+          "net_displacement_px": 3.536,
+          "direction_deg": 135.0,
+          "bounding_box": {
+            "min_x": 373.5,
+            "max_x": 397.0,
+            "min_y": 267.0,
+            "max_y": 296.0,
+            "width": 23.5,
+            "height": 29.0
+          },
+          "pressure": {
+            "point_count": 32,
+            "min": 0.095703125,
+            "max": 0.53125,
+            "mean": 0.433167
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 3,
+          "duration_ms": 94.2,
+          "path_length_px": 1.0,
+          "average_speed_px_s": 10.616,
+          "max_segment_speed_px_s": 161.285,
+          "start": {
+            "x": 426.0,
+            "y": 249.5
+          },
+          "end": {
+            "x": 425.5,
+            "y": 250.0
+          },
+          "net_displacement_px": 0.707,
+          "direction_deg": 135.0,
+          "bounding_box": {
+            "min_x": 425.5,
+            "max_x": 426.0,
+            "min_y": 249.5,
+            "max_y": 250.0,
+            "width": 0.5,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.3125,
+            "max": 0.4560546875,
+            "mean": 0.36263
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 8,
+          "point_count": 7,
+          "duration_ms": 57.1,
+          "path_length_px": 32.353,
+          "average_speed_px_s": 566.607,
+          "max_segment_speed_px_s": 1255.211,
+          "start": {
+            "x": 398.0,
+            "y": 302.0
+          },
+          "end": {
+            "x": 428.0,
+            "y": 291.0
+          },
+          "net_displacement_px": 31.953,
+          "direction_deg": -20.136,
+          "bounding_box": {
+            "min_x": 398.0,
+            "max_x": 428.0,
+            "min_y": 291.0,
+            "max_y": 302.0,
+            "width": 30.0,
+            "height": 11.0
+          },
+          "pressure": {
+            "point_count": 7,
+            "min": 0.080078125,
+            "max": 0.4296875,
+            "mean": 0.31236
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 9,
+          "point_count": 11,
+          "duration_ms": 127.2,
+          "path_length_px": 287.069,
+          "average_speed_px_s": 2256.834,
+          "max_segment_speed_px_s": 22766.392,
+          "start": {
+            "x": 612.5,
+            "y": 289.5
+          },
+          "end": {
+            "x": 878.0,
+            "y": 180.5
+          },
+          "net_displacement_px": 287.004,
+          "direction_deg": -22.32,
+          "bounding_box": {
+            "min_x": 612.5,
+            "max_x": 878.0,
+            "min_y": 180.5,
+            "max_y": 289.5,
+            "width": 265.5,
+            "height": 109.0
+          },
+          "pressure": {
+            "point_count": 11,
+            "min": 0.2109375,
+            "max": 0.44921875,
+            "mean": 0.372159
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 10,
+          "point_count": 7,
+          "duration_ms": 77.7,
+          "path_length_px": 53.837,
+          "average_speed_px_s": 692.887,
+          "max_segment_speed_px_s": 1756.78,
+          "start": {
+            "x": 838.5,
+            "y": 201.5
+          },
+          "end": {
+            "x": 888.0,
+            "y": 183.0
+          },
+          "net_displacement_px": 52.844,
+          "direction_deg": -20.493,
+          "bounding_box": {
+            "min_x": 838.0,
+            "max_x": 888.0,
+            "min_y": 183.0,
+            "max_y": 201.5,
+            "width": 50.0,
+            "height": 18.5
+          },
+          "pressure": {
+            "point_count": 7,
+            "min": 0.203125,
+            "max": 0.4208984375,
+            "mean": 0.348912
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000010",
+      "label": "fatemeh",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000010\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000010\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000010\\raw.png"
+      },
+      "composition": {
+        "label": "fatemeh",
+        "character_count": 7,
+        "has_persian": false,
+        "has_latin": true,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 395.0,
+        "height_px": 212.5,
+        "aspect_ratio": 1.858824,
+        "total_path_length_px": 1552.903
+      },
+      "motion": {
+        "duration_ms": 38819.9,
+        "average_stroke_speed_px_s": 335.571,
+        "max_segment_speed_px_s": 3031.215
+      },
+      "pressure": {
+        "point_count": 304,
+        "min": 0.03125,
+        "max": 0.6796875,
+        "mean": 0.429026
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 9,
+        "points": 304
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 46,
+          "duration_ms": 708.4,
+          "path_length_px": 281.075,
+          "average_speed_px_s": 396.774,
+          "max_segment_speed_px_s": 1529.928,
+          "start": {
+            "x": 584.5,
+            "y": 213.5
+          },
+          "end": {
+            "x": 573.0,
+            "y": 241.0
+          },
+          "net_displacement_px": 29.808,
+          "direction_deg": 112.694,
+          "bounding_box": {
+            "min_x": 570.5,
+            "max_x": 591.5,
+            "min_y": 181.0,
+            "max_y": 324.0,
+            "width": 21.0,
+            "height": 143.0
+          },
+          "pressure": {
+            "point_count": 46,
+            "min": 0.15625,
+            "max": 0.521484375,
+            "mean": 0.46253
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 73,
+          "duration_ms": 1259.7,
+          "path_length_px": 190.785,
+          "average_speed_px_s": 151.453,
+          "max_segment_speed_px_s": 1016.401,
+          "start": {
+            "x": 573.5,
+            "y": 238.0
+          },
+          "end": {
+            "x": 666.0,
+            "y": 208.5
+          },
+          "net_displacement_px": 97.09,
+          "direction_deg": -17.688,
+          "bounding_box": {
+            "min_x": 572.0,
+            "max_x": 666.0,
+            "min_y": 192.0,
+            "max_y": 238.0,
+            "width": 94.0,
+            "height": 46.0
+          },
+          "pressure": {
+            "point_count": 73,
+            "min": 0.03125,
+            "max": 0.5029296875,
+            "mean": 0.450209
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 8,
+          "duration_ms": 118.0,
+          "path_length_px": 48.523,
+          "average_speed_px_s": 411.214,
+          "max_segment_speed_px_s": 1149.071,
+          "start": {
+            "x": 633.5,
+            "y": 205.0
+          },
+          "end": {
+            "x": 676.0,
+            "y": 184.0
+          },
+          "net_displacement_px": 47.405,
+          "direction_deg": -26.295,
+          "bounding_box": {
+            "min_x": 633.0,
+            "max_x": 676.0,
+            "min_y": 184.0,
+            "max_y": 205.0,
+            "width": 43.0,
+            "height": 21.0
+          },
+          "pressure": {
+            "point_count": 8,
+            "min": 0.0546875,
+            "max": 0.455078125,
+            "mean": 0.324951
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 72,
+          "duration_ms": 1185.0,
+          "path_length_px": 156.477,
+          "average_speed_px_s": 132.048,
+          "max_segment_speed_px_s": 800.391,
+          "start": {
+            "x": 672.0,
+            "y": 202.5
+          },
+          "end": {
+            "x": 724.0,
+            "y": 180.5
+          },
+          "net_displacement_px": 56.462,
+          "direction_deg": -22.932,
+          "bounding_box": {
+            "min_x": 671.0,
+            "max_x": 724.0,
+            "min_y": 180.5,
+            "max_y": 210.0,
+            "width": 53.0,
+            "height": 29.5
+          },
+          "pressure": {
+            "point_count": 72,
+            "min": 0.1494140625,
+            "max": 0.546875,
+            "mean": 0.446384
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 26,
+          "duration_ms": 408.3,
+          "path_length_px": 72.727,
+          "average_speed_px_s": 178.121,
+          "max_segment_speed_px_s": 424.183,
+          "start": {
+            "x": 730.0,
+            "y": 184.0
+          },
+          "end": {
+            "x": 746.5,
+            "y": 181.0
+          },
+          "net_displacement_px": 16.771,
+          "direction_deg": -10.305,
+          "bounding_box": {
+            "min_x": 726.5,
+            "max_x": 746.5,
+            "min_y": 179.0,
+            "max_y": 196.0,
+            "width": 20.0,
+            "height": 17.0
+          },
+          "pressure": {
+            "point_count": 26,
+            "min": 0.064453125,
+            "max": 0.439453125,
+            "mean": 0.363507
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 32,
+          "duration_ms": 493.9,
+          "path_length_px": 132.981,
+          "average_speed_px_s": 269.247,
+          "max_segment_speed_px_s": 1249.924,
+          "start": {
+            "x": 755.0,
+            "y": 152.0
+          },
+          "end": {
+            "x": 771.0,
+            "y": 175.0
+          },
+          "net_displacement_px": 28.018,
+          "direction_deg": 55.176,
+          "bounding_box": {
+            "min_x": 742.5,
+            "max_x": 771.0,
+            "min_y": 146.5,
+            "max_y": 193.5,
+            "width": 28.5,
+            "height": 47.0
+          },
+          "pressure": {
+            "point_count": 32,
+            "min": 0.19921875,
+            "max": 0.5,
+            "mean": 0.391663
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 33,
+          "duration_ms": 572.6,
+          "path_length_px": 612.782,
+          "average_speed_px_s": 1070.174,
+          "max_segment_speed_px_s": 3031.215,
+          "start": {
+            "x": 650.0,
+            "y": 228.5
+          },
+          "end": {
+            "x": 872.5,
+            "y": 111.5
+          },
+          "net_displacement_px": 251.387,
+          "direction_deg": -27.737,
+          "bounding_box": {
+            "min_x": 650.0,
+            "max_x": 965.5,
+            "min_y": 111.5,
+            "max_y": 228.5,
+            "width": 315.5,
+            "height": 117.0
+          },
+          "pressure": {
+            "point_count": 33,
+            "min": 0.080078125,
+            "max": 0.5322265625,
+            "mean": 0.440696
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 8,
+          "duration_ms": 146.5,
+          "path_length_px": 54.846,
+          "average_speed_px_s": 374.373,
+          "max_segment_speed_px_s": 983.779,
+          "start": {
+            "x": 655.5,
+            "y": 233.0
+          },
+          "end": {
+            "x": 706.5,
+            "y": 216.0
+          },
+          "net_displacement_px": 53.759,
+          "direction_deg": -18.435,
+          "bounding_box": {
+            "min_x": 655.0,
+            "max_x": 706.5,
+            "min_y": 216.0,
+            "max_y": 233.0,
+            "width": 51.5,
+            "height": 17.0
+          },
+          "pressure": {
+            "point_count": 8,
+            "min": 0.0859375,
+            "max": 0.4638671875,
+            "mean": 0.273926
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 8,
+          "point_count": 6,
+          "duration_ms": 73.7,
+          "path_length_px": 2.707,
+          "average_speed_px_s": 36.731,
+          "max_segment_speed_px_s": 707.107,
+          "start": {
+            "x": 583.5,
+            "y": 159.5
+          },
+          "end": {
+            "x": 584.5,
+            "y": 158.5
+          },
+          "net_displacement_px": 1.414,
+          "direction_deg": -45.0,
+          "bounding_box": {
+            "min_x": 583.5,
+            "max_x": 585.0,
+            "min_y": 158.5,
+            "max_y": 159.5,
+            "width": 1.5,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.1376953125,
+            "max": 0.6796875,
+            "mean": 0.470703
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000011",
+      "label": "هانیه",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000011\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000011\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000011\\raw.png"
+      },
+      "composition": {
+        "label": "هانیه",
+        "character_count": 5,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 289.0,
+        "height_px": 165.0,
+        "aspect_ratio": 1.751515,
+        "total_path_length_px": 1154.102
+      },
+      "motion": {
+        "duration_ms": 25322.7,
+        "average_stroke_speed_px_s": 340.164,
+        "max_segment_speed_px_s": 2112.754
+      },
+      "pressure": {
+        "point_count": 169,
+        "min": 0.1015625,
+        "max": 0.6083984375,
+        "mean": 0.399489
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 6,
+        "points": 169
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 63,
+          "duration_ms": 992.5,
+          "path_length_px": 290.671,
+          "average_speed_px_s": 292.867,
+          "max_segment_speed_px_s": 1341.915,
+          "start": {
+            "x": 668.5,
+            "y": 247.5
+          },
+          "end": {
+            "x": 609.5,
+            "y": 257.0
+          },
+          "net_displacement_px": 59.76,
+          "direction_deg": 170.853,
+          "bounding_box": {
+            "min_x": 609.5,
+            "max_x": 687.0,
+            "min_y": 200.5,
+            "max_y": 277.0,
+            "width": 77.5,
+            "height": 76.5
+          },
+          "pressure": {
+            "point_count": 63,
+            "min": 0.17578125,
+            "max": 0.6083984375,
+            "mean": 0.446289
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 48,
+          "duration_ms": 792.8,
+          "path_length_px": 228.441,
+          "average_speed_px_s": 288.144,
+          "max_segment_speed_px_s": 1264.664,
+          "start": {
+            "x": 627.5,
+            "y": 240.0
+          },
+          "end": {
+            "x": 572.0,
+            "y": 365.5
+          },
+          "net_displacement_px": 137.224,
+          "direction_deg": 113.857,
+          "bounding_box": {
+            "min_x": 571.0,
+            "max_x": 629.0,
+            "min_y": 234.0,
+            "max_y": 365.5,
+            "width": 58.0,
+            "height": 131.5
+          },
+          "pressure": {
+            "point_count": 48,
+            "min": 0.1015625,
+            "max": 0.5,
+            "mean": 0.401143
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 2,
+          "duration_ms": 59.1,
+          "path_length_px": 0.5,
+          "average_speed_px_s": 8.46,
+          "max_segment_speed_px_s": 8.46,
+          "start": {
+            "x": 624.5,
+            "y": 223.0
+          },
+          "end": {
+            "x": 624.5,
+            "y": 223.5
+          },
+          "net_displacement_px": 0.5,
+          "direction_deg": 90.0,
+          "bounding_box": {
+            "min_x": 624.5,
+            "max_x": 624.5,
+            "min_y": 223.0,
+            "max_y": 223.5,
+            "width": 0.0,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 2,
+            "min": 0.359375,
+            "max": 0.365234375,
+            "mean": 0.362305
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 6,
+          "duration_ms": 93.3,
+          "path_length_px": 17.518,
+          "average_speed_px_s": 187.759,
+          "max_segment_speed_px_s": 1428.671,
+          "start": {
+            "x": 601.5,
+            "y": 264.5
+          },
+          "end": {
+            "x": 617.0,
+            "y": 264.0
+          },
+          "net_displacement_px": 15.508,
+          "direction_deg": -1.848,
+          "bounding_box": {
+            "min_x": 600.5,
+            "max_x": 617.0,
+            "min_y": 264.0,
+            "max_y": 264.5,
+            "width": 16.5,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.1796875,
+            "max": 0.43359375,
+            "mean": 0.34082
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 43,
+          "duration_ms": 657.4,
+          "path_length_px": 579.244,
+          "average_speed_px_s": 881.113,
+          "max_segment_speed_px_s": 2112.754,
+          "start": {
+            "x": 539.5,
+            "y": 290.0
+          },
+          "end": {
+            "x": 759.5,
+            "y": 267.0
+          },
+          "net_displacement_px": 221.199,
+          "direction_deg": -5.968,
+          "bounding_box": {
+            "min_x": 539.5,
+            "max_x": 828.0,
+            "min_y": 262.5,
+            "max_y": 323.0,
+            "width": 288.5,
+            "height": 60.5
+          },
+          "pressure": {
+            "point_count": 43,
+            "min": 0.1171875,
+            "max": 0.4794921875,
+            "mean": 0.35699
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 7,
+          "duration_ms": 98.6,
+          "path_length_px": 37.728,
+          "average_speed_px_s": 382.641,
+          "max_segment_speed_px_s": 757.086,
+          "start": {
+            "x": 539.0,
+            "y": 296.5
+          },
+          "end": {
+            "x": 576.0,
+            "y": 289.5
+          },
+          "net_displacement_px": 37.656,
+          "direction_deg": -10.713,
+          "bounding_box": {
+            "min_x": 539.0,
+            "max_x": 576.0,
+            "min_y": 289.5,
+            "max_y": 296.5,
+            "width": 37.0,
+            "height": 7.0
+          },
+          "pressure": {
+            "point_count": 7,
+            "min": 0.15234375,
+            "max": 0.380859375,
+            "mean": 0.288923
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000012",
+      "label": "مهران محمدی",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000012\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000012\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000012\\raw.png"
+      },
+      "composition": {
+        "label": "مهران محمدی",
+        "character_count": 11,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 331.5,
+        "height_px": 323.5,
+        "aspect_ratio": 1.02473,
+        "total_path_length_px": 1012.839
+      },
+      "motion": {
+        "duration_ms": 27385.8,
+        "average_stroke_speed_px_s": 331.194,
+        "max_segment_speed_px_s": 5416.336
+      },
+      "pressure": {
+        "point_count": 233,
+        "min": 0.01953125,
+        "max": 0.70703125,
+        "mean": 0.43641
+      },
+      "input": {
+        "pointer_types": [
+          "pen",
+          "touch"
+        ],
+        "touch_point_count": 1,
+        "touch_point_ratio": 0.004292
+      },
+      "counts": {
+        "strokes": 8,
+        "points": 233
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 1,
+          "duration_ms": 0,
+          "path_length_px": 0.0,
+          "average_speed_px_s": 0,
+          "max_segment_speed_px_s": 0,
+          "start": {
+            "x": 918.0,
+            "y": 465.0
+          },
+          "end": {
+            "x": 918.0,
+            "y": 465.0
+          },
+          "net_displacement_px": 0.0,
+          "direction_deg": null,
+          "bounding_box": {
+            "min_x": 918.0,
+            "max_x": 918.0,
+            "min_y": 465.0,
+            "max_y": 465.0,
+            "width": 0.0,
+            "height": 0.0
+          },
+          "pressure": {
+            "point_count": 1,
+            "min": 0.5,
+            "max": 0.5,
+            "mean": 0.5
+          },
+          "pointer_types": [
+            "touch"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 59,
+          "duration_ms": 996.0,
+          "path_length_px": 136.251,
+          "average_speed_px_s": 136.798,
+          "max_segment_speed_px_s": 468.731,
+          "start": {
+            "x": 770.5,
+            "y": 228.0
+          },
+          "end": {
+            "x": 726.0,
+            "y": 280.0
+          },
+          "net_displacement_px": 68.442,
+          "direction_deg": 130.556,
+          "bounding_box": {
+            "min_x": 726.0,
+            "max_x": 773.5,
+            "min_y": 223.0,
+            "max_y": 280.0,
+            "width": 47.5,
+            "height": 57.0
+          },
+          "pressure": {
+            "point_count": 59,
+            "min": 0.01953125,
+            "max": 0.48828125,
+            "mean": 0.377052
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 41,
+          "duration_ms": 644.8,
+          "path_length_px": 305.267,
+          "average_speed_px_s": 473.429,
+          "max_segment_speed_px_s": 1757.012,
+          "start": {
+            "x": 736.5,
+            "y": 254.5
+          },
+          "end": {
+            "x": 725.0,
+            "y": 262.0
+          },
+          "net_displacement_px": 13.73,
+          "direction_deg": 146.889,
+          "bounding_box": {
+            "min_x": 716.5,
+            "max_x": 738.0,
+            "min_y": 141.5,
+            "max_y": 278.0,
+            "width": 21.5,
+            "height": 136.5
+          },
+          "pressure": {
+            "point_count": 41,
+            "min": 0.162109375,
+            "max": 0.703125,
+            "mean": 0.533203
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 10,
+          "duration_ms": 128.8,
+          "path_length_px": 84.741,
+          "average_speed_px_s": 657.93,
+          "max_segment_speed_px_s": 1662.093,
+          "start": {
+            "x": 700.0,
+            "y": 238.0
+          },
+          "end": {
+            "x": 777.0,
+            "y": 205.5
+          },
+          "net_displacement_px": 83.578,
+          "direction_deg": -22.884,
+          "bounding_box": {
+            "min_x": 699.5,
+            "max_x": 777.0,
+            "min_y": 205.5,
+            "max_y": 238.0,
+            "width": 77.5,
+            "height": 32.5
+          },
+          "pressure": {
+            "point_count": 10,
+            "min": 0.1396484375,
+            "max": 0.533203125,
+            "mean": 0.341309
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 21,
+          "duration_ms": 367.7,
+          "path_length_px": 265.766,
+          "average_speed_px_s": 722.781,
+          "max_segment_speed_px_s": 5416.336,
+          "start": {
+            "x": 708.0,
+            "y": 241.0
+          },
+          "end": {
+            "x": 596.5,
+            "y": 451.0
+          },
+          "net_displacement_px": 237.765,
+          "direction_deg": 117.966,
+          "bounding_box": {
+            "min_x": 596.5,
+            "max_x": 708.0,
+            "min_y": 240.0,
+            "max_y": 451.0,
+            "width": 111.5,
+            "height": 211.0
+          },
+          "pressure": {
+            "point_count": 21,
+            "min": 0.0771484375,
+            "max": 0.6767578125,
+            "mean": 0.488328
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 3,
+          "duration_ms": 43.9,
+          "path_length_px": 1.207,
+          "average_speed_px_s": 27.497,
+          "max_segment_speed_px_s": 46.828,
+          "start": {
+            "x": 629.5,
+            "y": 320.0
+          },
+          "end": {
+            "x": 630.5,
+            "y": 319.5
+          },
+          "net_displacement_px": 1.118,
+          "direction_deg": -26.565,
+          "bounding_box": {
+            "min_x": 629.5,
+            "max_x": 630.5,
+            "min_y": 319.5,
+            "max_y": 320.0,
+            "width": 1.0,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.337890625,
+            "max": 0.70703125,
+            "mean": 0.534505
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 70,
+          "duration_ms": 1143.4,
+          "path_length_px": 144.046,
+          "average_speed_px_s": 125.98,
+          "max_segment_speed_px_s": 624.962,
+          "start": {
+            "x": 633.5,
+            "y": 394.5
+          },
+          "end": {
+            "x": 597.5,
+            "y": 446.0
+          },
+          "net_displacement_px": 62.835,
+          "direction_deg": 124.955,
+          "bounding_box": {
+            "min_x": 597.5,
+            "max_x": 636.5,
+            "min_y": 388.5,
+            "max_y": 446.0,
+            "width": 39.0,
+            "height": 57.5
+          },
+          "pressure": {
+            "point_count": 70,
+            "min": 0.05859375,
+            "max": 0.484375,
+            "mean": 0.400837
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 28,
+          "duration_ms": 434.4,
+          "path_length_px": 75.561,
+          "average_speed_px_s": 173.943,
+          "max_segment_speed_px_s": 828.188,
+          "start": {
+            "x": 610.0,
+            "y": 411.0
+          },
+          "end": {
+            "x": 596.5,
+            "y": 410.0
+          },
+          "net_displacement_px": 13.537,
+          "direction_deg": -175.764,
+          "bounding_box": {
+            "min_x": 586.5,
+            "max_x": 611.5,
+            "min_y": 407.5,
+            "max_y": 436.5,
+            "width": 25.0,
+            "height": 29.0
+          },
+          "pressure": {
+            "point_count": 28,
+            "min": 0.14453125,
+            "max": 0.6328125,
+            "mean": 0.490932
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000013",
+      "label": "سامان",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000013\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000013\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000013\\raw.png"
+      },
+      "composition": {
+        "label": "سامان",
+        "character_count": 5,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 380.5,
+        "height_px": 272.0,
+        "aspect_ratio": 1.398897,
+        "total_path_length_px": 1416.72
+      },
+      "motion": {
+        "duration_ms": 21749.6,
+        "average_stroke_speed_px_s": 382.146,
+        "max_segment_speed_px_s": 4443.721
+      },
+      "pressure": {
+        "point_count": 201,
+        "min": 0.0625,
+        "max": 0.6640625,
+        "mean": 0.443374
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 6,
+        "points": 201
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 16,
+          "duration_ms": 302.7,
+          "path_length_px": 26.928,
+          "average_speed_px_s": 88.96,
+          "max_segment_speed_px_s": 342.84,
+          "start": {
+            "x": 587.0,
+            "y": 257.5
+          },
+          "end": {
+            "x": 574.0,
+            "y": 269.0
+          },
+          "net_displacement_px": 17.357,
+          "direction_deg": 138.504,
+          "bounding_box": {
+            "min_x": 574.0,
+            "max_x": 588.5,
+            "min_y": 253.5,
+            "max_y": 269.5,
+            "width": 14.5,
+            "height": 16.0
+          },
+          "pressure": {
+            "point_count": 16,
+            "min": 0.0625,
+            "max": 0.4921875,
+            "mean": 0.376343
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 109,
+          "duration_ms": 1744.7,
+          "path_length_px": 537.548,
+          "average_speed_px_s": 308.104,
+          "max_segment_speed_px_s": 1498.207,
+          "start": {
+            "x": 580.0,
+            "y": 256.5
+          },
+          "end": {
+            "x": 439.0,
+            "y": 226.5
+          },
+          "net_displacement_px": 144.156,
+          "direction_deg": -167.989,
+          "bounding_box": {
+            "min_x": 437.0,
+            "max_x": 582.0,
+            "min_y": 128.0,
+            "max_y": 271.0,
+            "width": 145.0,
+            "height": 143.0
+          },
+          "pressure": {
+            "point_count": 109,
+            "min": 0.072265625,
+            "max": 0.638671875,
+            "mean": 0.469359
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 14,
+          "duration_ms": 252.8,
+          "path_length_px": 35.206,
+          "average_speed_px_s": 139.266,
+          "max_segment_speed_px_s": 449.103,
+          "start": {
+            "x": 443.0,
+            "y": 221.0
+          },
+          "end": {
+            "x": 437.5,
+            "y": 207.0
+          },
+          "net_displacement_px": 15.042,
+          "direction_deg": -111.448,
+          "bounding_box": {
+            "min_x": 430.0,
+            "max_x": 443.0,
+            "min_y": 207.0,
+            "max_y": 226.5,
+            "width": 13.0,
+            "height": 19.5
+          },
+          "pressure": {
+            "point_count": 14,
+            "min": 0.09765625,
+            "max": 0.5,
+            "mean": 0.360073
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 22,
+          "duration_ms": 313.3,
+          "path_length_px": 190.287,
+          "average_speed_px_s": 607.363,
+          "max_segment_speed_px_s": 4443.721,
+          "start": {
+            "x": 457.0,
+            "y": 152.0
+          },
+          "end": {
+            "x": 412.5,
+            "y": 167.0
+          },
+          "net_displacement_px": 46.96,
+          "direction_deg": 161.372,
+          "bounding_box": {
+            "min_x": 384.0,
+            "max_x": 483.0,
+            "min_y": 152.0,
+            "max_y": 204.0,
+            "width": 99.0,
+            "height": 52.0
+          },
+          "pressure": {
+            "point_count": 22,
+            "min": 0.1640625,
+            "max": 0.4931640625,
+            "mean": 0.38339
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 3,
+          "duration_ms": 18.2,
+          "path_length_px": 1.914,
+          "average_speed_px_s": 105.177,
+          "max_segment_speed_px_s": 500.0,
+          "start": {
+            "x": 441.5,
+            "y": 176.0
+          },
+          "end": {
+            "x": 442.0,
+            "y": 177.0
+          },
+          "net_displacement_px": 1.118,
+          "direction_deg": 63.435,
+          "bounding_box": {
+            "min_x": 441.0,
+            "max_x": 442.0,
+            "min_y": 176.0,
+            "max_y": 177.0,
+            "width": 1.0,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.3984375,
+            "max": 0.58203125,
+            "mean": 0.474284
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 37,
+          "duration_ms": 598.5,
+          "path_length_px": 624.837,
+          "average_speed_px_s": 1044.006,
+          "max_segment_speed_px_s": 2487.065,
+          "start": {
+            "x": 440.5,
+            "y": 254.5
+          },
+          "end": {
+            "x": 681.0,
+            "y": 194.0
+          },
+          "net_displacement_px": 247.993,
+          "direction_deg": -14.12,
+          "bounding_box": {
+            "min_x": 440.5,
+            "max_x": 764.5,
+            "min_y": 194.0,
+            "max_y": 400.0,
+            "width": 324.0,
+            "height": 206.0
+          },
+          "pressure": {
+            "point_count": 37,
+            "min": 0.0966796875,
+            "max": 0.6640625,
+            "mean": 0.460489
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000014",
+      "label": "احمدی",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000014\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000014\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000014\\raw.png"
+      },
+      "composition": {
+        "label": "احمدی",
+        "character_count": 5,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 456.0,
+        "height_px": 275.5,
+        "aspect_ratio": 1.655172,
+        "total_path_length_px": 1055.93
+      },
+      "motion": {
+        "duration_ms": 42384.8,
+        "average_stroke_speed_px_s": 500.148,
+        "max_segment_speed_px_s": 5269.605
+      },
+      "pressure": {
+        "point_count": 165,
+        "min": 0.0390625,
+        "max": 0.7333984375,
+        "mean": 0.44111
+      },
+      "input": {
+        "pointer_types": [
+          "pen",
+          "touch"
+        ],
+        "touch_point_count": 1,
+        "touch_point_ratio": 0.006061
+      },
+      "counts": {
+        "strokes": 7,
+        "points": 165
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 1,
+          "duration_ms": 0,
+          "path_length_px": 0.0,
+          "average_speed_px_s": 0,
+          "max_segment_speed_px_s": 0,
+          "start": {
+            "x": 856.0,
+            "y": 428.5
+          },
+          "end": {
+            "x": 856.0,
+            "y": 428.5
+          },
+          "net_displacement_px": 0.0,
+          "direction_deg": null,
+          "bounding_box": {
+            "min_x": 856.0,
+            "max_x": 856.0,
+            "min_y": 428.5,
+            "max_y": 428.5,
+            "width": 0.0,
+            "height": 0.0
+          },
+          "pressure": {
+            "point_count": 1,
+            "min": 0.5,
+            "max": 0.5,
+            "mean": 0.5
+          },
+          "pointer_types": [
+            "touch"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 34,
+          "duration_ms": 560.3,
+          "path_length_px": 306.419,
+          "average_speed_px_s": 546.885,
+          "max_segment_speed_px_s": 1719.234,
+          "start": {
+            "x": 627.5,
+            "y": 247.0
+          },
+          "end": {
+            "x": 620.5,
+            "y": 357.5
+          },
+          "net_displacement_px": 110.721,
+          "direction_deg": 93.625,
+          "bounding_box": {
+            "min_x": 620.5,
+            "max_x": 644.5,
+            "min_y": 153.0,
+            "max_y": 357.5,
+            "width": 24.0,
+            "height": 204.5
+          },
+          "pressure": {
+            "point_count": 34,
+            "min": 0.1015625,
+            "max": 0.6259765625,
+            "mean": 0.519445
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 61,
+          "duration_ms": 1013.4,
+          "path_length_px": 120.798,
+          "average_speed_px_s": 119.201,
+          "max_segment_speed_px_s": 714.086,
+          "start": {
+            "x": 616.0,
+            "y": 336.5
+          },
+          "end": {
+            "x": 594.5,
+            "y": 355.5
+          },
+          "net_displacement_px": 28.692,
+          "direction_deg": 138.532,
+          "bounding_box": {
+            "min_x": 594.5,
+            "max_x": 632.0,
+            "min_y": 316.0,
+            "max_y": 355.5,
+            "width": 37.5,
+            "height": 39.5
+          },
+          "pressure": {
+            "point_count": 61,
+            "min": 0.068359375,
+            "max": 0.50390625,
+            "mean": 0.397125
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 34,
+          "duration_ms": 549.3,
+          "path_length_px": 224.041,
+          "average_speed_px_s": 407.867,
+          "max_segment_speed_px_s": 1420.127,
+          "start": {
+            "x": 594.5,
+            "y": 343.5
+          },
+          "end": {
+            "x": 419.0,
+            "y": 352.0
+          },
+          "net_displacement_px": 175.706,
+          "direction_deg": 177.227,
+          "bounding_box": {
+            "min_x": 419.0,
+            "max_x": 597.5,
+            "min_y": 339.5,
+            "max_y": 365.0,
+            "width": 178.5,
+            "height": 25.5
+          },
+          "pressure": {
+            "point_count": 34,
+            "min": 0.09375,
+            "max": 0.7333984375,
+            "mean": 0.490206
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 7,
+          "duration_ms": 60.3,
+          "path_length_px": 55.475,
+          "average_speed_px_s": 919.983,
+          "max_segment_speed_px_s": 5269.605,
+          "start": {
+            "x": 616.5,
+            "y": 223.5
+          },
+          "end": {
+            "x": 671.0,
+            "y": 213.5
+          },
+          "net_displacement_px": 55.41,
+          "direction_deg": -10.397,
+          "bounding_box": {
+            "min_x": 616.5,
+            "max_x": 671.0,
+            "min_y": 213.5,
+            "max_y": 223.5,
+            "width": 54.5,
+            "height": 10.0
+          },
+          "pressure": {
+            "point_count": 7,
+            "min": 0.0390625,
+            "max": 0.4140625,
+            "mean": 0.302176
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 25,
+          "duration_ms": 361.4,
+          "path_length_px": 347.99,
+          "average_speed_px_s": 962.895,
+          "max_segment_speed_px_s": 2202.119,
+          "start": {
+            "x": 531.5,
+            "y": 329.5
+          },
+          "end": {
+            "x": 558.0,
+            "y": 307.0
+          },
+          "net_displacement_px": 34.763,
+          "direction_deg": -40.333,
+          "bounding_box": {
+            "min_x": 400.0,
+            "max_x": 561.0,
+            "min_y": 269.5,
+            "max_y": 344.0,
+            "width": 161.0,
+            "height": 74.5
+          },
+          "pressure": {
+            "point_count": 25,
+            "min": 0.203125,
+            "max": 0.529296875,
+            "mean": 0.420078
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 3,
+          "duration_ms": 27.4,
+          "path_length_px": 1.207,
+          "average_speed_px_s": 44.055,
+          "max_segment_speed_px_s": 642.91,
+          "start": {
+            "x": 485.0,
+            "y": 258.0
+          },
+          "end": {
+            "x": 484.5,
+            "y": 257.0
+          },
+          "net_displacement_px": 1.118,
+          "direction_deg": -116.565,
+          "bounding_box": {
+            "min_x": 484.5,
+            "max_x": 485.0,
+            "min_y": 257.0,
+            "max_y": 258.0,
+            "width": 0.5,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.150390625,
+            "max": 0.560546875,
+            "mean": 0.371094
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000015",
+      "label": "سعید saeid",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000015\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000015\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000015\\raw.png"
+      },
+      "composition": {
+        "label": "سعید saeid",
+        "character_count": 10,
+        "has_persian": true,
+        "has_latin": true,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 319.0,
+        "height_px": 306.5,
+        "aspect_ratio": 1.040783,
+        "total_path_length_px": 1479.288
+      },
+      "motion": {
+        "duration_ms": 14185.3,
+        "average_stroke_speed_px_s": 377.498,
+        "max_segment_speed_px_s": 3201.562
+      },
+      "pressure": {
+        "point_count": 250,
+        "min": 0.0390625,
+        "max": 0.619140625,
+        "mean": 0.427633
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 7,
+        "points": 250
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 78,
+          "duration_ms": 1237.2,
+          "path_length_px": 472.074,
+          "average_speed_px_s": 381.566,
+          "max_segment_speed_px_s": 3201.562,
+          "start": {
+            "x": 712.0,
+            "y": 116.5
+          },
+          "end": {
+            "x": 600.5,
+            "y": 390.0
+          },
+          "net_displacement_px": 295.355,
+          "direction_deg": 112.18,
+          "bounding_box": {
+            "min_x": 600.5,
+            "max_x": 716.5,
+            "min_y": 116.5,
+            "max_y": 390.0,
+            "width": 116.0,
+            "height": 273.5
+          },
+          "pressure": {
+            "point_count": 78,
+            "min": 0.08203125,
+            "max": 0.6142578125,
+            "mean": 0.507975
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 6,
+          "duration_ms": 65.1,
+          "path_length_px": 40.526,
+          "average_speed_px_s": 622.528,
+          "max_segment_speed_px_s": 1190.476,
+          "start": {
+            "x": 613.0,
+            "y": 422.5
+          },
+          "end": {
+            "x": 651.5,
+            "y": 412.5
+          },
+          "net_displacement_px": 39.778,
+          "direction_deg": -14.56,
+          "bounding_box": {
+            "min_x": 613.0,
+            "max_x": 651.5,
+            "min_y": 412.5,
+            "max_y": 423.0,
+            "width": 38.5,
+            "height": 10.5
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.140625,
+            "max": 0.51171875,
+            "mean": 0.40446
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 39,
+          "duration_ms": 604.7,
+          "path_length_px": 89.587,
+          "average_speed_px_s": 148.152,
+          "max_segment_speed_px_s": 624.962,
+          "start": {
+            "x": 720.5,
+            "y": 366.5
+          },
+          "end": {
+            "x": 730.5,
+            "y": 361.0
+          },
+          "net_displacement_px": 11.413,
+          "direction_deg": -28.811,
+          "bounding_box": {
+            "min_x": 708.5,
+            "max_x": 730.5,
+            "min_y": 347.5,
+            "max_y": 369.0,
+            "width": 22.0,
+            "height": 21.5
+          },
+          "pressure": {
+            "point_count": 39,
+            "min": 0.060546875,
+            "max": 0.4208984375,
+            "mean": 0.345503
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 53,
+          "duration_ms": 845.2,
+          "path_length_px": 126.254,
+          "average_speed_px_s": 149.378,
+          "max_segment_speed_px_s": 2357.598,
+          "start": {
+            "x": 732.0,
+            "y": 356.0
+          },
+          "end": {
+            "x": 764.0,
+            "y": 353.5
+          },
+          "net_displacement_px": 32.098,
+          "direction_deg": -4.467,
+          "bounding_box": {
+            "min_x": 725.5,
+            "max_x": 764.0,
+            "min_y": 351.0,
+            "max_y": 367.0,
+            "width": 38.5,
+            "height": 16.0
+          },
+          "pressure": {
+            "point_count": 53,
+            "min": 0.0390625,
+            "max": 0.4375,
+            "mean": 0.340857
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 4,
+          "duration_ms": 48.9,
+          "path_length_px": 1.5,
+          "average_speed_px_s": 30.675,
+          "max_segment_speed_px_s": 172.405,
+          "start": {
+            "x": 759.5,
+            "y": 331.5
+          },
+          "end": {
+            "x": 759.0,
+            "y": 332.5
+          },
+          "net_displacement_px": 1.118,
+          "direction_deg": 116.565,
+          "bounding_box": {
+            "min_x": 759.0,
+            "max_x": 759.5,
+            "min_y": 331.5,
+            "max_y": 332.5,
+            "width": 0.5,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.265625,
+            "max": 0.4541015625,
+            "mean": 0.379395
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 29,
+          "duration_ms": 444.7,
+          "path_length_px": 176.2,
+          "average_speed_px_s": 396.222,
+          "max_segment_speed_px_s": 1335.28,
+          "start": {
+            "x": 778.5,
+            "y": 347.5
+          },
+          "end": {
+            "x": 780.0,
+            "y": 347.5
+          },
+          "net_displacement_px": 1.5,
+          "direction_deg": 0.0,
+          "bounding_box": {
+            "min_x": 765.0,
+            "max_x": 796.0,
+            "min_y": 292.0,
+            "max_y": 362.5,
+            "width": 31.0,
+            "height": 70.5
+          },
+          "pressure": {
+            "point_count": 29,
+            "min": 0.10546875,
+            "max": 0.619140625,
+            "mean": 0.448781
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 41,
+          "duration_ms": 627.1,
+          "path_length_px": 573.147,
+          "average_speed_px_s": 913.964,
+          "max_segment_speed_px_s": 2501.722,
+          "start": {
+            "x": 694.5,
+            "y": 323.0
+          },
+          "end": {
+            "x": 779.0,
+            "y": 327.5
+          },
+          "net_displacement_px": 84.62,
+          "direction_deg": 3.048,
+          "bounding_box": {
+            "min_x": 553.0,
+            "max_x": 872.0,
+            "min_y": 286.0,
+            "max_y": 333.5,
+            "width": 319.0,
+            "height": 47.5
+          },
+          "pressure": {
+            "point_count": 41,
+            "min": 0.0791015625,
+            "max": 0.5693359375,
+            "mean": 0.458222
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000016",
+      "label": "mohsen",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000016\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000016\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000016\\raw.png"
+      },
+      "composition": {
+        "label": "mohsen",
+        "character_count": 6,
+        "has_persian": false,
+        "has_latin": true,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 386.0,
+        "height_px": 260.0,
+        "aspect_ratio": 1.484615,
+        "total_path_length_px": 1740.976
+      },
+      "motion": {
+        "duration_ms": 137728.7,
+        "average_stroke_speed_px_s": 333.214,
+        "max_segment_speed_px_s": 5759.157
+      },
+      "pressure": {
+        "point_count": 252,
+        "min": 0.01171875,
+        "max": 0.642578125,
+        "mean": 0.409358
+      },
+      "input": {
+        "pointer_types": [
+          "pen",
+          "touch"
+        ],
+        "touch_point_count": 1,
+        "touch_point_ratio": 0.003968
+      },
+      "counts": {
+        "strokes": 9,
+        "points": 252
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 1,
+          "duration_ms": 0,
+          "path_length_px": 0.0,
+          "average_speed_px_s": 0,
+          "max_segment_speed_px_s": 0,
+          "start": {
+            "x": 695.0,
+            "y": 422.5
+          },
+          "end": {
+            "x": 695.0,
+            "y": 422.5
+          },
+          "net_displacement_px": 0.0,
+          "direction_deg": null,
+          "bounding_box": {
+            "min_x": 695.0,
+            "max_x": 695.0,
+            "min_y": 422.5,
+            "max_y": 422.5,
+            "width": 0.0,
+            "height": 0.0
+          },
+          "pressure": {
+            "point_count": 1,
+            "min": 0.5,
+            "max": 0.5,
+            "mean": 0.5
+          },
+          "pointer_types": [
+            "touch"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 36,
+          "duration_ms": 578.5,
+          "path_length_px": 166.849,
+          "average_speed_px_s": 288.416,
+          "max_segment_speed_px_s": 1666.848,
+          "start": {
+            "x": 400.5,
+            "y": 284.5
+          },
+          "end": {
+            "x": 444.0,
+            "y": 277.0
+          },
+          "net_displacement_px": 44.142,
+          "direction_deg": -9.782,
+          "bounding_box": {
+            "min_x": 400.5,
+            "max_x": 448.5,
+            "min_y": 252.0,
+            "max_y": 286.5,
+            "width": 48.0,
+            "height": 34.5
+          },
+          "pressure": {
+            "point_count": 36,
+            "min": 0.14453125,
+            "max": 0.453125,
+            "mean": 0.400716
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 26,
+          "duration_ms": 397.9,
+          "path_length_px": 75.113,
+          "average_speed_px_s": 188.775,
+          "max_segment_speed_px_s": 644.612,
+          "start": {
+            "x": 455.0,
+            "y": 270.0
+          },
+          "end": {
+            "x": 461.5,
+            "y": 261.0
+          },
+          "net_displacement_px": 11.102,
+          "direction_deg": -54.162,
+          "bounding_box": {
+            "min_x": 443.0,
+            "max_x": 463.5,
+            "min_y": 261.0,
+            "max_y": 282.5,
+            "width": 20.5,
+            "height": 21.5
+          },
+          "pressure": {
+            "point_count": 26,
+            "min": 0.11328125,
+            "max": 0.48046875,
+            "mean": 0.392165
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 11,
+          "duration_ms": 152.8,
+          "path_length_px": 75.414,
+          "average_speed_px_s": 493.545,
+          "max_segment_speed_px_s": 5759.157,
+          "start": {
+            "x": 473.5,
+            "y": 209.0
+          },
+          "end": {
+            "x": 466.5,
+            "y": 268.0
+          },
+          "net_displacement_px": 59.414,
+          "direction_deg": 96.766,
+          "bounding_box": {
+            "min_x": 466.5,
+            "max_x": 473.5,
+            "min_y": 201.0,
+            "max_y": 268.0,
+            "width": 7.0,
+            "height": 67.0
+          },
+          "pressure": {
+            "point_count": 11,
+            "min": 0.078125,
+            "max": 0.419921875,
+            "mean": 0.286488
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 61,
+          "duration_ms": 1035.6,
+          "path_length_px": 757.428,
+          "average_speed_px_s": 731.39,
+          "max_segment_speed_px_s": 2292.466,
+          "start": {
+            "x": 482.0,
+            "y": 209.0
+          },
+          "end": {
+            "x": 661.0,
+            "y": 350.5
+          },
+          "net_displacement_px": 228.174,
+          "direction_deg": 38.326,
+          "bounding_box": {
+            "min_x": 309.0,
+            "max_x": 661.0,
+            "min_y": 208.0,
+            "max_y": 427.0,
+            "width": 352.0,
+            "height": 219.0
+          },
+          "pressure": {
+            "point_count": 61,
+            "min": 0.12109375,
+            "max": 0.642578125,
+            "mean": 0.526687
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 3,
+          "duration_ms": 51.4,
+          "path_length_px": 1.207,
+          "average_speed_px_s": 23.485,
+          "max_segment_speed_px_s": 416.599,
+          "start": {
+            "x": 336.0,
+            "y": 230.0
+          },
+          "end": {
+            "x": 336.0,
+            "y": 230.5
+          },
+          "net_displacement_px": 0.5,
+          "direction_deg": 90.0,
+          "bounding_box": {
+            "min_x": 335.5,
+            "max_x": 336.0,
+            "min_y": 230.0,
+            "max_y": 230.5,
+            "width": 0.5,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.42578125,
+            "max": 0.6220703125,
+            "mean": 0.523763
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 51,
+          "duration_ms": 814.7,
+          "path_length_px": 521.534,
+          "average_speed_px_s": 640.155,
+          "max_segment_speed_px_s": 1909.577,
+          "start": {
+            "x": 422.5,
+            "y": 215.5
+          },
+          "end": {
+            "x": 529.5,
+            "y": 339.5
+          },
+          "net_displacement_px": 163.783,
+          "direction_deg": 49.209,
+          "bounding_box": {
+            "min_x": 370.0,
+            "max_x": 594.5,
+            "min_y": 167.0,
+            "max_y": 339.5,
+            "width": 224.5,
+            "height": 172.5
+          },
+          "pressure": {
+            "point_count": 51,
+            "min": 0.171875,
+            "max": 0.6318359375,
+            "mean": 0.419309
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 29,
+          "duration_ms": 428.2,
+          "path_length_px": 61.489,
+          "average_speed_px_s": 143.6,
+          "max_segment_speed_px_s": 624.962,
+          "start": {
+            "x": 568.0,
+            "y": 322.5
+          },
+          "end": {
+            "x": 586.0,
+            "y": 324.0
+          },
+          "net_displacement_px": 18.062,
+          "direction_deg": 4.764,
+          "bounding_box": {
+            "min_x": 565.0,
+            "max_x": 586.0,
+            "min_y": 321.0,
+            "max_y": 333.0,
+            "width": 21.0,
+            "height": 12.0
+          },
+          "pressure": {
+            "point_count": 29,
+            "min": 0.0712890625,
+            "max": 0.3642578125,
+            "mean": 0.306506
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 8,
+          "point_count": 34,
+          "duration_ms": 524.1,
+          "path_length_px": 81.942,
+          "average_speed_px_s": 156.348,
+          "max_segment_speed_px_s": 693.24,
+          "start": {
+            "x": 586.5,
+            "y": 322.5
+          },
+          "end": {
+            "x": 609.0,
+            "y": 317.5
+          },
+          "net_displacement_px": 23.049,
+          "direction_deg": -12.529,
+          "bounding_box": {
+            "min_x": 584.5,
+            "max_x": 609.0,
+            "min_y": 316.5,
+            "max_y": 332.0,
+            "width": 24.5,
+            "height": 15.5
+          },
+          "pressure": {
+            "point_count": 34,
+            "min": 0.01171875,
+            "max": 0.3994140625,
+            "mean": 0.320944
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000017",
+      "label": "حسین",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000017\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000017\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000017\\raw.png"
+      },
+      "composition": {
+        "label": "حسین",
+        "character_count": 4,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 296.5,
+        "height_px": 192.5,
+        "aspect_ratio": 1.54026,
+        "total_path_length_px": 1066.269
+      },
+      "motion": {
+        "duration_ms": 41343.8,
+        "average_stroke_speed_px_s": 575.188,
+        "max_segment_speed_px_s": 13666.343
+      },
+      "pressure": {
+        "point_count": 167,
+        "min": 0.03515625,
+        "max": 0.8046875,
+        "mean": 0.379357
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 7,
+        "points": 167
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 46,
+          "duration_ms": 732.5,
+          "path_length_px": 294.963,
+          "average_speed_px_s": 402.68,
+          "max_segment_speed_px_s": 1297.437,
+          "start": {
+            "x": 729.0,
+            "y": 214.0
+          },
+          "end": {
+            "x": 734.5,
+            "y": 361.5
+          },
+          "net_displacement_px": 147.603,
+          "direction_deg": 87.865,
+          "bounding_box": {
+            "min_x": 728.5,
+            "max_x": 794.5,
+            "min_y": 183.5,
+            "max_y": 361.5,
+            "width": 66.0,
+            "height": 178.0
+          },
+          "pressure": {
+            "point_count": 46,
+            "min": 0.08984375,
+            "max": 0.6748046875,
+            "mean": 0.456819
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 12,
+          "duration_ms": 188.3,
+          "path_length_px": 22.645,
+          "average_speed_px_s": 120.261,
+          "max_segment_speed_px_s": 555.616,
+          "start": {
+            "x": 743.5,
+            "y": 337.5
+          },
+          "end": {
+            "x": 728.0,
+            "y": 351.5
+          },
+          "net_displacement_px": 20.887,
+          "direction_deg": 137.911,
+          "bounding_box": {
+            "min_x": 728.0,
+            "max_x": 743.5,
+            "min_y": 337.0,
+            "max_y": 351.5,
+            "width": 15.5,
+            "height": 14.5
+          },
+          "pressure": {
+            "point_count": 12,
+            "min": 0.14453125,
+            "max": 0.4326171875,
+            "mean": 0.341309
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 37,
+          "duration_ms": 636.7,
+          "path_length_px": 78.352,
+          "average_speed_px_s": 123.06,
+          "max_segment_speed_px_s": 707.107,
+          "start": {
+            "x": 731.5,
+            "y": 342.0
+          },
+          "end": {
+            "x": 701.0,
+            "y": 347.5
+          },
+          "net_displacement_px": 30.992,
+          "direction_deg": 169.778,
+          "bounding_box": {
+            "min_x": 701.0,
+            "max_x": 733.0,
+            "min_y": 337.5,
+            "max_y": 349.5,
+            "width": 32.0,
+            "height": 12.0
+          },
+          "pressure": {
+            "point_count": 37,
+            "min": 0.134765625,
+            "max": 0.4638671875,
+            "mean": 0.306693
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 46,
+          "duration_ms": 710.2,
+          "path_length_px": 320.0,
+          "average_speed_px_s": 450.577,
+          "max_segment_speed_px_s": 1315.654,
+          "start": {
+            "x": 709.0,
+            "y": 340.0
+          },
+          "end": {
+            "x": 799.5,
+            "y": 354.5
+          },
+          "net_displacement_px": 91.654,
+          "direction_deg": 9.103,
+          "bounding_box": {
+            "min_x": 646.0,
+            "max_x": 829.5,
+            "min_y": 299.5,
+            "max_y": 354.5,
+            "width": 183.5,
+            "height": 55.0
+          },
+          "pressure": {
+            "point_count": 46,
+            "min": 0.03515625,
+            "max": 0.4873046875,
+            "mean": 0.381008
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 10,
+          "duration_ms": 125.8,
+          "path_length_px": 37.798,
+          "average_speed_px_s": 300.458,
+          "max_segment_speed_px_s": 787.337,
+          "start": {
+            "x": 720.5,
+            "y": 376.0
+          },
+          "end": {
+            "x": 756.0,
+            "y": 367.5
+          },
+          "net_displacement_px": 36.503,
+          "direction_deg": -13.465,
+          "bounding_box": {
+            "min_x": 720.0,
+            "max_x": 756.0,
+            "min_y": 367.5,
+            "max_y": 376.0,
+            "width": 36.0,
+            "height": 8.5
+          },
+          "pressure": {
+            "point_count": 10,
+            "min": 0.0673828125,
+            "max": 0.3798828125,
+            "mean": 0.272461
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 6,
+          "duration_ms": 59.1,
+          "path_length_px": 2.914,
+          "average_speed_px_s": 49.31,
+          "max_segment_speed_px_s": 555.616,
+          "start": {
+            "x": 704.5,
+            "y": 291.0
+          },
+          "end": {
+            "x": 705.5,
+            "y": 292.5
+          },
+          "net_displacement_px": 1.803,
+          "direction_deg": 56.31,
+          "bounding_box": {
+            "min_x": 704.0,
+            "max_x": 705.5,
+            "min_y": 291.0,
+            "max_y": 292.5,
+            "width": 1.5,
+            "height": 1.5
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.1845703125,
+            "max": 0.8046875,
+            "mean": 0.561523
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 10,
+          "duration_ms": 120.0,
+          "path_length_px": 309.597,
+          "average_speed_px_s": 2579.972,
+          "max_segment_speed_px_s": 13666.343,
+          "start": {
+            "x": 617.0,
+            "y": 334.0
+          },
+          "end": {
+            "x": 913.5,
+            "y": 246.0
+          },
+          "net_displacement_px": 309.283,
+          "direction_deg": -16.531,
+          "bounding_box": {
+            "min_x": 617.0,
+            "max_x": 913.5,
+            "min_y": 246.0,
+            "max_y": 334.0,
+            "width": 296.5,
+            "height": 88.0
+          },
+          "pressure": {
+            "point_count": 10,
+            "min": 0.2080078125,
+            "max": 0.3857421875,
+            "mean": 0.327539
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000018",
+      "label": "یوسف",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000018\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000018\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000018\\raw.png"
+      },
+      "composition": {
+        "label": "یوسف",
+        "character_count": 4,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 488.5,
+        "height_px": 247.0,
+        "aspect_ratio": 1.977733,
+        "total_path_length_px": 1460.127
+      },
+      "motion": {
+        "duration_ms": 104713.1,
+        "average_stroke_speed_px_s": 367.202,
+        "max_segment_speed_px_s": 2114.975
+      },
+      "pressure": {
+        "point_count": 225,
+        "min": 0.0576171875,
+        "max": 0.74609375,
+        "mean": 0.410924
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 6,
+        "points": 225
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 33,
+          "duration_ms": 544.0,
+          "path_length_px": 72.917,
+          "average_speed_px_s": 134.039,
+          "max_segment_speed_px_s": 714.086,
+          "start": {
+            "x": 896.0,
+            "y": 199.0
+          },
+          "end": {
+            "x": 869.5,
+            "y": 236.0
+          },
+          "net_displacement_px": 45.511,
+          "direction_deg": 125.611,
+          "bounding_box": {
+            "min_x": 869.5,
+            "max_x": 897.5,
+            "min_y": 198.0,
+            "max_y": 236.0,
+            "width": 28.0,
+            "height": 38.0
+          },
+          "pressure": {
+            "point_count": 33,
+            "min": 0.13671875,
+            "max": 0.4765625,
+            "mean": 0.414714
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 81,
+          "duration_ms": 1413.5,
+          "path_length_px": 262.572,
+          "average_speed_px_s": 185.76,
+          "max_segment_speed_px_s": 1571.79,
+          "start": {
+            "x": 872.0,
+            "y": 217.0
+          },
+          "end": {
+            "x": 718.5,
+            "y": 266.0
+          },
+          "net_displacement_px": 161.131,
+          "direction_deg": 162.296,
+          "bounding_box": {
+            "min_x": 718.5,
+            "max_x": 872.0,
+            "min_y": 217.0,
+            "max_y": 266.0,
+            "width": 153.5,
+            "height": 49.0
+          },
+          "pressure": {
+            "point_count": 81,
+            "min": 0.0576171875,
+            "max": 0.6640625,
+            "mean": 0.372553
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 46,
+          "duration_ms": 733.4,
+          "path_length_px": 454.124,
+          "average_speed_px_s": 619.203,
+          "max_segment_speed_px_s": 1554.565,
+          "start": {
+            "x": 786.0,
+            "y": 241.0
+          },
+          "end": {
+            "x": 718.0,
+            "y": 96.0
+          },
+          "net_displacement_px": 160.153,
+          "direction_deg": -115.125,
+          "bounding_box": {
+            "min_x": 642.0,
+            "max_x": 786.0,
+            "min_y": 96.0,
+            "max_y": 270.0,
+            "width": 144.0,
+            "height": 174.0
+          },
+          "pressure": {
+            "point_count": 46,
+            "min": 0.1328125,
+            "max": 0.62890625,
+            "mean": 0.4413
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 52,
+          "duration_ms": 851.8,
+          "path_length_px": 616.924,
+          "average_speed_px_s": 724.259,
+          "max_segment_speed_px_s": 2114.975,
+          "start": {
+            "x": 730.5,
+            "y": 274.0
+          },
+          "end": {
+            "x": 1088.0,
+            "y": 194.5
+          },
+          "net_displacement_px": 366.233,
+          "direction_deg": -12.537,
+          "bounding_box": {
+            "min_x": 730.0,
+            "max_x": 1130.5,
+            "min_y": 194.5,
+            "max_y": 343.0,
+            "width": 400.5,
+            "height": 148.5
+          },
+          "pressure": {
+            "point_count": 52,
+            "min": 0.13671875,
+            "max": 0.6513671875,
+            "mean": 0.434796
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 9,
+          "duration_ms": 106.5,
+          "path_length_px": 52.09,
+          "average_speed_px_s": 489.104,
+          "max_segment_speed_px_s": 1293.83,
+          "start": {
+            "x": 896.5,
+            "y": 239.5
+          },
+          "end": {
+            "x": 946.0,
+            "y": 223.5
+          },
+          "net_displacement_px": 52.022,
+          "direction_deg": -17.913,
+          "bounding_box": {
+            "min_x": 896.5,
+            "max_x": 946.0,
+            "min_y": 223.5,
+            "max_y": 239.5,
+            "width": 49.5,
+            "height": 16.0
+          },
+          "pressure": {
+            "point_count": 9,
+            "min": 0.1962890625,
+            "max": 0.443359375,
+            "mean": 0.352865
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 4,
+          "duration_ms": 29.5,
+          "path_length_px": 1.5,
+          "average_speed_px_s": 50.847,
+          "max_segment_speed_px_s": 555.616,
+          "start": {
+            "x": 833.0,
+            "y": 195.5
+          },
+          "end": {
+            "x": 833.5,
+            "y": 195.5
+          },
+          "net_displacement_px": 0.5,
+          "direction_deg": 0.0,
+          "bounding_box": {
+            "min_x": 833.0,
+            "max_x": 833.5,
+            "min_y": 195.0,
+            "max_y": 195.5,
+            "width": 0.5,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.50390625,
+            "max": 0.74609375,
+            "mean": 0.627686
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000019",
+      "label": "اشرف زاده",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000019\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000019\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000019\\raw.png"
+      },
+      "composition": {
+        "label": "اشرف زاده",
+        "character_count": 9,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": true
+      },
+      "geometry": {
+        "width_px": 320.5,
+        "height_px": 281.5,
+        "aspect_ratio": 1.138544,
+        "total_path_length_px": 1021.369
+      },
+      "motion": {
+        "duration_ms": 19459.3,
+        "average_stroke_speed_px_s": 316.036,
+        "max_segment_speed_px_s": 6225.007
+      },
+      "pressure": {
+        "point_count": 197,
+        "min": 0.056640625,
+        "max": 0.6337890625,
+        "mean": 0.40042
+      },
+      "input": {
+        "pointer_types": [
+          "pen",
+          "touch"
+        ],
+        "touch_point_count": 1,
+        "touch_point_ratio": 0.005076
+      },
+      "counts": {
+        "strokes": 11,
+        "points": 197
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 1,
+          "duration_ms": 0,
+          "path_length_px": 0.0,
+          "average_speed_px_s": 0,
+          "max_segment_speed_px_s": 0,
+          "start": {
+            "x": 843.5,
+            "y": 437.5
+          },
+          "end": {
+            "x": 843.5,
+            "y": 437.5
+          },
+          "net_displacement_px": 0.0,
+          "direction_deg": null,
+          "bounding_box": {
+            "min_x": 843.5,
+            "max_x": 843.5,
+            "min_y": 437.5,
+            "max_y": 437.5,
+            "width": 0.0,
+            "height": 0.0
+          },
+          "pressure": {
+            "point_count": 1,
+            "min": 0.5,
+            "max": 0.5,
+            "mean": 0.5
+          },
+          "pointer_types": [
+            "touch"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 43,
+          "duration_ms": 731.5,
+          "path_length_px": 386.585,
+          "average_speed_px_s": 528.482,
+          "max_segment_speed_px_s": 1546.642,
+          "start": {
+            "x": 643.5,
+            "y": 267.5
+          },
+          "end": {
+            "x": 632.5,
+            "y": 320.0
+          },
+          "net_displacement_px": 53.64,
+          "direction_deg": 101.834,
+          "bounding_box": {
+            "min_x": 632.5,
+            "max_x": 666.0,
+            "min_y": 156.0,
+            "max_y": 359.5,
+            "width": 33.5,
+            "height": 203.5
+          },
+          "pressure": {
+            "point_count": 43,
+            "min": 0.13671875,
+            "max": 0.572265625,
+            "mean": 0.493391
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 11,
+          "duration_ms": 192.8,
+          "path_length_px": 19.804,
+          "average_speed_px_s": 102.717,
+          "max_segment_speed_px_s": 325.801,
+          "start": {
+            "x": 640.5,
+            "y": 306.0
+          },
+          "end": {
+            "x": 629.5,
+            "y": 320.0
+          },
+          "net_displacement_px": 17.804,
+          "direction_deg": 128.157,
+          "bounding_box": {
+            "min_x": 629.5,
+            "max_x": 640.5,
+            "min_y": 306.0,
+            "max_y": 321.0,
+            "width": 11.0,
+            "height": 15.0
+          },
+          "pressure": {
+            "point_count": 11,
+            "min": 0.05859375,
+            "max": 0.3583984375,
+            "mean": 0.282315
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 19,
+          "duration_ms": 329.2,
+          "path_length_px": 41.705,
+          "average_speed_px_s": 126.685,
+          "max_segment_speed_px_s": 260.288,
+          "start": {
+            "x": 634.0,
+            "y": 307.5
+          },
+          "end": {
+            "x": 618.5,
+            "y": 320.5
+          },
+          "net_displacement_px": 20.23,
+          "direction_deg": 140.013,
+          "bounding_box": {
+            "min_x": 618.5,
+            "max_x": 634.0,
+            "min_y": 307.5,
+            "max_y": 320.5,
+            "width": 15.5,
+            "height": 13.0
+          },
+          "pressure": {
+            "point_count": 19,
+            "min": 0.09765625,
+            "max": 0.365234375,
+            "mean": 0.265265
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 30,
+          "duration_ms": 454.2,
+          "path_length_px": 129.184,
+          "average_speed_px_s": 284.422,
+          "max_segment_speed_px_s": 3482.097,
+          "start": {
+            "x": 619.5,
+            "y": 310.5
+          },
+          "end": {
+            "x": 523.0,
+            "y": 343.0
+          },
+          "net_displacement_px": 101.826,
+          "direction_deg": 161.387,
+          "bounding_box": {
+            "min_x": 523.0,
+            "max_x": 619.5,
+            "min_y": 309.0,
+            "max_y": 343.0,
+            "width": 96.5,
+            "height": 34.0
+          },
+          "pressure": {
+            "point_count": 30,
+            "min": 0.140625,
+            "max": 0.6171875,
+            "mean": 0.391927
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 3,
+          "duration_ms": 66.6,
+          "path_length_px": 1.207,
+          "average_speed_px_s": 18.125,
+          "max_segment_speed_px_s": 471.405,
+          "start": {
+            "x": 604.0,
+            "y": 283.5
+          },
+          "end": {
+            "x": 603.5,
+            "y": 283.5
+          },
+          "net_displacement_px": 0.5,
+          "direction_deg": 180.0,
+          "bounding_box": {
+            "min_x": 603.5,
+            "max_x": 604.0,
+            "min_y": 283.5,
+            "max_y": 284.0,
+            "width": 0.5,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 3,
+            "min": 0.234375,
+            "max": 0.482421875,
+            "mean": 0.349609
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 16,
+          "duration_ms": 229.0,
+          "path_length_px": 41.868,
+          "average_speed_px_s": 182.832,
+          "max_segment_speed_px_s": 785.759,
+          "start": {
+            "x": 626.5,
+            "y": 292.0
+          },
+          "end": {
+            "x": 641.0,
+            "y": 288.0
+          },
+          "net_displacement_px": 15.042,
+          "direction_deg": -15.422,
+          "bounding_box": {
+            "min_x": 621.5,
+            "max_x": 641.0,
+            "min_y": 282.5,
+            "max_y": 292.0,
+            "width": 19.5,
+            "height": 9.5
+          },
+          "pressure": {
+            "point_count": 16,
+            "min": 0.080078125,
+            "max": 0.44140625,
+            "mean": 0.356506
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 12,
+          "duration_ms": 147.9,
+          "path_length_px": 229.679,
+          "average_speed_px_s": 1552.936,
+          "max_segment_speed_px_s": 6225.007,
+          "start": {
+            "x": 569.5,
+            "y": 268.5
+          },
+          "end": {
+            "x": 790.5,
+            "y": 207.5
+          },
+          "net_displacement_px": 229.264,
+          "direction_deg": -15.43,
+          "bounding_box": {
+            "min_x": 569.5,
+            "max_x": 790.5,
+            "min_y": 207.5,
+            "max_y": 269.0,
+            "width": 221.0,
+            "height": 61.5
+          },
+          "pressure": {
+            "point_count": 12,
+            "min": 0.16796875,
+            "max": 0.44140625,
+            "mean": 0.361491
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 8,
+          "point_count": 9,
+          "duration_ms": 143.0,
+          "path_length_px": 14.355,
+          "average_speed_px_s": 100.381,
+          "max_segment_speed_px_s": 183.169,
+          "start": {
+            "x": 590.0,
+            "y": 248.0
+          },
+          "end": {
+            "x": 584.0,
+            "y": 259.5
+          },
+          "net_displacement_px": 12.971,
+          "direction_deg": 117.553,
+          "bounding_box": {
+            "min_x": 584.0,
+            "max_x": 590.0,
+            "min_y": 247.5,
+            "max_y": 259.5,
+            "width": 6.0,
+            "height": 12.0
+          },
+          "pressure": {
+            "point_count": 9,
+            "min": 0.12890625,
+            "max": 0.390625,
+            "mean": 0.305122
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 9,
+          "point_count": 48,
+          "duration_ms": 761.9,
+          "path_length_px": 153.364,
+          "average_speed_px_s": 201.292,
+          "max_segment_speed_px_s": 1085.014,
+          "start": {
+            "x": 579.0,
+            "y": 198.5
+          },
+          "end": {
+            "x": 550.5,
+            "y": 258.5
+          },
+          "net_displacement_px": 66.425,
+          "direction_deg": 115.408,
+          "bounding_box": {
+            "min_x": 550.5,
+            "max_x": 587.0,
+            "min_y": 191.0,
+            "max_y": 262.5,
+            "width": 36.5,
+            "height": 71.5
+          },
+          "pressure": {
+            "point_count": 48,
+            "min": 0.1953125,
+            "max": 0.5234375,
+            "mean": 0.448527
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 10,
+          "point_count": 5,
+          "duration_ms": 57.9,
+          "path_length_px": 3.618,
+          "average_speed_px_s": 62.487,
+          "max_segment_speed_px_s": 294.112,
+          "start": {
+            "x": 597.5,
+            "y": 228.0
+          },
+          "end": {
+            "x": 597.5,
+            "y": 228.0
+          },
+          "net_displacement_px": 0.0,
+          "direction_deg": null,
+          "bounding_box": {
+            "min_x": 596.0,
+            "max_x": 597.5,
+            "min_y": 228.0,
+            "max_y": 228.5,
+            "width": 1.5,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 5,
+            "min": 0.056640625,
+            "max": 0.6337890625,
+            "mean": 0.379492
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000020",
+      "label": "ramin",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000020\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000020\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000020\\raw.png"
+      },
+      "composition": {
+        "label": "ramin",
+        "character_count": 5,
+        "has_persian": false,
+        "has_latin": true,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 448.5,
+        "height_px": 195.5,
+        "aspect_ratio": 2.294118,
+        "total_path_length_px": 1659.906
+      },
+      "motion": {
+        "duration_ms": 10064.2,
+        "average_stroke_speed_px_s": 596.052,
+        "max_segment_speed_px_s": 6576.473
+      },
+      "pressure": {
+        "point_count": 258,
+        "min": 0.05859375,
+        "max": 0.6455078125,
+        "mean": 0.449908
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 7,
+        "points": 258
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 57,
+          "duration_ms": 915.5,
+          "path_length_px": 405.277,
+          "average_speed_px_s": 442.684,
+          "max_segment_speed_px_s": 1596.746,
+          "start": {
+            "x": 454.0,
+            "y": 223.5
+          },
+          "end": {
+            "x": 630.5,
+            "y": 361.0
+          },
+          "net_displacement_px": 223.738,
+          "direction_deg": 37.92,
+          "bounding_box": {
+            "min_x": 448.0,
+            "max_x": 630.5,
+            "min_y": 216.0,
+            "max_y": 394.0,
+            "width": 182.5,
+            "height": 178.0
+          },
+          "pressure": {
+            "point_count": 57,
+            "min": 0.16796875,
+            "max": 0.6083984375,
+            "mean": 0.465495
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 84,
+          "duration_ms": 1373.6,
+          "path_length_px": 166.338,
+          "average_speed_px_s": 121.096,
+          "max_segment_speed_px_s": 354.688,
+          "start": {
+            "x": 631.5,
+            "y": 364.5
+          },
+          "end": {
+            "x": 667.0,
+            "y": 346.5
+          },
+          "net_displacement_px": 39.803,
+          "direction_deg": -26.887,
+          "bounding_box": {
+            "min_x": 622.5,
+            "max_x": 667.0,
+            "min_y": 345.5,
+            "max_y": 365.5,
+            "width": 44.5,
+            "height": 20.0
+          },
+          "pressure": {
+            "point_count": 84,
+            "min": 0.1796875,
+            "max": 0.53515625,
+            "mean": 0.464274
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 6,
+          "duration_ms": 102.7,
+          "path_length_px": 2.914,
+          "average_speed_px_s": 28.376,
+          "max_segment_speed_px_s": 785.759,
+          "start": {
+            "x": 663.5,
+            "y": 324.0
+          },
+          "end": {
+            "x": 664.0,
+            "y": 324.0
+          },
+          "net_displacement_px": 0.5,
+          "direction_deg": 0.0,
+          "bounding_box": {
+            "min_x": 663.0,
+            "max_x": 664.0,
+            "min_y": 323.5,
+            "max_y": 324.5,
+            "width": 1.0,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.25390625,
+            "max": 0.6455078125,
+            "mean": 0.454753
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 60,
+          "duration_ms": 1001.7,
+          "path_length_px": 370.354,
+          "average_speed_px_s": 369.725,
+          "max_segment_speed_px_s": 1534.427,
+          "start": {
+            "x": 676.0,
+            "y": 339.0
+          },
+          "end": {
+            "x": 707.0,
+            "y": 324.5
+          },
+          "net_displacement_px": 34.224,
+          "direction_deg": -25.067,
+          "bounding_box": {
+            "min_x": 676.0,
+            "max_x": 832.0,
+            "min_y": 300.5,
+            "max_y": 360.5,
+            "width": 156.0,
+            "height": 60.0
+          },
+          "pressure": {
+            "point_count": 60,
+            "min": 0.05859375,
+            "max": 0.5556640625,
+            "mean": 0.449007
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 29,
+          "duration_ms": 424.8,
+          "path_length_px": 293.744,
+          "average_speed_px_s": 691.487,
+          "max_segment_speed_px_s": 6576.473,
+          "start": {
+            "x": 613.5,
+            "y": 306.0
+          },
+          "end": {
+            "x": 604.5,
+            "y": 294.5
+          },
+          "net_displacement_px": 14.603,
+          "direction_deg": -128.047,
+          "bounding_box": {
+            "min_x": 545.5,
+            "max_x": 617.0,
+            "min_y": 265.5,
+            "max_y": 368.5,
+            "width": 71.5,
+            "height": 103.0
+          },
+          "pressure": {
+            "point_count": 29,
+            "min": 0.1953125,
+            "max": 0.6298828125,
+            "mean": 0.435614
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 8,
+          "duration_ms": 94.9,
+          "path_length_px": 77.885,
+          "average_speed_px_s": 820.708,
+          "max_segment_speed_px_s": 2576.784,
+          "start": {
+            "x": 571.0,
+            "y": 405.0
+          },
+          "end": {
+            "x": 644.0,
+            "y": 378.0
+          },
+          "net_displacement_px": 77.833,
+          "direction_deg": -20.298,
+          "bounding_box": {
+            "min_x": 571.0,
+            "max_x": 644.0,
+            "min_y": 378.0,
+            "max_y": 405.0,
+            "width": 73.0,
+            "height": 27.0
+          },
+          "pressure": {
+            "point_count": 8,
+            "min": 0.1904296875,
+            "max": 0.40234375,
+            "mean": 0.31665
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 14,
+          "duration_ms": 202.2,
+          "path_length_px": 343.394,
+          "average_speed_px_s": 1698.286,
+          "max_segment_speed_px_s": 3418.039,
+          "start": {
+            "x": 572.0,
+            "y": 411.5
+          },
+          "end": {
+            "x": 896.5,
+            "y": 299.5
+          },
+          "net_displacement_px": 343.285,
+          "direction_deg": -19.042,
+          "bounding_box": {
+            "min_x": 572.0,
+            "max_x": 896.5,
+            "min_y": 299.5,
+            "max_y": 411.5,
+            "width": 324.5,
+            "height": 112.0
+          },
+          "pressure": {
+            "point_count": 14,
+            "min": 0.21484375,
+            "max": 0.53515625,
+            "mean": 0.407785
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000021",
+      "label": "احسان",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000021\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000021\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000021\\raw.png"
+      },
+      "composition": {
+        "label": "احسان",
+        "character_count": 5,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 484.5,
+        "height_px": 268.5,
+        "aspect_ratio": 1.804469,
+        "total_path_length_px": 1175.181
+      },
+      "motion": {
+        "duration_ms": 12388.1,
+        "average_stroke_speed_px_s": 647.773,
+        "max_segment_speed_px_s": 5870.657
+      },
+      "pressure": {
+        "point_count": 170,
+        "min": 0.09375,
+        "max": 0.736328125,
+        "mean": 0.394991
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 8,
+        "points": 170
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 9,
+          "duration_ms": 123.4,
+          "path_length_px": 394.741,
+          "average_speed_px_s": 3198.874,
+          "max_segment_speed_px_s": 5870.657,
+          "start": {
+            "x": 441.0,
+            "y": 333.0
+          },
+          "end": {
+            "x": 792.0,
+            "y": 152.5
+          },
+          "net_displacement_px": 394.691,
+          "direction_deg": -27.214,
+          "bounding_box": {
+            "min_x": 441.0,
+            "max_x": 792.0,
+            "min_y": 152.5,
+            "max_y": 333.0,
+            "width": 351.0,
+            "height": 180.5
+          },
+          "pressure": {
+            "point_count": 9,
+            "min": 0.2568359375,
+            "max": 0.578125,
+            "mean": 0.480577
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 17,
+          "duration_ms": 268.3,
+          "path_length_px": 44.292,
+          "average_speed_px_s": 165.083,
+          "max_segment_speed_px_s": 2221.861,
+          "start": {
+            "x": 786.0,
+            "y": 121.5
+          },
+          "end": {
+            "x": 786.0,
+            "y": 157.5
+          },
+          "net_displacement_px": 36.0,
+          "direction_deg": 90.0,
+          "bounding_box": {
+            "min_x": 786.0,
+            "max_x": 790.0,
+            "min_y": 118.0,
+            "max_y": 157.5,
+            "width": 4.0,
+            "height": 39.5
+          },
+          "pressure": {
+            "point_count": 17,
+            "min": 0.14453125,
+            "max": 0.51171875,
+            "mean": 0.396025
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 30,
+          "duration_ms": 474.1,
+          "path_length_px": 50.232,
+          "average_speed_px_s": 105.952,
+          "max_segment_speed_px_s": 1016.53,
+          "start": {
+            "x": 774.5,
+            "y": 150.0
+          },
+          "end": {
+            "x": 771.0,
+            "y": 156.5
+          },
+          "net_displacement_px": 7.382,
+          "direction_deg": 118.301,
+          "bounding_box": {
+            "min_x": 771.0,
+            "max_x": 786.5,
+            "min_y": 135.5,
+            "max_y": 157.0,
+            "width": 15.5,
+            "height": 21.5
+          },
+          "pressure": {
+            "point_count": 30,
+            "min": 0.09375,
+            "max": 0.45703125,
+            "mean": 0.348796
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 34,
+          "duration_ms": 584.4,
+          "path_length_px": 50.526,
+          "average_speed_px_s": 86.457,
+          "max_segment_speed_px_s": 500.0,
+          "start": {
+            "x": 772.5,
+            "y": 150.0
+          },
+          "end": {
+            "x": 750.0,
+            "y": 159.0
+          },
+          "net_displacement_px": 24.233,
+          "direction_deg": 158.199,
+          "bounding_box": {
+            "min_x": 750.0,
+            "max_x": 772.5,
+            "min_y": 149.5,
+            "max_y": 162.0,
+            "width": 22.5,
+            "height": 12.5
+          },
+          "pressure": {
+            "point_count": 34,
+            "min": 0.109375,
+            "max": 0.38671875,
+            "mean": 0.338925
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 42,
+          "duration_ms": 673.2,
+          "path_length_px": 414.411,
+          "average_speed_px_s": 615.584,
+          "max_segment_speed_px_s": 3590.267,
+          "start": {
+            "x": 764.5,
+            "y": 122.5
+          },
+          "end": {
+            "x": 900.0,
+            "y": 360.5
+          },
+          "net_displacement_px": 273.869,
+          "direction_deg": 60.346,
+          "bounding_box": {
+            "min_x": 728.0,
+            "max_x": 900.0,
+            "min_y": 122.0,
+            "max_y": 386.5,
+            "width": 172.0,
+            "height": 264.5
+          },
+          "pressure": {
+            "point_count": 42,
+            "min": 0.13671875,
+            "max": 0.736328125,
+            "mean": 0.51144
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 4,
+          "duration_ms": 25.0,
+          "path_length_px": 2.788,
+          "average_speed_px_s": 111.53,
+          "max_segment_speed_px_s": 1757.012,
+          "start": {
+            "x": 736.5,
+            "y": 130.0
+          },
+          "end": {
+            "x": 736.0,
+            "y": 131.0
+          },
+          "net_displacement_px": 1.118,
+          "direction_deg": 116.565,
+          "bounding_box": {
+            "min_x": 735.0,
+            "max_x": 736.5,
+            "min_y": 130.0,
+            "max_y": 131.0,
+            "width": 1.5,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.1357421875,
+            "max": 0.38671875,
+            "mean": 0.269775
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 27,
+          "duration_ms": 406.2,
+          "path_length_px": 184.005,
+          "average_speed_px_s": 452.99,
+          "max_segment_speed_px_s": 1181.009,
+          "start": {
+            "x": 462.5,
+            "y": 308.5
+          },
+          "end": {
+            "x": 487.5,
+            "y": 294.0
+          },
+          "net_displacement_px": 28.901,
+          "direction_deg": -30.114,
+          "bounding_box": {
+            "min_x": 415.5,
+            "max_x": 499.5,
+            "min_y": 271.0,
+            "max_y": 325.5,
+            "width": 84.0,
+            "height": 54.5
+          },
+          "pressure": {
+            "point_count": 27,
+            "min": 0.15625,
+            "max": 0.474609375,
+            "mean": 0.351237
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 7,
+          "duration_ms": 76.7,
+          "path_length_px": 34.186,
+          "average_speed_px_s": 445.711,
+          "max_segment_speed_px_s": 1219.796,
+          "start": {
+            "x": 448.5,
+            "y": 338.5
+          },
+          "end": {
+            "x": 478.0,
+            "y": 322.0
+          },
+          "net_displacement_px": 33.801,
+          "direction_deg": -29.219,
+          "bounding_box": {
+            "min_x": 448.5,
+            "max_x": 478.0,
+            "min_y": 322.0,
+            "max_y": 338.5,
+            "width": 29.5,
+            "height": 16.5
+          },
+          "pressure": {
+            "point_count": 7,
+            "min": 0.18359375,
+            "max": 0.36328125,
+            "mean": 0.294364
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    },
+    {
+      "sample_id": "sample_000022",
+      "label": "مهناز",
+      "source_files": {
+        "metadata": "online_training_data\\reference_learning\\samples\\sample_000022\\metadata.json",
+        "strokes": "online_training_data\\reference_learning\\samples\\sample_000022\\strokes.json",
+        "raw_png": "online_training_data\\reference_learning\\samples\\sample_000022\\raw.png"
+      },
+      "composition": {
+        "label": "مهناز",
+        "character_count": 5,
+        "has_persian": true,
+        "has_latin": false,
+        "has_space": false
+      },
+      "geometry": {
+        "width_px": 385.0,
+        "height_px": 115.5,
+        "aspect_ratio": 3.333333,
+        "total_path_length_px": 1313.985
+      },
+      "motion": {
+        "duration_ms": 25686.4,
+        "average_stroke_speed_px_s": 288.802,
+        "max_segment_speed_px_s": 5081.522
+      },
+      "pressure": {
+        "point_count": 153,
+        "min": 0.0712890625,
+        "max": 0.7314453125,
+        "mean": 0.499962
+      },
+      "input": {
+        "pointer_types": [
+          "pen"
+        ],
+        "touch_point_count": 0,
+        "touch_point_ratio": 0.0
+      },
+      "counts": {
+        "strokes": 8,
+        "points": 153
+      },
+      "strokes": [
+        {
+          "stroke_index": 0,
+          "point_count": 80,
+          "duration_ms": 1290.1,
+          "path_length_px": 624.191,
+          "average_speed_px_s": 483.831,
+          "max_segment_speed_px_s": 4791.908,
+          "start": {
+            "x": 653.5,
+            "y": 216.0
+          },
+          "end": {
+            "x": 545.5,
+            "y": 219.5
+          },
+          "net_displacement_px": 108.057,
+          "direction_deg": 178.144,
+          "bounding_box": {
+            "min_x": 530.5,
+            "max_x": 708.0,
+            "min_y": 193.0,
+            "max_y": 308.5,
+            "width": 177.5,
+            "height": 115.5
+          },
+          "pressure": {
+            "point_count": 80,
+            "min": 0.0712890625,
+            "max": 0.6640625,
+            "mean": 0.500916
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 1,
+          "point_count": 4,
+          "duration_ms": 47.2,
+          "path_length_px": 3.062,
+          "average_speed_px_s": 64.863,
+          "max_segment_speed_px_s": 312.529,
+          "start": {
+            "x": 567.0,
+            "y": 198.5
+          },
+          "end": {
+            "x": 564.0,
+            "y": 198.0
+          },
+          "net_displacement_px": 3.041,
+          "direction_deg": -170.538,
+          "bounding_box": {
+            "min_x": 564.0,
+            "max_x": 567.0,
+            "min_y": 198.0,
+            "max_y": 198.5,
+            "width": 3.0,
+            "height": 0.5
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.1962890625,
+            "max": 0.701171875,
+            "mean": 0.51001
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 2,
+          "point_count": 10,
+          "duration_ms": 185.5,
+          "path_length_px": 20.208,
+          "average_speed_px_s": 108.94,
+          "max_segment_speed_px_s": 228.014,
+          "start": {
+            "x": 527.0,
+            "y": 228.0
+          },
+          "end": {
+            "x": 512.5,
+            "y": 240.5
+          },
+          "net_displacement_px": 19.144,
+          "direction_deg": 139.236,
+          "bounding_box": {
+            "min_x": 512.5,
+            "max_x": 527.0,
+            "min_y": 228.0,
+            "max_y": 240.5,
+            "width": 14.5,
+            "height": 12.5
+          },
+          "pressure": {
+            "point_count": 10,
+            "min": 0.17578125,
+            "max": 0.6123046875,
+            "mean": 0.486328
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 3,
+          "point_count": 1,
+          "duration_ms": 0,
+          "path_length_px": 0.0,
+          "average_speed_px_s": 0,
+          "max_segment_speed_px_s": 0,
+          "start": {
+            "x": 530.0,
+            "y": 202.5
+          },
+          "end": {
+            "x": 530.0,
+            "y": 202.5
+          },
+          "net_displacement_px": 0.0,
+          "direction_deg": null,
+          "bounding_box": {
+            "min_x": 530.0,
+            "max_x": 530.0,
+            "min_y": 202.5,
+            "max_y": 202.5,
+            "width": 0.0,
+            "height": 0.0
+          },
+          "pressure": {
+            "point_count": 1,
+            "min": 0.51171875,
+            "max": 0.51171875,
+            "mean": 0.511719
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 4,
+          "point_count": 4,
+          "duration_ms": 42.0,
+          "path_length_px": 2.118,
+          "average_speed_px_s": 50.429,
+          "max_segment_speed_px_s": 138.885,
+          "start": {
+            "x": 526.0,
+            "y": 207.5
+          },
+          "end": {
+            "x": 526.5,
+            "y": 206.5
+          },
+          "net_displacement_px": 1.118,
+          "direction_deg": -63.435,
+          "bounding_box": {
+            "min_x": 525.5,
+            "max_x": 526.5,
+            "min_y": 206.5,
+            "max_y": 207.5,
+            "width": 1.0,
+            "height": 1.0
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.1875,
+            "max": 0.7314453125,
+            "mean": 0.529541
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 5,
+          "point_count": 44,
+          "duration_ms": 673.4,
+          "path_length_px": 629.078,
+          "average_speed_px_s": 934.181,
+          "max_segment_speed_px_s": 5081.522,
+          "start": {
+            "x": 482.5,
+            "y": 293.0
+          },
+          "end": {
+            "x": 727.5,
+            "y": 242.5
+          },
+          "net_displacement_px": 250.15,
+          "direction_deg": -11.647,
+          "bounding_box": {
+            "min_x": 482.5,
+            "max_x": 867.5,
+            "min_y": 238.5,
+            "max_y": 302.0,
+            "width": 385.0,
+            "height": 63.5
+          },
+          "pressure": {
+            "point_count": 44,
+            "min": 0.083984375,
+            "max": 0.64453125,
+            "mean": 0.511253
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 6,
+          "point_count": 6,
+          "duration_ms": 97.4,
+          "path_length_px": 32.747,
+          "average_speed_px_s": 336.207,
+          "max_segment_speed_px_s": 1136.97,
+          "start": {
+            "x": 483.0,
+            "y": 300.0
+          },
+          "end": {
+            "x": 515.0,
+            "y": 294.0
+          },
+          "net_displacement_px": 32.558,
+          "direction_deg": -10.62,
+          "bounding_box": {
+            "min_x": 483.0,
+            "max_x": 515.0,
+            "min_y": 294.0,
+            "max_y": 300.0,
+            "width": 32.0,
+            "height": 6.0
+          },
+          "pressure": {
+            "point_count": 6,
+            "min": 0.234375,
+            "max": 0.509765625,
+            "mean": 0.406738
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        },
+        {
+          "stroke_index": 7,
+          "point_count": 4,
+          "duration_ms": 59.8,
+          "path_length_px": 2.581,
+          "average_speed_px_s": 43.163,
+          "max_segment_speed_px_s": 454.505,
+          "start": {
+            "x": 800.0,
+            "y": 276.5
+          },
+          "end": {
+            "x": 800.5,
+            "y": 275.0
+          },
+          "net_displacement_px": 1.581,
+          "direction_deg": -71.565,
+          "bounding_box": {
+            "min_x": 799.5,
+            "max_x": 800.5,
+            "min_y": 275.0,
+            "max_y": 276.5,
+            "width": 1.0,
+            "height": 1.5
+          },
+          "pressure": {
+            "point_count": 4,
+            "min": 0.20703125,
+            "max": 0.6591796875,
+            "mean": 0.488037
+          },
+          "pointer_types": [
+            "pen"
+          ]
+        }
+      ]
+    }
+  ]
+}

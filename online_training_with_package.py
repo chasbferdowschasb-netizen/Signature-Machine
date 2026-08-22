@@ -9,6 +9,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
 
+try:
+    from build_customer_packages import build_sample
+except Exception:
+    build_sample = None
+
 ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "online_training.html"
 
@@ -148,11 +153,22 @@ class Handler(BaseHTTPRequestHandler):
                 encoding="utf-8",
             )
 
+            package_status = {"enabled": bool(build_sample), "ok": False}
+            if build_sample is not None:
+                try:
+                    ok, msg = build_sample(sample_dir, overwrite=True)
+                    package_status.update({"ok": bool(ok), "message": str(msg)})
+                except Exception as package_exc:
+                    # The reference sample is already safely saved. Do not roll it back
+                    # merely because customer-package generation failed.
+                    package_status.update({"ok": False, "error": str(package_exc)})
+
             response = json.dumps({
                 "ok": True,
                 "sample_id": sample_id,
                 "training_status": "REFERENCE",
                 "path": str(sample_dir.relative_to(ROOT)),
+                "customer_package": package_status,
             }, ensure_ascii=False).encode("utf-8")
             self._send(200, "application/json; charset=utf-8", response)
 
