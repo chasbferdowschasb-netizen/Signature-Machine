@@ -1,0 +1,15 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000009",
+  "training_status": "APPROVED",
+  "label": "محمد خیری",
+  "created_at_unix": 1787348799.7379222,
+  "point_count": 293,
+  "stroke_count": 11,
+  "duration_ms": 50039.300048828125,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen",
+    "touch"
+  ]
+}

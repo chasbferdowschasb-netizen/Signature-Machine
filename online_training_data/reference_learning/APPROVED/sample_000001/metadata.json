@@ -1,0 +1,14 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000001",
+  "training_status": "APPROVED",
+  "label": "unlabeled",
+  "created_at_unix": 1787347582.2504046,
+  "point_count": 313,
+  "stroke_count": 8,
+  "duration_ms": 14046.10009765625,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ]
+}

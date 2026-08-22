@@ -1,0 +1,14 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000006",
+  "training_status": "MASTER",
+  "label": "هدی اشفته",
+  "created_at_unix": 1787348532.2121716,
+  "point_count": 310,
+  "stroke_count": 10,
+  "duration_ms": 70096.2001953125,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ]
+}

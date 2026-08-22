@@ -1,0 +1,14 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000002",
+  "training_status": "MASTER",
+  "label": "زهره shabani",
+  "created_at_unix": 1787348010.7554708,
+  "point_count": 356,
+  "stroke_count": 9,
+  "duration_ms": 45029.699951171875,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ]
+}

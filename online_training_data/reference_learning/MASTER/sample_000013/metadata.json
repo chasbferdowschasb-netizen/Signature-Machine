@@ -1,0 +1,14 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000013",
+  "training_status": "MASTER",
+  "label": "سامان",
+  "created_at_unix": 1787349148.999291,
+  "point_count": 201,
+  "stroke_count": 6,
+  "duration_ms": 21749.599853515625,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ]
+}

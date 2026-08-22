@@ -1,0 +1,14 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000021",
+  "training_status": "APPROVED",
+  "label": "احسان",
+  "created_at_unix": 1787350371.2279654,
+  "point_count": 170,
+  "stroke_count": 8,
+  "duration_ms": 12388.099853515625,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ]
+}

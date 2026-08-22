@@ -1,0 +1,14 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000010",
+  "training_status": "MASTER",
+  "label": "fatemeh",
+  "created_at_unix": 1787348867.7566462,
+  "point_count": 304,
+  "stroke_count": 9,
+  "duration_ms": 38819.900146484375,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ]
+}

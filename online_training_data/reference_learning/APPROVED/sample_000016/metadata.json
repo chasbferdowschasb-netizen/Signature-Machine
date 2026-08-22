@@ -1,0 +1,15 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000016",
+  "training_status": "APPROVED",
+  "label": "mohsen",
+  "created_at_unix": 1787349568.8961074,
+  "point_count": 252,
+  "stroke_count": 9,
+  "duration_ms": 137728.69995117188,
+  "pressure_available": true,
+  "pointer_types": [
+    "touch",
+    "pen"
+  ]
+}

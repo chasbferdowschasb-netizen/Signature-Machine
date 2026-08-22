@@ -1,0 +1,14 @@
+{
+  "schema_version": "reference_metadata_v0.2",
+  "sample_id": "sample_000004",
+  "training_status": "MASTER",
+  "label": "رضا",
+  "created_at_unix": 1787348199.192088,
+  "point_count": 143,
+  "stroke_count": 5,
+  "duration_ms": 6677.60009765625,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ]
+}

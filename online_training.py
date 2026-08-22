@@ -1,24 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Signature Machine - Online Pen Training v0.1
-
-Safe first-stage training interface:
-Surface Pen -> browser Pointer Events -> raw strokes -> JSON + PNG
-
-This module intentionally does NOT:
-- read the 4599-file Library
-- modify existing knowledge files
-- run visual_analyzer
-- remove pixels
-- call the generator
-
-Run:
-    python online_training.py
-
-Then open:
-    http://127.0.0.1:8765/
-"""
-
 from __future__ import annotations
 
 import base64
@@ -31,28 +11,34 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "online_training.html"
+
 DATA_DIR = ROOT / "online_training_data"
-SAMPLES_DIR = DATA_DIR / "samples"
-SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
+REFERENCE_DIR = DATA_DIR / "reference_learning"
+APPROVED_DIR = REFERENCE_DIR / "APPROVED"
+MASTER_DIR = REFERENCE_DIR / "MASTER"
+
+APPROVED_DIR.mkdir(parents=True, exist_ok=True)
+MASTER_DIR.mkdir(parents=True, exist_ok=True)
 
 HOST = "127.0.0.1"
 PORT = 8765
 
 
 def next_sample_id() -> str:
-    existing = []
-    for p in SAMPLES_DIR.iterdir():
-        m = re.fullmatch(r"sample_(\d{6})", p.name)
-        if m:
-            existing.append(int(m.group(1)))
-    n = max(existing, default=0) + 1
-    return f"sample_{n:06d}"
+    numbers = []
+    for base in (APPROVED_DIR, MASTER_DIR):
+        for p in base.iterdir():
+            if p.is_dir():
+                m = re.fullmatch(r"sample_(\d{6})", p.name)
+                if m:
+                    numbers.append(int(m.group(1)))
+    return f"sample_{max(numbers, default=0) + 1:06d}"
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "SignatureMachineOnlineTraining/0.1"
+    server_version = "SignatureMachineOnlineTraining/0.2"
 
-    def _send(self, status: int, content_type: str, body: bytes) -> None:
+    def _send(self, status, content_type, body):
         self.send_response(status)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
@@ -62,41 +48,46 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = urlparse(self.path).path
-
         if path in ("/", "/online_training.html"):
-            body = WEB.read_bytes()
-            self._send(200, "text/html; charset=utf-8", body)
-            return
-
-        self._send(404, "text/plain; charset=utf-8", b"Not found")
+            self._send(200, "text/html; charset=utf-8", WEB.read_bytes())
+        else:
+            self._send(404, "text/plain; charset=utf-8", b"Not found")
 
     def do_POST(self):
-        path = urlparse(self.path).path
-        if path != "/api/save":
+        if urlparse(self.path).path != "/api/save":
             self._send(404, "text/plain; charset=utf-8", b"Not found")
             return
 
         try:
             length = int(self.headers.get("Content-Length", "0"))
-            raw = self.rfile.read(length)
-            payload = json.loads(raw.decode("utf-8"))
+            payload = json.loads(self.rfile.read(length).decode("utf-8"))
 
             strokes = payload.get("strokes", [])
             png_data = payload.get("png_data", "")
-            label = str(payload.get("label", "unlabeled"))
+            label = str(payload.get("label", "unlabeled")).strip() or "unlabeled"
+            tier = str(payload.get("tier", "APPROVED")).upper()
 
+            if tier not in {"APPROVED", "MASTER"}:
+                raise ValueError("Only APPROVED or MASTER is allowed.")
             if not strokes:
                 raise ValueError("No strokes were supplied.")
+            if not png_data.startswith("data:image/png;base64,"):
+                raise ValueError("PNG payload missing or invalid.")
 
+            target_root = MASTER_DIR if tier == "MASTER" else APPROVED_DIR
             sample_id = next_sample_id()
-            sample_dir = SAMPLES_DIR / sample_id
+            sample_dir = target_root / sample_id
             sample_dir.mkdir(parents=True, exist_ok=False)
 
-            # JSON is the authoritative raw record.
+            png_bytes = base64.b64decode(png_data.split(",", 1)[1])
+            created = time.time()
+
+            stats = payload.get("stats", {})
             record = {
-                "schema_version": "online_pen_sample_v0.1",
+                "schema_version": "online_pen_sample_v0.2",
                 "sample_id": sample_id,
-                "created_at_unix": time.time(),
+                "created_at_unix": created,
+                "training_status": tier,
                 "label": label,
                 "source": {
                     "device_input": "Pointer Events",
@@ -104,30 +95,44 @@ class Handler(BaseHTTPRequestHandler):
                     "raw_points_preserved": True,
                 },
                 "strokes": strokes,
-                "stats": payload.get("stats", {}),
+                "stats": stats,
             }
 
             (sample_dir / "strokes.json").write_text(
                 json.dumps(record, ensure_ascii=False, indent=2),
                 encoding="utf-8",
             )
+            (sample_dir / "raw.png").write_bytes(png_bytes)
 
-            if png_data.startswith("data:image/png;base64,"):
-                encoded = png_data.split(",", 1)[1]
-                (sample_dir / "raw.png").write_bytes(base64.b64decode(encoded))
-            else:
-                raise ValueError("PNG payload missing or invalid.")
+            metadata = {
+                "schema_version": "reference_metadata_v0.2",
+                "sample_id": sample_id,
+                "training_status": tier,
+                "label": label,
+                "created_at_unix": created,
+                "point_count": stats.get("point_count", 0),
+                "stroke_count": stats.get("stroke_count", 0),
+                "duration_ms": stats.get("duration_ms", 0),
+                "pressure_available": stats.get("pressure_available", False),
+                "pointer_types": stats.get("pointer_types", []),
+            }
+            (sample_dir / "metadata.json").write_text(
+                json.dumps(metadata, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
 
-            response = json.dumps(
-                {"ok": True, "sample_id": sample_id},
-                ensure_ascii=False,
-            ).encode("utf-8")
+            response = json.dumps({
+                "ok": True,
+                "sample_id": sample_id,
+                "training_status": tier,
+                "path": str(sample_dir.relative_to(ROOT)),
+            }, ensure_ascii=False).encode("utf-8")
             self._send(200, "application/json; charset=utf-8", response)
 
         except Exception as exc:
             response = json.dumps(
                 {"ok": False, "error": str(exc)},
-                ensure_ascii=False,
+                ensure_ascii=False
             ).encode("utf-8")
             self._send(400, "application/json; charset=utf-8", response)
 
@@ -135,14 +140,16 @@ class Handler(BaseHTTPRequestHandler):
         print("[HTTP]", fmt % args)
 
 
-def main() -> None:
-    print("=" * 64)
-    print("SIGNATURE MACHINE - ONLINE PEN TRAINING v0.1")
-    print("=" * 64)
-    print(f"Data directory: {DATA_DIR}")
+def main():
+    print("=" * 72)
+    print("SIGNATURE MACHINE - ONLINE PEN TRAINING v0.2")
+    print("=" * 72)
+    print(f"APPROVED: {APPROVED_DIR}")
+    print(f"MASTER:   {MASTER_DIR}")
+    print("Existing Library is NOT read.")
     print(f"Open: http://{HOST}:{PORT}/")
     print("Stop with Ctrl+C")
-    print("=" * 64)
+    print("=" * 72)
 
     server = ThreadingHTTPServer((HOST, PORT), Handler)
     try:

@@ -3,472 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Signature Machine — Online Pen Training v0.1</title>
+<title>Signature Machine — Reference Learning v0.2</title>
 <style>
-  * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; }
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #202124;
-    color: #f1f3f4;
-    overflow: hidden;
-  }
-  .app {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #292a2d;
-    border-bottom: 1px solid #444;
-  }
-  header h1 { margin: 0; font-size: 18px; }
-  header .sub { opacity: .7; font-size: 12px; margin-top: 2px; }
-  .toolbar {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    padding: 10px 12px;
-    background: #292a2d;
-    border-bottom: 1px solid #444;
-  }
-  button {
-    border: 1px solid #666;
-    border-radius: 6px;
-    padding: 8px 13px;
-    background: #3a3b3e;
-    color: #fff;
-    cursor: pointer;
-  }
-  button:hover { background: #4a4b4e; }
-  button.primary { background: #5667d8; border-color: #6878e4; }
-  button.good { background: #326b45; }
-  button.bad { background: #713b3b; }
-  button:disabled { opacity: .45; cursor: default; }
-  .status {
-    margin-left: auto;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    font-size: 12px;
-    opacity: .85;
-  }
-  main {
-    min-height: 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-    gap: 10px;
-  }
-  .canvas-wrap {
-    position: relative;
-    min-height: 0;
-    flex: 1;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px #555;
-  }
-  canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    touch-action: none;
-    cursor: crosshair;
-  }
-  .hint {
-    position: absolute;
-    left: 16px;
-    top: 12px;
-    color: #999;
-    pointer-events: none;
-    font-size: 13px;
-  }
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(90px, 1fr));
-    gap: 8px;
-  }
-  .metric {
-    background: #292a2d;
-    border: 1px solid #444;
-    border-radius: 6px;
-    padding: 8px 10px;
-  }
-  .metric .k { font-size: 11px; opacity: .6; }
-  .metric .v { font-size: 15px; margin-top: 2px; }
-  .message {
-    min-height: 22px;
-    font-size: 12px;
-    opacity: .8;
-  }
-  input {
-    width: 130px;
-    background: #202124;
-    color: #fff;
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 7px;
-  }
-  @media (max-width: 900px) {
-    .metrics { grid-template-columns: repeat(4, 1fr); }
-    .status { display: none; }
-  }
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:"Segoe UI",Arial,sans-serif;background:#202124;color:#f1f3f4;overflow:hidden}
+.app{height:100%;display:flex;flex-direction:column}header{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;background:#292a2d;border-bottom:1px solid #444}
+header h1{margin:0;font-size:18px}header .sub{opacity:.7;font-size:12px;margin-top:2px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:10px 12px;background:#292a2d;border-bottom:1px solid #444}
+button{border:1px solid #666;border-radius:6px;padding:8px 13px;background:#3a3b3e;color:#fff;cursor:pointer}button:hover{background:#4a4b4e}
+button.primary{background:#5667d8;border-color:#6878e4}button.master{background:#76549a;border-color:#8b68ad}.status{margin-left:auto;display:flex;gap:16px;align-items:center;font-size:12px;opacity:.85}
+main{min-height:0;flex:1;display:flex;flex-direction:column;padding:12px;gap:10px}.canvas-wrap{position:relative;min-height:0;flex:1;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 0 0 1px #555}
+canvas{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}.hint{position:absolute;left:16px;top:12px;color:#999;pointer-events:none;font-size:13px}
+.metrics{display:grid;grid-template-columns:repeat(7,minmax(90px,1fr));gap:8px}.metric{background:#292a2d;border:1px solid #444;border-radius:6px;padding:8px 10px}
+.metric .k{font-size:11px;opacity:.6}.metric .v{font-size:15px;margin-top:2px}.message{min-height:22px;font-size:12px;opacity:.85}
+input{width:150px;background:#202124;color:#fff;border:1px solid #555;border-radius:5px;padding:7px}
+@media(max-width:900px){.metrics{grid-template-columns:repeat(4,1fr)}.status{display:none}}
 </style>
 </head>
 <body>
 <div class="app">
 <header>
-  <div>
-    <h1>Signature Machine — Online Pen Training v0.1</h1>
-    <div class="sub">Raw Surface Pen capture only — Library and AI learning are disabled in this test.</div>
-  </div>
-  <div class="status">
-    <span id="penState">Pen: waiting</span>
-    <span id="pressureState">Pressure: unknown</span>
-  </div>
+<div><h1>Signature Machine — Reference Learning v0.2</h1><div class="sub">Only approved signatures are stored. Rejected drawings are never sent to the server.</div></div>
+<div class="status"><span id="penState">Pen: waiting</span><span id="pressureState">Pressure: unknown</span></div>
 </header>
-
 <div class="toolbar">
-  <button id="clearBtn">CLEAR</button>
-  <button id="undoBtn">UNDO STROKE</button>
-  <button id="replayBtn">REPLAY</button>
-  <button id="stopReplayBtn">STOP REPLAY</button>
-  <button id="goodBtn" class="good">GOOD + SAVE</button>
-  <button id="badBtn" class="bad">BAD + SAVE</button>
-  <button id="importantBtn" class="primary">IMPORTANT + SAVE</button>
-  <label style="display:flex;align-items:center;gap:6px;font-size:12px">
-    Label
-    <input id="labelInput" value="unlabeled" maxlength="32">
-  </label>
+<button id="clearBtn">CLEAR / DISCARD</button>
+<button id="undoBtn">UNDO STROKE</button>
+<button id="replayBtn">REPLAY</button>
+<button id="stopReplayBtn">STOP REPLAY</button>
+<button id="approvedBtn" class="primary">SAVE APPROVED</button>
+<button id="masterBtn" class="master">SAVE MASTER</button>
+<label style="display:flex;align-items:center;gap:6px;font-size:12px">Label <input id="labelInput" value="unlabeled" maxlength="64"></label>
 </div>
-
 <main>
-  <div class="canvas-wrap" id="wrap">
-    <canvas id="canvas"></canvas>
-    <div class="hint">Draw with the Surface Pen. Nothing is filtered or removed.</div>
-  </div>
-
-  <div class="metrics">
-    <div class="metric"><div class="k">Points</div><div class="v" id="points">0</div></div>
-    <div class="metric"><div class="k">Strokes</div><div class="v" id="strokes">0</div></div>
-    <div class="metric"><div class="k">Duration</div><div class="v" id="duration">0 ms</div></div>
-    <div class="metric"><div class="k">Pressure min</div><div class="v" id="pmin">—</div></div>
-    <div class="metric"><div class="k">Pressure max</div><div class="v" id="pmax">—</div></div>
-    <div class="metric"><div class="k">Pointer type</div><div class="v" id="ptype">—</div></div>
-    <div class="metric"><div class="k">Status</div><div class="v" id="saveStatus">not saved</div></div>
-  </div>
-  <div class="message" id="message">Ready. Start drawing.</div>
+<div class="canvas-wrap" id="wrap"><canvas id="canvas"></canvas><div class="hint">Draw with the Surface Pen. If you do not like it, use CLEAR / DISCARD — nothing is saved.</div></div>
+<div class="metrics">
+<div class="metric"><div class="k">Points</div><div class="v" id="points">0</div></div>
+<div class="metric"><div class="k">Strokes</div><div class="v" id="strokes">0</div></div>
+<div class="metric"><div class="k">Duration</div><div class="v" id="duration">0 ms</div></div>
+<div class="metric"><div class="k">Pressure min</div><div class="v" id="pmin">—</div></div>
+<div class="metric"><div class="k">Pressure max</div><div class="v" id="pmax">—</div></div>
+<div class="metric"><div class="k">Pointer type</div><div class="v" id="ptype">—</div></div>
+<div class="metric"><div class="k">Status</div><div class="v" id="saveStatus">not saved</div></div>
+</div>
+<div class="message" id="message">Ready. Draw an attempt. Only an explicit SAVE will persist it.</div>
 </main>
 </div>
-
 <script>
 "use strict";
+const canvas=document.getElementById("canvas"),wrap=document.getElementById("wrap"),ctx=canvas.getContext("2d",{alpha:false});
+let strokes=[],activeStroke=null,activePointerId=null,replayToken=0;
 
-const canvas = document.getElementById("canvas");
-const wrap = document.getElementById("wrap");
-const ctx = canvas.getContext("2d", { alpha: false });
+function resizeCanvas(){const r=wrap.getBoundingClientRect(),d=Math.max(1,Math.min(2,devicePixelRatio||1));canvas.width=Math.max(1,Math.floor(r.width*d));canvas.height=Math.max(1,Math.floor(r.height*d));canvas.style.width=r.width+"px";canvas.style.height=r.height+"px";ctx.setTransform(d,0,0,d,0,0);redrawFromData()}
+addEventListener("resize",resizeCanvas);
+function clearDisplay(){const r=canvas.getBoundingClientRect();ctx.fillStyle="#fff";ctx.fillRect(0,0,r.width,r.height)}
+function pos(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+function point(e){const q=pos(e);return{x:q.x,y:q.y,time_ms:performance.timeOrigin+performance.now(),pressure:Number.isFinite(e.pressure)?e.pressure:null,pointer_type:e.pointerType||"unknown",buttons:e.buttons,tilt_x:Number.isFinite(e.tiltX)?e.tiltX:null,tilt_y:Number.isFinite(e.tiltY)?e.tiltY:null,twist:Number.isFinite(e.twist)?e.twist:null}}
+function segment(a,b){ctx.strokeStyle="#000";ctx.lineWidth=b.pressure==null?3:Math.max(1,1.2+b.pressure*5);ctx.lineCap="round";ctx.lineJoin="round";ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+function down(e){if(activePointerId!==null)return;replayToken++;canvas.setPointerCapture?.(e.pointerId);activePointerId=e.pointerId;activeStroke={stroke_index:strokes.length,points:[],pen_down:true};activeStroke.points.push(point(e));strokes.push(activeStroke);document.getElementById("penState").textContent="Pen: "+(e.pointerType||"unknown");document.getElementById("ptype").textContent=e.pointerType||"unknown";document.getElementById("saveStatus").textContent="unsaved";document.getElementById("message").textContent="Drawing is currently unsaved.";update();e.preventDefault()}
+function move(e){if(activePointerId!==e.pointerId||!activeStroke)return;const p=point(e),a=activeStroke.points;if(a.length)segment(a[a.length-1],p);a.push(p);if(p.pressure!=null)document.getElementById("pressureState").textContent="Pressure: available";update();e.preventDefault()}
+function up(e){if(activePointerId!==e.pointerId)return;if(activeStroke)activeStroke.pen_up_time_ms=performance.timeOrigin+performance.now();activeStroke=null;activePointerId=null;canvas.releasePointerCapture?.(e.pointerId);update();e.preventDefault()}
+canvas.addEventListener("pointerdown",down);canvas.addEventListener("pointermove",move);canvas.addEventListener("pointerup",up);canvas.addEventListener("pointercancel",up);
 
-let strokes = [];
-let activeStroke = null;
-let activePointerId = null;
-let replayToken = 0;
+function clearCanvas(){replayToken++;strokes=[];activeStroke=null;activePointerId=null;clearDisplay();document.getElementById("saveStatus").textContent="discarded";document.getElementById("message").textContent="Attempt discarded locally. No data was sent to the server.";update()}
+function undo(){replayToken++;if(!strokes.length)return;strokes.pop();redrawFromData();document.getElementById("saveStatus").textContent=strokes.length?"unsaved":"not saved";update()}
+function redrawFromData(){clearDisplay();for(const s of strokes)for(let i=1;i<s.points.length;i++)segment(s.points[i-1],s.points[i])}
+function points(){return strokes.flatMap(s=>s.points)}
+function update(){const p=points();document.getElementById("points").textContent=p.length;document.getElementById("strokes").textContent=strokes.length;if(p.length>=2)document.getElementById("duration").textContent=Math.max(0,p[p.length-1].time_ms-p[0].time_ms).toFixed(0)+" ms";else document.getElementById("duration").textContent="0 ms";const ps=p.map(x=>x.pressure).filter(x=>x!=null);document.getElementById("pmin").textContent=ps.length?Math.min(...ps).toFixed(3):"—";document.getElementById("pmax").textContent=ps.length?Math.max(...ps).toFixed(3):"—"}
 
-function resizeCanvas(preserve=true) {
-  const old = preserve && canvas.width > 0 ? document.createElement("canvas") : null;
-  if (old) {
-    old.width = canvas.width; old.height = canvas.height;
-    old.getContext("2d").drawImage(canvas, 0, 0);
-  }
-  const rect = wrap.getBoundingClientRect();
-  const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-  canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-  canvas.height = Math.max(1, Math.floor(rect.height * dpr));
-  canvas.style.width = rect.width + "px";
-  canvas.style.height = rect.height + "px";
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(0, 0, rect.width, rect.height);
-  if (old) ctx.drawImage(old, 0, 0, old.width, old.height, 0, 0, rect.width, rect.height);
+async function save(tier){
+if(!strokes.length||!points().length){document.getElementById("message").textContent="Nothing to save.";return}
+const r=canvas.getBoundingClientRect(),ec=document.createElement("canvas");ec.width=Math.round(r.width);ec.height=Math.round(r.height);const ex=ec.getContext("2d");ex.fillStyle="#fff";ex.fillRect(0,0,ec.width,ec.height);
+function es(a,b){ex.strokeStyle="#000";ex.lineWidth=b.pressure==null?3:Math.max(1,1.2+b.pressure*5);ex.lineCap="round";ex.lineJoin="round";ex.beginPath();ex.moveTo(a.x,a.y);ex.lineTo(b.x,b.y);ex.stroke()}
+for(const s of strokes)for(let i=1;i<s.points.length;i++)es(s.points[i-1],s.points[i]);
+const p=points(),payload={label:document.getElementById("labelInput").value.trim()||"unlabeled",tier,strokes,png_data:ec.toDataURL("image/png"),stats:{point_count:p.length,stroke_count:strokes.length,duration_ms:p.length?p[p.length-1].time_ms-p[0].time_ms:0,pressure_available:p.some(x=>x.pressure!=null),pointer_types:[...new Set(p.map(x=>x.pointer_type))]}};
+document.getElementById("saveStatus").textContent="saving...";document.getElementById("message").textContent="Sending approved sample to local server...";
+try{const res=await fetch("/api/save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}),result=await res.json();if(!res.ok||!result.ok)throw new Error(result.error||"Save failed");document.getElementById("saveStatus").textContent=result.sample_id;document.getElementById("message").textContent="Saved "+result.sample_id+" as "+result.training_status+". Raw JSON + PNG + metadata preserved.";strokes=[];activeStroke=null;activePointerId=null;redrawFromData();update()}catch(err){document.getElementById("saveStatus").textContent="error";document.getElementById("message").textContent="Save error: "+err.message}
 }
-window.addEventListener("resize", () => resizeCanvas(true));
-resizeCanvas(false);
-
-function pos(e) {
-  const r = canvas.getBoundingClientRect();
-  return {
-    x: e.clientX - r.left,
-    y: e.clientY - r.top
-  };
-}
-
-function normalizedPressure(e) {
-  const p = Number.isFinite(e.pressure) ? e.pressure : null;
-  return p;
-}
-
-function pointFromEvent(e) {
-  const q = pos(e);
-  return {
-    x: q.x,
-    y: q.y,
-    time_ms: performance.timeOrigin + performance.now(),
-    pressure: normalizedPressure(e),
-    pointer_type: e.pointerType || "unknown",
-    buttons: e.buttons,
-    tilt_x: Number.isFinite(e.tiltX) ? e.tiltX : null,
-    tilt_y: Number.isFinite(e.tiltY) ? e.tiltY : null,
-    twist: Number.isFinite(e.twist) ? e.twist : null
-  };
-}
-
-function drawSegment(a, b) {
-  ctx.strokeStyle = "#000000";
-  const p = b.pressure;
-  // Preserve raw pressure; width is only a display property.
-  const width = p == null ? 3.0 : Math.max(1.0, 1.2 + p * 5.0);
-  ctx.lineWidth = width;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-  ctx.beginPath();
-  ctx.moveTo(a.x, a.y);
-  ctx.lineTo(b.x, b.y);
-  ctx.stroke();
-}
-
-function pointerDown(e) {
-  if (activePointerId !== null) return;
-  replayToken++;
-  canvas.setPointerCapture?.(e.pointerId);
-  activePointerId = e.pointerId;
-
-  activeStroke = {
-    stroke_index: strokes.length,
-    points: [],
-    pen_down: true
-  };
-  const p = pointFromEvent(e);
-  activeStroke.points.push(p);
-  strokes.push(activeStroke);
-
-  document.getElementById("penState").textContent =
-    "Pen: " + (e.pointerType || "unknown");
-  document.getElementById("ptype").textContent = e.pointerType || "unknown";
-  updateMetrics();
-  e.preventDefault();
-}
-
-function pointerMove(e) {
-  if (activePointerId !== e.pointerId || !activeStroke) return;
-  const p = pointFromEvent(e);
-  const arr = activeStroke.points;
-  if (arr.length) drawSegment(arr[arr.length - 1], p);
-  arr.push(p);
-
-  if (p.pressure != null) {
-    document.getElementById("pressureState").textContent =
-      "Pressure: available";
-  }
-  updateMetrics();
-  e.preventDefault();
-}
-
-function pointerUp(e) {
-  if (activePointerId !== e.pointerId) return;
-  if (activeStroke) activeStroke.pen_up_time_ms = performance.timeOrigin + performance.now();
-  activeStroke = null;
-  activePointerId = null;
-  canvas.releasePointerCapture?.(e.pointerId);
-  updateMetrics();
-  e.preventDefault();
-}
-
-canvas.addEventListener("pointerdown", pointerDown);
-canvas.addEventListener("pointermove", pointerMove);
-canvas.addEventListener("pointerup", pointerUp);
-canvas.addEventListener("pointercancel", pointerUp);
-
-function clearCanvas() {
-  replayToken++;
-  strokes = [];
-  activeStroke = null;
-  activePointerId = null;
-  resizeCanvas(false);
-  document.getElementById("saveStatus").textContent = "not saved";
-  document.getElementById("message").textContent = "Canvas cleared. Raw data in previous unsaved drawing was discarded.";
-  updateMetrics();
-}
-
-function undoStroke() {
-  replayToken++;
-  if (!strokes.length) return;
-  strokes.pop();
-  redrawFromData();
-  updateMetrics();
-}
-
-function redrawFromData() {
-  const rect = canvas.getBoundingClientRect();
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(0, 0, rect.width, rect.height);
-  for (const s of strokes) {
-    for (let i = 1; i < s.points.length; i++) drawSegment(s.points[i-1], s.points[i]);
-  }
-}
-
-function allPoints() {
-  return strokes.flatMap(s => s.points);
-}
-
-function updateMetrics() {
-  const pts = allPoints();
-  document.getElementById("points").textContent = pts.length;
-  document.getElementById("strokes").textContent = strokes.length;
-
-  if (pts.length >= 2) {
-    const t0 = pts[0].time_ms;
-    const t1 = pts[pts.length - 1].time_ms;
-    document.getElementById("duration").textContent = Math.max(0, t1 - t0).toFixed(0) + " ms";
-  } else {
-    document.getElementById("duration").textContent = "0 ms";
-  }
-
-  const ps = pts.map(p => p.pressure).filter(p => p != null);
-  if (ps.length) {
-    document.getElementById("pmin").textContent = Math.min(...ps).toFixed(3);
-    document.getElementById("pmax").textContent = Math.max(...ps).toFixed(3);
-  } else {
-    document.getElementById("pmin").textContent = "—";
-    document.getElementById("pmax").textContent = "—";
-  }
-}
-
-async function saveSample(label) {
-  if (!strokes.length || !allPoints().length) {
-    document.getElementById("message").textContent = "Nothing to save.";
-    return;
-  }
-
-  const rect = canvas.getBoundingClientRect();
-  // Export at CSS-pixel dimensions so coordinates and PNG are directly comparable.
-  const exportCanvas = document.createElement("canvas");
-  exportCanvas.width = Math.round(rect.width);
-  exportCanvas.height = Math.round(rect.height);
-  const ex = exportCanvas.getContext("2d");
-  ex.fillStyle = "#ffffff";
-  ex.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
-
-  function drawExport(a, b) {
-    ex.strokeStyle = "#000";
-    const p = b.pressure;
-    ex.lineWidth = p == null ? 3 : Math.max(1, 1.2 + p * 5);
-    ex.lineCap = "round";
-    ex.lineJoin = "round";
-    ex.beginPath();
-    ex.moveTo(a.x, a.y);
-    ex.lineTo(b.x, b.y);
-    ex.stroke();
-  }
-  for (const s of strokes)
-    for (let i=1; i<s.points.length; i++) drawExport(s.points[i-1], s.points[i]);
-
-  const pngData = exportCanvas.toDataURL("image/png");
-  const pts = allPoints();
-  const payload = {
-    label,
-    strokes,
-    png_data: pngData,
-    stats: {
-      point_count: pts.length,
-      stroke_count: strokes.length,
-      duration_ms: pts.length ? pts[pts.length-1].time_ms - pts[0].time_ms : 0,
-      pressure_available: pts.some(p => p.pressure != null),
-      pointer_types: [...new Set(pts.map(p => p.pointer_type))]
-    }
-  };
-
-  document.getElementById("saveStatus").textContent = "saving...";
-  const res = await fetch("/api/save", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(payload)
-  });
-  const result = await res.json();
-  if (!result.ok) throw new Error(result.error || "Save failed");
-
-  document.getElementById("saveStatus").textContent = result.sample_id;
-  document.getElementById("message").textContent =
-    "Saved " + result.sample_id + " as " + label + ". Raw JSON + PNG preserved.";
-}
-
-async function saveWith(label) {
-  try {
-    await saveSample(label);
-  } catch (err) {
-    document.getElementById("saveStatus").textContent = "error";
-    document.getElementById("message").textContent = "Save error: " + err.message;
-  }
-}
-
-function replay() {
-  if (!strokes.length) return;
-  replayToken++;
-  const token = replayToken;
-  redrawFromData();
-  const rect = canvas.getBoundingClientRect();
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(0, 0, rect.width, rect.height);
-
-  let strokeIndex = 0;
-  let pointIndex = 0;
-
-  function step() {
-    if (token !== replayToken) return;
-    if (strokeIndex >= strokes.length) {
-      document.getElementById("message").textContent = "Replay complete.";
-      return;
-    }
-    const s = strokes[strokeIndex];
-    if (pointIndex === 0) {
-      pointIndex = 1;
-      if (s.points.length === 1) {
-        strokeIndex++; pointIndex = 0;
-        requestAnimationFrame(step); return;
-      }
-    }
-    const a = s.points[pointIndex - 1];
-    const b = s.points[pointIndex];
-    drawSegment(a, b);
-    pointIndex++;
-
-    if (pointIndex >= s.points.length) {
-      strokeIndex++;
-      pointIndex = 0;
-    }
-    requestAnimationFrame(step);
-  }
-  document.getElementById("message").textContent = "Replaying raw stroke order...";
-  requestAnimationFrame(step);
-}
-
-document.getElementById("clearBtn").onclick = clearCanvas;
-document.getElementById("undoBtn").onclick = undoStroke;
-document.getElementById("replayBtn").onclick = replay;
-document.getElementById("stopReplayBtn").onclick = () => {
-  replayToken++;
-  redrawFromData();
-  document.getElementById("message").textContent = "Replay stopped.";
-};
-document.getElementById("goodBtn").onclick = () => saveWith("good");
-document.getElementById("badBtn").onclick = () => saveWith("bad");
-document.getElementById("importantBtn").onclick = () => saveWith("important");
-
-updateMetrics();
+function replay(){if(!strokes.length)return;replayToken++;const token=replayToken,r=canvas.getBoundingClientRect();ctx.fillStyle="#fff";ctx.fillRect(0,0,r.width,r.height);let si=0,pi=0;function step(){if(token!==replayToken)return;if(si>=strokes.length){document.getElementById("message").textContent="Replay complete.";return}const s=strokes[si];if(s.points.length<=1){si++;pi=0;requestAnimationFrame(step);return}segment(s.points[pi],s.points[pi+1]);pi++;if(pi>=s.points.length-1){si++;pi=0}requestAnimationFrame(step)}document.getElementById("message").textContent="Replaying raw stroke order...";requestAnimationFrame(step)}
+document.getElementById("clearBtn").onclick=clearCanvas;document.getElementById("undoBtn").onclick=undo;document.getElementById("replayBtn").onclick=replay;document.getElementById("stopReplayBtn").onclick=()=>{replayToken++;redrawFromData();document.getElementById("message").textContent="Replay stopped."};document.getElementById("approvedBtn").onclick=()=>save("APPROVED");document.getElementById("masterBtn").onclick=()=>save("MASTER");
+resizeCanvas();update();
 </script>
 </body>
 </html>
