@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Signature Machine — Reference Learning v0.4 — Smooth Stroke Rendering</title>
+<title>Signature Machine — Reference Learning v0.4</title>
 <style>
 *{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:"Segoe UI",Arial,sans-serif;background:#202124;color:#f1f3f4;overflow:hidden}
 .app{height:100%;display:flex;flex-direction:column}header{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;background:#292a2d;border-bottom:1px solid #444}
@@ -22,8 +22,8 @@ input{width:150px;background:#202124;color:#fff;border:1px solid #555;border-rad
 <body>
 <div class="app">
 <header>
-<div><h1>Signature Machine — Reference Learning v0.4 — Smooth Stroke Rendering</h1><div class="sub">Every explicitly saved signature becomes a REFERENCE sample. Rejected drawings are never sent to the server.</div></div>
-<div class="status"><span id="penState">Pen: waiting</span><span id="pressureState">Pressure: unknown</span></div>
+<div><h1>Signature Machine — Reference Learning v0.4</h1><div class="sub">Every explicitly saved signature becomes a REFERENCE sample. Rejected drawings are never sent to the server.</div></div>
+<div class="status"><span id="penState">Pen: waiting</span><span id="pressureState">Pressure: unknown</span><span>Mode: Fountain Pen</span></div>
 </header>
 <div class="toolbar">
 <button id="clearBtn">CLEAR / DISCARD</button>
@@ -98,85 +98,20 @@ function point(e){
     };
 }
 
-function strokeWidth(p){
-    return p==null?3:Math.max(1,1.2+p*5);
-}
-
-// Draw a short, smooth Catmull-Rom segment using cubic Bezier control points.
-// Raw pointer points are NEVER modified; smoothing is visual only.
-function smoothStroke(target, pts){
-    if(!pts || !pts.length) return;
-
-    target.strokeStyle="#000";
-    target.lineCap="round";
-    target.lineJoin="round";
-    target.miterLimit=2;
-
-    if(pts.length===1){
-        const p=pts[0];
-        target.beginPath();
-        target.arc(p.x,p.y,strokeWidth(p.pressure)/2,0,Math.PI*2);
-        target.fillStyle="#000";
-        target.fill();
-        return;
-    }
-
-    // Draw the complete stroke as ONE continuous cubic-Bezier path.
-    // This avoids the tiny angular joins produced when every interpolated
-    // piece is stroked separately.
-    if(pts.length===2){
-        const p0=pts[0], p1=pts[1];
-        target.lineWidth=strokeWidth(
-            p0.pressure==null ? p1.pressure : 
-            p1.pressure==null ? p0.pressure :
-            (p0.pressure+p1.pressure)/2
-        );
-        target.beginPath();
-        target.moveTo(p0.x,p0.y);
-        target.lineTo(p1.x,p1.y);
-        target.stroke();
-        return;
-    }
-
-    // Average pressure for the visual stroke width. The original pressure
-    // values remain untouched in strokes.json; this only controls display.
-    let pSum=0, pCount=0;
-    for(const p of pts){
-        if(Number.isFinite(p.pressure)){
-            pSum += p.pressure;
-            pCount++;
-        }
-    }
-    target.lineWidth=strokeWidth(pCount ? pSum/pCount : null);
-
-    target.beginPath();
-    target.moveTo(pts[0].x,pts[0].y);
-
-    // Catmull-Rom -> cubic Bezier conversion.
-    // One cubic segment per raw interval, with no gaps and no separate
-    // stroke calls between segments.
-    const TENSION=0.0;
-    for(let i=0;i<pts.length-1;i++){
-        const p0=pts[Math.max(0,i-1)];
-        const p1=pts[i];
-        const p2=pts[i+1];
-        const p3=pts[Math.min(pts.length-1,i+2)];
-
-        const c1x = p1.x + (p2.x-p0.x) / 6 * (1-TENSION);
-        const c1y = p1.y + (p2.y-p0.y) / 6 * (1-TENSION);
-        const c2x = p2.x - (p3.x-p1.x) / 6 * (1-TENSION);
-        const c2y = p2.y - (p3.y-p1.y) / 6 * (1-TENSION);
-
-        target.bezierCurveTo(c1x,c1y,c2x,c2y,p2.x,p2.y);
-    }
-
-    target.stroke();
+function fountainPenWidth(pressure){
+    const p=Number.isFinite(pressure)?Math.max(0,Math.min(1,pressure)):0.35;
+    return 0.85 + Math.pow(p,0.82)*3.35;
 }
 
 function segment(a,b){
-    // Kept as a compatibility helper; live rendering uses the complete stroke
-    // so the curve can be smoothed immediately as new points arrive.
-    smoothStroke(ctx,[a,b]);
+    ctx.strokeStyle="#000";
+    ctx.lineWidth=fountainPenWidth(b.pressure);
+    ctx.lineCap="round";
+    ctx.lineJoin="round";
+    ctx.beginPath();
+    ctx.moveTo(a.x,a.y);
+    ctx.lineTo(b.x,b.y);
+    ctx.stroke();
 }
 
 function invalidateReplay(){
@@ -218,9 +153,8 @@ function move(e){
     const p=point(e);
     const a=activeStroke.points;
 
+    if(a.length)segment(a[a.length-1],p);
     a.push(p);
-    // Re-render the visible drawing with smoothing while preserving raw points.
-    redrawFromData();
 
     if(p.pressure!=null)
         document.getElementById("pressureState").textContent="Pressure: available";
@@ -317,7 +251,8 @@ function redo(){
 function redrawFromData(){
     clearDisplay();
     for(const s of strokes)
-        smoothStroke(ctx,s.points);
+        for(let i=1;i<s.points.length;i++)
+            segment(s.points[i-1],s.points[i]);
 }
 
 function points(){
@@ -399,14 +334,29 @@ async function saveReference(){
     rx.fillRect(0,0,rc.width,rc.height);
     rx.setTransform(RENDER_SCALE,0,0,RENDER_SCALE,-crop.x*RENDER_SCALE,-crop.y*RENDER_SCALE);
 
+    function drawSegment(ctx,a,b){
+        ctx.strokeStyle="#000";
+        ctx.lineWidth=fountainPenWidth(b.pressure);
+        ctx.lineCap="round";
+        ctx.lineJoin="round";
+        ctx.beginPath();
+        ctx.moveTo(a.x,a.y);
+        ctx.lineTo(b.x,b.y);
+        ctx.stroke();
+    }
+
     for(const s of strokes){
-        smoothStroke(ex,s.points);
-        smoothStroke(rx,s.points);
+        for(let i=1;i<s.points.length;i++){
+            drawSegment(ex,s.points[i-1],s.points[i]);
+            drawSegment(rx,s.points[i-1],s.points[i]);
+        }
     }
 
     const p=points();
 
     const payload={
+        render_profile:"fountain_pen_v1",
+        stroke_profile:{baseline:0.85,pressure_gain:3.35,pressure_curve:0.82},
         label:document.getElementById("labelInput").value.trim()||"unlabeled",
         strokes,
         png_data:ec.toDataURL("image/png"),
@@ -467,16 +417,18 @@ function replay(){
     if(!strokes.length)return;
 
     invalidateReplay();
+
     const token=replayToken;
+    const r=canvas.getBoundingClientRect();
+
+    ctx.fillStyle="#fff";
+    ctx.fillRect(0,0,r.width,r.height);
+
     let si=0;
-    let pi=1;
+    let pi=0;
 
     function step(){
         if(token!==replayToken)return;
-        clearDisplay();
-
-        for(let j=0;j<si;j++)
-            smoothStroke(ctx,strokes[j].points);
 
         if(si>=strokes.length){
             document.getElementById("message").textContent="Replay complete.";
@@ -484,25 +436,26 @@ function replay(){
         }
 
         const s=strokes[si];
-        if(s.points.length===1){
-            smoothStroke(ctx,s.points);
-            si++; pi=1;
+
+        if(s.points.length<=1){
+            si++;
+            pi=0;
             requestAnimationFrame(step);
             return;
         }
 
-        const end=Math.min(pi,s.points.length);
-        smoothStroke(ctx,s.points.slice(0,end));
+        segment(s.points[pi],s.points[pi+1]);
         pi++;
 
-        if(pi>s.points.length){
+        if(pi>=s.points.length-1){
             si++;
-            pi=1;
+            pi=0;
         }
+
         requestAnimationFrame(step);
     }
 
-    document.getElementById("message").textContent="Replaying smoothed stroke order...";
+    document.getElementById("message").textContent="Replaying raw stroke order...";
     requestAnimationFrame(step);
 }
 

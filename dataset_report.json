@@ -1,25 +1,25 @@
 {
-  "report_version": "0.1",
+  "report_version": "0.2",
   "project": {
     "root": "F:\\signature-machine",
     "library": "F:\\signature-machine\\library"
   },
   "dataset": {
-    "total_files": 4600,
-    "valid_images": 4600,
+    "total_files": 4599,
+    "valid_images": 4599,
     "invalid_images": 0
   },
   "formats": {
     ".jpg": 1136,
-    ".png": 3464
+    ".png": 3463
   },
   "image_modes": {
-    "RGB": 3794,
+    "RGB": 3793,
     "RGBA": 806
   },
   "transparency": {
     "images_with_alpha": 806,
-    "images_without_alpha": 3794
+    "images_without_alpha": 3793
   },
   "dimensions": {
     "min_width": 362,
@@ -479,17 +479,6 @@
       "valid": true,
       "width": 1491,
       "height": 1420,
-      "mode": "RGB",
-      "has_alpha": false,
-      "error": null
-    },
-    {
-      "filename": "s (1016).png",
-      "relative_path": "F:\\signature-machine\\library\\s (1016).png",
-      "extension": ".png",
-      "valid": true,
-      "width": 1884,
-      "height": 3072,
       "mode": "RGB",
       "has_alpha": false,
       "error": null

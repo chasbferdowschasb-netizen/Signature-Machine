@@ -5,9 +5,21 @@ import base64
 import json
 import re
 import time
+import math
+import shutil
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
+
+import cv2
+import numpy as np
+from PIL import Image
+try:
+    from reportlab.pdfgen import canvas
+    from reportlab.lib.pagesizes import A4
+    from reportlab.lib.units import mm
+except ModuleNotFoundError:
+    canvas = None
 
 ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "online_training.html"
@@ -49,8 +61,152 @@ def next_sample_id() -> str:
     return f"sample_{max(numbers, default=0) + 1:06d}"
 
 
+# ===== Integrated customer package pipeline for Sample 025+ =====
+PKG = Path("CUSTOMER_PACKAGE")
+FINAL = PKG / "01_FINAL_ASSETS"
+TRAIN = PKG / "02_TRAINING"
+ASSET_NAMES = [
+    "01_FINAL_BLACK_ON_WHITE.png",
+    "02_BLACK_TRANSPARENT.png",
+    "03_WHITE_ON_BLACK.png",
+    "04_WHITE_TRANSPARENT.png",
+]
+FPS = 60
+VW, VH = 1336, 512
+MX, MY = .16, .20
+MINSEC, MAXSEC = 5.0, 20.0
+PATH_SPEED = 115.0
+PRACTICE_COPIES = 20
+
+
+def _loadj(p):
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def _pv(v):
+    try:
+        return max(0.0, min(1.0, float(v)))
+    except Exception:
+        return 0.35
+
+
+def _smooth(ps, n=10):
+    if len(ps) < 3:
+        return [(float(p["x"]), float(p["y"]), _pv(p.get("pressure"))) for p in ps]
+    P=[(float(p["x"]),float(p["y"]),_pv(p.get("pressure"))) for p in ps]
+    out=[P[0]]
+    for i in range(len(P)-1):
+        p0,p1,p2,p3=P[max(0,i-1)],P[i],P[i+1],P[min(len(P)-1,i+2)]
+        for k in range(1,n+1):
+            t=k/n; t2=t*t; t3=t2*t
+            def cr(a,b,c,d):
+                return .5*(2*b+(-a+c)*t+(2*a-5*b+4*c-d)*t2+(-a+3*b-3*c+d)*t3)
+            out.append((cr(p0[0],p1[0],p2[0],p3[0]),cr(p0[1],p1[1],p2[1],p3[1]),max(0,min(1,cr(p0[2],p1[2],p2[2],p3[2])))))
+    return out
+
+
+def _slen(ps):
+    if len(ps)<2: return 1.0
+    return max(sum(math.hypot(float(b["x"])-float(a["x"]),float(b["y"])-float(a["y"])) for a,b in zip(ps,ps[1:])),1.0)
+
+
+def _bbox(a,pad=.025):
+    ys,xs=np.where(a>8); h,w=a.shape
+    if len(xs)==0: return 0,0,w,h
+    p=max(8,int(round(min(w,h)*pad)))
+    return max(0,int(xs.min())-p),max(0,int(ys.min())-p),min(w,int(xs.max())+1+p),min(h,int(ys.max())+1+p)
+
+
+def _fountain_width(pressure):
+    p=_pv(pressure)
+    return 0.85 + (p ** 0.82) * 3.35
+
+
+def _build_assets(sd):
+    d=sd/FINAL; d.mkdir(parents=True,exist_ok=True)
+    raw=sd/"raw.png"; sp=sd/"strokes.json"
+    if not raw.exists() or not sp.exists(): raise FileNotFoundError("raw.png/strokes.json missing")
+    data=_loadj(sp); strokes=[s for s in data.get("strokes",[]) if s.get("points")]
+    if not strokes: raise ValueError("No strokes in strokes.json")
+    raw_w,raw_h=Image.open(raw).size
+    pts=[]
+    for s in strokes:
+        for q in s["points"]:
+            try: pts.append((float(q["x"]),float(q["y"])))
+            except: pass
+    xs=[q[0] for q in pts]; ys=[q[1] for q in pts]
+    pad=max(8.0,min(raw_w,raw_h)*.035)
+    x0=max(0.,min(xs)-pad); y0=max(0.,min(ys)-pad); x1=min(float(raw_w),max(xs)+pad); y1=min(float(raw_h),max(ys)+pad)
+    sw=max(1.,x1-x0); sh=max(1.,y1-y0)
+    TARGET=2400; scale=TARGET/max(sw,sh); ow=max(1,round(sw*scale)); oh=max(1,round(sh*scale)); SS=4
+    mask_hi=np.zeros((oh*SS,ow*SS),np.uint8)
+    for s in strokes:
+        sm=_smooth(s["points"],10)
+        mapped=[((x-x0)*scale*SS,(y-y0)*scale*SS,p) for x,y,p in sm]
+        for a,b in zip(mapped,mapped[1:]):
+            xa,ya,pa=a; xb,yb,pb=b; pr=(pa+pb)/2
+            ww=max(1,round(_fountain_width(pr)*scale*SS))
+            cv2.line(mask_hi,(round(xa),round(ya)),(round(xb),round(yb)),255,ww,cv2.LINE_AA)
+    m=Image.fromarray(cv2.GaussianBlur(cv2.resize(mask_hi,(ow,oh),interpolation=cv2.INTER_AREA),(3,3),0),'L')
+    for name,bg,fg,mode in [
+        (ASSET_NAMES[0],(255,255,255),(0,0,0),'RGB'),
+        (ASSET_NAMES[1],(0,0,0,0),(0,0,0,255),'RGBA'),
+        (ASSET_NAMES[2],(0,0,0),(255,255,255),'RGB'),
+        (ASSET_NAMES[3],(0,0,0,0),(255,255,255,255),'RGBA')]:
+        im=Image.new(mode,m.size,bg); im.paste(fg,mask=m); im.save(d/name,optimize=True)
+    return {"size":[ow,oh],"target_long_side":2400,"render_profile":"fountain_pen_v1","supersampling":4}
+
+
+def _build_video(sd):
+    data=_loadj(sd/"strokes.json"); strokes=[s for s in data.get("strokes",[]) if s.get("points")]
+    pts=[(float(p["x"]),float(p["y"])) for s in strokes for p in s["points"]]
+    xs=[p[0] for p in pts]; ys=[p[1] for p in pts]
+    pad_x=max(8.,(max(xs)-min(xs))*.055); pad_y=max(8.,(max(ys)-min(ys))*.08)
+    bx0,by0,bx1,by1=min(xs)-pad_x,min(ys)-pad_y,max(xs)+pad_x,max(ys)+pad_y
+    sw,sh=max(1.,bx1-bx0),max(1.,by1-by0); scale=min(VW*(1-2*MX)/sw,VH*(1-2*MY)/sh); ox=(VW-sw*scale)/2; oy=(VH-sh*scale)/2
+    lens=[_slen(s["points"]) for s in strokes]; total=max(sum(lens),1.); duration=max(MINSEC,min(MAXSEC,total/PATH_SPEED)); base=[max(.22,duration*L/total) for L in lens]; fac=duration/max(sum(base),1e-9); durations=[d*fac for d in base]
+    timeline=[]; cur=0.
+    for s,d in zip(strokes,durations):
+        sm=_smooth(s["points"],12); ts=np.linspace(cur,cur+d,len(sm)); timeline.append([ (ox+(x-bx0)*scale,oy+(y-by0)*scale,p,float(t)) for (x,y,p),t in zip(sm,ts)]); cur+=d
+    out=sd/TRAIN/"01_TRAINING.mp4"; out.parent.mkdir(parents=True,exist_ok=True)
+    writer=cv2.VideoWriter(str(out),cv2.VideoWriter_fourcc(*"mp4v"),FPS,(VW,VH))
+    if not writer.isOpened(): raise RuntimeError("Could not create MP4 writer")
+    R=2
+    for fi in range(max(1,int(math.ceil(cur*FPS)))):
+        t=fi/FPS; hi=np.full((VH*R,VW*R,3),255,np.uint8)
+        for tl in timeline:
+            if not tl or t<tl[0][3]: continue
+            vis=[]
+            for j,(x,y,p,tt) in enumerate(tl):
+                if t>=tt: vis.append((x,y,p))
+                elif j:
+                    x0,y0,p0,t0=tl[j-1]; q=max(0,min(1,(t-t0)/max(tt-t0,1e-9))); vis.append((x0+(x-x0)*q,y0+(y-y0)*q,p0+(p-p0)*q)); break
+            for A,B in zip(vis,vis[1:]):
+                x0,y0,p0=A; x1,y1,p1=B; w=max(2,round(_fountain_width((p0+p1)/2)*R)); cv2.line(hi,(round(x0*R),round(y0*R)),(round(x1*R),round(y1*R)),(0,0,0),w,cv2.LINE_AA)
+        writer.write(cv2.resize(hi,(VW,VH),interpolation=cv2.INTER_AREA))
+    writer.release(); return {"frame_size":[VW,VH],"fps":FPS,"duration_seconds":round(cur,2),"centered":True,"idle_gaps_removed":True,"render_profile":"fountain_pen_v1"}
+
+
+def _build_pdf(sd):
+    if canvas is None: raise RuntimeError("reportlab is not installed")
+    asset=sd/FINAL/ASSET_NAMES[0]
+    if not asset.exists(): _build_assets(sd)
+    rgb=np.asarray(Image.open(asset).convert("RGB"),dtype=np.uint8); gray=.299*rgb[...,0]+.587*rgb[...,1]+.114*rgb[...,2]; ink=np.clip(255-gray,0,255).astype(np.uint8); alpha=np.clip(ink.astype(np.float32)*.58,0,255).astype(np.uint8)
+    x0,y0,x1,y1=_bbox(alpha); crop=alpha[y0:y1,x0:x1]; rgba=np.zeros((*crop.shape,4),np.uint8); rgba[...,3]=crop; tmp=sd/".practice_faint.png"; Image.fromarray(rgba,"RGBA").save(tmp)
+    out=sd/TRAIN/"01_PRACTICE.pdf"; out.parent.mkdir(parents=True,exist_ok=True); c=canvas.Canvas(str(out),pagesize=A4); W,H=A4; cols,rows=4,5; mx=9*mm; top=18*mm; bottom=7*mm; cw=(W-2*mx)/cols; ch=(H-top-bottom)/rows; iw,ih=crop.shape[1],crop.shape[0]
+    for i in range(PRACTICE_COPIES):
+        r,col=divmod(i,cols); fit=min(cw*.90/max(iw,1),ch*.72/max(ih,1)); dw,dh=iw*fit,ih*fit; x=mx+col*cw+(cw-dw)/2; y=H-top-(r+1)*ch+(ch-dh)/2; c.drawImage(str(tmp),x,y,width=dw,height=dh,mask="auto",preserveAspectRatio=True)
+    c.save(); tmp.unlink(missing_ok=True); return {"format":"A4","copies":20,"layout":"4x5","print_alpha":.58}
+
+
+def build_customer_package(sd):
+    result={"assets":_build_assets(sd),"video":_build_video(sd),"pdf":_build_pdf(sd)}
+    (sd/PKG/"package_manifest.json").write_text(json.dumps({"package_version":"025_plus_v1","sample_id":sd.name,"standards":result},ensure_ascii=False,indent=2),encoding="utf-8")
+    return result
+
+
 class Handler(BaseHTTPRequestHandler):
-    server_version = "SignatureMachineOnlineTraining/0.3"
+    server_version = "SignatureMachineOnlineTraining/0.4"
 
     def _send(self, status, content_type, body):
         self.send_response(status)
@@ -78,28 +234,23 @@ class Handler(BaseHTTPRequestHandler):
 
             strokes = payload.get("strokes", [])
             png_data = payload.get("png_data", "")
-            render_png_data = payload.get("render_png_data", "")
-            render_info = payload.get("render_info", {})
             label = str(payload.get("label", "unlabeled")).strip() or "unlabeled"
 
             if not strokes:
                 raise ValueError("No strokes were supplied.")
             if not png_data.startswith("data:image/png;base64,"):
                 raise ValueError("PNG payload missing or invalid.")
-            if not render_png_data.startswith("data:image/png;base64,"):
-                raise ValueError("High-resolution render payload missing or invalid.")
 
             sample_id = next_sample_id()
             sample_dir = SAMPLES_DIR / sample_id
             sample_dir.mkdir(parents=True, exist_ok=False)
 
             png_bytes = base64.b64decode(png_data.split(",", 1)[1])
-            render_png_bytes = base64.b64decode(render_png_data.split(",", 1)[1])
             created = time.time()
 
             stats = payload.get("stats", {})
             record = {
-                "schema_version": "online_pen_sample_v0.3",
+                "schema_version": "online_pen_sample_v0.4",
                 "sample_id": sample_id,
                 "created_at_unix": created,
                 "training_status": "REFERENCE",
@@ -119,10 +270,9 @@ class Handler(BaseHTTPRequestHandler):
                 encoding="utf-8",
             )
             (sample_dir / "raw.png").write_bytes(png_bytes)
-            (sample_dir / "render.png").write_bytes(render_png_bytes)
 
             metadata = {
-                "schema_version": "reference_metadata_v0.3",
+                "schema_version": "reference_metadata_v0.4",
                 "sample_id": sample_id,
                 "training_status": "REFERENCE",
                 "label": label,
@@ -132,27 +282,22 @@ class Handler(BaseHTTPRequestHandler):
                 "duration_ms": stats.get("duration_ms", 0),
                 "pressure_available": stats.get("pressure_available", False),
                 "pointer_types": stats.get("pointer_types", []),
-                "render": {
-                    "file": "render.png",
-                    "scale": render_info.get("scale", 4),
-                    "crop_x": render_info.get("crop_x"),
-                    "crop_y": render_info.get("crop_y"),
-                    "crop_width": render_info.get("crop_width"),
-                    "crop_height": render_info.get("crop_height"),
-                    "source_width": render_info.get("source_width"),
-                    "source_height": render_info.get("source_height"),
-                },
+                "render_profile": payload.get("render_profile", "fountain_pen_v1"),
+                "stroke_profile": payload.get("stroke_profile", {"baseline": 0.85, "pressure_gain": 3.35, "pressure_curve": 0.82}),
             }
             (sample_dir / "metadata.json").write_text(
                 json.dumps(metadata, ensure_ascii=False, indent=2),
                 encoding="utf-8",
             )
 
+            package = build_customer_package(sample_dir)
+
             response = json.dumps({
                 "ok": True,
                 "sample_id": sample_id,
                 "training_status": "REFERENCE",
                 "path": str(sample_dir.relative_to(ROOT)),
+                "customer_package": package,
             }, ensure_ascii=False).encode("utf-8")
             self._send(200, "application/json; charset=utf-8", response)
 
@@ -169,12 +314,14 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     print("=" * 72)
-    print("SIGNATURE MACHINE - ONLINE PEN TRAINING v0.3")
+    print("SIGNATURE MACHINE - ONLINE PEN TRAINING v0.4")
     print("=" * 72)
     print(f"REFERENCE SAMPLES: {SAMPLES_DIR}")
     print("All newly saved signatures are REFERENCE samples.")
     print("Legacy APPROVED/MASTER folders are not read for learning or modified.")
     print("Touch points are preserved as raw pointer events.")
+    print("Sample 025+ package: 2400px PNG + centered 1336x512/60fps video + A4/20 practice PDF.")
+    print("Stroke profile: fountain_pen_v1 (baseline 0.85, pressure gain 3.35, curve 0.82).")
     print(f"Open: http://{HOST}:{PORT}/")
     print("Stop with Ctrl+C")
     print("=" * 72)
