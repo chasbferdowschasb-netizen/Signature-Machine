@@ -1,0 +1,19 @@
+{
+  "schema_version": "reference_metadata_v0.5",
+  "sample_id": "sample_000025",
+  "training_status": "REFERENCE",
+  "created_at_unix": 1787501692.810038,
+  "point_count": 195,
+  "stroke_count": 5,
+  "duration_ms": 21675.7998046875,
+  "pressure_available": true,
+  "pointer_types": [
+    "pen"
+  ],
+  "render_profile": "fountain_pen_v1",
+  "stroke_profile": {
+    "baseline": 0.85,
+    "pressure_gain": 3.35,
+    "pressure_curve": 0.82
+  }
+}

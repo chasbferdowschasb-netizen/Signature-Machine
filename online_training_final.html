@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Signature Machine — Reference Learning v0.5</title>
+<style>
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:"Segoe UI",Arial,sans-serif;background:#202124;color:#f1f3f4;overflow:hidden}
+.app{height:100%;display:flex;flex-direction:column}header{padding:12px 16px;display:flex;justify-content:space-between;background:#292a2d;border-bottom:1px solid #444}
+h1{margin:0;font-size:18px}.sub{opacity:.7;font-size:12px}.toolbar{display:flex;gap:8px;padding:10px 12px;background:#292a2d;border-bottom:1px solid #444}
+button{border:1px solid #666;border-radius:6px;padding:8px 13px;background:#3a3b3e;color:#fff;cursor:pointer}button.primary{background:#5667d8;border-color:#6878e4}
+main{min-height:0;flex:1;display:flex;flex-direction:column;padding:12px;gap:10px}.canvas-wrap{position:relative;min-height:0;flex:1;background:#fff;border-radius:8px;overflow:hidden}
+canvas{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}.hint{position:absolute;left:16px;top:12px;color:#999;pointer-events:none;font-size:13px}
+.metrics{display:grid;grid-template-columns:repeat(7,minmax(90px,1fr));gap:8px}.metric{background:#292a2d;border:1px solid #444;border-radius:6px;padding:8px 10px}.metric .k{font-size:11px;opacity:.6}.metric .v{font-size:15px;margin-top:2px}
+.message{min-height:22px;font-size:12px;opacity:.85}input{width:150px;background:#202124;color:#fff;border:1px solid #555;border-radius:5px;padding:7px}
+</style></head><body><div class="app"><header><div><h1>Signature Machine — Reference Learning v0.5</h1><div class="sub">Sample 025+ pipeline: Save builds the complete customer package automatically.</div></div><div><span id="penState">Pen: waiting</span> &nbsp; <span id="pressureState">Pressure: unknown</span></div></header>
+<div class="toolbar"><button id="clearBtn">CLEAR / DISCARD</button><button id="undoBtn">UNDO STROKE</button><button id="redoBtn">REDO STROKE</button><button id="replayBtn">REPLAY</button><button id="saveBtn" class="primary">SAVE REFERENCE</button><label style="font-size:12px">Label <input id="labelInput" value="unlabeled" maxlength="64"></label></div>
+<main><div class="canvas-wrap" id="wrap"><canvas id="canvas"></canvas><div class="hint">Draw with the Surface Pen. Save only when the signature is good.</div></div>
+<div class="metrics"><div class="metric"><div class="k">Points</div><div class="v" id="points">0</div></div><div class="metric"><div class="k">Strokes</div><div class="v" id="strokes">0</div></div><div class="metric"><div class="k">Duration</div><div class="v" id="duration">0 ms</div></div><div class="metric"><div class="k">Pressure min</div><div class="v" id="pmin">—</div></div><div class="metric"><div class="k">Pressure max</div><div class="v" id="pmax">—</div></div><div class="metric"><div class="k">Pointer type</div><div class="v" id="ptype">—</div></div><div class="metric"><div class="k">Status</div><div class="v" id="saveStatus">not saved</div></div></div>
+<div class="message" id="message">Ready.</div></main></div>
+<script>
+"use strict";
+const canvas=document.getElementById("canvas"),wrap=document.getElementById("wrap"),ctx=canvas.getContext("2d",{alpha:false});
+let strokes=[],redoStack=[],activeStroke=null,activePointerId=null;
+function resizeCanvas(){const r=wrap.getBoundingClientRect(),d=Math.max(1,Math.min(2,devicePixelRatio||1));canvas.width=Math.floor(r.width*d);canvas.height=Math.floor(r.height*d);canvas.style.width=r.width+"px";canvas.style.height=r.height+"px";ctx.setTransform(d,0,0,d,0,0);redraw();}
+addEventListener("resize",resizeCanvas);
+function clearDisplay(){const r=canvas.getBoundingClientRect();ctx.fillStyle="#fff";ctx.fillRect(0,0,r.width,r.height)}
+function pos(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+function point(e){const q=pos(e);return{x:q.x,y:q.y,time_ms:performance.timeOrigin+performance.now(),pressure:Number.isFinite(e.pressure)?e.pressure:null,pointer_type:e.pointerType||"unknown",buttons:e.buttons,tilt_x:Number.isFinite(e.tiltX)?e.tiltX:null,tilt_y:Number.isFinite(e.tiltY)?e.tiltY:null,twist:Number.isFinite(e.twist)?e.twist:null}}
+function sw(p){return p==null?2.5:Math.max(.85,.9+Math.pow(p,.82)*3.2)}
+function smooth(target,pts){
+ if(!pts.length)return;
+ target.strokeStyle="#000";target.lineCap="round";target.lineJoin="round";
+ if(pts.length===1){target.fillStyle="#000";target.beginPath();target.arc(pts[0].x,pts[0].y,sw(pts[0].pressure)/2,0,Math.PI*2);target.fill();return}
+ target.lineWidth=pts.reduce((a,p)=>a+sw(p.pressure),0)/pts.length;
+ target.beginPath();target.moveTo(pts[0].x,pts[0].y);
+ for(let i=0;i<pts.length-1;i++){
+  const p0=pts[Math.max(0,i-1)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(pts.length-1,i+2)];
+  const c1x=p1.x+(p2.x-p0.x)/6,c1y=p1.y+(p2.y-p0.y)/6;
+  const c2x=p2.x-(p3.x-p1.x)/6,c2y=p2.y-(p3.y-p1.y)/6;
+  target.bezierCurveTo(c1x,c1y,c2x,c2y,p2.x,p2.y);
+ }
+ target.stroke();
+}
+function redraw(){clearDisplay();for(const s of strokes)smooth(ctx,s.points)}
+function all(){return strokes.flatMap(s=>s.points)}
+function update(){const p=all(),ps=p.map(x=>x.pressure).filter(x=>x!=null);points.textContent=p.length;document.getElementById("strokes").textContent=strokes.length;duration.textContent=p.length>1?Math.max(0,p.at(-1).time_ms-p[0].time_ms).toFixed(0)+" ms":"0 ms";pmin.textContent=ps.length?Math.min(...ps).toFixed(3):"—";pmax.textContent=ps.length?Math.max(...ps).toFixed(3):"—";undoBtn.disabled=!strokes.length||activePointerId!==null;redoBtn.disabled=!redoStack.length||activePointerId!==null;replayBtn.disabled=!strokes.length||activePointerId!==null;saveBtn.disabled=!strokes.length||activePointerId!==null}
+function down(e){if(activePointerId!==null)return;canvas.setPointerCapture?.(e.pointerId);activePointerId=e.pointerId;activeStroke={stroke_index:strokes.length,points:[],pen_down:true};activeStroke.points.push(point(e));strokes.push(activeStroke);redoStack=[];penState.textContent="Pen: "+e.pointerType;ptype.textContent=e.pointerType;saveStatus.textContent="unsaved";e.preventDefault()}
+function move(e){if(activePointerId!==e.pointerId||!activeStroke)return;const p=point(e);activeStroke.points.push(p);if(p.pressure!=null)pressureState.textContent="Pressure: available";redraw();update();e.preventDefault()}
+function up(e){if(activePointerId!==e.pointerId)return;if(activeStroke)activeStroke.pen_up_time_ms=performance.timeOrigin+performance.now();activeStroke=null;activePointerId=null;canvas.releasePointerCapture?.(e.pointerId);update();e.preventDefault()}
+canvas.addEventListener("pointerdown",down);canvas.addEventListener("pointermove",move);canvas.addEventListener("pointerup",up);canvas.addEventListener("pointercancel",up);
+function clearCanvas(){strokes=[];redoStack=[];activeStroke=null;activePointerId=null;clearDisplay();saveStatus.textContent="discarded";message.textContent="Attempt discarded.";update()}
+function undo(){if(activePointerId!==null)return;if(strokes.length){redoStack.push(strokes.pop());redraw();update()}}
+function redo(){if(activePointerId!==null)return;if(redoStack.length){const s=redoStack.pop();s.stroke_index=strokes.length;strokes.push(s);redraw();update()}}
+function replay(){if(!strokes.length)return;redraw();message.textContent="Replay complete."; }
+async function saveReference(){
+ if(activePointerId!==null||!strokes.length)return;
+ const r=canvas.getBoundingClientRect(),pts=all(),pad=36;
+ const minX=Math.min(...pts.map(p=>p.x)),maxX=Math.max(...pts.map(p=>p.x)),minY=Math.min(...pts.map(p=>p.y)),maxY=Math.max(...pts.map(p=>p.y));
+ const crop={x:Math.max(0,minX-pad),y:Math.max(0,minY-pad),right:Math.min(r.width,maxX+pad),bottom:Math.min(r.height,maxY+pad)};
+ crop.w=Math.max(1,crop.right-crop.x);crop.h=Math.max(1,crop.bottom-crop.y);
+ const R=4,rc=document.createElement("canvas");rc.width=Math.round(crop.w*R);rc.height=Math.round(crop.h*R);const rx=rc.getContext("2d");rx.fillStyle="#fff";rx.fillRect(0,0,rc.width,rc.height);rx.setTransform(R,0,0,R,-crop.x*R,-crop.y*R);for(const s of strokes)smooth(rx,s.points);
+ const ec=document.createElement("canvas");ec.width=Math.round(r.width);ec.height=Math.round(r.height);const ex=ec.getContext("2d");ex.fillStyle="#fff";ex.fillRect(0,0,ec.width,ec.height);for(const s of strokes)smooth(ex,s.points);
+ const p=all();
+ const payload={label:labelInput.value.trim()||"unlabeled",strokes,png_data:ec.toDataURL("image/png"),render_png_data:rc.toDataURL("image/png"),stats:{point_count:p.length,stroke_count:strokes.length,duration_ms:p.length?p.at(-1).time_ms-p[0].time_ms:0,pressure_available:p.some(x=>x.pressure!=null),pointer_types:[...new Set(p.map(x=>x.pointer_type))]}};
+ saveStatus.textContent="saving...";message.textContent="Building complete package...";
+ try{const res=await fetch("/api/save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});const result=await res.json();if(!res.ok||!result.ok)throw new Error(result.error||"Save failed");saveStatus.textContent=result.sample_id;message.textContent="Saved "+result.sample_id+" — PNG x4 + MP4 + PDF + manifest created.";strokes=[];redoStack=[];redraw();update()}catch(err){saveStatus.textContent="error";message.textContent="Save error: "+err.message;update()}
+}
+clearBtn.onclick=clearCanvas;undoBtn.onclick=undo;redoBtn.onclick=redo;replayBtn.onclick=replay;saveBtn.onclick=saveReference;resizeCanvas();update();
+</script></body></html>

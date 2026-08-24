@@ -21,7 +21,7 @@ Important:
 """
 
 from __future__ import annotations
-
+import random
 import hashlib
 import json
 import math
@@ -30,7 +30,7 @@ from pathlib import Path
 from typing import Any
 
 from PIL import Image
-
+from PIL import Image, ImageDraw
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 
@@ -63,9 +63,26 @@ REFERENCE_KNOWLEDGE_FILE = (
 # VERSION / CONFIG
 # ============================================================
 
-REFERENCE_KNOWLEDGE_VERSION = "0.2"
+REFERENCE_KNOWLEDGE_VERSION = "0.3"
 
 RESAMPLE_POINTS = 32
+GENERATION_VERSION = "0.1"
+
+GENERATION_DEFAULT_CANDIDATES = 3
+
+GENERATION_RANDOM_SEED = 20260824
+
+GENERATION_MARGIN = 80
+
+GENERATION_CANVAS_WIDTH = 1600
+GENERATION_CANVAS_HEIGHT = 700
+
+GENERATION_STROKE_WIDTH = 3
+
+GENERATION_VARIATION_SCALE = 0.035
+GENERATION_VARIATION_TRANSLATION = 0.025
+GENERATION_VARIATION_ROTATION_DEGREES = 2.5
+GENERATION_VARIATION_PRESSURE = 0.04
 
 SUPPORTED_EXTENSIONS = {
     ".png",
@@ -76,6 +93,7 @@ SUPPORTED_EXTENSIONS = {
     ".tif",
     ".tiff",
 }
+
 
 
 class SignatureCore:
@@ -432,13 +450,14 @@ class SignatureCore:
             [0.0] * len(values),
         )
 
-        if len(mean) != len(
-            values
-        ):
+        if len(mean) != len(values):
 
-            raise ValueError(
-                "Profile vector length mismatch."
-            )
+             raise ValueError(
+             "Profile vector length mismatch: "
+             f"existing={len(mean)}, "
+             f"incoming={len(values)}"
+        )
+
 
         for i, value in enumerate(
             values
@@ -3041,6 +3060,855 @@ def main() -> None:
     #         samples/
     #
     SignatureCore().learn_reference_samples()
+
+        # ========================================================
+    # GENERATION
+    # ========================================================
+
+    @staticmethod
+    def _generation_rng(
+        seed: int | None = None,
+    ) -> random.Random:
+
+        if seed is None:
+            seed = GENERATION_RANDOM_SEED
+
+        return random.Random(seed)
+
+    # --------------------------------------------------------
+    # Load one original reference sample
+    # --------------------------------------------------------
+
+    def _load_generation_sample(
+        self,
+        sample_dir: Path,
+    ) -> dict[str, Any]:
+
+        strokes_path = (
+            sample_dir
+            / "strokes.json"
+        )
+
+        if not strokes_path.is_file():
+
+            raise FileNotFoundError(
+                f"strokes.json not found: "
+                f"{strokes_path}"
+            )
+
+        with strokes_path.open(
+            "r",
+            encoding="utf-8",
+        ) as file:
+
+            payload = json.load(
+                file
+            )
+
+        strokes = payload.get(
+            "strokes",
+            [],
+        )
+
+        if not isinstance(
+            strokes,
+            list,
+        ):
+
+            raise ValueError(
+                f"Invalid strokes structure: "
+                f"{sample_dir}"
+            )
+
+        valid_strokes = []
+
+        for stroke in strokes:
+
+            points = stroke.get(
+                "points",
+                [],
+            )
+
+            if not points:
+                continue
+
+            valid_points = []
+
+            for point in points:
+
+                try:
+
+                    valid_points.append(
+                        {
+                            "x": float(
+                                point.get(
+                                    "x",
+                                    0.0,
+                                )
+                            ),
+                            "y": float(
+                                point.get(
+                                    "y",
+                                    0.0,
+                                )
+                            ),
+                            "pressure": float(
+                                point.get(
+                                    "pressure",
+                                    0.0,
+                                )
+                            ),
+                        }
+                    )
+
+                except (
+                    TypeError,
+                    ValueError,
+                ):
+
+                    continue
+
+            if valid_points:
+
+                valid_strokes.append(
+                    valid_points
+                )
+
+        if not valid_strokes:
+
+            raise ValueError(
+                f"No valid strokes: "
+                f"{sample_dir}"
+            )
+
+        return {
+            "sample_id": str(
+                payload.get(
+                    "sample_id",
+                    sample_dir.name,
+                )
+            ),
+            "strokes": valid_strokes,
+        }
+
+    # --------------------------------------------------------
+    # Select a reference sample
+    #
+    # Generation v0.1 deliberately starts from real
+    # reference trajectories instead of constructing a
+    # synthetic trajectory from aggregate means.
+    # --------------------------------------------------------
+
+    def _select_generation_sample(
+        self,
+        sample_dirs: list[Path],
+        rng: random.Random,
+    ) -> Path:
+
+        if not sample_dirs:
+
+            raise ValueError(
+                "No reference samples available "
+                "for generation."
+            )
+
+        return rng.choice(
+            sample_dirs
+        )
+
+    # --------------------------------------------------------
+    # Calculate sample bounding box
+    # --------------------------------------------------------
+
+    @staticmethod
+    def _generation_bbox(
+        strokes: list[list[dict[str, float]]],
+    ) -> tuple[
+        float,
+        float,
+        float,
+        float,
+    ]:
+
+        xs = []
+        ys = []
+
+        for stroke in strokes:
+
+            for point in stroke:
+
+                xs.append(
+                    float(
+                        point["x"]
+                    )
+                )
+
+                ys.append(
+                    float(
+                        point["y"]
+                    )
+                )
+
+        if not xs or not ys:
+
+            raise ValueError(
+                "Cannot calculate generation "
+                "bounding box."
+            )
+
+        return (
+            min(xs),
+            min(ys),
+            max(xs),
+            max(ys),
+        )
+
+    # --------------------------------------------------------
+    # Normalize one reference sample
+    #
+    # Translation + global scale only.
+    #
+    # The internal shape of each stroke remains intact.
+    # --------------------------------------------------------
+
+    @classmethod
+    def _normalize_generation_strokes(
+        cls,
+        strokes: list[
+            list[
+                dict[str, float]
+            ]
+        ],
+    ) -> list[
+        list[
+            dict[str, float]
+        ]
+    ]:
+
+        min_x, min_y, max_x, max_y = (
+            cls._generation_bbox(
+                strokes
+            )
+        )
+
+        width = max(
+            max_x - min_x,
+            1.0,
+        )
+
+        height = max(
+            max_y - min_y,
+            1.0,
+        )
+
+        scale = max(
+            width,
+            height,
+        )
+
+        normalized = []
+
+        for stroke in strokes:
+
+            normalized_stroke = []
+
+            for point in stroke:
+
+                normalized_stroke.append(
+                    {
+                        "x": (
+                            float(
+                                point["x"]
+                            )
+                            - min_x
+                        )
+                        / scale,
+                        "y": (
+                            float(
+                                point["y"]
+                            )
+                            - min_y
+                        )
+                        / scale,
+                        "pressure": max(
+                            0.0,
+                            min(
+                                1.0,
+                                float(
+                                    point.get(
+                                        "pressure",
+                                        0.0,
+                                    )
+                                ),
+                            ),
+                        ),
+                    }
+                )
+
+            normalized.append(
+                normalized_stroke
+            )
+
+        return normalized
+
+    # --------------------------------------------------------
+    # Controlled geometric variation
+    # --------------------------------------------------------
+
+    @classmethod
+    def _vary_generation_strokes(
+        cls,
+        strokes: list[
+            list[
+                dict[str, float]
+            ]
+        ],
+        rng: random.Random,
+    ) -> list[
+        list[
+            dict[str, float]
+        ]
+    ]:
+
+        scale_variation = (
+            1.0
+            + rng.uniform(
+                -GENERATION_VARIATION_SCALE,
+                GENERATION_VARIATION_SCALE,
+            )
+        )
+
+        angle = math.radians(
+            rng.uniform(
+                -GENERATION_VARIATION_ROTATION_DEGREES,
+                GENERATION_VARIATION_ROTATION_DEGREES,
+            )
+        )
+
+        cos_a = math.cos(
+            angle
+        )
+
+        sin_a = math.sin(
+            angle
+        )
+
+        translate_x = rng.uniform(
+            -GENERATION_VARIATION_TRANSLATION,
+            GENERATION_VARIATION_TRANSLATION,
+        )
+
+        translate_y = rng.uniform(
+            -GENERATION_VARIATION_TRANSLATION,
+            GENERATION_VARIATION_TRANSLATION,
+        )
+
+        result = []
+
+        for stroke in strokes:
+
+            varied_stroke = []
+
+            for point in stroke:
+
+                x = (
+                    float(
+                        point["x"]
+                    )
+                    * scale_variation
+                )
+
+                y = (
+                    float(
+                        point["y"]
+                    )
+                    * scale_variation
+                )
+
+                rotated_x = (
+                    x * cos_a
+                    - y * sin_a
+                )
+
+                rotated_y = (
+                    x * sin_a
+                    + y * cos_a
+                )
+
+                pressure = (
+                    float(
+                        point.get(
+                            "pressure",
+                            0.0,
+                        )
+                    )
+                    + rng.uniform(
+                        -GENERATION_VARIATION_PRESSURE,
+                        GENERATION_VARIATION_PRESSURE,
+                    )
+                )
+
+                varied_stroke.append(
+                    {
+                        "x": (
+                            rotated_x
+                            + translate_x
+                        ),
+                        "y": (
+                            rotated_y
+                            + translate_y
+                        ),
+                        "pressure": max(
+                            0.0,
+                            min(
+                                1.0,
+                                pressure,
+                            ),
+                        ),
+                    }
+                )
+
+            result.append(
+                varied_stroke
+            )
+
+        return result
+
+    # --------------------------------------------------------
+    # Render candidate for visual evaluation
+    #
+    # IMPORTANT:
+    # This output is intentionally marked as evaluation-only.
+    # --------------------------------------------------------
+
+    @staticmethod
+    def _render_generation_candidate(
+        strokes: list[
+            list[
+                dict[str, float]
+            ]
+        ],
+        output_path: Path,
+        candidate_id: int,
+        source_sample_id: str,
+    ) -> None:
+
+        image = Image.new(
+            "RGB",
+            (
+                GENERATION_CANVAS_WIDTH,
+                GENERATION_CANVAS_HEIGHT,
+            ),
+            "white",
+        )
+
+        draw = ImageDraw.Draw(
+            image
+        )
+
+        all_points = [
+            point
+            for stroke in strokes
+            for point in stroke
+        ]
+
+        if not all_points:
+
+            raise ValueError(
+                "Cannot render empty candidate."
+            )
+
+        min_x = min(
+            point["x"]
+            for point in all_points
+        )
+
+        max_x = max(
+            point["x"]
+            for point in all_points
+        )
+
+        min_y = min(
+            point["y"]
+            for point in all_points
+        )
+
+        max_y = max(
+            point["y"]
+            for point in all_points
+        )
+
+        width = max(
+            max_x - min_x,
+            0.001,
+        )
+
+        height = max(
+            max_y - min_y,
+            0.001,
+        )
+
+        available_width = (
+            GENERATION_CANVAS_WIDTH
+            - 2
+            * GENERATION_MARGIN
+        )
+
+        available_height = (
+            GENERATION_CANVAS_HEIGHT
+            - 2
+            * GENERATION_MARGIN
+        )
+
+        scale = min(
+            available_width / width,
+            available_height / height,
+        )
+
+        for stroke in strokes:
+
+            if len(stroke) < 2:
+                continue
+
+            rendered = []
+
+            for point in stroke:
+
+                x = (
+                    GENERATION_MARGIN
+                    + (
+                        point["x"]
+                        - min_x
+                    )
+                    * scale
+                )
+
+                y = (
+                    GENERATION_MARGIN
+                    + (
+                        point["y"]
+                        - min_y
+                    )
+                    * scale
+                )
+
+                rendered.append(
+                    (
+                        int(x),
+                        int(y),
+                    )
+                )
+
+            if len(rendered) >= 2:
+
+                draw.line(
+                    rendered,
+                    width=GENERATION_STROKE_WIDTH,
+                    joint="curve",
+                )
+
+        label = (
+            "STYLE EVALUATION — "
+            "NOT FOR SIGNING"
+        )
+
+        draw.text(
+            (
+                25,
+                GENERATION_CANVAS_HEIGHT - 35,
+            ),
+            label,
+        )
+
+        metadata = (
+            f"Candidate {candidate_id:03d} | "
+            f"Source {source_sample_id}"
+        )
+
+        draw.text(
+            (
+                25,
+                15,
+            ),
+            metadata,
+        )
+
+        output_path.parent.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        image.save(
+            output_path,
+            format="PNG",
+        )
+
+    # --------------------------------------------------------
+    # Generate ONE candidate
+    # --------------------------------------------------------
+
+    def _generate_candidate(
+        self,
+        sample_dirs: list[Path],
+        rng: random.Random,
+        candidate_id: int,
+        output_dir: Path,
+    ) -> dict[str, Any]:
+
+        source_dir = (
+            self._select_generation_sample(
+                sample_dirs,
+                rng,
+            )
+        )
+
+        source = (
+            self._load_generation_sample(
+                source_dir
+            )
+        )
+
+        normalized = (
+            self._normalize_generation_strokes(
+                source["strokes"]
+            )
+        )
+
+        varied = (
+            self._vary_generation_strokes(
+                normalized,
+                rng,
+            )
+        )
+
+        output_path = (
+            output_dir
+            / (
+                f"candidate_"
+                f"{candidate_id:03d}.png"
+            )
+        )
+
+        self._render_generation_candidate(
+            varied,
+            output_path,
+            candidate_id,
+            source["sample_id"],
+        )
+
+        return {
+            "candidate_id": candidate_id,
+            "source_sample_id": (
+                source["sample_id"]
+            ),
+            "source_sample_path": str(
+                source_dir
+            ),
+            "output": str(
+                output_path
+            ),
+            "stroke_count": len(
+                varied
+            ),
+        }
+
+    # --------------------------------------------------------
+    # Generate multiple candidates
+    # --------------------------------------------------------
+
+    def generate_signatures(
+        self,
+        count: int = (
+            GENERATION_DEFAULT_CANDIDATES
+        ),
+        output_dir: str | Path | None = None,
+        seed: int | None = None,
+    ) -> dict[str, Any]:
+
+        if count <= 0:
+
+            raise ValueError(
+                "Generation count must be greater than zero."
+            )
+
+        sample_dirs = (
+            self._reference_sample_dirs()
+        )
+
+        if not sample_dirs:
+
+            raise FileNotFoundError(
+                "No reference samples available."
+            )
+
+        knowledge = (
+            self._load_reference_knowledge()
+        )
+
+        knowledge_sample_count = int(
+            knowledge.get(
+                "sample_count",
+                0,
+            )
+        )
+
+        if knowledge_sample_count <= 0:
+
+            raise ValueError(
+                "Reference Knowledge is empty."
+            )
+
+        if output_dir is None:
+
+            output_dir = (
+                self.reference_learning_dir
+                / "generation"
+                / "evaluation"
+            )
+
+        output_dir = Path(
+            output_dir
+        )
+
+        output_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        rng = (
+            self._generation_rng(
+                seed
+            )
+        )
+
+        print()
+        print("=" * 60)
+        print(
+            "SIGNATURE MACHINE"
+        )
+        print(
+            "GENERATION v"
+            f"{GENERATION_VERSION}"
+        )
+        print("=" * 60)
+
+        print(
+            "Reference samples:"
+        )
+
+        print(
+            len(sample_dirs)
+        )
+
+        print(
+            "Knowledge samples:"
+        )
+
+        print(
+            knowledge_sample_count
+        )
+
+        print(
+            "Candidates:"
+        )
+
+        print(
+            count
+        )
+
+        print()
+
+        generated = []
+
+        failed = 0
+
+        for candidate_id in range(
+            1,
+            count + 1,
+        ):
+
+            try:
+
+                result = (
+                    self._generate_candidate(
+                        sample_dirs,
+                        rng,
+                        candidate_id,
+                        output_dir,
+                    )
+                )
+
+                generated.append(
+                    result
+                )
+
+                print(
+                    f"Candidate "
+                    f"{candidate_id:03d} "
+                    "OK"
+                )
+
+                print(
+                    "  source: "
+                    f"{result['source_sample_id']}"
+                )
+
+                print(
+                    "  strokes: "
+                    f"{result['stroke_count']}"
+                )
+
+                print(
+                    "  output: "
+                    f"{result['output']}"
+                )
+
+            except Exception as exc:
+
+                failed += 1
+
+                print(
+                    f"Candidate "
+                    f"{candidate_id:03d} "
+                    f"ERROR: {exc}"
+                )
+
+        print()
+
+        print(
+            "Generated:"
+            f" {len(generated)}"
+        )
+
+        print(
+            "Failed:"
+            f" {failed}"
+        )
+
+        print(
+            "GENERATION COMPLETE"
+        )
+
+        return {
+            "generation_version": (
+                GENERATION_VERSION
+            ),
+            "knowledge_sample_count": (
+                knowledge_sample_count
+            ),
+            "reference_sample_count": (
+                len(sample_dirs)
+            ),
+            "requested": count,
+            "generated": len(
+                generated
+            ),
+            "failed": failed,
+            "candidates": generated,
+            "output_dir": str(
+                output_dir
+            ),
+        }
 
 
 if __name__ == "__main__":

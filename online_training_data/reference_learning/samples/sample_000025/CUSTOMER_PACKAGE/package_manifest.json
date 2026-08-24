@@ -1,0 +1,42 @@
+{
+  "package_version": "025_plus_v2",
+  "sample_id": "sample_000025",
+  "standards": {
+    "assets": {
+      "size": [
+        2400,
+        1463
+      ],
+      "target_long_side": 2400,
+      "render_profile": "fountain_pen_v1",
+      "supersampling": 4
+    },
+    "video": {
+      "frame_size": [
+        1336,
+        512
+      ],
+      "fps": 60,
+      "duration_seconds": 14.38,
+      "centered": true
+    },
+    "pdf": {
+      "format": "A4",
+      "copies": 20,
+      "layout": "4x5",
+      "print_alpha": 0.58
+    }
+  },
+  "files": {
+    "assets": [
+      "01_FINAL_BLACK_ON_WHITE.png",
+      "02_BLACK_TRANSPARENT.png",
+      "03_WHITE_ON_BLACK.png",
+      "04_WHITE_TRANSPARENT.png"
+    ],
+    "training": [
+      "01_TRAINING.mp4",
+      "01_PRACTICE.pdf"
+    ]
+  }
+}
