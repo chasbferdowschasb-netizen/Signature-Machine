@@ -4,6 +4,8 @@
 Signature Machine
 Core v0.3
 
+Generation Engine: v0.3 whole-signature morphing
+
 Architecture:
 - library/ remains available for the legacy Dataset Audit.
 - online_training_data/reference_learning/samples/ is the ONLY source
@@ -63,10 +65,11 @@ REFERENCE_KNOWLEDGE_FILE = (
 # VERSION / CONFIG
 # ============================================================
 
-REFERENCE_KNOWLEDGE_VERSION = "0.3"
+REFERENCE_KNOWLEDGE_VERSION = "0.4"
+KNOWLEDGE_STORAGE_VERSION = "1.0"
 
 RESAMPLE_POINTS = 32
-GENERATION_VERSION = "0.1"
+GENERATION_VERSION = "0.3"
 
 GENERATION_DEFAULT_CANDIDATES = 3
 
@@ -140,6 +143,26 @@ class SignatureCore:
             / "samples"
         )
 
+        # Distributed Knowledge Store.
+        # Each reference sample owns its immutable sample_knowledge.json.
+        # The central files are lightweight index/aggregate artifacts only.
+        self.reference_knowledge_dir = (
+            self.reference_learning_dir
+            / "knowledge"
+        )
+
+        self.reference_knowledge_index_file = (
+            self.reference_knowledge_dir
+            / "index.json"
+        )
+
+        self.reference_knowledge_aggregate_file = (
+            self.reference_knowledge_dir
+            / "aggregate.json"
+        )
+
+        # Legacy monolithic Knowledge file.
+        # Read-only migration source; never used as the new source of truth.
         self.reference_knowledge_file = (
             self.reference_learning_dir
             / "reference_knowledge.json"
@@ -1703,7 +1726,7 @@ class SignatureCore:
         }
 
     # ========================================================
-    # KNOWLEDGE SCHEMA
+    # DISTRIBUTED KNOWLEDGE SCHEMA
     # ========================================================
 
     @classmethod
@@ -1712,24 +1735,18 @@ class SignatureCore:
     ) -> dict[str, Any]:
 
         return {
-            "schema_version": (
-                REFERENCE_KNOWLEDGE_VERSION
-            ),
+            "schema_version": REFERENCE_KNOWLEDGE_VERSION,
+            "storage_version": KNOWLEDGE_STORAGE_VERSION,
             "sample_count": 0,
             "sample_ids": [],
+            # Runtime index only. Full sample knowledge lives beside each sample.
             "samples": {},
             "feature_schema": {
-                "normalization": (
-                    "translation_and_global_scale"
-                ),
-                "stroke_resampling_points": (
-                    RESAMPLE_POINTS
-                ),
+                "normalization": "translation_and_global_scale",
+                "stroke_resampling_points": RESAMPLE_POINTS,
                 "cross_stroke_bridging": False,
                 "touch_points_are_valid": True,
-                "sample_weighting": (
-                    "equal_per_sample"
-                ),
+                "sample_weighting": "equal_per_sample",
                 "full_sample_trajectory": True,
                 "velocity_profile": True,
                 "pressure_profile": True,
@@ -1739,21 +1756,14 @@ class SignatureCore:
                 "tilt_and_twist_profile": True,
             },
             "learning_policy": {
-                "duplicate_sample_id": (
-                    "ignored"
-                ),
-                "duplicate_strokes_hash": (
-                    "ignored"
-                ),
-                "status_weighting": (
-                    "disabled"
-                ),
-                "pointer_type_filtering": (
-                    "disabled"
-                ),
-                "library_scanning_for_learning": (
-                    False
-                ),
+                "duplicate_sample_id": "ignored",
+                "duplicate_strokes_hash": "ignored",
+                "status_weighting": "disabled",
+                "pointer_type_filtering": "disabled",
+                "library_scanning_for_learning": False,
+                "source_of_truth": "per_sample_knowledge",
+                "incremental_updates": True,
+                "generated_signatures_are_reference": False,
             },
             "aggregate": {
                 "scalar_statistics": {},
@@ -1769,57 +1779,23 @@ class SignatureCore:
             },
         }
 
-    def _load_reference_knowledge(
-        self,
-    ) -> dict[str, Any]:
+    @staticmethod
+    def _write_json_atomic(
+        path: Path,
+        payload: dict[str, Any],
+    ) -> None:
 
-        if not (
-            self.reference_knowledge_file.exists()
-        ):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temp = path.with_suffix(path.suffix + ".tmp")
 
-            return (
-                self._new_knowledge()
-            )
+        with temp.open("w", encoding="utf-8") as file:
+            json.dump(payload, file, ensure_ascii=False, indent=2)
 
-        try:
+        temp.replace(path)
 
-            with self.reference_knowledge_file.open(
-                "r",
-                encoding="utf-8",
-            ) as file:
-
-                knowledge = (
-                    json.load(file)
-                )
-
-        except Exception:
-
-            return (
-                self._new_knowledge()
-            )
-        if (
-            knowledge.get(
-                "schema_version"
-            )
-            != REFERENCE_KNOWLEDGE_VERSION
-        ):
-            return (
-                self._new_knowledge()
-            )
-
-        # ----------------------------------------------------
-        # KNOWLEDGE STRUCTURE VALIDATION
-        #
-        # schema_version alone is not sufficient because an
-        # older/incomplete Knowledge file may have the same
-        # version number.
-        # ----------------------------------------------------
-
-        feature_schema = knowledge.get(
-            "feature_schema"
-        )
-
-        required_feature_schema = {
+    @staticmethod
+    def _required_feature_schema() -> set[str]:
+        return {
             "normalization",
             "stroke_resampling_points",
             "cross_stroke_bridging",
@@ -1834,61 +1810,22 @@ class SignatureCore:
             "tilt_and_twist_profile",
         }
 
-        if not isinstance(
-            feature_schema,
-            dict,
-        ):
-            return (
-                self._new_knowledge()
-            )
-
-        if not required_feature_schema.issubset(
-            feature_schema.keys()
-        ):
-            return (
-                self._new_knowledge()
-            )
-
-        # ----------------------------------------------------
-        # LEARNING POLICY VALIDATION
-        # ----------------------------------------------------
-
-        learning_policy = knowledge.get(
-            "learning_policy"
-        )
-
-        required_learning_policy = {
+    @staticmethod
+    def _required_learning_policy() -> set[str]:
+        return {
             "duplicate_sample_id",
             "duplicate_strokes_hash",
             "status_weighting",
             "pointer_type_filtering",
             "library_scanning_for_learning",
+            "source_of_truth",
+            "incremental_updates",
+            "generated_signatures_are_reference",
         }
 
-        if not isinstance(
-            learning_policy,
-            dict,
-        ):
-            return (
-                self._new_knowledge()
-            )
-
-        if not required_learning_policy.issubset(
-            learning_policy.keys()
-        ):
-            return (
-                self._new_knowledge()
-            )
-
-        # ----------------------------------------------------
-        # AGGREGATE STRUCTURE VALIDATION
-        # ----------------------------------------------------
-
-        aggregate = knowledge.get(
-            "aggregate"
-        )
-
-        required_aggregate = {
+    @staticmethod
+    def _required_aggregate() -> set[str]:
+        return {
             "scalar_statistics",
             "inter_stroke_gap_statistics",
             "stroke_duration_statistics",
@@ -1901,53 +1838,213 @@ class SignatureCore:
             "stroke_curvature_profiles",
         }
 
-        if not isinstance(
-            aggregate,
-            dict,
-        ):
-            return (
-                self._new_knowledge()
+    @classmethod
+    def _knowledge_structure_valid(
+        cls,
+        knowledge: Any,
+    ) -> bool:
+
+        if not isinstance(knowledge, dict):
+            return False
+
+        if knowledge.get("schema_version") != REFERENCE_KNOWLEDGE_VERSION:
+            return False
+
+        if knowledge.get("storage_version") != KNOWLEDGE_STORAGE_VERSION:
+            return False
+
+        feature_schema = knowledge.get("feature_schema")
+        learning_policy = knowledge.get("learning_policy")
+        aggregate = knowledge.get("aggregate")
+
+        if not isinstance(feature_schema, dict):
+            return False
+        if not cls._required_feature_schema().issubset(feature_schema.keys()):
+            return False
+        if not isinstance(learning_policy, dict):
+            return False
+        if not cls._required_learning_policy().issubset(learning_policy.keys()):
+            return False
+        if not isinstance(aggregate, dict):
+            return False
+        if not cls._required_aggregate().issubset(aggregate.keys()):
+            return False
+
+        if not isinstance(knowledge.get("samples"), dict):
+            return False
+        if not isinstance(knowledge.get("sample_ids"), list):
+            return False
+        if knowledge.get("sample_count") != len(knowledge.get("sample_ids", [])):
+            return False
+
+        return True
+
+    def _sample_knowledge_file(
+        self,
+        sample_dir: Path,
+    ) -> Path:
+        return Path(sample_dir) / "sample_knowledge.json"
+
+    def _sample_knowledge_document(
+        self,
+        sample_dir: Path,
+        features: dict[str, Any],
+        strokes_hash: str,
+    ) -> dict[str, Any]:
+
+        return {
+            "knowledge_version": REFERENCE_KNOWLEDGE_VERSION,
+            "storage_version": KNOWLEDGE_STORAGE_VERSION,
+            "sample_id": str(features["sample_id"]),
+            "source": {
+                "sample_dir": str(sample_dir),
+                "strokes_file": str(Path(sample_dir) / "strokes.json"),
+                "strokes_sha256": strokes_hash,
+            },
+            "features": {
+                "stroke_count": features["stroke_count"],
+                "point_count": features["point_count"],
+                "touch_point_count": features["touch_point_count"],
+                "normalized_bbox": features["normalized_bbox"],
+                "path_length": features["path_length"],
+                "active_time_ms": features["active_time_ms"],
+                "mean_speed": features["mean_speed"],
+                "mean_direction_change": features["mean_direction_change"],
+                "pressure_mean": features["pressure_mean"],
+                "pressure_variance": features["pressure_variance"],
+                "normalized_strokes": features["normalized_strokes"],
+                "stroke_features": features["stroke_features"],
+                "inter_stroke_gaps_ms": features["inter_stroke_gaps_ms"],
+            },
+        }
+
+    def _write_sample_knowledge(
+        self,
+        sample_dir: Path,
+        features: dict[str, Any],
+        strokes_hash: str,
+    ) -> None:
+
+        document = self._sample_knowledge_document(
+            sample_dir,
+            features,
+            strokes_hash,
+        )
+
+        self._write_json_atomic(
+            self._sample_knowledge_file(sample_dir),
+            document,
+        )
+
+    def _load_reference_knowledge(
+        self,
+    ) -> dict[str, Any]:
+
+        index_payload = None
+        aggregate_payload = None
+
+        if self.reference_knowledge_index_file.exists():
+            try:
+                with self.reference_knowledge_index_file.open("r", encoding="utf-8") as file:
+                    index_payload = json.load(file)
+            except Exception:
+                index_payload = None
+
+        if self.reference_knowledge_aggregate_file.exists():
+            try:
+                with self.reference_knowledge_aggregate_file.open("r", encoding="utf-8") as file:
+                    aggregate_payload = json.load(file)
+            except Exception:
+                aggregate_payload = None
+
+        if isinstance(index_payload, dict) and isinstance(aggregate_payload, dict):
+            knowledge = self._new_knowledge()
+            knowledge["schema_version"] = index_payload.get("schema_version")
+            knowledge["storage_version"] = index_payload.get("storage_version")
+            knowledge["sample_count"] = int(index_payload.get("sample_count", 0))
+            knowledge["sample_ids"] = list(index_payload.get("sample_ids", []))
+            knowledge["samples"] = dict(index_payload.get("samples", {}))
+            knowledge["feature_schema"] = dict(index_payload.get("feature_schema", knowledge["feature_schema"]))
+            knowledge["learning_policy"] = dict(index_payload.get("learning_policy", knowledge["learning_policy"]))
+            knowledge["aggregate"] = aggregate_payload.get("aggregate", aggregate_payload)
+
+            if self._knowledge_structure_valid(knowledge):
+                return knowledge
+
+        # One-time migration source. The old monolithic file is never written again.
+        if self.reference_knowledge_file.exists():
+            migrated = self._migrate_legacy_reference_knowledge()
+            if migrated is not None:
+                return migrated
+
+        return self._new_knowledge()
+
+    def _migrate_legacy_reference_knowledge(
+        self,
+    ) -> dict[str, Any] | None:
+
+        try:
+            with self.reference_knowledge_file.open("r", encoding="utf-8") as file:
+                legacy = json.load(file)
+        except Exception:
+            return None
+
+        if not isinstance(legacy, dict):
+            return None
+
+        legacy_samples = legacy.get("samples")
+        legacy_ids = legacy.get("sample_ids")
+        legacy_aggregate = legacy.get("aggregate")
+
+        if not isinstance(legacy_samples, dict) or not isinstance(legacy_ids, list):
+            return None
+        if not isinstance(legacy_aggregate, dict):
+            return None
+
+        knowledge = self._new_knowledge()
+        knowledge["aggregate"] = legacy_aggregate
+
+        for sample_id in sorted(str(x) for x in legacy_ids):
+            sample_dir = self.reference_samples_dir / sample_id
+            legacy_sample = legacy_samples.get(sample_id)
+
+            if not sample_dir.is_dir() or not isinstance(legacy_sample, dict):
+                continue
+
+            strokes_path = sample_dir / "strokes.json"
+            if not strokes_path.is_file():
+                continue
+
+            strokes_hash = str(legacy_sample.get("strokes_sha256") or self.calculate_hash(strokes_path))
+
+            document = {
+                "knowledge_version": REFERENCE_KNOWLEDGE_VERSION,
+                "storage_version": KNOWLEDGE_STORAGE_VERSION,
+                "sample_id": sample_id,
+                "source": {
+                    "sample_dir": str(sample_dir),
+                    "strokes_file": str(strokes_path),
+                    "strokes_sha256": strokes_hash,
+                    "migrated_from": "reference_knowledge.json",
+                },
+                "features": legacy_sample,
+            }
+
+            self._write_json_atomic(
+                self._sample_knowledge_file(sample_dir),
+                document,
             )
 
-        if not required_aggregate.issubset(
-            aggregate.keys()
-        ):
-            return (
-                self._new_knowledge()
-            )
+            knowledge["samples"][sample_id] = {
+                "sample_id": sample_id,
+                "strokes_sha256": strokes_hash,
+                "knowledge_file": str(self._sample_knowledge_file(sample_dir)),
+            }
+            knowledge["sample_ids"].append(sample_id)
 
-        # ----------------------------------------------------
-        # BASIC SAMPLE STRUCTURE VALIDATION
-        # ----------------------------------------------------
-
-        if not isinstance(
-            knowledge.get("samples"),
-            dict,
-        ):
-            return (
-                self._new_knowledge()
-            )
-
-        if not isinstance(
-            knowledge.get("sample_ids"),
-            list,
-        ):
-            return (
-                self._new_knowledge()
-            )
-
-        if (
-            knowledge.get("sample_count")
-            != len(
-                knowledge.get(
-                    "sample_ids",
-                    [],
-                )
-            )
-        ):
-            return (
-                self._new_knowledge()
-            )
+        knowledge["sample_ids"].sort()
+        knowledge["sample_count"] = len(knowledge["sample_ids"])
+        self._save_reference_knowledge(knowledge)
 
         return knowledge
 
@@ -1956,32 +2053,32 @@ class SignatureCore:
         knowledge: dict[str, Any],
     ) -> None:
 
-        self.reference_learning_dir.mkdir(
-            parents=True,
-            exist_ok=True,
+        self.reference_knowledge_dir.mkdir(parents=True, exist_ok=True)
+
+        index_payload = {
+            "schema_version": REFERENCE_KNOWLEDGE_VERSION,
+            "storage_version": KNOWLEDGE_STORAGE_VERSION,
+            "sample_count": int(knowledge.get("sample_count", 0)),
+            "sample_ids": list(knowledge.get("sample_ids", [])),
+            "samples": dict(knowledge.get("samples", {})),
+            "feature_schema": dict(knowledge.get("feature_schema", {})),
+            "learning_policy": dict(knowledge.get("learning_policy", {})),
+        }
+
+        aggregate_payload = {
+            "schema_version": REFERENCE_KNOWLEDGE_VERSION,
+            "storage_version": KNOWLEDGE_STORAGE_VERSION,
+            "sample_count": int(knowledge.get("sample_count", 0)),
+            "aggregate": knowledge.get("aggregate", {}),
+        }
+
+        self._write_json_atomic(
+            self.reference_knowledge_index_file,
+            index_payload,
         )
-
-        temp = (
-            self.reference_knowledge_file
-            .with_suffix(
-                ".tmp"
-            )
-        )
-
-        with temp.open(
-            "w",
-            encoding="utf-8",
-        ) as file:
-
-            json.dump(
-                knowledge,
-                file,
-                ensure_ascii=False,
-                indent=2,
-            )
-
-        temp.replace(
-            self.reference_knowledge_file
+        self._write_json_atomic(
+            self.reference_knowledge_aggregate_file,
+            aggregate_payload,
         )
 
     # ========================================================
@@ -2106,79 +2203,17 @@ class SignatureCore:
                 return False
 
         # ----------------------------------------------------
-        # Store complete sample
+        # Store only compact metadata in the central index.
+        # Full sample knowledge is stored beside the sample.
         # ----------------------------------------------------
 
-        knowledge[
-            "samples"
-        ][sample_id] = {
-            "strokes_sha256": (
-                strokes_hash
-            ),
-            "stroke_count": (
-                features[
-                    "stroke_count"
-                ]
-            ),
-            "point_count": (
-                features[
-                    "point_count"
-                ]
-            ),
-            "touch_point_count": (
-                features[
-                    "touch_point_count"
-                ]
-            ),
-            "normalized_bbox": (
-                features[
-                    "normalized_bbox"
-                ]
-            ),
-            "path_length": (
-                features[
-                    "path_length"
-                ]
-            ),
-            "active_time_ms": (
-                features[
-                    "active_time_ms"
-                ]
-            ),
-            "mean_speed": (
-                features[
-                    "mean_speed"
-                ]
-            ),
-            "mean_direction_change": (
-                features[
-                    "mean_direction_change"
-                ]
-            ),
-            "pressure_mean": (
-                features[
-                    "pressure_mean"
-                ]
-            ),
-            "pressure_variance": (
-                features[
-                    "pressure_variance"
-                ]
-            ),
-            "normalized_strokes": (
-                features[
-                    "normalized_strokes"
-                ]
-            ),
-            "stroke_features": (
-                features[
-                    "stroke_features"
-                ]
-            ),
-            "inter_stroke_gaps_ms": (
-                features[
-                    "inter_stroke_gaps_ms"
-                ]
+        sample_dir = self.reference_samples_dir / sample_id
+
+        knowledge["samples"][sample_id] = {
+            "sample_id": sample_id,
+            "strokes_sha256": strokes_hash,
+            "knowledge_file": str(
+                self._sample_knowledge_file(sample_dir)
             ),
         }
 
@@ -2594,6 +2629,13 @@ class SignatureCore:
             )
         )
 
+        if added:
+            self._write_sample_knowledge(
+                strokes_path.parent,
+                features,
+                strokes_hash,
+            )
+
         return {
             "sample_id": sample_id,
             "added": added,
@@ -2613,455 +2655,167 @@ class SignatureCore:
     ) -> dict[str, Any]:
 
         """
-        Normal learning path.
+        Incremental learning using the distributed Knowledge Store.
 
-        IMPORTANT:
-        This method ONLY scans:
+        Source of truth:
+            samples/<sample_id>/strokes.json
+            samples/<sample_id>/sample_knowledge.json
 
-            online_training_data/
-            reference_learning/
-            samples/
+        Central knowledge files contain only:
+            knowledge/index.json
+            knowledge/aggregate.json
 
-        It NEVER scans library/.
-
-        If Knowledge schema is old, all existing reference samples
-        are rebuilt once. Future runs are incremental.
+        The legacy reference_knowledge.json is migration-only and is
+        never written by this learning path.
         """
 
-        sample_dirs = (
-            self._reference_sample_dirs()
-        )
+        sample_dirs = self._reference_sample_dirs()
+        knowledge = self._load_reference_knowledge()
 
-        # ----------------------------------------------------
-        # Detect old/new schema.
-        # ----------------------------------------------------
+        learned_ids = set(knowledge.get("sample_ids", []))
+        pending: list[tuple[Path, str]] = []
 
-        existing_knowledge = None
-
-        if (
-            self.reference_knowledge_file.exists()
-        ):
+        for sample_dir in sample_dirs:
+            strokes_path = sample_dir / "strokes.json"
 
             try:
-
-                with (
-                    self.reference_knowledge_file.open(
-                        "r",
-                        encoding="utf-8",
-                    )
-                ) as file:
-
-                    existing_knowledge = (
-                        json.load(file)
-                    )
-
-            except Exception:
-
-                existing_knowledge = None
-
-                # ----------------------------------------------------
-        # Detect old/incomplete Knowledge.
-        #
-        # schema_version alone is NOT sufficient because an
-        # older Knowledge file may have the same version number
-        # while still using an incomplete feature schema.
-        # ----------------------------------------------------
-
-        required_feature_schema = {
-            "normalization",
-            "stroke_resampling_points",
-            "cross_stroke_bridging",
-            "touch_points_are_valid",
-            "sample_weighting",
-            "full_sample_trajectory",
-            "velocity_profile",
-            "pressure_profile",
-            "direction_profile",
-            "curvature_profile",
-            "inter_stroke_timing",
-            "tilt_and_twist_profile",
-        }
-
-        required_learning_policy = {
-            "duplicate_sample_id",
-            "duplicate_strokes_hash",
-            "status_weighting",
-            "pointer_type_filtering",
-            "library_scanning_for_learning",
-        }
-
-        required_aggregate = {
-            "scalar_statistics",
-            "inter_stroke_gap_statistics",
-            "stroke_duration_statistics",
-            "stroke_path_length_statistics",
-            "stroke_speed_statistics",
-            "stroke_profiles",
-            "stroke_velocity_profiles",
-            "stroke_pressure_profiles",
-            "stroke_direction_profiles",
-            "stroke_curvature_profiles",
-        }
-
-        knowledge_structure_valid = False
-
-        if isinstance(
-            existing_knowledge,
-            dict,
-        ):
-
-            feature_schema = (
-                existing_knowledge.get(
-                    "feature_schema"
-                )
-            )
-
-            learning_policy = (
-                existing_knowledge.get(
-                    "learning_policy"
-                )
-            )
-
-            aggregate = (
-                existing_knowledge.get(
-                    "aggregate"
-                )
-            )
-
-            knowledge_structure_valid = (
-                existing_knowledge.get(
-                    "schema_version"
-                )
-                == REFERENCE_KNOWLEDGE_VERSION
-                and isinstance(
-                    feature_schema,
-                    dict,
-                )
-                and required_feature_schema.issubset(
-                    feature_schema.keys()
-                )
-                and isinstance(
-                    learning_policy,
-                    dict,
-                )
-                and required_learning_policy.issubset(
-                    learning_policy.keys()
-                )
-                and isinstance(
-                    aggregate,
-                    dict,
-                )
-                and required_aggregate.issubset(
-                    aggregate.keys()
-                )
-                and isinstance(
-                    existing_knowledge.get(
-                        "samples"
-                    ),
-                    dict,
-                )
-                and isinstance(
-                    existing_knowledge.get(
-                        "sample_ids"
-                    ),
-                    list,
-                )
-            )
-
-        schema_changed = (
-            existing_knowledge is not None
-            and not knowledge_structure_valid
-        )
-
-
-        if existing_knowledge is None:
-
-            knowledge = (
-                self._new_knowledge()
-            )
-
-            rebuild = False
-
-        elif schema_changed:
-
-            knowledge = (
-                self._new_knowledge()
-            )
-
-            rebuild = True
-
-        else:
-
-            knowledge = (
-                existing_knowledge
-            )
-
-            rebuild = False
-
-        learned_ids = set(
-            knowledge.get(
-                "sample_ids",
-                [],
-            )
-        )
-
-        pending = []
-
-        for sample_dir in (
-            sample_dirs
-        ):
-
-            strokes_path = (
-                sample_dir
-                / "strokes.json"
-            )
-
-            try:
-
-                with strokes_path.open(
-                    "r",
-                    encoding="utf-8",
-                ) as file:
-
-                    payload = json.load(
-                        file
-                    )
-
+                with strokes_path.open("r", encoding="utf-8") as file:
+                    payload = json.load(file)
             except Exception as exc:
-
-                print(
-                    f"{sample_dir.name:<20}"
-                    f"ERROR reading JSON: "
-                    f"{exc}"
-                )
-
+                print(f"{sample_dir.name:<20}ERROR reading JSON: {exc}")
                 continue
 
-            sample_id = str(
-                payload.get(
-                    "sample_id"
+            sample_id = str(payload.get("sample_id") or sample_dir.name)
+            knowledge_file = self._sample_knowledge_file(sample_dir)
+            strokes_hash = self.calculate_hash(strokes_path)
+
+            index_entry = knowledge.get("samples", {}).get(sample_id, {})
+            index_hash = str(index_entry.get("strokes_sha256", ""))
+
+            if sample_id not in learned_ids:
+                # Genuinely new reference sample. Add it to the aggregate once.
+                pending.append((sample_dir, sample_id))
+                continue
+
+            if index_hash != strokes_hash:
+                # Reference samples are immutable. We must never silently add a
+                # changed version to an aggregate that already contains the old one.
+                raise RuntimeError(
+                    "REFERENCE SAMPLE CHANGED AFTER LEARNING: "
+                    f"{sample_id}. Raw reference samples are immutable; "
+                    "restore the original strokes.json or perform an explicit rebuild."
                 )
-                or sample_dir.name
-            )
 
-            if (
-                rebuild
-                or sample_id
-                not in learned_ids
-            ):
-
-                pending.append(
-                    (
+            if not knowledge_file.is_file():
+                # The aggregate is already correct; recreate only the local
+                # per-sample knowledge document from the raw sample.
+                try:
+                    features = self._extract_reference_features(payload)
+                    features["sample_id"] = sample_id
+                    self._write_sample_knowledge(
                         sample_dir,
-                        sample_id,
+                        features,
+                        strokes_hash,
                     )
-                )
-
-        # ----------------------------------------------------
-        # Header
-        # ----------------------------------------------------
+                    print(f"{sample_id:<20}RESTORED")
+                except Exception as exc:
+                    raise RuntimeError(
+                        f"Unable to restore sample knowledge for {sample_id}: {exc}"
+                    ) from exc
 
         print()
         print("=" * 60)
-        print(
-            "SIGNATURE MACHINE"
-        )
-        print(
-            "ONLINE REFERENCE LEARNING"
-        )
+        print("SIGNATURE MACHINE")
+        print("ONLINE REFERENCE LEARNING")
         print("=" * 60)
-
-        print(
-            "Reference samples path:"
-        )
-
-        print(
-            self.reference_samples_dir
-        )
-
-        print(
-            f"Samples discovered: "
-            f"{len(sample_dirs)}"
-        )
-
-        if rebuild:
-
-            print(
-                "Knowledge schema:     "
-                f"{REFERENCE_KNOWLEDGE_VERSION}"
-            )
-
-            print(
-                "Previous schema:      "
-                f"{existing_knowledge.get('schema_version')}"
-            )
-
-            print(
-                "Mode:                 "
-                "REBUILD"
-            )
-
-            print(
-                f"Samples to rebuild:   "
-                f"{len(pending)}"
-            )
-
-        else:
-
-            already_learned = (
-                len(
-                    sample_dirs
-                )
-                - len(
-                    pending
-                )
-            )
-
-            print(
-                f"Already learned:    "
-                f"{already_learned}"
-            )
-
-            print(
-                f"New samples:        "
-                f"{len(pending)}"
-            )
-
+        print("Reference samples path:")
+        print(self.reference_samples_dir)
+        print(f"Samples discovered: {len(sample_dirs)}")
+        print(f"Already learned:    {len(sample_dirs) - len(pending)}")
+        print(f"New/changed samples: {len(pending)}")
         print()
 
         added = 0
         failed = 0
 
-        # ----------------------------------------------------
-        # Process only pending samples.
-        # ----------------------------------------------------
-
-        for (
-            sample_dir,
-            sample_id,
-        ) in pending:
-
+        for sample_dir, sample_id in pending:
             try:
-
-                result = (
-                    self.learn_sample(
-                        sample_dir,
-                        knowledge=knowledge,
-                    )
+                result = self.learn_sample(
+                    sample_dir,
+                    knowledge=knowledge,
                 )
 
-                if result[
-                    "added"
-                ]:
-
+                if result["added"]:
                     added += 1
-
-                    print(
-                        f"{sample_id:<20}"
-                        "OK"
-                    )
-
+                    print(f"{sample_id:<20}OK")
                 else:
-
-                    print(
-                        f"{sample_id:<20}"
-                        "SKIPPED"
-                    )
+                    print(f"{sample_id:<20}SKIPPED")
 
             except Exception as exc:
-
                 failed += 1
+                print(f"{sample_id:<20}ERROR: {exc}")
 
-                print(
-                    f"{sample_id:<20}"
-                    f"ERROR: {exc}"
-                )
-
-        # ----------------------------------------------------
-        # Save ONE time at the end.
-        #
-        # This avoids repeatedly writing a potentially large
-        # Knowledge file for every sample.
-        # ----------------------------------------------------
-
-        self._save_reference_knowledge(
-            knowledge
-        )
+        self._save_reference_knowledge(knowledge)
 
         print()
-
-        print(
-            f"Knowledge samples: "
-            f"{knowledge.get('sample_count', 0)}"
-        )
-
-        print(
-            "Knowledge file:    "
-            f"{self.reference_knowledge_file}"
-        )
-
-        print(
-            f"Processed:         "
-            f"{len(pending)}"
-        )
-
-        print(
-            f"Added:             "
-            f"{added}"
-        )
-
+        print(f"Knowledge samples: {knowledge.get('sample_count', 0)}")
+        print(f"Knowledge index:   {self.reference_knowledge_index_file}")
+        print(f"Knowledge aggregate: {self.reference_knowledge_aggregate_file}")
+        print(f"Processed:         {len(pending)}")
+        print(f"Added:             {added}")
         if failed:
-
-            print(
-                f"Failed:            "
-                f"{failed}"
-            )
-
-        print(
-            "ONLINE REFERENCE LEARNING COMPLETE"
-        )
+            print(f"Failed:            {failed}")
+        print("ONLINE REFERENCE LEARNING COMPLETE")
 
         return {
-            "discovered": len(
-                sample_dirs
-            ),
-            "rebuild": rebuild,
-            "processed": len(
-                pending
-            ),
+            "discovered": len(sample_dirs),
+            "processed": len(pending),
             "added": added,
             "failed": failed,
-            "sample_count": (
-                knowledge.get(
-                    "sample_count",
-                    0,
-                )
-            ),
-            "knowledge_file": str(
-                self.reference_knowledge_file
+            "sample_count": knowledge.get("sample_count", 0),
+            "knowledge_index": str(self.reference_knowledge_index_file),
+            "knowledge_aggregate": str(self.reference_knowledge_aggregate_file),
+        }
+
+    def validate_reference_knowledge_sync(
+        self,
+    ) -> dict[str, Any]:
+
+        """Validate that every reference sample is represented in Knowledge."""
+
+        sample_dirs = self._reference_sample_dirs()
+        knowledge = self._load_reference_knowledge()
+        learned_ids = set(knowledge.get("sample_ids", []))
+
+        missing: list[str] = []
+        stale: list[str] = []
+
+        for sample_dir in sample_dirs:
+            sample_id = sample_dir.name
+            strokes_path = sample_dir / "strokes.json"
+            knowledge_file = self._sample_knowledge_file(sample_dir)
+            index_entry = knowledge.get("samples", {}).get(sample_id, {})
+
+            if sample_id not in learned_ids or not knowledge_file.is_file():
+                missing.append(sample_id)
+                continue
+
+            current_hash = self.calculate_hash(strokes_path)
+            if str(index_entry.get("strokes_sha256", "")) != current_hash:
+                stale.append(sample_id)
+
+        return {
+            "reference_sample_count": len(sample_dirs),
+            "knowledge_sample_count": int(knowledge.get("sample_count", 0)),
+            "missing": sorted(missing),
+            "stale": sorted(stale),
+            "in_sync": (
+                len(sample_dirs) == int(knowledge.get("sample_count", 0))
+                and not missing
+                and not stale
             ),
         }
 
-
-# ============================================================
-# MAIN
-# ============================================================
-
-def main() -> None:
-
-    # IMPORTANT:
-    #
-    # Normal execution NEVER scans library/.
-    #
-    # The learning source is exclusively:
-    #
-    # online_training_data/
-    #     reference_learning/
-    #         samples/
-    #
-    SignatureCore().learn_reference_samples()
-
-        # ========================================================
     # GENERATION
     # ========================================================
 
@@ -3493,11 +3247,152 @@ def main() -> None:
         source_sample_id: str,
     ) -> None:
 
+        # ----------------------------------------------------
+        # VALIDATION
+        # ----------------------------------------------------
+
+        if not strokes:
+
+            raise ValueError(
+                "Cannot render candidate: "
+                "no strokes."
+            )
+
+        all_points = [
+            point
+            for stroke in strokes
+            for point in stroke
+            if isinstance(point, dict)
+        ]
+
+        if not all_points:
+
+            raise ValueError(
+                "Cannot render candidate: "
+                "no points."
+            )
+
+        # ----------------------------------------------------
+        # Extract coordinates
+        # ----------------------------------------------------
+
+        coordinates = []
+
+        for point in all_points:
+
+            try:
+
+                x = float(
+                    point["x"]
+                )
+
+                y = float(
+                    point["y"]
+                )
+
+            except (
+                KeyError,
+                TypeError,
+                ValueError,
+            ):
+
+                continue
+
+            if (
+                math.isfinite(x)
+                and math.isfinite(y)
+            ):
+
+                coordinates.append(
+                    (
+                        x,
+                        y,
+                    )
+                )
+
+        if not coordinates:
+
+            raise ValueError(
+                "Candidate contains no "
+                "finite coordinates."
+            )
+
+        # ----------------------------------------------------
+        # Bounding box
+        # ----------------------------------------------------
+
+        min_x = min(
+            x
+            for x, y in coordinates
+        )
+
+        max_x = max(
+            x
+            for x, y in coordinates
+        )
+
+        min_y = min(
+            y
+            for x, y in coordinates
+        )
+
+        max_y = max(
+            y
+            for x, y in coordinates
+        )
+
+        width = max(
+            max_x - min_x,
+            1e-9,
+        )
+
+        height = max(
+            max_y - min_y,
+            1e-9,
+        )
+
+        # ----------------------------------------------------
+        # Canvas
+        # ----------------------------------------------------
+
+        canvas_width = (
+            GENERATION_CANVAS_WIDTH
+        )
+
+        canvas_height = (
+            GENERATION_CANVAS_HEIGHT
+        )
+
+        margin = (
+            GENERATION_MARGIN
+        )
+
+        available_width = max(
+            canvas_width
+            - 2 * margin,
+            1,
+        )
+
+        available_height = max(
+            canvas_height
+            - 2 * margin,
+            1,
+        )
+
+        scale = min(
+            available_width / width,
+            available_height / height,
+        )
+
+        # ----------------------------------------------------
+        # Create image
+        # ----------------------------------------------------
+
         image = Image.new(
             "RGB",
             (
-                GENERATION_CANVAS_WIDTH,
-                GENERATION_CANVAS_HEIGHT,
+                canvas_width,
+                canvas_height,
             ),
             "white",
         )
@@ -3506,132 +3401,162 @@ def main() -> None:
             image
         )
 
-        all_points = [
-            point
-            for stroke in strokes
-            for point in stroke
-        ]
+        rendered_stroke_count = 0
+        rendered_segment_count = 0
 
-        if not all_points:
-
-            raise ValueError(
-                "Cannot render empty candidate."
-            )
-
-        min_x = min(
-            point["x"]
-            for point in all_points
-        )
-
-        max_x = max(
-            point["x"]
-            for point in all_points
-        )
-
-        min_y = min(
-            point["y"]
-            for point in all_points
-        )
-
-        max_y = max(
-            point["y"]
-            for point in all_points
-        )
-
-        width = max(
-            max_x - min_x,
-            0.001,
-        )
-
-        height = max(
-            max_y - min_y,
-            0.001,
-        )
-
-        available_width = (
-            GENERATION_CANVAS_WIDTH
-            - 2
-            * GENERATION_MARGIN
-        )
-
-        available_height = (
-            GENERATION_CANVAS_HEIGHT
-            - 2
-            * GENERATION_MARGIN
-        )
-
-        scale = min(
-            available_width / width,
-            available_height / height,
-        )
+        # ----------------------------------------------------
+        # Render every real trajectory
+        # ----------------------------------------------------
 
         for stroke in strokes:
 
-            if len(stroke) < 2:
+            if not stroke:
                 continue
 
             rendered = []
 
             for point in stroke:
 
-                x = (
-                    GENERATION_MARGIN
-                    + (
+                try:
+
+                    x = float(
                         point["x"]
-                        - min_x
+                    )
+
+                    y = float(
+                        point["y"]
+                    )
+
+                except (
+                    KeyError,
+                    TypeError,
+                    ValueError,
+                ):
+
+                    continue
+
+                if not (
+                    math.isfinite(x)
+                    and math.isfinite(y)
+                ):
+
+                    continue
+
+                px = (
+                    margin
+                    + (
+                        x - min_x
                     )
                     * scale
                 )
 
-                y = (
-                    GENERATION_MARGIN
+                py = (
+                    margin
                     + (
-                        point["y"]
-                        - min_y
+                        y - min_y
                     )
                     * scale
                 )
 
                 rendered.append(
                     (
-                        int(x),
-                        int(y),
+                        int(
+                            round(px)
+                        ),
+                        int(
+                            round(py)
+                        ),
                     )
                 )
+
+            if not rendered:
+                continue
+
+            rendered_stroke_count += 1
+
+            # ------------------------------------------------
+            # Normal stroke
+            # ------------------------------------------------
 
             if len(rendered) >= 2:
 
                 draw.line(
                     rendered,
-                    width=GENERATION_STROKE_WIDTH,
+                    fill="black",
+                    width=max(
+                        1,
+                        int(
+                            GENERATION_STROKE_WIDTH
+                        ),
+                    ),
                     joint="curve",
                 )
 
-        label = (
-            "STYLE EVALUATION — "
-            "NOT FOR SIGNING"
-        )
+                rendered_segment_count += (
+                    len(rendered) - 1
+                )
 
-        draw.text(
-            (
-                25,
-                GENERATION_CANVAS_HEIGHT - 35,
-            ),
-            label,
-        )
+            # ------------------------------------------------
+            # Single-point stroke
+            #
+            # Some reference signatures may contain
+            # intentional isolated pen marks.
+            # ------------------------------------------------
 
-        metadata = (
-            f"Candidate {candidate_id:03d} | "
-            f"Source {source_sample_id}"
-        )
+            elif len(rendered) == 1:
 
-        draw.text(
-            (
-                25,
-                15,
-            ),
-            metadata,
-        )
+                x, y = rendered[0]
+
+                radius = max(
+                    1,
+                    int(
+                        GENERATION_STROKE_WIDTH
+                        / 2
+                    ),
+                )
+
+                draw.ellipse(
+                    (
+                        x - radius,
+                        y - radius,
+                        x + radius,
+                        y + radius,
+                    ),
+                    fill="black",
+                )
+
+        # ----------------------------------------------------
+        # HARD FAILURE if nothing was actually drawn
+        # ----------------------------------------------------
+
+        if rendered_stroke_count == 0:
+
+            raise ValueError(
+                "Generation renderer produced "
+                "zero drawable strokes."
+            )
+
+        if rendered_segment_count == 0:
+
+            # At least one isolated point is allowed,
+            # but completely empty rendering is not.
+            if not any(
+                stroke
+                for stroke in strokes
+            ):
+
+                raise ValueError(
+                    "Generation renderer produced "
+                    "no drawable content."
+                )
+
+        # ----------------------------------------------------
+        # Save PURE SIGNATURE IMAGE
+        #
+        # No metadata
+        # No evaluation label
+        # No watermark
+        # ----------------------------------------------------
 
         output_path.parent.mkdir(
             parents=True,
@@ -3643,40 +3568,1329 @@ def main() -> None:
             format="PNG",
         )
 
+        # ----------------------------------------------------
+        # Final verification
+        # ----------------------------------------------------
+
+        if not output_path.is_file():
+
+            raise IOError(
+                "Generation output was not created: "
+                f"{output_path}"
+            )
+
+        # Verify that image contains at least
+        # one non-white pixel.
+        #
+        # This prevents a silent white PNG from
+        # being reported as successful.
+        # ----------------------------------------------------
+
+        verification = image.convert(
+            "RGB"
+        )
+
+        non_white = False
+
+        for pixel in verification.getdata():
+
+            if pixel != (
+                255,
+                255,
+                255,
+            ):
+
+                non_white = True
+                break
+
+        if not non_white:
+
+            raise ValueError(
+                "Generation output is completely "
+                "white."
+            )
+        # --------------------------------------------------------
+    # Select multiple real reference samples
+    #
+    # Generation v0.2:
+    #
+    # A candidate is no longer derived from one reference
+    # sample only.
+    #
+    # The structural skeleton comes from one real sample,
+    # while individual strokes may be borrowed from other
+    # real reference samples.
+    #
+    # No synthetic trajectory is created.
+    # --------------------------------------------------------
+
+    def _select_generation_sources(
+        self,
+        sample_dirs: list[Path],
+        rng: random.Random,
+        count: int = 3,
+    ) -> list[Path]:
+
+        if not sample_dirs:
+
+            raise ValueError(
+                "No reference samples available."
+            )
+
+        if count <= 0:
+
+            count = 1
+
+        if len(sample_dirs) <= count:
+
+            result = list(
+                sample_dirs
+            )
+
+            rng.shuffle(
+                result
+            )
+
+            return result
+
+        return rng.sample(
+            sample_dirs,
+            count,
+        )
+
+    # --------------------------------------------------------
+    # Blend real strokes
+    #
+    # IMPORTANT:
+    #
+    # Every output stroke originates from an actual reference
+    # trajectory.
+    #
+    # We never interpolate arbitrary points between unrelated
+    # trajectories and never invent a new curve.
+    # --------------------------------------------------------
+
+    @classmethod
+    def _compose_generation_strokes(
+        cls,
+        sources: list[
+            dict[str, Any]
+        ],
+        rng: random.Random,
+    ) -> tuple[
+        list[
+            list[
+                dict[str, float]
+            ]
+        ],
+        list[str],
+    ]:
+
+        if not sources:
+
+            raise ValueError(
+                "No generation sources available."
+            )
+
+        # ----------------------------------------------------
+        # Select structural base.
+        #
+        # The first source defines the stroke count.
+        # ----------------------------------------------------
+
+        base = sources[
+            0
+        ]
+
+        base_strokes = (
+            cls._normalize_generation_strokes(
+                base["strokes"]
+            )
+        )
+
+        if not base_strokes:
+
+            raise ValueError(
+                "Base reference contains no strokes."
+            )
+
+        composed = []
+
+        source_ids = [
+            str(
+                source[
+                    "sample_id"
+                ]
+            )
+            for source in sources
+        ]
+
+        # ----------------------------------------------------
+        # Each stroke comes from a real reference.
+        #
+        # We prefer references that contain the requested
+        # stroke index. If they do not, we fall back to the
+        # structural base.
+        # ----------------------------------------------------
+
+        for stroke_index in range(
+            len(base_strokes)
+        ):
+
+            eligible = [
+                source
+                for source in sources
+                if stroke_index
+                < len(
+                    source[
+                        "strokes"
+                    ]
+                )
+            ]
+
+            if not eligible:
+
+                eligible = [
+                    base
+                ]
+
+            selected_source = (
+                rng.choice(
+                    eligible
+                )
+            )
+
+            normalized = (
+                cls._normalize_generation_strokes(
+                    selected_source[
+                        "strokes"
+                    ]
+                )
+            )
+
+            selected_stroke = (
+                normalized[
+                    stroke_index
+                ]
+            )
+
+            # Make a deep numeric copy so that later
+            # variation never mutates the source data.
+            copied_stroke = []
+
+            for point in selected_stroke:
+
+                copied_stroke.append(
+                    {
+                        "x": float(
+                            point["x"]
+                        ),
+                        "y": float(
+                            point["y"]
+                        ),
+                        "pressure": float(
+                            point.get(
+                                "pressure",
+                                0.0,
+                            )
+                        ),
+                    }
+                )
+
+            composed.append(
+                copied_stroke
+            )
+
+        return (
+            composed,
+            source_ids,
+        )
+
     # --------------------------------------------------------
     # Generate ONE candidate
     # --------------------------------------------------------
 
+
+    # ========================================================
+    # GENERATION v0.3
+    # Learned Whole-Signature Morphing
+    # ========================================================
+
+    @staticmethod
+    def _generation_sample_normal(
+        mean: float,
+        m2: float,
+        count: int,
+        rng: random.Random,
+        strength: float = 0.35,
+    ) -> float:
+
+        if count <= 1:
+            return float(mean)
+
+        variance = max(
+            0.0,
+            float(m2)
+            / float(count - 1),
+        )
+
+        std = math.sqrt(
+            variance
+        )
+
+        return (
+            float(mean)
+            + rng.gauss(
+                0.0,
+                std * strength,
+            )
+        )
+
+    @staticmethod
+    def _generation_profile_state(
+        aggregate: dict[str, Any],
+        section: str,
+        stroke_index: int,
+    ) -> dict[str, Any] | None:
+
+        profiles = aggregate.get(
+            section,
+            {},
+        )
+
+        state = profiles.get(
+            str(stroke_index)
+        )
+
+        if not isinstance(
+            state,
+            dict,
+        ):
+            return None
+
+        mean = state.get(
+            "mean",
+            [],
+        )
+
+        m2 = state.get(
+            "m2",
+            [],
+        )
+
+        count = int(
+            state.get(
+                "count",
+                0,
+            )
+            or 0
+        )
+
+        if not isinstance(
+            mean,
+            list,
+        ):
+            return None
+
+        if not isinstance(
+            m2,
+            list,
+        ):
+            return None
+
+        if not mean:
+            return None
+
+        if len(mean) != len(m2):
+            return None
+
+        if count <= 0:
+            return None
+
+        return {
+            "count": count,
+            "mean": mean,
+            "m2": m2,
+        }
+
+    # --------------------------------------------------------
+    # Determine a plausible stroke count from learned
+    # reference stroke-presence statistics.
+    #
+    # This does NOT copy the stroke count of one sample.
+    # It samples the structural distribution learned from all
+    # reference samples.
+    # --------------------------------------------------------
+
+    @classmethod
+    def _sample_generation_stroke_count(
+        cls,
+        knowledge: dict[str, Any],
+        rng: random.Random,
+    ) -> int:
+
+        aggregate = knowledge.get(
+            "aggregate",
+            {},
+        )
+
+        profiles = aggregate.get(
+            "stroke_profiles",
+            {},
+        )
+
+        sample_count = int(
+            knowledge.get(
+                "sample_count",
+                0,
+            )
+            or 0
+        )
+
+        if sample_count <= 0:
+            raise ValueError(
+                "Cannot determine generation "
+                "stroke count without learned samples."
+            )
+
+        available = []
+
+        for key, state in profiles.items():
+
+            try:
+                index = int(key)
+            except (
+                TypeError,
+                ValueError,
+            ):
+                continue
+
+            if not isinstance(
+                state,
+                dict,
+            ):
+                continue
+
+            count = int(
+                state.get(
+                    "count",
+                    0,
+                )
+                or 0
+            )
+
+            if count <= 0:
+                continue
+
+            available.append(
+                (
+                    index,
+                    count,
+                )
+            )
+
+        if not available:
+            raise ValueError(
+                "No learned stroke structure "
+                "is available."
+            )
+
+        available.sort()
+
+        # ----------------------------------------------------
+        # Stroke 0 is structurally mandatory.
+        # ----------------------------------------------------
+
+        max_index = available[-1][0]
+
+        stroke_count = 0
+
+        for index in range(
+            max_index + 1
+        ):
+
+            state = profiles.get(
+                str(index)
+            )
+
+            if not isinstance(
+                state,
+                dict,
+            ):
+                break
+
+            presence_count = int(
+                state.get(
+                    "count",
+                    0,
+                )
+                or 0
+            )
+
+            if presence_count <= 0:
+                break
+
+            probability = (
+                presence_count
+                / sample_count
+            )
+
+            if index == 0:
+                stroke_count = 1
+                continue
+
+            # High-confidence strokes are retained.
+            if probability >= 0.80:
+
+                stroke_count += 1
+                continue
+
+            # Lower-frequency strokes are sampled from
+            # their learned presence probability.
+            if rng.random() < probability:
+
+                stroke_count += 1
+
+            else:
+
+                # Once a sparse late stroke disappears,
+                # do not randomly create later strokes.
+                break
+
+        return max(
+            1,
+            stroke_count,
+        )
+
+    # --------------------------------------------------------
+    # Reconstruct NEW geometry from the learned aggregate.
+    #
+    # stroke_profiles are 32 points × 3 values:
+    #
+    #   x
+    #   y
+    #   pressure
+    #
+    # Geometry is sampled independently from learned
+    # mean/variance. No original reference trajectory is
+    # copied.
+    # --------------------------------------------------------
+
+    @staticmethod
+    def _generation_smooth_noise(
+        count: int,
+        rng: random.Random,
+        control_points: int = 6,
+    ) -> list[float]:
+        """
+        Generate LOW-FREQUENCY correlated noise.
+
+        Generation v0.3 must never perturb every point independently.
+        Independent point noise destroys trajectory continuity and turns
+        a learned signature into a cloud of line segments.
+        """
+
+        if count <= 0:
+            return []
+
+        if count == 1:
+            return [rng.gauss(0.0, 1.0)]
+
+        control_points = max(
+            2,
+            min(control_points, count),
+        )
+
+        anchors = [
+            rng.gauss(0.0, 1.0)
+            for _ in range(control_points)
+        ]
+
+        result = []
+        last = control_points - 1
+
+        for i in range(count):
+            u = i / (count - 1)
+            position = u * last
+            left = int(math.floor(position))
+            right = min(left + 1, last)
+            alpha = position - left
+
+            value = (
+                anchors[left]
+                + (anchors[right] - anchors[left]) * alpha
+            )
+            result.append(value)
+
+        return result
+
+    @staticmethod
+    def _generation_safe_std(
+        state: dict[str, Any],
+        offset: int,
+        count: int,
+        cap: float,
+    ) -> float:
+        """Return a bounded learned standard deviation."""
+
+        mean = state.get("mean", [])
+        m2 = state.get("m2", [])
+
+        if (
+            offset < 0
+            or offset >= len(mean)
+            or offset >= len(m2)
+            or count <= 1
+        ):
+            return 0.0
+
+        variance = max(
+            0.0,
+            float(m2[offset]) / float(count - 1),
+        )
+
+        return min(
+            cap,
+            math.sqrt(variance),
+        )
+
+    @staticmethod
+    def _generation_blend_weights(
+        count: int,
+        rng: random.Random,
+    ) -> list[float]:
+        """Create balanced weights for whole-signature morphing."""
+
+        if count <= 0:
+            return []
+
+        raw = [
+            rng.uniform(0.65, 1.35)
+            for _ in range(count)
+        ]
+
+        total = sum(raw)
+        return [
+            value / total
+            for value in raw
+        ]
+
+    @staticmethod
+    def _generation_smooth_noise(
+        count: int,
+        rng: random.Random,
+        control_points: int = 8,
+    ) -> list[float]:
+        """
+        Low-frequency correlated noise.
+
+        Generation never perturbs each trajectory point independently.
+        """
+
+        if count <= 0:
+            return []
+
+        if count == 1:
+            return [0.0]
+
+        control_points = max(
+            2,
+            min(control_points, count),
+        )
+
+        anchors = [
+            rng.gauss(0.0, 1.0)
+            for _ in range(control_points)
+        ]
+
+        result = []
+        last = control_points - 1
+
+        for i in range(count):
+            position = (
+                i
+                * last
+                / max(count - 1, 1)
+            )
+            left = int(
+                math.floor(position)
+            )
+            right = min(
+                left + 1,
+                last,
+            )
+            alpha = (
+                position - left
+            )
+            result.append(
+                anchors[left]
+                + (
+                    anchors[right]
+                    - anchors[left]
+                )
+                * alpha
+            )
+
+        return result
+
+    @staticmethod
+    def _generation_stroke_match_cost(
+        a: list[dict[str, float]],
+        b: list[dict[str, float]],
+    ) -> float:
+        """Compare complete strokes, never fragments."""
+
+        if not a or not b:
+            return float("inf")
+
+        def endpoint(stroke, index):
+            point = stroke[index]
+            return (
+                float(point["x"]),
+                float(point["y"]),
+            )
+
+        ax0, ay0 = endpoint(a, 0)
+        ax1, ay1 = endpoint(a, -1)
+        bx0, by0 = endpoint(b, 0)
+        bx1, by1 = endpoint(b, -1)
+
+        start_cost = math.hypot(
+            ax0 - bx0,
+            ay0 - by0,
+        )
+        end_cost = math.hypot(
+            ax1 - bx1,
+            ay1 - by1,
+        )
+
+        a_mid = a[len(a) // 2]
+        b_mid = b[len(b) // 2]
+        mid_cost = math.hypot(
+            float(a_mid["x"])
+            - float(b_mid["x"]),
+            float(a_mid["y"])
+            - float(b_mid["y"]),
+        )
+
+        return (
+            start_cost * 0.35
+            + end_cost * 0.35
+            + mid_cost * 0.30
+        )
+
+    @classmethod
+    def _generation_align_strokes(
+        cls,
+        base: list[
+            list[
+                dict[str, float]
+            ]
+        ],
+        other: list[
+            list[
+                dict[str, float]
+            ]
+        ],
+    ) -> list[
+        list[
+            dict[str, float]
+        ]
+    ]:
+        """
+        Match COMPLETE strokes by learned spatial role.
+
+        No partial stroke is selected and no source path is spliced.
+        """
+
+        remaining = list(
+            range(len(other))
+        )
+        aligned = []
+
+        for base_stroke in base:
+            if not remaining:
+                return []
+
+            best_index = min(
+                remaining,
+                key=lambda index: cls._generation_stroke_match_cost(
+                    base_stroke,
+                    other[index],
+                ),
+            )
+
+            aligned.append(
+                other[best_index]
+            )
+            remaining.remove(
+                best_index
+            )
+
+        return aligned
+
+    @classmethod
+    def _synthesize_generation_geometry(
+        cls,
+        knowledge: dict[str, Any],
+        stroke_count: int,
+        rng: random.Random,
+    ) -> list[
+        list[
+            dict[str, float]
+        ]
+    ]:
+        """
+        Generation v0.3 — learned whole-signature morphing.
+
+        A candidate is synthesized from several complete learned signatures
+        with the SAME stroke count. Their complete trajectories are aligned
+        by stroke role and continuously blended. A single candidate therefore
+        cannot contain "half of sample A + half of sample B" as disconnected
+        pieces. Every generated stroke is a new continuous trajectory.
+
+        After blending, a low-frequency geometric deformation is applied so
+        the candidate is not a plain average or a copy of any reference.
+        """
+
+        samples = knowledge.get(
+            "samples",
+            {},
+        )
+
+        groups: dict[int, list[dict[str, Any]]] = {}
+
+        for sample in samples.values():
+            if not isinstance(sample, dict):
+                continue
+
+            try:
+                sample_stroke_count = int(
+                    sample.get(
+                        "stroke_count",
+                        0,
+                    )
+                )
+            except (
+                TypeError,
+                ValueError,
+            ):
+                continue
+
+            trajectories = sample.get(
+                "normalized_strokes",
+                [],
+            )
+
+            if (
+                sample_stroke_count != stroke_count
+                or not isinstance(trajectories, list)
+                or len(trajectories) != stroke_count
+            ):
+                continue
+
+            if not all(
+                isinstance(stroke, list)
+                and len(stroke) >= 2
+                for stroke in trajectories
+            ):
+                continue
+
+            groups.setdefault(
+                stroke_count,
+                [],
+            ).append(sample)
+
+        eligible = groups.get(
+            stroke_count,
+            [],
+        )
+
+        if not eligible:
+            raise ValueError(
+                "No learned signatures available "
+                f"for stroke count {stroke_count}."
+            )
+
+        # Use several complete signatures whenever possible. With only one
+        # signature in a rare stroke-count bucket, the smooth deformation
+        # below still creates a new path rather than returning it unchanged.
+        source_count = min(
+            5,
+            len(eligible),
+        )
+
+        selected = rng.sample(
+            eligible,
+            source_count,
+        )
+
+        weights = cls._generation_blend_weights(
+            source_count,
+            rng,
+        )
+
+        base = selected[0][
+            "normalized_strokes"
+        ]
+
+        aligned_sources = [
+            base
+        ]
+
+        for sample in selected[1:]:
+            aligned = cls._generation_align_strokes(
+                base,
+                sample[
+                    "normalized_strokes"
+                ],
+            )
+
+            if not aligned:
+                continue
+
+            aligned_sources.append(
+                aligned
+            )
+
+        # Keep weights synchronized with the sources actually used.
+        if len(aligned_sources) != len(weights):
+            weights = cls._generation_blend_weights(
+                len(aligned_sources),
+                rng,
+            )
+
+        strokes = []
+
+        # Candidate-level transform. This is shared by every stroke so the
+        # result remains one coherent signature.
+        rotation = math.radians(
+            rng.uniform(
+                -3.5,
+                3.5,
+            )
+        )
+        cos_a = math.cos(rotation)
+        sin_a = math.sin(rotation)
+        scale = rng.uniform(
+            0.94,
+            1.06,
+        )
+        shear = rng.uniform(
+            -0.025,
+            0.025,
+        )
+
+        for stroke_index in range(
+            stroke_count
+        ):
+            point_count = min(
+                len(source[stroke_index])
+                for source in aligned_sources
+            )
+
+            generated = []
+
+            normal_noise = cls._generation_smooth_noise(
+                point_count,
+                rng,
+                control_points=min(
+                    10,
+                    max(6, point_count // 4),
+                ),
+            )
+
+            for point_index in range(
+                point_count
+            ):
+                x = 0.0
+                y = 0.0
+                pressure = 0.0
+
+                for weight, source in zip(
+                    weights,
+                    aligned_sources,
+                ):
+                    point = source[
+                        stroke_index
+                    ][point_index]
+
+                    x += weight * float(
+                        point.get(
+                            "x",
+                            0.0,
+                        )
+                    )
+                    y += weight * float(
+                        point.get(
+                            "y",
+                            0.0,
+                        )
+                    )
+                    pressure += weight * float(
+                        point.get(
+                            "pressure",
+                            0.0,
+                        )
+                    )
+
+                # Smooth normal deformation. The displacement is deliberately
+                # small and correlated across the complete stroke.
+                prev_point = generated[-1] if generated else None
+
+                if point_index + 1 < point_count:
+                    next_point = aligned_sources[0][
+                        stroke_index
+                    ][point_index + 1]
+                else:
+                    next_point = aligned_sources[0][
+                        stroke_index
+                    ][point_index]
+
+                if prev_point is not None:
+                    tx = (
+                        float(next_point["x"])
+                        - float(prev_point["x"])
+                    )
+                    ty = (
+                        float(next_point["y"])
+                        - float(prev_point["y"])
+                    )
+                else:
+                    next_raw = aligned_sources[0][
+                        stroke_index
+                    ][min(1, point_count - 1)]
+                    current_raw = aligned_sources[0][
+                        stroke_index
+                    ][point_index]
+                    tx = (
+                        float(next_raw["x"])
+                        - float(current_raw["x"])
+                    )
+                    ty = (
+                        float(next_raw["y"])
+                        - float(current_raw["y"])
+                    )
+
+                tangent_length = math.hypot(
+                    tx,
+                    ty,
+                )
+
+                if tangent_length <= 1e-9:
+                    tx, ty = 1.0, 0.0
+                    tangent_length = 1.0
+
+                tx /= tangent_length
+                ty /= tangent_length
+                nx = -ty
+                ny = tx
+
+                u = point_index / max(
+                    point_count - 1,
+                    1,
+                )
+                endpoint_weight = math.sin(
+                    math.pi * u
+                ) ** 0.85
+
+                offset = (
+                    normal_noise[point_index]
+                    * 0.010
+                    * endpoint_weight
+                )
+
+                x += nx * offset
+                y += ny * offset
+
+                sx = x * scale
+                sy = y * scale
+                sx += shear * sy
+
+                rx = (
+                    sx * cos_a
+                    - sy * sin_a
+                )
+                ry = (
+                    sx * sin_a
+                    + sy * cos_a
+                )
+
+                generated.append({
+                    "x": rx,
+                    "y": ry,
+                    "pressure": max(
+                        0.0,
+                        min(
+                            1.0,
+                            pressure,
+                        ),
+                    ),
+                })
+
+            strokes.append(
+                generated
+            )
+
+        # Final global normalization only. Relative stroke placement remains
+        # untouched, so the result still reads as one signature.
+        all_points = [
+            point
+            for stroke in strokes
+            for point in stroke
+        ]
+
+        min_x = min(
+            point["x"]
+            for point in all_points
+        )
+        max_x = max(
+            point["x"]
+            for point in all_points
+        )
+        min_y = min(
+            point["y"]
+            for point in all_points
+        )
+        max_y = max(
+            point["y"]
+            for point in all_points
+        )
+
+        global_scale = max(
+            max_x - min_x,
+            max_y - min_y,
+            1e-9,
+        )
+
+        for stroke in strokes:
+            for point in stroke:
+                point["x"] = (
+                    point["x"] - min_x
+                ) / global_scale
+                point["y"] = (
+                    point["y"] - min_y
+                ) / global_scale
+
+        return strokes
+
+    # --------------------------------------------------------
+    # Learned dynamic profiles
+    #
+    # Geometry is the primary trajectory.
+    #
+    # Velocity / pressure / direction / curvature are
+    # generated from their learned distributions and attached
+    # to the new trajectory as behavioral metadata.
+    # --------------------------------------------------------
+
+    @classmethod
+    def _synthesize_generation_dynamics(
+        cls,
+        knowledge: dict[str, Any],
+        strokes: list[
+            list[
+                dict[str, float]
+            ]
+        ],
+        rng: random.Random,
+    ) -> list[
+        list[
+            dict[str, float]
+        ]
+    ]:
+        """
+        Attach learned behavioral dynamics to the newly synthesized path.
+
+        Direction/curvature are used as style signals, not as independent
+        coordinate noise. Velocity and pressure remain smooth profiles.
+        """
+
+        aggregate = knowledge.get(
+            "aggregate",
+            {},
+        )
+
+        for stroke_index, stroke in enumerate(strokes):
+            if not stroke:
+                continue
+
+            velocity_state = cls._generation_profile_state(
+                aggregate,
+                "stroke_velocity_profiles",
+                stroke_index,
+            )
+            pressure_state = cls._generation_profile_state(
+                aggregate,
+                "stroke_pressure_profiles",
+                stroke_index,
+            )
+            direction_state = cls._generation_profile_state(
+                aggregate,
+                "stroke_direction_profiles",
+                stroke_index,
+            )
+            curvature_state = cls._generation_profile_state(
+                aggregate,
+                "stroke_curvature_profiles",
+                stroke_index,
+            )
+
+            point_count = len(stroke)
+
+            # One smooth stochastic field per behavioral dimension.
+            velocity_noise = cls._generation_smooth_noise(
+                point_count,
+                rng,
+                control_points=5,
+            )
+            pressure_noise = cls._generation_smooth_noise(
+                point_count,
+                rng,
+                control_points=5,
+            )
+
+            for i, point in enumerate(stroke):
+                u = i / max(point_count - 1, 1)
+
+                if velocity_state:
+                    mean = velocity_state["mean"]
+                    m2 = velocity_state["m2"]
+                    count = velocity_state["count"]
+                    j = min(i, len(mean) - 1)
+                    velocity = cls._generation_sample_normal(
+                        mean[j],
+                        m2[j],
+                        count,
+                        rng,
+                        strength=0.10,
+                    )
+                    point["velocity"] = max(
+                        0.0,
+                        velocity + abs(velocity_noise[i]) * max(0.0, velocity) * 0.025,
+                    )
+
+                if pressure_state:
+                    mean = pressure_state["mean"]
+                    m2 = pressure_state["m2"]
+                    count = pressure_state["count"]
+                    j = min(i, len(mean) - 1)
+                    pressure = cls._generation_sample_normal(
+                        mean[j],
+                        m2[j],
+                        count,
+                        rng,
+                        strength=0.10,
+                    )
+                    point["pressure"] = max(
+                        0.0,
+                        min(
+                            1.0,
+                            pressure + 0.02 * pressure_noise[i],
+                        ),
+                    )
+
+                # Keep these as diagnostics/behavioral metadata. They are
+                # not turned into random coordinate jumps.
+                if direction_state:
+                    mean = direction_state["mean"]
+                    m2 = direction_state["m2"]
+                    count = direction_state["count"]
+                    j = min(i, len(mean) - 1)
+                    point["direction_delta"] = max(
+                        0.0,
+                        cls._generation_sample_normal(
+                            mean[j],
+                            m2[j],
+                            count,
+                            rng,
+                            strength=0.08,
+                        ),
+                    )
+
+                if curvature_state:
+                    mean = curvature_state["mean"]
+                    m2 = curvature_state["m2"]
+                    count = curvature_state["count"]
+                    j = min(i, len(mean) - 1)
+                    point["curvature"] = max(
+                        0.0,
+                        cls._generation_sample_normal(
+                            mean[j],
+                            m2[j],
+                            count,
+                            rng,
+                            strength=0.08,
+                        ),
+                    )
+
+                point["u"] = u
+
+        return strokes
+
+    # --------------------------------------------------------
+    # Generate a NEW learned trajectory
+    #
+    # This is deliberately independent from reference sample
+    # selection.
+    # --------------------------------------------------------
+
+    def _generate_learned_trajectory(
+        self,
+        knowledge: dict[str, Any],
+        rng: random.Random,
+    ) -> tuple[
+        list[
+            list[
+                dict[str, float]
+            ]
+        ],
+        int,
+    ]:
+
+        stroke_count = (
+            self._sample_generation_stroke_count(
+                knowledge,
+                rng,
+            )
+        )
+
+        strokes = (
+            self._synthesize_generation_geometry(
+                knowledge,
+                stroke_count,
+                rng,
+            )
+        )
+
+        strokes = (
+            self._synthesize_generation_dynamics(
+                knowledge,
+                strokes,
+                rng,
+            )
+        )
+
+        return (
+            strokes,
+            stroke_count,
+        )
+
+        # --------------------------------------------------------
+    # Generate ONE learned candidate
+    # --------------------------------------------------------
+
     def _generate_candidate(
         self,
-        sample_dirs: list[Path],
+        knowledge: dict[str, Any],
         rng: random.Random,
         candidate_id: int,
         output_dir: Path,
     ) -> dict[str, Any]:
 
-        source_dir = (
-            self._select_generation_sample(
-                sample_dirs,
-                rng,
-            )
-        )
-
-        source = (
-            self._load_generation_sample(
-                source_dir
-            )
-        )
-
-        normalized = (
-            self._normalize_generation_strokes(
-                source["strokes"]
-            )
-        )
-
-        varied = (
-            self._vary_generation_strokes(
-                normalized,
+        strokes, stroke_count = (
+            self._generate_learned_trajectory(
+                knowledge,
                 rng,
             )
         )
@@ -3690,28 +4904,34 @@ def main() -> None:
         )
 
         self._render_generation_candidate(
-            varied,
+            strokes,
             output_path,
             candidate_id,
-            source["sample_id"],
+            "LEARNED",
         )
 
         return {
             "candidate_id": candidate_id,
-            "source_sample_id": (
-                source["sample_id"]
-            ),
-            "source_sample_path": str(
-                source_dir
-            ),
+
+            "source_sample_id": None,
+
+            "source_sample_ids": [],
+
             "output": str(
                 output_path
             ),
-            "stroke_count": len(
-                varied
+
+            "stroke_count": (
+                stroke_count
+            ),
+
+            "generation_method": (
+                "learned_whole_signature_morphing"
             ),
         }
 
+  
+    
     # --------------------------------------------------------
     # Generate multiple candidates
     # --------------------------------------------------------
@@ -3744,6 +4964,17 @@ def main() -> None:
         knowledge = (
             self._load_reference_knowledge()
         )
+
+        sync = self.validate_reference_knowledge_sync()
+
+        if not sync["in_sync"]:
+            raise RuntimeError(
+                "REFERENCE KNOWLEDGE OUT OF SYNC: "
+                f"references={sync['reference_sample_count']} "
+                f"knowledge={sync['knowledge_sample_count']} "
+                f"missing={sync['missing']} "
+                f"stale={sync['stale']}"
+            )
 
         knowledge_sample_count = int(
             knowledge.get(
@@ -3831,7 +5062,7 @@ def main() -> None:
 
                 result = (
                     self._generate_candidate(
-                        sample_dirs,
+                        knowledge,
                         rng,
                         candidate_id,
                         output_dir,
@@ -3910,6 +5141,27 @@ def main() -> None:
             ),
         }
 
+
+
+# ============================================================
+# MAIN
+# ============================================================
+
+def main() -> None:
+
+    # IMPORTANT:
+    #
+    # Normal execution NEVER scans library/.
+    #
+    # The learning source is exclusively:
+    #
+    # online_training_data/
+    #     reference_learning/
+    #         samples/
+    #
+    SignatureCore().learn_reference_samples()
+
+        # ========================================================
 
 if __name__ == "__main__":
     main()

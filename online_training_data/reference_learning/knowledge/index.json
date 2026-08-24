@@ -1,0 +1,183 @@
+{
+  "schema_version": "0.4",
+  "storage_version": "1.0",
+  "sample_count": 25,
+  "sample_ids": [
+    "sample_000001",
+    "sample_000002",
+    "sample_000003",
+    "sample_000004",
+    "sample_000005",
+    "sample_000006",
+    "sample_000007",
+    "sample_000008",
+    "sample_000009",
+    "sample_000010",
+    "sample_000011",
+    "sample_000012",
+    "sample_000013",
+    "sample_000014",
+    "sample_000015",
+    "sample_000016",
+    "sample_000017",
+    "sample_000018",
+    "sample_000019",
+    "sample_000020",
+    "sample_000021",
+    "sample_000022",
+    "sample_000023",
+    "sample_000024",
+    "sample_000025"
+  ],
+  "samples": {
+    "sample_000001": {
+      "sample_id": "sample_000001",
+      "strokes_sha256": "27d511c9622fa698d85f06930ba924136b0a1aa8da87699547a32f2d488d43da",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000001\\sample_knowledge.json"
+    },
+    "sample_000002": {
+      "sample_id": "sample_000002",
+      "strokes_sha256": "72ff7b6a6fe2c71d7b69c249f943598015356796cbd9b42d6332518280491898",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000002\\sample_knowledge.json"
+    },
+    "sample_000003": {
+      "sample_id": "sample_000003",
+      "strokes_sha256": "d750cc025e9e6443d63897687ddc7ec2628f8e9d7280a5568bb148e2be53b170",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000003\\sample_knowledge.json"
+    },
+    "sample_000004": {
+      "sample_id": "sample_000004",
+      "strokes_sha256": "57b24307cf47b1feb81185ab83dc164c0a66deee9e1b741529343e48530f4fea",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000004\\sample_knowledge.json"
+    },
+    "sample_000005": {
+      "sample_id": "sample_000005",
+      "strokes_sha256": "f2349ae6e0cac933405a102207e83788a85f9711ba883f5be3927de4fe8c07f6",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000005\\sample_knowledge.json"
+    },
+    "sample_000006": {
+      "sample_id": "sample_000006",
+      "strokes_sha256": "fa843b59c4f0fb28968a4232e0ec3d9a5f29642d0e6257a6c3808c876924c1aa",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000006\\sample_knowledge.json"
+    },
+    "sample_000007": {
+      "sample_id": "sample_000007",
+      "strokes_sha256": "954bef60a28f2c5e465a45db3f64dae5cb70bdbf87443afea3b913c56499d0d7",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000007\\sample_knowledge.json"
+    },
+    "sample_000008": {
+      "sample_id": "sample_000008",
+      "strokes_sha256": "2d045caf30a7782dd5fad702a9f33bc6fa1c375f612a4a35fc94b2a926a31adc",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000008\\sample_knowledge.json"
+    },
+    "sample_000009": {
+      "sample_id": "sample_000009",
+      "strokes_sha256": "98a0a11defb2aac793006d14ff9fb206430bd10dd9afb4f4ec39caa00fa1f9bf",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000009\\sample_knowledge.json"
+    },
+    "sample_000010": {
+      "sample_id": "sample_000010",
+      "strokes_sha256": "30726668468067634aa45e70f3cb80b8853a87836fa814bf7b6b9d83ca10e6d6",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000010\\sample_knowledge.json"
+    },
+    "sample_000011": {
+      "sample_id": "sample_000011",
+      "strokes_sha256": "49a6235fdbad8574a8d668f769338b3cf7edd3630fe8bad903670d6463acce1e",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000011\\sample_knowledge.json"
+    },
+    "sample_000012": {
+      "sample_id": "sample_000012",
+      "strokes_sha256": "04806c11e4b71b645f6b82b284276114736b2287f27731af43a0f2b361ba1cfe",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000012\\sample_knowledge.json"
+    },
+    "sample_000013": {
+      "sample_id": "sample_000013",
+      "strokes_sha256": "9d68abb4dbaa8bc2c0d3fdbfa46c1a52fa2b08263ac551f45ca0cc4e1466658b",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000013\\sample_knowledge.json"
+    },
+    "sample_000014": {
+      "sample_id": "sample_000014",
+      "strokes_sha256": "6a7288309e78a44e58cbd69a9160927de82fd339161ccd6ae51bcf6a54d4d47f",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000014\\sample_knowledge.json"
+    },
+    "sample_000015": {
+      "sample_id": "sample_000015",
+      "strokes_sha256": "829388bb4d869532b04725aea29a4c3383a4197bcc683fcf2568ca3a42f2403c",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000015\\sample_knowledge.json"
+    },
+    "sample_000016": {
+      "sample_id": "sample_000016",
+      "strokes_sha256": "beb7e696799ab0728c5df7ac75f763f6eabc3437036840de99155b51581ef66e",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000016\\sample_knowledge.json"
+    },
+    "sample_000017": {
+      "sample_id": "sample_000017",
+      "strokes_sha256": "bf77dc6e6369d03340d7a13de3f72c4abe2b0153c3b8835b041a51372a620fd6",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000017\\sample_knowledge.json"
+    },
+    "sample_000018": {
+      "sample_id": "sample_000018",
+      "strokes_sha256": "5955ceab0bf4fd8f5f309ebaa6ce23ad2e642a1fe619a1f1c675f6e12421f397",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000018\\sample_knowledge.json"
+    },
+    "sample_000019": {
+      "sample_id": "sample_000019",
+      "strokes_sha256": "d0485da47d235966228af97b2147e6d7cbee56d1bea006098eec2bd80ee3b912",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000019\\sample_knowledge.json"
+    },
+    "sample_000020": {
+      "sample_id": "sample_000020",
+      "strokes_sha256": "5b985977b7b806dbe3a9d72a6bbb05b3d07b09ef2628f64c4a0cd2d5cd8f2a69",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000020\\sample_knowledge.json"
+    },
+    "sample_000021": {
+      "sample_id": "sample_000021",
+      "strokes_sha256": "ed9c494d886586ad83a4408f596e1d2bc08e2e8b0e9d030222d62b1176622b11",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000021\\sample_knowledge.json"
+    },
+    "sample_000022": {
+      "sample_id": "sample_000022",
+      "strokes_sha256": "f2f6928ee5ab50a7cecdd399102acc6f2351a60477ea1484b92951b22c9921c5",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000022\\sample_knowledge.json"
+    },
+    "sample_000023": {
+      "sample_id": "sample_000023",
+      "strokes_sha256": "0b75ac40fad81368100e0e86fdc0e494e23372cbd66c9d0f044179ee45d2df9d",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000023\\sample_knowledge.json"
+    },
+    "sample_000024": {
+      "sample_id": "sample_000024",
+      "strokes_sha256": "f2acfac1d48884c9a000e1ec7261ad7313fb29e95927c3e32c89412179453eb5",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000024\\sample_knowledge.json"
+    },
+    "sample_000025": {
+      "sample_id": "sample_000025",
+      "strokes_sha256": "8e9dbf77932d23171c30fc32bb9b12c818638b50be9075ecd4acc7b335f1e721",
+      "knowledge_file": "F:\\signature-machine\\online_training_data\\reference_learning\\samples\\sample_000025\\sample_knowledge.json"
+    }
+  },
+  "feature_schema": {
+    "normalization": "translation_and_global_scale",
+    "stroke_resampling_points": 32,
+    "cross_stroke_bridging": false,
+    "touch_points_are_valid": true,
+    "sample_weighting": "equal_per_sample",
+    "full_sample_trajectory": true,
+    "velocity_profile": true,
+    "pressure_profile": true,
+    "direction_profile": true,
+    "curvature_profile": true,
+    "inter_stroke_timing": true,
+    "tilt_and_twist_profile": true
+  },
+  "learning_policy": {
+    "duplicate_sample_id": "ignored",
+    "duplicate_strokes_hash": "ignored",
+    "status_weighting": "disabled",
+    "pointer_type_filtering": "disabled",
+    "library_scanning_for_learning": false,
+    "source_of_truth": "per_sample_knowledge",
+    "incremental_updates": true,
+    "generated_signatures_are_reference": false
+  }
+}
