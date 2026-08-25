@@ -1,0 +1,139 @@
+SIGNATURE MACHINE — TRAJECTORY AUDIT v0.1
+========================================================================
+
+STEP: 3 — Audit all 25 trajectories
+Reference set: 001..025
+Sample count: 25
+Equal weight: 1/25 = 0.04
+
+SUMMARY
+------------------------------------------------------------------------
+PASS:               18
+PASS_WITH_WARNINGS: 7
+FAIL:               0
+TOTAL ERRORS:       0
+TOTAL WARNINGS:     14
+DATASET STATUS:     CONDITIONAL_PASS
+
+CROSS-SAMPLE
+------------------------------------------------------------------------
+{
+  "status": "PASS",
+  "warnings": [],
+  "metrics": {
+    "root_layouts": [
+      "strokes_key"
+    ],
+    "stroke_count_min": 5,
+    "stroke_count_max": 15,
+    "stroke_count_mean": 8.12,
+    "point_count_min": 143,
+    "point_count_max": 383,
+    "point_count_mean": 244.28
+  }
+}
+
+PER-SAMPLE
+------------------------------------------------------------------------
+sample_000001: PASS_WITH_WARNINGS
+  strokes=8 points=313 path=2059.372096806276
+  warnings:
+    - duplicate_points:1
+    - zero_length_segments:1
+
+sample_000002: PASS_WITH_WARNINGS
+  strokes=9 points=356 path=1724.5009030322035
+  warnings:
+    - duplicate_points:1
+    - zero_length_segments:1
+
+sample_000003: PASS
+  strokes=13 points=274 path=1317.295547560975
+
+sample_000004: PASS
+  strokes=5 points=143 path=1404.2176679176237
+
+sample_000005: PASS
+  strokes=6 points=301 path=1683.347602583507
+
+sample_000006: PASS
+  strokes=10 points=310 path=1196.6781619521955
+
+sample_000007: PASS
+  strokes=7 points=224 path=1091.6041352112895
+
+sample_000008: PASS
+  strokes=15 points=325 path=1408.4060127020828
+
+sample_000009: PASS
+  strokes=11 points=293 path=1807.5599466065432
+
+sample_000010: PASS_WITH_WARNINGS
+  strokes=9 points=304 path=1552.9026774789977
+  warnings:
+    - duplicate_points:1
+    - zero_length_segments:1
+
+sample_000011: PASS
+  strokes=6 points=169 path=1154.101788296345
+
+sample_000012: PASS
+  strokes=8 points=233 path=1012.8389026060859
+
+sample_000013: PASS
+  strokes=6 points=201 path=1416.7212973265787
+
+sample_000014: PASS
+  strokes=7 points=165 path=1055.9314608902102
+
+sample_000015: PASS
+  strokes=7 points=250 path=1479.2887216414176
+
+sample_000016: PASS
+  strokes=9 points=252 path=1740.9757341910754
+
+sample_000017: PASS
+  strokes=7 points=167 path=1066.2687395328776
+
+sample_000018: PASS_WITH_WARNINGS
+  strokes=6 points=225 path=1460.1263206354308
+  warnings:
+    - duplicate_points:1
+    - zero_length_segments:1
+
+sample_000019: PASS
+  strokes=11 points=197 path=1021.3691436403492
+
+sample_000020: PASS
+  strokes=7 points=258 path=1659.9062242215848
+
+sample_000021: PASS_WITH_WARNINGS
+  strokes=8 points=170 path=1175.1799931431162
+  warnings:
+    - duplicate_points:1
+    - zero_length_segments:1
+
+sample_000022: PASS
+  strokes=8 points=153 path=1313.9838905478668
+
+sample_000023: PASS_WITH_WARNINGS
+  strokes=6 points=246 path=2067.4627332932823
+  warnings:
+    - duplicate_points:1
+    - zero_length_segments:1
+
+sample_000024: PASS_WITH_WARNINGS
+  strokes=9 points=383 path=2261.7492674588575
+  warnings:
+    - duplicate_points:2
+    - zero_length_segments:2
+
+sample_000025: PASS
+  strokes=5 points=195 path=1653.1503123616217
+
+========================================================================
+STEP 3 COMPLETE
+========================================================================
+No sample contents were modified.
+No training was performed.
+No signatures were generated.

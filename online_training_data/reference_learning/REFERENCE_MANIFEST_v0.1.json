@@ -1,0 +1,1921 @@
+{
+  "schema": "signature_machine.reference_manifest",
+  "schema_version": "0.1",
+  "cycle": "v0.1",
+  "created_at_utc": "2026-08-25T08:36:39.848694+00:00",
+  "purpose": "Exact inventory of frozen reference samples 001..025 before STEP 3.",
+  "freeze": {
+    "file": "online_training_data/reference_learning/REFERENCE_FREEZE_v0.1.json",
+    "status": "FROZEN"
+  },
+  "reference_policy": {
+    "first_sample": 1,
+    "last_sample": 25,
+    "sample_count": 25,
+    "equal_weight": true,
+    "weight_per_sample": 0.04,
+    "generated_samples_included": false,
+    "sample_026_plus_included": false
+  },
+  "step_policy": {
+    "step": 2,
+    "name": "Build exact manifest",
+    "trajectory_audit_performed": false,
+    "trajectory_evaluation_performed": false,
+    "training_performed": false,
+    "generation_performed": false,
+    "source_files_modified": false
+  },
+  "samples": [
+    {
+      "sample_id": 1,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000001",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000001/strokes.json",
+          "size_bytes": 86254,
+          "modified_ns": 1787469070030965300,
+          "sha256": "27d511c9622fa698d85f06930ba924136b0a1aa8da87699547a32f2d488d43da",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 8,
+            "point_count": 313
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000001/raw.png",
+          "size_bytes": 42412,
+          "modified_ns": 1787469070029965100,
+          "sha256": "db646ed4367df94854e094736029e45a8402527be99041d284ca747212ec17e0"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000001/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000001/metadata.json",
+          "size_bytes": 337,
+          "modified_ns": 1787469070028966600,
+          "sha256": "be3ec5ffbd5e44820f14a9aa1e22cecbb99a235d41102671135690f0b5f27d13",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000001",
+            "label": "unlabeled"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000001/sample_knowledge.json",
+          "size_bytes": 146486,
+          "modified_ns": 1787567481514503800,
+          "sha256": "c9b6970d298a985fdd0f96a61f4d45d3242d7c3a4099971672c03ce1e3285e88",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000001",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 2,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000002",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000002/strokes.json",
+          "size_bytes": 97975,
+          "modified_ns": 1787469070055951000,
+          "sha256": "72ff7b6a6fe2c71d7b69c249f943598015356796cbd9b42d6332518280491898",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 9,
+            "point_count": 356
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000002/raw.png",
+          "size_bytes": 37335,
+          "modified_ns": 1787469070053950900,
+          "sha256": "a79f9e13626b23ed15c81ace80dfd9845dc9f3782f3c93efd32a13232350f804"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000002/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000002/metadata.json",
+          "size_bytes": 343,
+          "modified_ns": 1787469070053950900,
+          "sha256": "b6c5420f2230ea9518c1370c023a3211cd8cd4373e78605949ffd79817c68a31",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000002",
+            "label": "زهره shabani"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000002/sample_knowledge.json",
+          "size_bytes": 164158,
+          "modified_ns": 1787567481531479000,
+          "sha256": "4baf6826c40113641d8feb0051b31306fb639530c0db89208001b93d69837b95",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000002",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 3,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000003",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000003/strokes.json",
+          "size_bytes": 76299,
+          "modified_ns": 1787469070072939400,
+          "sha256": "d750cc025e9e6443d63897687ddc7ec2628f8e9d7280a5568bb148e2be53b170",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 13,
+            "point_count": 274
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000003/raw.png",
+          "size_bytes": 30781,
+          "modified_ns": 1787469070071939600,
+          "sha256": "1fb0056220f880464b57964d344700d119e61223057d2cb30d9fd9226db342fd"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000003/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000003/metadata.json",
+          "size_bytes": 349,
+          "modified_ns": 1787469070071939600,
+          "sha256": "dac6a9ccd770ea5234f23aae0ab0b9981921e43ab737e55f2224eb68f8576930",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000003",
+            "label": "محسن پورتقی"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000003/sample_knowledge.json",
+          "size_bytes": 199181,
+          "modified_ns": 1787567481549468500,
+          "sha256": "3236b7109c81a5b1328c0fe38ef2902862b156b74c6ce0944d5ef0884f015028",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000003",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 4,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000004",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000004/strokes.json",
+          "size_bytes": 39824,
+          "modified_ns": 1787469070091928300,
+          "sha256": "57b24307cf47b1feb81185ab83dc164c0a66deee9e1b741529343e48530f4fea",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 5,
+            "point_count": 143
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000004/raw.png",
+          "size_bytes": 33161,
+          "modified_ns": 1787469070090929000,
+          "sha256": "4367f66a45e9614a471f6b2cc24a71f2475ccfc1eedff823e61841530910e909"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000004/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000004/metadata.json",
+          "size_bytes": 330,
+          "modified_ns": 1787469070089932400,
+          "sha256": "d5da9fdaee79f7fe783bb2da20cb79da185e60dc6529d3ae59f0ee574d3c0c21",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000004",
+            "label": "رضا"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000004/sample_knowledge.json",
+          "size_bytes": 83663,
+          "modified_ns": 1787567481557463800,
+          "sha256": "95febac74ecc8279236866017a902f12e7ca253b6daf4eab9056417e80cf52fb",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000004",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 5,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000005",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000005/strokes.json",
+          "size_bytes": 82745,
+          "modified_ns": 1787469070120912100,
+          "sha256": "f2349ae6e0cac933405a102207e83788a85f9711ba883f5be3927de4fe8c07f6",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 6,
+            "point_count": 301
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000005/raw.png",
+          "size_bytes": 36077,
+          "modified_ns": 1787469070118912800,
+          "sha256": "b6b58743862d1b9309b357f9bd5e759973a7381c86eec22f7c2bacfce5fce0f5"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000005/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000005/metadata.json",
+          "size_bytes": 343,
+          "modified_ns": 1787469070118912800,
+          "sha256": "657b61812959244fa49d56a250fe71c583eaa1b2bf4d254eba60e6ea3529ac00",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000005",
+            "label": "صدرا sadra"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000005/sample_knowledge.json",
+          "size_bytes": 120955,
+          "modified_ns": 1787567481568457400,
+          "sha256": "a1763c16032d3fcff9bf9cb3f1e5f9efff3bd7d98c716dbb53263ba840240a7c",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000005",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 6,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000006",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000006/strokes.json",
+          "size_bytes": 85721,
+          "modified_ns": 1787469070138722100,
+          "sha256": "fa843b59c4f0fb28968a4232e0ec3d9a5f29642d0e6257a6c3808c876924c1aa",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 10,
+            "point_count": 310
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000006/raw.png",
+          "size_bytes": 31402,
+          "modified_ns": 1787469070137721900,
+          "sha256": "b51642d1f95df1c439853aa362b89733a7988a8cbf4f1aa5828802fb2b5b24b6"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000006/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000006/metadata.json",
+          "size_bytes": 343,
+          "modified_ns": 1787469070137721900,
+          "sha256": "02ae4c7e96faeec619a649e99bae8f4be873dab8a25b3312d921572fa44e975c",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000006",
+            "label": "هدی اشفته"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000006/sample_knowledge.json",
+          "size_bytes": 168502,
+          "modified_ns": 1787567481584448200,
+          "sha256": "1e89129880ca4bde208277dc614071734eadf60bdef2a417b56e428d71ae57d9",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000006",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 7,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000007",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000007/strokes.json",
+          "size_bytes": 61978,
+          "modified_ns": 1787469070154727300,
+          "sha256": "954bef60a28f2c5e465a45db3f64dae5cb70bdbf87443afea3b913c56499d0d7",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 7,
+            "point_count": 224
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000007/raw.png",
+          "size_bytes": 30124,
+          "modified_ns": 1787469070153712800,
+          "sha256": "e4098bec33489fa397cc23cb7b7da22556327c7c5ffb0155d3f4c4f37ba7cf1d"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000007/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000007/metadata.json",
+          "size_bytes": 341,
+          "modified_ns": 1787469070153712800,
+          "sha256": "9c87aeca7d95541be204e31c52d8e2722ff521cfc220d9fb73fa63114e563aca",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000007",
+            "label": "Ali رضایی"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000007/sample_knowledge.json",
+          "size_bytes": 120497,
+          "modified_ns": 1787567481598440100,
+          "sha256": "a81b9f7b416494166132c57caa5a9e505b7bde0b899835ae0004fd9da9ed2de2",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000007",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 8,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000008",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000008/strokes.json",
+          "size_bytes": 90507,
+          "modified_ns": 1787469070167704200,
+          "sha256": "2d045caf30a7782dd5fad702a9f33bc6fa1c375f612a4a35fc94b2a926a31adc",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 15,
+            "point_count": 325
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000008/raw.png",
+          "size_bytes": 33630,
+          "modified_ns": 1787469070167704200,
+          "sha256": "d0480b184f4b37511770e30fcb57ac0de3c5bdb8272ec6df60d7439a4c28897a"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000008/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000008/metadata.json",
+          "size_bytes": 347,
+          "modified_ns": 1787469070166720700,
+          "sha256": "0dc7b6fc004b2bc030b6bdec00c94d1a984105ce6a7a006b4655a66418e9e0ca",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000008",
+            "label": "مصطفی hoseini"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000008/sample_knowledge.json",
+          "size_bytes": 231212,
+          "modified_ns": 1787567481621426900,
+          "sha256": "8cfceb63d59fe8004c0f3e0ba7b773444f520c8a85b6d8f26b001dbc159b2401",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000008",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 9,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000009",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000009/strokes.json",
+          "size_bytes": 81220,
+          "modified_ns": 1787469070188703000,
+          "sha256": "98a0a11defb2aac793006d14ff9fb206430bd10dd9afb4f4ec39caa00fa1f9bf",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 11,
+            "point_count": 293
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000009/raw.png",
+          "size_bytes": 40992,
+          "modified_ns": 1787469070187694300,
+          "sha256": "89efc35f58e7fcbcd067bf8890d9d80967ff1da2a8a342905abbdf755a448410"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000009/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000009/metadata.json",
+          "size_bytes": 361,
+          "modified_ns": 1787469070187694300,
+          "sha256": "02a7ae915245a80bd5f3b4b4c31e66d91fa3821dd2dff2c5f6bbd7b524ebf207",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000009",
+            "label": "محمد خیری"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000009/sample_knowledge.json",
+          "size_bytes": 177169,
+          "modified_ns": 1787567481637417600,
+          "sha256": "bf3fa5cf512cf56d95cc7f54afb16d371034c0b10bb211652270f6998d5d3a3b",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000009",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 10,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000010",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000010/strokes.json",
+          "size_bytes": 83825,
+          "modified_ns": 1787469070208681700,
+          "sha256": "30726668468067634aa45e70f3cb80b8853a87836fa814bf7b6b9d83ca10e6d6",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 9,
+            "point_count": 304
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000010/raw.png",
+          "size_bytes": 35183,
+          "modified_ns": 1787469070207692100,
+          "sha256": "2d51228bfd636b3280eb78458d6fa963aada8237834478a595dcbdffb44118a8"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000010/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000010/metadata.json",
+          "size_bytes": 334,
+          "modified_ns": 1787469070206682100,
+          "sha256": "1ed4775484da4ac602196c8c4cb24597e453e3298913c37ff99e32583a90f5c4",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000010",
+            "label": "fatemeh"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000010/sample_knowledge.json",
+          "size_bytes": 156449,
+          "modified_ns": 1787567481652408900,
+          "sha256": "c393b1301f44209993db77d151d016aedb9a48e82c31eb2bec72b39a5c55dddb",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000010",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 11,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000011",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000011/strokes.json",
+          "size_bytes": 46970,
+          "modified_ns": 1787469070223674300,
+          "sha256": "49a6235fdbad8574a8d668f769338b3cf7edd3630fe8bad903670d6463acce1e",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 6,
+            "point_count": 169
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000011/raw.png",
+          "size_bytes": 30612,
+          "modified_ns": 1787469070222673400,
+          "sha256": "8f9b99257e6fd63916d8e7e46cbeccc3529f70376d95f973bc01c09d6f154bb4"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000011/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000011/metadata.json",
+          "size_bytes": 337,
+          "modified_ns": 1787469070221677000,
+          "sha256": "792dd54691c9be26a8bf518e90e2edc82d094ea1dcbd4b086b7b69ea3f39e38f",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000011",
+            "label": "هانیه"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000011/sample_knowledge.json",
+          "size_bytes": 99982,
+          "modified_ns": 1787567481663402600,
+          "sha256": "2d4aeee5618d3ff247dbc2300533848a4b7647499491a9eac5aa688c7b461f3f",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000011",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 12,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000012",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000012/strokes.json",
+          "size_bytes": 64628,
+          "modified_ns": 1787469070237664200,
+          "sha256": "04806c11e4b71b645f6b82b284276114736b2287f27731af43a0f2b361ba1cfe",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 8,
+            "point_count": 233
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000012/raw.png",
+          "size_bytes": 28529,
+          "modified_ns": 1787469070236665000,
+          "sha256": "0b48ceb20864e9f8d35b6013de012cd226e3b970140ca573a9a8d2cd77c5a434"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000012/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000012/metadata.json",
+          "size_bytes": 364,
+          "modified_ns": 1787469070236665000,
+          "sha256": "eccde0c5dc069a2b86c1c67e6605aaac4cbb1e70a9f105745551ee4c7f427545",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000012",
+            "label": "مهران محمدی"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000012/sample_knowledge.json",
+          "size_bytes": 131455,
+          "modified_ns": 1787567481678393900,
+          "sha256": "ac5ef6d57211012ffdbc9844629301dfe0ed0a46dc704c41a3223679cc202f1b",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000012",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 13,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000013",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000013/strokes.json",
+          "size_bytes": 55728,
+          "modified_ns": 1787469070258653300,
+          "sha256": "9d68abb4dbaa8bc2c0d3fdbfa46c1a52fa2b08263ac551f45ca0cc4e1466658b",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 6,
+            "point_count": 201
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000013/raw.png",
+          "size_bytes": 34865,
+          "modified_ns": 1787469070257652700,
+          "sha256": "6287524ce3565f9d4342ee3aa7a4325b03289c1ff2baea6bb5a75328fc43373a"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000013/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000013/metadata.json",
+          "size_bytes": 336,
+          "modified_ns": 1787469070256654800,
+          "sha256": "613b039ab8b28f53c19761de848eca5e057231fbbc8cce65ceb474b34d263637",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000013",
+            "label": "سامان"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000013/sample_knowledge.json",
+          "size_bytes": 105074,
+          "modified_ns": 1787567481691386400,
+          "sha256": "408de2612a6e048219064b53a90a0181d80e518391049addf41ac923929a4019",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000013",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 14,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000014",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000014/strokes.json",
+          "size_bytes": 46049,
+          "modified_ns": 1787469070269648400,
+          "sha256": "6a7288309e78a44e58cbd69a9160927de82fd339161ccd6ae51bcf6a54d4d47f",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 7,
+            "point_count": 165
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000014/raw.png",
+          "size_bytes": 29148,
+          "modified_ns": 1787469070268649000,
+          "sha256": "519677dd8d865196e539b9c4af5e876072f0e1188130658219024f6172ec2a1b"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000014/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000014/metadata.json",
+          "size_bytes": 352,
+          "modified_ns": 1787469070267648700,
+          "sha256": "d68f066847ece315b4ec1922c86aa41f5bbeea35d9f3103f331bc52c967da716",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000014",
+            "label": "احمدی"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000014/sample_knowledge.json",
+          "size_bytes": 108918,
+          "modified_ns": 1787567481701380700,
+          "sha256": "98d4f1324b0e2773f4583a193a13632bdd8c843f40c96a5f2bcd8e1f3f57bfd2",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000014",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 15,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000015",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000015/strokes.json",
+          "size_bytes": 69064,
+          "modified_ns": 1787469070284637900,
+          "sha256": "829388bb4d869532b04725aea29a4c3383a4197bcc683fcf2568ca3a42f2403c",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 7,
+            "point_count": 250
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000015/raw.png",
+          "size_bytes": 34237,
+          "modified_ns": 1787469070283637700,
+          "sha256": "626aae331ff5d1a8f4a5837e3c8a5494dfa6dbecfe1f8d2f33842a0f3a2ebe52"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000015/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000015/metadata.json",
+          "size_bytes": 342,
+          "modified_ns": 1787469070283637700,
+          "sha256": "fed65b9c5b022a4f034dc26377f5ed728a4a88a12de856df95af0d9ba2dec908",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000015",
+            "label": "سعید saeid"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000015/sample_knowledge.json",
+          "size_bytes": 124204,
+          "modified_ns": 1787567481722370300,
+          "sha256": "5da1bf3e90558d504f03a81bdbb8779d944b3199bf45e746b8ec1e2861754835",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000015",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 16,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000016",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000016/strokes.json",
+          "size_bytes": 69867,
+          "modified_ns": 1787469070302627200,
+          "sha256": "beb7e696799ab0728c5df7ac75f763f6eabc3437036840de99155b51581ef66e",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 9,
+            "point_count": 252
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000016/raw.png",
+          "size_bytes": 38996,
+          "modified_ns": 1787469070301628000,
+          "sha256": "1e5bbeda998d8d741cc7e84d38f4400fcb2601d814cb1f74ba9bebcc690e16e1"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000016/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000016/metadata.json",
+          "size_bytes": 349,
+          "modified_ns": 1787469070300629300,
+          "sha256": "05f962a712d64332c9793660bfd48fbbd7bfbaa2836ddeb2578b64b3b81d913c",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000016",
+            "label": "mohsen"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000016/sample_knowledge.json",
+          "size_bytes": 146895,
+          "modified_ns": 1787567481735375900,
+          "sha256": "ecd346acebe5f7a4bd50614dae8155f1dde23c723013ecfa525c038c1fb44322",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000016",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 17,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000017",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000017/strokes.json",
+          "size_bytes": 46685,
+          "modified_ns": 1787469070317619500,
+          "sha256": "bf77dc6e6369d03340d7a13de3f72c4abe2b0153c3b8835b041a51372a620fd6",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 7,
+            "point_count": 167
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000017/raw.png",
+          "size_bytes": 31019,
+          "modified_ns": 1787469070316620100,
+          "sha256": "ad18ba525f5873ec57a98afe16a02141d68bed4d3c230d7733d619f6ea2d11a2"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000017/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000017/metadata.json",
+          "size_bytes": 335,
+          "modified_ns": 1787469070315620600,
+          "sha256": "0ca5fd02ff1f6209666d019c618a4308c1f0a3af3d5e6cdc5f790ace178d4b8d",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000017",
+            "label": "حسین"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000017/sample_knowledge.json",
+          "size_bytes": 111149,
+          "modified_ns": 1787567481746354600,
+          "sha256": "faca9a66efe10f1996483957f227630eda54b95a238f33844bf88182257d6c08",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000017",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 18,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000018",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000018/strokes.json",
+          "size_bytes": 62131,
+          "modified_ns": 1787469070331611000,
+          "sha256": "5955ceab0bf4fd8f5f309ebaa6ce23ad2e642a1fe619a1f1c675f6e12421f397",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 6,
+            "point_count": 225
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000018/raw.png",
+          "size_bytes": 36112,
+          "modified_ns": 1787469070330610000,
+          "sha256": "d73226cbc3ab110225f80929dc09c4de46d79c5c1eb960df39c212632bdcbc80"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000018/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000018/metadata.json",
+          "size_bytes": 335,
+          "modified_ns": 1787469070329612200,
+          "sha256": "4137086bb524cee49c6184d7317f9cab44649ab13480ff620c2e1946c8c9307b",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000018",
+            "label": "یوسف"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000018/sample_knowledge.json",
+          "size_bytes": 108636,
+          "modified_ns": 1787567481757363100,
+          "sha256": "c4cda95e04e0c54fedf83cb1dd3ffb2182c4399398b3372d7876be6d25213e5d",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000018",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 19,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000019",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000019/strokes.json",
+          "size_bytes": 55304,
+          "modified_ns": 1787469070343603400,
+          "sha256": "d0485da47d235966228af97b2147e6d7cbee56d1bea006098eec2bd80ee3b912",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 11,
+            "point_count": 197
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000019/raw.png",
+          "size_bytes": 28701,
+          "modified_ns": 1787469070342604800,
+          "sha256": "31f5a1005354f21f0dc31f66087410f979a24fe0a0af322476fa5e84b25cc18b"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000019/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000019/metadata.json",
+          "size_bytes": 359,
+          "modified_ns": 1787469070342604800,
+          "sha256": "e4d095e6b60020fc4aa00cf822cc618f433a9d1eb0106a01918ff956a57de5e9",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000019",
+            "label": "اشرف زاده"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000019/sample_knowledge.json",
+          "size_bytes": 161347,
+          "modified_ns": 1787567481773349300,
+          "sha256": "706c62fde44e1bef184eecd61f4a21241339e850d2fde8ba46cc9bee11dc14b1",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000019",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 20,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000020",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000020/strokes.json",
+          "size_bytes": 71266,
+          "modified_ns": 1787469070360593600,
+          "sha256": "5b985977b7b806dbe3a9d72a6bbb05b3d07b09ef2628f64c4a0cd2d5cd8f2a69",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 7,
+            "point_count": 258
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000020/raw.png",
+          "size_bytes": 37860,
+          "modified_ns": 1787469070359593500,
+          "sha256": "16149fe560019833b36025a3a09fae36825a6a2f026994a711ba3aa9d2540627"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000020/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000020/metadata.json",
+          "size_bytes": 332,
+          "modified_ns": 1787469070358604500,
+          "sha256": "7e7d8200171c307b79e18b2530acaf2861b1bd4853b0f77eb9441e91278e5347",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000020",
+            "label": "ramin"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000020/sample_knowledge.json",
+          "size_bytes": 125943,
+          "modified_ns": 1787567481862879500,
+          "sha256": "017206c4c37ce66339fab65e365e85a404d21dfc41ae42638719630b39644a2d",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000020",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 21,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000021",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000021/strokes.json",
+          "size_bytes": 47602,
+          "modified_ns": 1787469070406074500,
+          "sha256": "ed9c494d886586ad83a4408f596e1d2bc08e2e8b0e9d030222d62b1176622b11",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 8,
+            "point_count": 170
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000021/raw.png",
+          "size_bytes": 34114,
+          "modified_ns": 1787469070372587900,
+          "sha256": "558e87355d9e73e910dc33bbfee72156325499b691cadd0b6ad91a554556c016"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000021/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000021/metadata.json",
+          "size_bytes": 339,
+          "modified_ns": 1787469070371601900,
+          "sha256": "67debe522b025528e4b497afa95256c417597bf2385c7d814eda1b76a8e43466",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000021",
+            "label": "احسان"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000021/sample_knowledge.json",
+          "size_bytes": 123164,
+          "modified_ns": 1787567481873874500,
+          "sha256": "a093dd7a78920b905206eab6d2c55a49e47cfe86f0d3f5630b5bc17bd414e483",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000021",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 22,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000022",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000022/strokes.json",
+          "size_bytes": 43061,
+          "modified_ns": 1787469070420053300,
+          "sha256": "f2f6928ee5ab50a7cecdd399102acc6f2351a60477ea1484b92951b22c9921c5",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 8,
+            "point_count": 153
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000022/raw.png",
+          "size_bytes": 33345,
+          "modified_ns": 1787469070420053300,
+          "sha256": "45bad5aa7e07e9140d3eef167c4ebad3ee0bab40753121a426347f864db1812c"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000022/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000022/metadata.json",
+          "size_bytes": 338,
+          "modified_ns": 1787469070419066900,
+          "sha256": "cdfa26c445e4a851054238b914fd261a268368d007c70f0d8b69906a1afa2448",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000022",
+            "label": "مهناز"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000022/sample_knowledge.json",
+          "size_bytes": 121113,
+          "modified_ns": 1787567481887851100,
+          "sha256": "8758ba8996c81118b6a2cc7fd516afcfd0b0bbc590d915228e91414bea5be2bd",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000022",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 23,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000023",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000023/strokes.json",
+          "size_bytes": 68235,
+          "modified_ns": 1787469070440039900,
+          "sha256": "0b75ac40fad81368100e0e86fdc0e494e23372cbd66c9d0f044179ee45d2df9d",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 6,
+            "point_count": 246
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000023/raw.png",
+          "size_bytes": 43959,
+          "modified_ns": 1787469070438041200,
+          "sha256": "61ecbb4b6d6dad42e8a672d869a439802b6c0be896c001445c17025bcd406e0d"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000023/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000023/metadata.json",
+          "size_bytes": 550,
+          "modified_ns": 1787469070437044600,
+          "sha256": "d40b6bb177c606322a70bbbe05b0f141287e0a59834e5383c36428ec474baf64",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000023",
+            "label": "unlabeled"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000023/sample_knowledge.json",
+          "size_bytes": 112625,
+          "modified_ns": 1787567481900844100,
+          "sha256": "7538dcd14c24b01f2193b4e6339cd2401b8cf5e6af9c2bcf965eada806fcce2a",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000023",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 24,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000024",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000024/strokes.json",
+          "size_bytes": 105593,
+          "modified_ns": 1787469070458042200,
+          "sha256": "f2acfac1d48884c9a000e1ec7261ad7313fb29e95927c3e32c89412179453eb5",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 9,
+            "point_count": 383
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000024/raw.png",
+          "size_bytes": 42422,
+          "modified_ns": 1787469070457030200,
+          "sha256": "e3fcb934f40fe257897dfcb35de6b7249d2724f4f27e17dc2c3a25644356c162"
+        },
+        "render.png": {
+          "present": false,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000024/render.png"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000024/metadata.json",
+          "size_bytes": 552,
+          "modified_ns": 1787469070456043800,
+          "sha256": "383ad3501a3e8c72da40821fd33cc113f87e6884fb06b1542f619005e3c09f92",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000024",
+            "label": "پورتقی"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000024/sample_knowledge.json",
+          "size_bytes": 169034,
+          "modified_ns": 1787567481919841900,
+          "sha256": "a89f66e8805e19576bb7d33121647193f8e1666f89e65d85bd811ac1a7ce7cd9",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000024",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    },
+    {
+      "sample_id": 25,
+      "folder_present": true,
+      "folder": "online_training_data/reference_learning/samples/sample_000025",
+      "weight": 0.04,
+      "files": {
+        "strokes.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000025/strokes.json",
+          "size_bytes": 54120,
+          "modified_ns": 1787557266005791000,
+          "sha256": "8e9dbf77932d23171c30fc32bb9b12c818638b50be9075ecd4acc7b335f1e721",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "stroke_count": 5,
+            "point_count": 195
+          }
+        },
+        "raw.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000025/raw.png",
+          "size_bytes": 36141,
+          "modified_ns": 1787557266003762100,
+          "sha256": "19d53c95ec9a6f5c16aaf126b02fd98df2bbea1438d69708f23f007f1206cf12"
+        },
+        "render.png": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000025/render.png",
+          "size_bytes": 122703,
+          "modified_ns": 1787557266004791800,
+          "sha256": "6ce4c3d9d1653d83b33e4e75bf0c57ef2c20f7a0f39340a1203e395e739f470b"
+        },
+        "metadata.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000025/metadata.json",
+          "size_bytes": 459,
+          "modified_ns": 1787557266001940900,
+          "sha256": "670b3f6c9932abae158f80c83898a627747f930575be1bf46f882f1cbf9e2f4d",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "sample_id": "sample_000025"
+          }
+        },
+        "sample_knowledge.json": {
+          "present": true,
+          "relative_path": "online_training_data/reference_learning/samples/sample_000025/sample_knowledge.json",
+          "size_bytes": 92238,
+          "modified_ns": 1787567481930840900,
+          "sha256": "099524f956caecc430d54f349e9c0611087e4c0a4fb3b242cbc0ca651a18fd35",
+          "json": {
+            "present": true,
+            "read_status": "ok",
+            "json_type": "dict",
+            "top_level_keys": [
+              "features",
+              "knowledge_version",
+              "sample_id",
+              "source",
+              "storage_version"
+            ],
+            "sample_id": "sample_000025",
+            "knowledge_version": "0.4"
+          }
+        }
+      },
+      "directory_files": [
+        "metadata.json",
+        "raw.png",
+        "render.png",
+        "sample_knowledge.json",
+        "strokes.json",
+        "trajectory.json"
+      ]
+    }
+  ],
+  "summary": {
+    "expected_samples": 25,
+    "present_samples": 25,
+    "missing_sample_ids": []
+  },
+  "notes": [
+    "Manifest is an inventory, not a trajectory-quality audit.",
+    "SHA-256 values are recorded for integrity tracking only.",
+    "No source sample file is modified.",
+    "Sample quality decisions belong to STEP 3.",
+    "All 25 samples retain equal learning weight."
+  ]
+}

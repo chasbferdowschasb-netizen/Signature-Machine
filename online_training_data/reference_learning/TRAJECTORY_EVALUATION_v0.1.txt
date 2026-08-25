@@ -1,0 +1,154 @@
+SIGNATURE MACHINE — TRAJECTORY EVALUATION v0.1
+========================================================================
+
+STEP: 4 — Build trajectory evaluator
+Reference set: 001..025
+Sample count: 25
+Equal weight: 1/25 = 0.04
+
+IMPORTANT
+------------------------------------------------------------------------
+This is a deterministic trajectory feature representation.
+It is NOT a trained generative model.
+No generated sample was used.
+No source sample was modified.
+
+FEATURE FAMILIES
+------------------------------------------------------------------------
+- topology: stroke count, valid stroke count, points per stroke, stroke length statistics
+- geometry: bounding box, aspect ratio, path length, displacement, straightness
+- motion: velocity, acceleration and temporal movement statistics
+- timing: stroke duration and duration distribution
+- pressure: pressure distribution where pressure exists
+- direction: direction changes, turn angles and directional endpoints
+- curvature: turn-density and curvature proxy statistics
+- normalized_shape: arc-length normalized stroke representation used as a structural feature, not a final signature
+- stroke_relationships: stroke ordering and per-stroke feature sequence
+
+REFERENCE STATISTICS
+------------------------------------------------------------------------
+{
+  "stroke_count": {
+    "sample_count": 25,
+    "mean": 8.12,
+    "median": 8.0,
+    "std": 2.38863978,
+    "min": 5.0,
+    "max": 15.0
+  },
+  "point_count": {
+    "sample_count": 0,
+    "mean": null,
+    "median": null,
+    "std": null,
+    "min": null,
+    "max": null
+  },
+  "total_path_length": {
+    "sample_count": 25,
+    "mean": 1471.39757126,
+    "median": 1416.72129732,
+    "std": 341.37384631,
+    "min": 1012.83890261,
+    "max": 2261.74926745
+  },
+  "global_aspect_ratio": {
+    "sample_count": 25,
+    "mean": 1.84338798,
+    "median": 1.76630435,
+    "std": 0.62584578,
+    "min": 1.01279707,
+    "max": 3.33333333
+  },
+  "mean_stroke_straightness": {
+    "sample_count": 25,
+    "mean": 0.52289673,
+    "median": 0.53188734,
+    "std": 0.11281499,
+    "min": 0.27296342,
+    "max": 0.68314297
+  },
+  "mean_velocity": {
+    "sample_count": 25,
+    "mean": 0.49081235,
+    "median": 0.41764941,
+    "std": 0.16958246,
+    "min": 0.272179,
+    "max": 0.7918368
+  },
+  "stroke_duration_mean_ms": {
+    "sample_count": 25,
+    "mean": 512.97118345,
+    "median": 529.8999721,
+    "std": 128.03655843,
+    "min": 311.40002441,
+    "max": 826.09997559
+  },
+  "pressure_mean": {
+    "sample_count": 25,
+    "mean": 0.44936396,
+    "median": 0.42765398,
+    "std": 0.06630797,
+    "min": 0.36607847,
+    "max": 0.58409835
+  },
+  "direction_changes_total": {
+    "sample_count": 25,
+    "mean": 117.2,
+    "median": 113.0,
+    "std": 38.39583311,
+    "min": 59.0,
+    "max": 198.0
+  },
+  "turn_density_mean": {
+    "sample_count": 25,
+    "mean": 0.86492364,
+    "median": 0.89196975,
+    "std": 0.06393182,
+    "min": 0.70662186,
+    "max": 0.94250002
+  },
+  "points_per_stroke": {
+    "sample_count": 203,
+    "mean": 30.08374384,
+    "median": 21.0,
+    "std": 27.57020384,
+    "min": 1.0,
+    "max": 130.0
+  }
+}
+
+PER-SAMPLE SUMMARY
+------------------------------------------------------------------------
+sample_000001: status=PASS strokes=8 points=313 path=2059.3720968 mean_velocity=0.46490162
+sample_000002: status=PASS strokes=9 points=356 path=1724.50090303 mean_velocity=0.27543904
+sample_000003: status=PASS strokes=13 points=274 path=1317.29554756 mean_velocity=0.33176145
+sample_000004: status=PASS strokes=5 points=143 path=1404.21766791 mean_velocity=0.69911818
+sample_000005: status=PASS strokes=6 points=301 path=1683.34760259 mean_velocity=0.35060337
+sample_000006: status=PASS strokes=10 points=310 path=1196.67816193 mean_velocity=0.27525568
+sample_000007: status=PASS strokes=7 points=224 path=1091.60413521 mean_velocity=0.272179
+sample_000008: status=PASS strokes=15 points=325 path=1408.4060127 mean_velocity=0.38916028
+sample_000009: status=PASS strokes=11 points=293 path=1807.5599466 mean_velocity=0.7918368
+sample_000010: status=PASS strokes=9 points=304 path=1552.90267748 mean_velocity=0.39159475
+sample_000011: status=PASS strokes=6 points=169 path=1154.10178829 mean_velocity=0.39205259
+sample_000012: status=PASS strokes=8 points=233 path=1012.83890261 mean_velocity=0.37326243
+sample_000013: status=PASS strokes=6 points=201 path=1416.72129732 mean_velocity=0.45691151
+sample_000014: status=PASS strokes=7 points=165 path=1055.93146089 mean_velocity=0.7204373
+sample_000015: status=PASS strokes=7 points=250 path=1479.28872165 mean_velocity=0.40226681
+sample_000016: status=PASS strokes=9 points=252 path=1740.97573418 mean_velocity=0.45444992
+sample_000017: status=PASS strokes=7 points=167 path=1066.26873954 mean_velocity=0.75696511
+sample_000018: status=PASS strokes=6 points=225 path=1460.12632064 mean_velocity=0.41764941
+sample_000019: status=PASS strokes=11 points=197 path=1021.36914364 mean_velocity=0.40134013
+sample_000020: status=PASS strokes=7 points=258 path=1659.90622421 mean_velocity=0.67007732
+sample_000021: status=PASS strokes=8 points=170 path=1175.17999315 mean_velocity=0.7854862
+sample_000022: status=PASS strokes=8 points=153 path=1313.98389055 mean_velocity=0.3650997
+sample_000023: status=PASS strokes=6 points=246 path=2067.46273329 mean_velocity=0.74977647
+sample_000024: status=PASS strokes=9 points=383 path=2261.74926745 mean_velocity=0.52203449
+sample_000025: status=PASS strokes=5 points=195 path=1653.15031236 mean_velocity=0.56064924
+
+========================================================================
+STEP 4 COMPLETE
+========================================================================
+No sample contents were modified.
+No training was performed.
+No signatures were generated.

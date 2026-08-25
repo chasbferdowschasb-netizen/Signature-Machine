@@ -1,0 +1,56 @@
+{
+  "schema": "signature_machine.reference_freeze",
+  "schema_version": "0.1",
+  "cycle": "v0.1",
+  "status": "FROZEN",
+  "created_at_utc": "2026-08-25T08:33:58.667864+00:00",
+  "reference_policy": {
+    "sample_range": [
+      1,
+      25
+    ],
+    "sample_count": 25,
+    "equal_weight": true,
+    "weight_per_sample": 0.04,
+    "sample_priority": "none",
+    "generated_samples_allowed": false,
+    "future_samples_allowed": false,
+    "sample_files_modified_by_this_script": false
+  },
+  "reference_sample_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "notes": [
+    "Samples 001..025 are the fixed reference set for Cycle v0.1.",
+    "All reference samples have equal learning weight.",
+    "No generated sample may enter this reference set.",
+    "Sample 026+ is outside Cycle v0.1.",
+    "This file is a logical freeze marker only.",
+    "Exact manifest generation is STEP 2 and is intentionally not performed here.",
+    "Trajectory audit is STEP 3 and is intentionally not performed here."
+  ]
+}

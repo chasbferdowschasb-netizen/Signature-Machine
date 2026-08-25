@@ -1,0 +1,67 @@
+SIGNATURE MACHINE — CYCLE v0.1
+========================================================================
+STEP 5 ONLY
+
+REFERENCE
+------------------------------------------------------------------------
+Samples: 001..025
+Count: 25
+Equal weight: 0.04
+Sample priority: none
+Generated data: NO
+Video source: NO
+
+RECONSTRUCTION
+------------------------------------------------------------------------
+Mode: leave-one-out reference consensus
+Peers per target: 24
+Random points: NO
+Global loss weight: 0.40
+Sequence loss weight: 0.60
+
+LOSS
+------------------------------------------------------------------------
+Weighted total loss: 0.3243999843612536
+Unweighted mean loss: 0.32439998436125367
+Median: 0.33052586969924524
+Std: 0.033555227810795105
+Min: 0.24359099100176182
+Max: 0.41358049972891203
+
+PER-SAMPLE
+------------------------------------------------------------------------
+sample_000001 loss=0.3315113820354571 global=0.1617873323620746 sequence=0.4446607484843788
+sample_000002 loss=0.3342187500997352 global=0.19778896269044777 sequence=0.42517194170592676
+sample_000003 loss=0.3183845233578786 global=0.17299832054743638 sequence=0.41530865856484006
+sample_000004 loss=0.34663943427803645 global=0.22750206204781037 sequence=0.42606434909818724
+sample_000005 loss=0.3551134736652266 global=0.2796327549653104 sequence=0.405433952798504
+sample_000006 loss=0.3351140835029545 global=0.21264325855110924 sequence=0.41676130013751805
+sample_000007 loss=0.3241611834985743 global=0.1428534218453436 sequence=0.44503302460072813
+sample_000008 loss=0.3426652551387144 global=0.24351050968016358 sequence=0.4087684187777482
+sample_000009 loss=0.33052586969924524 global=0.19257157447292744 sequence=0.4224953998501238
+sample_000010 loss=0.24359099100176182 global=0.10065036803770551 sequence=0.338884739644466
+sample_000011 loss=0.33308447191543145 global=0.19949521512247442 sequence=0.4221439764440695
+sample_000012 loss=0.30916381047427766 global=0.14311353906209315 sequence=0.419863991415734
+sample_000013 loss=0.3266197081574025 global=0.1182606027394644 sequence=0.4655257784360279
+sample_000014 loss=0.33427099841180047 global=0.195877998596231 sequence=0.42653299828884683
+sample_000015 loss=0.28875844495295766 global=0.14224849952251117 sequence=0.38643174190658863
+sample_000016 loss=0.3039076710786446 global=0.12350454206016345 sequence=0.42417642375763204
+sample_000017 loss=0.3270463181040875 global=0.23534070177108424 sequence=0.388183395659423
+sample_000018 loss=0.28487677234228503 global=0.10767002320431472 sequence=0.40301460510093196
+sample_000019 loss=0.36652587052863944 global=0.23734969529620453 sequence=0.4526433206835961
+sample_000020 loss=0.25936453659483377 global=0.13982318400295515 sequence=0.3390587716560862
+sample_000021 loss=0.295479539544677 global=0.17718385339746026 sequence=0.37434333030948813
+sample_000022 loss=0.41358049972891203 global=0.24241154773905985 sequence=0.5276931343888135
+sample_000023 loss=0.34642307842160247 global=0.23561585556819165 sequence=0.4202945603238763
+sample_000024 loss=0.3134883176026559 global=0.1854213240571839 sequence=0.39886631329963723
+sample_000025 loss=0.34548462489554876 global=0.15601852537102542 sequence=0.4717953579118977
+
+========================================================================
+STEP 5 COMPLETE
+========================================================================
+Reference contents modified: NO
+Training model created: NO
+New signature generated: NO
+Sample 026 created: NO
+
+Next conceptual step: STEP 6 — Run first reconstruction cycle.

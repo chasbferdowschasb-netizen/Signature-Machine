@@ -1,0 +1,3089 @@
+{
+  "schema": "signature_machine.cycle_report",
+  "schema_version": "0.1",
+  "cycle": "v0.1",
+  "created_at_utc": "2026-08-25T08:49:27.830810+00:00",
+  "step": {
+    "number": 5,
+    "name": "Build Cycle v0.1",
+    "training_model_created": false,
+    "generation_performed": false,
+    "sample_026_created": false
+  },
+  "reference_policy": {
+    "sample_range": [
+      1,
+      25
+    ],
+    "sample_count": 25,
+    "equal_weight": true,
+    "weight_per_sample": 0.04,
+    "sample_priority": "none",
+    "generated_data_included": false
+  },
+  "reconstruction_policy": {
+    "mode": "leave_one_out_reference_consensus",
+    "peer_count_per_target": 24,
+    "randomness": "none",
+    "random_points": false,
+    "video_used_as_source": false,
+    "source_of_truth": "strokes.json -> trajectory evaluation",
+    "global_loss_weight": 0.4,
+    "sequence_loss_weight": 0.6
+  },
+  "loss": {
+    "weighted_total_loss": 0.32439998,
+    "unweighted_mean_loss": 0.32439998,
+    "distribution": {
+      "count": 25,
+      "mean": 0.32439998,
+      "median": 0.33052587,
+      "std": 0.03355523,
+      "min": 0.24359099,
+      "max": 0.4135805,
+      "p10": 0.28642944,
+      "p90": 0.35172386
+    }
+  },
+  "results": [
+    {
+      "target_sample_id": 1,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.16178733,
+      "sequence_descriptor_loss": 0.44466075,
+      "total_loss": 0.33151138,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 8,
+            "consensus": 8.125,
+            "normalized_error": 0.01538462
+          },
+          "total_path_length": {
+            "observed": 2059.3720968,
+            "consensus": 1446.8986327,
+            "normalized_error": 0.29740787
+          },
+          "global_aspect_ratio": {
+            "observed": 2.32359551,
+            "consensus": 1.82337934,
+            "normalized_error": 0.21527679
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.48462255,
+            "consensus": 0.52449149,
+            "normalized_error": 0.07601446
+          },
+          "mean_velocity": {
+            "observed": 0.46490162,
+            "consensus": 0.49189197,
+            "normalized_error": 0.05487048
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 651.66253662,
+            "consensus": 507.19237707,
+            "normalized_error": 0.22169474
+          },
+          "pressure_mean": {
+            "observed": 0.58409835,
+            "consensus": 0.44375002,
+            "normalized_error": 0.24028201
+          },
+          "direction_changes_total": {
+            "observed": 159,
+            "consensus": 115.45833333,
+            "normalized_error": 0.27384696
+          },
+          "turn_density_mean": {
+            "observed": 0.91901283,
+            "consensus": 0.86266992,
+            "normalized_error": 0.06130807
+          }
+        },
+        "shape": 0.26651708,
+        "stroke_length": 0.65716047,
+        "stroke_duration": 0.60294812,
+        "stroke_velocity": 0.57596162,
+        "stroke_direction": 0.44982193,
+        "stroke_curvature": 0.11555527
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 8,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 8
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 2,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.19778896,
+      "sequence_descriptor_loss": 0.42517194,
+      "total_loss": 0.33421875,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 9,
+            "consensus": 8.08333333,
+            "normalized_error": 0.10185185
+          },
+          "total_path_length": {
+            "observed": 1724.50090303,
+            "consensus": 1460.85159911,
+            "normalized_error": 0.15288441
+          },
+          "global_aspect_ratio": {
+            "observed": 1.89879518,
+            "consensus": 1.84107935,
+            "normalized_error": 0.03039603
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.36223353,
+            "consensus": 0.52959103,
+            "normalized_error": 0.31601272
+          },
+          "mean_velocity": {
+            "observed": 0.27543904,
+            "consensus": 0.49978624,
+            "normalized_error": 0.44888631
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 641.38891602,
+            "consensus": 507.62044459,
+            "normalized_error": 0.20856062
+          },
+          "pressure_mean": {
+            "observed": 0.47919162,
+            "consensus": 0.44812114,
+            "normalized_error": 0.06483937
+          },
+          "direction_changes_total": {
+            "observed": 198,
+            "consensus": 113.83333333,
+            "normalized_error": 0.42508418
+          },
+          "turn_density_mean": {
+            "observed": 0.89196975,
+            "consensus": 0.86379672,
+            "normalized_error": 0.03158519
+          }
+        },
+        "shape": 0.3035463,
+        "stroke_length": 0.59591828,
+        "stroke_duration": 0.50098351,
+        "stroke_velocity": 0.61651923,
+        "stroke_direction": 0.38268405,
+        "stroke_curvature": 0.15138028
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 9,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 9
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 3,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.17299832,
+      "sequence_descriptor_loss": 0.41530866,
+      "total_loss": 0.31838452,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 13,
+            "consensus": 7.91666667,
+            "normalized_error": 0.39102564
+          },
+          "total_path_length": {
+            "observed": 1317.29554756,
+            "consensus": 1477.81848892,
+            "normalized_error": 0.10862155
+          },
+          "global_aspect_ratio": {
+            "observed": 1.67676768,
+            "consensus": 1.8503305,
+            "normalized_error": 0.09380098
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.67075457,
+            "consensus": 0.51673599,
+            "normalized_error": 0.22961988
+          },
+          "mean_velocity": {
+            "observed": 0.33176145,
+            "consensus": 0.49743947,
+            "normalized_error": 0.33306167
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 342.20000751,
+            "consensus": 520.08664912,
+            "normalized_error": 0.3420327
+          },
+          "pressure_mean": {
+            "observed": 0.45219758,
+            "consensus": 0.44924589,
+            "normalized_error": 0.00652743
+          },
+          "direction_changes_total": {
+            "observed": 113,
+            "consensus": 117.375,
+            "normalized_error": 0.0372737
+          },
+          "turn_density_mean": {
+            "observed": 0.87757874,
+            "consensus": 0.86439634,
+            "normalized_error": 0.01502133
+          }
+        },
+        "shape": 0.24910655,
+        "stroke_length": 0.64894487,
+        "stroke_duration": 0.49792064,
+        "stroke_velocity": 0.47112969,
+        "stroke_direction": 0.52046642,
+        "stroke_curvature": 0.10428379
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 13,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 13
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 9,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 4,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 10,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 3,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 11,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 1,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 12,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 1,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 4,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.22750206,
+      "sequence_descriptor_loss": 0.42606435,
+      "total_loss": 0.34663943,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 5,
+            "consensus": 8.25,
+            "normalized_error": 0.39393939
+          },
+          "total_path_length": {
+            "observed": 1404.21766791,
+            "consensus": 1474.1967339,
+            "normalized_error": 0.04746929
+          },
+          "global_aspect_ratio": {
+            "observed": 2.98501873,
+            "consensus": 1.79582004,
+            "normalized_error": 0.39838902
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.62516361,
+            "consensus": 0.51863561,
+            "normalized_error": 0.17040019
+          },
+          "mean_velocity": {
+            "observed": 0.69911818,
+            "consensus": 0.48213294,
+            "normalized_error": 0.3103699
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 489.86000976,
+            "consensus": 513.93414902,
+            "normalized_error": 0.04684285
+          },
+          "pressure_mean": {
+            "observed": 0.53691475,
+            "consensus": 0.44571601,
+            "normalized_error": 0.16985702
+          },
+          "direction_changes_total": {
+            "observed": 59,
+            "consensus": 119.625,
+            "normalized_error": 0.50679206
+          },
+          "turn_density_mean": {
+            "observed": 0.86205128,
+            "consensus": 0.86504332,
+            "normalized_error": 0.00345883
+          }
+        },
+        "shape": 0.29407843,
+        "stroke_length": 0.69422046,
+        "stroke_duration": 0.5730134,
+        "stroke_velocity": 0.50618134,
+        "stroke_direction": 0.33435796,
+        "stroke_curvature": 0.15453451
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 5,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 5
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 5,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.27963275,
+      "sequence_descriptor_loss": 0.40543395,
+      "total_loss": 0.35511347,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 6,
+            "consensus": 8.20833333,
+            "normalized_error": 0.26903553
+          },
+          "total_path_length": {
+            "observed": 1683.34760259,
+            "consensus": 1462.56631996,
+            "normalized_error": 0.13115609
+          },
+          "global_aspect_ratio": {
+            "observed": 1.01279707,
+            "consensus": 1.87799594,
+            "normalized_error": 0.46070327
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.27296342,
+            "consensus": 0.53331062,
+            "normalized_error": 0.48817179
+          },
+          "mean_velocity": {
+            "observed": 0.35060337,
+            "consensus": 0.49665439,
+            "normalized_error": 0.29406973
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 826.09997559,
+            "consensus": 499.92415045,
+            "normalized_error": 0.3948382
+          },
+          "pressure_mean": {
+            "observed": 0.52761747,
+            "consensus": 0.4461034,
+            "normalized_error": 0.15449465
+          },
+          "direction_changes_total": {
+            "observed": 152,
+            "consensus": 115.75,
+            "normalized_error": 0.23848684
+          },
+          "turn_density_mean": {
+            "observed": 0.94250002,
+            "consensus": 0.86169129,
+            "normalized_error": 0.0857387
+          }
+        },
+        "shape": 0.2736512,
+        "stroke_length": 0.62485425,
+        "stroke_duration": 0.38180044,
+        "stroke_velocity": 0.54232403,
+        "stroke_direction": 0.49910012,
+        "stroke_curvature": 0.11087368
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 6,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 6
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 6,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.21264326,
+      "sequence_descriptor_loss": 0.4167613,
+      "total_loss": 0.33511408,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 10,
+            "consensus": 8.04166667,
+            "normalized_error": 0.19583333
+          },
+          "total_path_length": {
+            "observed": 1196.67816193,
+            "consensus": 1482.84421332,
+            "normalized_error": 0.19298457
+          },
+          "global_aspect_ratio": {
+            "observed": 1.04146341,
+            "consensus": 1.87680151,
+            "normalized_error": 0.44508601
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.44021757,
+            "consensus": 0.52634169,
+            "normalized_error": 0.16362778
+          },
+          "mean_velocity": {
+            "observed": 0.27525568,
+            "consensus": 0.49979388,
+            "normalized_error": 0.4492616
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 493.11000976,
+            "consensus": 513.79873235,
+            "normalized_error": 0.0402662
+          },
+          "pressure_mean": {
+            "observed": 0.39531525,
+            "consensus": 0.45161599,
+            "normalized_error": 0.12466507
+          },
+          "direction_changes_total": {
+            "observed": 153,
+            "consensus": 115.70833333,
+            "normalized_error": 0.24373638
+          },
+          "turn_density_mean": {
+            "observed": 0.91622805,
+            "consensus": 0.86278596,
+            "normalized_error": 0.05832838
+          }
+        },
+        "shape": 0.3127381,
+        "stroke_length": 0.61116954,
+        "stroke_duration": 0.43277981,
+        "stroke_velocity": 0.58265763,
+        "stroke_direction": 0.44841084,
+        "stroke_curvature": 0.11281188
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 10,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 10
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 9,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 4,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 7,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.14285342,
+      "sequence_descriptor_loss": 0.44503302,
+      "total_loss": 0.32416118,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 7,
+            "consensus": 8.16666667,
+            "normalized_error": 0.14285714
+          },
+          "total_path_length": {
+            "observed": 1091.60413521,
+            "consensus": 1487.22229777,
+            "normalized_error": 0.26601145
+          },
+          "global_aspect_ratio": {
+            "observed": 2.17771084,
+            "consensus": 1.82945786,
+            "normalized_error": 0.159917
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.53188734,
+            "consensus": 0.52252212,
+            "normalized_error": 0.01760752
+          },
+          "mean_velocity": {
+            "observed": 0.272179,
+            "consensus": 0.49992208,
+            "normalized_error": 0.45555715
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 529.8999721,
+            "consensus": 512.26581726,
+            "normalized_error": 0.03327827
+          },
+          "pressure_mean": {
+            "observed": 0.42037493,
+            "consensus": 0.45057183,
+            "normalized_error": 0.06701907
+          },
+          "direction_changes_total": {
+            "observed": 102,
+            "consensus": 117.83333333,
+            "normalized_error": 0.13437058
+          },
+          "turn_density_mean": {
+            "observed": 0.85739598,
+            "consensus": 0.86523729,
+            "normalized_error": 0.00906262
+          }
+        },
+        "shape": 0.29373375,
+        "stroke_length": 0.74408009,
+        "stroke_duration": 0.59758653,
+        "stroke_velocity": 0.43925387,
+        "stroke_direction": 0.47348865,
+        "stroke_curvature": 0.12205526
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 7,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 7
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 8,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.24351051,
+      "sequence_descriptor_loss": 0.40876842,
+      "total_loss": 0.34266526,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 15,
+            "consensus": 7.83333333,
+            "normalized_error": 0.47777778
+          },
+          "total_path_length": {
+            "observed": 1408.4060127,
+            "consensus": 1474.02221954,
+            "normalized_error": 0.04451507
+          },
+          "global_aspect_ratio": {
+            "observed": 2.8961039,
+            "consensus": 1.79952482,
+            "normalized_error": 0.37863941
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.44511277,
+            "consensus": 0.52613773,
+            "normalized_error": 0.15399952
+          },
+          "mean_velocity": {
+            "observed": 0.38916028,
+            "consensus": 0.49504785,
+            "normalized_error": 0.21389361
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 335.77332357,
+            "consensus": 520.35442761,
+            "normalized_error": 0.35472189
+          },
+          "pressure_mean": {
+            "observed": 0.3699119,
+            "consensus": 0.45267446,
+            "normalized_error": 0.1828302
+          },
+          "direction_changes_total": {
+            "observed": 180,
+            "consensus": 114.58333333,
+            "normalized_error": 0.36342593
+          },
+          "turn_density_mean": {
+            "observed": 0.88340404,
+            "consensus": 0.86415362,
+            "normalized_error": 0.02179118
+          }
+        },
+        "shape": 0.27193987,
+        "stroke_length": 0.59190106,
+        "stroke_duration": 0.4230094,
+        "stroke_velocity": 0.54575813,
+        "stroke_direction": 0.52574898,
+        "stroke_curvature": 0.09425308
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 15,
+        "peer_max_strokes": 13,
+        "overlapping_positions": 13
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 9,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 4,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 10,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 3,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 11,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 1,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 12,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 1,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 9,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.19257157,
+      "sequence_descriptor_loss": 0.4224954,
+      "total_loss": 0.33052587,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 11,
+            "consensus": 8.0,
+            "normalized_error": 0.27272727
+          },
+          "total_path_length": {
+            "observed": 1807.5599466,
+            "consensus": 1457.39080562,
+            "normalized_error": 0.19372477
+          },
+          "global_aspect_ratio": {
+            "observed": 2.4826087,
+            "consensus": 1.81675379,
+            "normalized_error": 0.26820776
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.64710542,
+            "consensus": 0.51772137,
+            "normalized_error": 0.19994277
+          },
+          "mean_velocity": {
+            "observed": 0.7918368,
+            "consensus": 0.47826967,
+            "normalized_error": 0.3959997
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 465.93999023,
+            "consensus": 514.9308165,
+            "normalized_error": 0.0951406
+          },
+          "pressure_mean": {
+            "observed": 0.41991074,
+            "consensus": 0.45059118,
+            "normalized_error": 0.06808929
+          },
+          "direction_changes_total": {
+            "observed": 140,
+            "consensus": 116.25,
+            "normalized_error": 0.16964286
+          },
+          "turn_density_mean": {
+            "observed": 0.80691383,
+            "consensus": 0.86734072,
+            "normalized_error": 0.06966914
+          }
+        },
+        "shape": 0.29865417,
+        "stroke_length": 0.67649611,
+        "stroke_duration": 0.42679887,
+        "stroke_velocity": 0.58386419,
+        "stroke_direction": 0.3421864,
+        "stroke_curvature": 0.20697266
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 11,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 11
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 9,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 4,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 10,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 3,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 10,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.10065037,
+      "sequence_descriptor_loss": 0.33888474,
+      "total_loss": 0.24359099,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 9,
+            "consensus": 8.08333333,
+            "normalized_error": 0.10185185
+          },
+          "total_path_length": {
+            "observed": 1552.90267748,
+            "consensus": 1468.00152517,
+            "normalized_error": 0.05467255
+          },
+          "global_aspect_ratio": {
+            "observed": 1.85882353,
+            "consensus": 1.84274484,
+            "normalized_error": 0.00864993
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.47853941,
+            "consensus": 0.52474495,
+            "normalized_error": 0.08805333
+          },
+          "mean_velocity": {
+            "observed": 0.39159475,
+            "consensus": 0.49494642,
+            "normalized_error": 0.20881385
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 551.78895399,
+            "consensus": 511.35377635,
+            "normalized_error": 0.07328015
+          },
+          "pressure_mean": {
+            "observed": 0.40272975,
+            "consensus": 0.45130705,
+            "normalized_error": 0.10763692
+          },
+          "direction_changes_total": {
+            "observed": 144,
+            "consensus": 116.08333333,
+            "normalized_error": 0.19386574
+          },
+          "turn_density_mean": {
+            "observed": 0.92630806,
+            "consensus": 0.86236596,
+            "normalized_error": 0.06902898
+          }
+        },
+        "shape": 0.23388782,
+        "stroke_length": 0.45815393,
+        "stroke_duration": 0.43612914,
+        "stroke_velocity": 0.43579831,
+        "stroke_direction": 0.36537567,
+        "stroke_curvature": 0.10396357
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 9,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 9
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 11,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.19949522,
+      "sequence_descriptor_loss": 0.42214398,
+      "total_loss": 0.33308447,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 6,
+            "consensus": 8.20833333,
+            "normalized_error": 0.26903553
+          },
+          "total_path_length": {
+            "observed": 1154.10178829,
+            "consensus": 1484.61822889,
+            "normalized_error": 0.22262723
+          },
+          "global_aspect_ratio": {
+            "observed": 1.75151515,
+            "consensus": 1.84721602,
+            "normalized_error": 0.05180816
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.67858818,
+            "consensus": 0.51640959,
+            "normalized_error": 0.23899413
+          },
+          "mean_velocity": {
+            "observed": 0.39205259,
+            "consensus": 0.49492734,
+            "normalized_error": 0.20785829
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 448.95003255,
+            "consensus": 515.63873141,
+            "normalized_error": 0.12933221
+          },
+          "pressure_mean": {
+            "observed": 0.36607847,
+            "consensus": 0.45283419,
+            "normalized_error": 0.19158385
+          },
+          "direction_changes_total": {
+            "observed": 76,
+            "consensus": 118.91666667,
+            "normalized_error": 0.36089699
+          },
+          "turn_density_mean": {
+            "observed": 0.7620197,
+            "consensus": 0.8692113,
+            "normalized_error": 0.12332054
+          }
+        },
+        "shape": 0.30121581,
+        "stroke_length": 0.56899526,
+        "stroke_duration": 0.50089349,
+        "stroke_velocity": 0.39515572,
+        "stroke_direction": 0.52326481,
+        "stroke_curvature": 0.24333876
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 6,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 6
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 12,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.14311354,
+      "sequence_descriptor_loss": 0.41986399,
+      "total_loss": 0.30916381,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 8,
+            "consensus": 8.125,
+            "normalized_error": 0.01538462
+          },
+          "total_path_length": {
+            "observed": 1012.83890261,
+            "consensus": 1490.50418246,
+            "normalized_error": 0.32047228
+          },
+          "global_aspect_ratio": {
+            "observed": 1.02472952,
+            "consensus": 1.87749875,
+            "normalized_error": 0.45420495
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.56711241,
+            "consensus": 0.52105441,
+            "normalized_error": 0.08121494
+          },
+          "mean_velocity": {
+            "observed": 0.37326243,
+            "consensus": 0.49571027,
+            "normalized_error": 0.24701493
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 536.99993024,
+            "consensus": 511.96998567,
+            "normalized_error": 0.0466107
+          },
+          "pressure_mean": {
+            "observed": 0.45827076,
+            "consensus": 0.44899284,
+            "normalized_error": 0.0202455
+          },
+          "direction_changes_total": {
+            "observed": 117,
+            "consensus": 117.20833333,
+            "normalized_error": 0.00177746
+          },
+          "turn_density_mean": {
+            "observed": 0.78063971,
+            "consensus": 0.86843547,
+            "normalized_error": 0.10109647
+          }
+        },
+        "shape": 0.29138059,
+        "stroke_length": 0.5142715,
+        "stroke_duration": 0.46025486,
+        "stroke_velocity": 0.58470362,
+        "stroke_direction": 0.43072059,
+        "stroke_curvature": 0.23785279
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 8,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 8
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 13,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.1182606,
+      "sequence_descriptor_loss": 0.46552578,
+      "total_loss": 0.32661971,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 6,
+            "consensus": 8.20833333,
+            "normalized_error": 0.26903553
+          },
+          "total_path_length": {
+            "observed": 1416.72129732,
+            "consensus": 1473.67574934,
+            "normalized_error": 0.03864789
+          },
+          "global_aspect_ratio": {
+            "observed": 1.39889706,
+            "consensus": 1.86190844,
+            "normalized_error": 0.2486757
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.42795245,
+            "consensus": 0.52685274,
+            "normalized_error": 0.18771904
+          },
+          "mean_velocity": {
+            "observed": 0.45691151,
+            "consensus": 0.49222489,
+            "normalized_error": 0.07174236
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 538.36661784,
+            "consensus": 511.91304035,
+            "normalized_error": 0.04913673
+          },
+          "pressure_mean": {
+            "observed": 0.42065613,
+            "consensus": 0.45056012,
+            "normalized_error": 0.06637069
+          },
+          "direction_changes_total": {
+            "observed": 104,
+            "consensus": 117.75,
+            "normalized_error": 0.11677282
+          },
+          "turn_density_mean": {
+            "observed": 0.87862569,
+            "consensus": 0.86435272,
+            "normalized_error": 0.01624465
+          }
+        },
+        "shape": 0.29190198,
+        "stroke_length": 0.72595554,
+        "stroke_duration": 0.61164135,
+        "stroke_velocity": 0.51050519,
+        "stroke_direction": 0.48845988,
+        "stroke_curvature": 0.16469073
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 6,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 6
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 14,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.195878,
+      "sequence_descriptor_loss": 0.426533,
+      "total_loss": 0.334271,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 7,
+            "consensus": 8.16666667,
+            "normalized_error": 0.14285714
+          },
+          "total_path_length": {
+            "observed": 1055.93146089,
+            "consensus": 1488.7086592,
+            "normalized_error": 0.29070644
+          },
+          "global_aspect_ratio": {
+            "observed": 1.65517241,
+            "consensus": 1.8512303,
+            "normalized_error": 0.10590681
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.56800839,
+            "consensus": 0.52101708,
+            "normalized_error": 0.08272996
+          },
+          "mean_velocity": {
+            "observed": 0.7204373,
+            "consensus": 0.48124465,
+            "normalized_error": 0.33201037
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 428.68334961,
+            "consensus": 516.48317653,
+            "normalized_error": 0.16999552
+          },
+          "pressure_mean": {
+            "observed": 0.4285891,
+            "consensus": 0.45022958,
+            "normalized_error": 0.04806543
+          },
+          "direction_changes_total": {
+            "observed": 66,
+            "consensus": 119.33333333,
+            "normalized_error": 0.44692737
+          },
+          "turn_density_mean": {
+            "observed": 0.74491342,
+            "consensus": 0.86992407,
+            "normalized_error": 0.14370294
+          }
+        },
+        "shape": 0.31744942,
+        "stroke_length": 0.61722054,
+        "stroke_duration": 0.44460377,
+        "stroke_velocity": 0.47920324,
+        "stroke_direction": 0.42009536,
+        "stroke_curvature": 0.28062567
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 7,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 7
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 15,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.1422485,
+      "sequence_descriptor_loss": 0.38643174,
+      "total_loss": 0.28875844,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 7,
+            "consensus": 8.16666667,
+            "normalized_error": 0.14285714
+          },
+          "total_path_length": {
+            "observed": 1479.28872165,
+            "consensus": 1471.06877333,
+            "normalized_error": 0.00555669
+          },
+          "global_aspect_ratio": {
+            "observed": 1.04078303,
+            "consensus": 1.87682986,
+            "normalized_error": 0.44545691
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.41290043,
+            "consensus": 0.52747991,
+            "normalized_error": 0.21722056
+          },
+          "mean_velocity": {
+            "observed": 0.40226681,
+            "consensus": 0.49450175,
+            "normalized_error": 0.18652096
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 553.27141462,
+            "consensus": 511.29200715,
+            "normalized_error": 0.07587489
+          },
+          "pressure_mean": {
+            "observed": 0.41217036,
+            "consensus": 0.45091369,
+            "normalized_error": 0.08592183
+          },
+          "direction_changes_total": {
+            "observed": 126,
+            "consensus": 116.83333333,
+            "normalized_error": 0.07275132
+          },
+          "turn_density_mean": {
+            "observed": 0.90677412,
+            "consensus": 0.86317987,
+            "normalized_error": 0.0480762
+          }
+        },
+        "shape": 0.25833048,
+        "stroke_length": 0.5267929,
+        "stroke_duration": 0.45621499,
+        "stroke_velocity": 0.40005363,
+        "stroke_direction": 0.53094006,
+        "stroke_curvature": 0.14625839
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 7,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 7
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 16,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.12350454,
+      "sequence_descriptor_loss": 0.42417642,
+      "total_loss": 0.30390767,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 9,
+            "consensus": 8.08333333,
+            "normalized_error": 0.10185185
+          },
+          "total_path_length": {
+            "observed": 1740.97573418,
+            "consensus": 1460.16514781,
+            "normalized_error": 0.16129495
+          },
+          "global_aspect_ratio": {
+            "observed": 1.48461538,
+            "consensus": 1.85833684,
+            "normalized_error": 0.20110534
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.35059207,
+            "consensus": 0.53007609,
+            "normalized_error": 0.33860048
+          },
+          "mean_velocity": {
+            "observed": 0.45444992,
+            "consensus": 0.49232745,
+            "normalized_error": 0.07693565
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 497.90002441,
+            "consensus": 513.59914841,
+            "normalized_error": 0.03056688
+          },
+          "pressure_mean": {
+            "observed": 0.40850876,
+            "consensus": 0.45106626,
+            "normalized_error": 0.09434866
+          },
+          "direction_changes_total": {
+            "observed": 121,
+            "consensus": 117.04166667,
+            "normalized_error": 0.0327135
+          },
+          "turn_density_mean": {
+            "observed": 0.80319384,
+            "consensus": 0.86749572,
+            "normalized_error": 0.07412356
+          }
+        },
+        "shape": 0.2631808,
+        "stroke_length": 0.61174016,
+        "stroke_duration": 0.50222694,
+        "stroke_velocity": 0.42574556,
+        "stroke_direction": 0.51814085,
+        "stroke_curvature": 0.22402423
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 9,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 9
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 17,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.2353407,
+      "sequence_descriptor_loss": 0.3881834,
+      "total_loss": 0.32704632,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 7,
+            "consensus": 8.16666667,
+            "normalized_error": 0.14285714
+          },
+          "total_path_length": {
+            "observed": 1066.26873954,
+            "consensus": 1488.27793925,
+            "normalized_error": 0.28355537
+          },
+          "global_aspect_ratio": {
+            "observed": 1.54025974,
+            "consensus": 1.85601833,
+            "normalized_error": 0.17012687
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.66972588,
+            "consensus": 0.51677885,
+            "normalized_error": 0.22837259
+          },
+          "mean_velocity": {
+            "observed": 0.75696511,
+            "consensus": 0.47972265,
+            "normalized_error": 0.36625526
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 367.51422991,
+            "consensus": 519.03188985,
+            "normalized_error": 0.2919236
+          },
+          "pressure_mean": {
+            "observed": 0.3781932,
+            "consensus": 0.45232941,
+            "normalized_error": 0.16389871
+          },
+          "direction_changes_total": {
+            "observed": 70,
+            "consensus": 119.16666667,
+            "normalized_error": 0.41258741
+          },
+          "turn_density_mean": {
+            "observed": 0.91637807,
+            "consensus": 0.86277971,
+            "normalized_error": 0.05848936
+          }
+        },
+        "shape": 0.24342261,
+        "stroke_length": 0.61817083,
+        "stroke_duration": 0.51959033,
+        "stroke_velocity": 0.47940504,
+        "stroke_direction": 0.40522605,
+        "stroke_curvature": 0.06328552
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 7,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 7
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 18,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.10767002,
+      "sequence_descriptor_loss": 0.40301461,
+      "total_loss": 0.28487677,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 6,
+            "consensus": 8.20833333,
+            "normalized_error": 0.26903553
+          },
+          "total_path_length": {
+            "observed": 1460.12632064,
+            "consensus": 1471.86720671,
+            "normalized_error": 0.00797687
+          },
+          "global_aspect_ratio": {
+            "observed": 1.97773279,
+            "consensus": 1.83779028,
+            "normalized_error": 0.07075906
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.58602447,
+            "consensus": 0.52026641,
+            "normalized_error": 0.11221044
+          },
+          "mean_velocity": {
+            "observed": 0.41764941,
+            "consensus": 0.49386081,
+            "normalized_error": 0.15431757
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 613.11669922,
+            "consensus": 508.79845363,
+            "normalized_error": 0.17014419
+          },
+          "pressure_mean": {
+            "observed": 0.440652,
+            "consensus": 0.44972696,
+            "normalized_error": 0.02017881
+          },
+          "direction_changes_total": {
+            "observed": 104,
+            "consensus": 117.75,
+            "normalized_error": 0.11677282
+          },
+          "turn_density_mean": {
+            "observed": 0.90637158,
+            "consensus": 0.86319664,
+            "normalized_error": 0.04763492
+          }
+        },
+        "shape": 0.2769454,
+        "stroke_length": 0.68659424,
+        "stroke_duration": 0.54192707,
+        "stroke_velocity": 0.45030248,
+        "stroke_direction": 0.3431853,
+        "stroke_curvature": 0.11913314
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 6,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 6
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 19,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.2373497,
+      "sequence_descriptor_loss": 0.45264332,
+      "total_loss": 0.36652587,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 11,
+            "consensus": 8.0,
+            "normalized_error": 0.27272727
+          },
+          "total_path_length": {
+            "observed": 1021.36914364,
+            "consensus": 1490.14875575,
+            "normalized_error": 0.31458578
+          },
+          "global_aspect_ratio": {
+            "observed": 1.13854352,
+            "consensus": 1.8727565,
+            "normalized_error": 0.39204936
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.54195033,
+            "consensus": 0.52210283,
+            "normalized_error": 0.03662236
+          },
+          "mean_velocity": {
+            "observed": 0.40134013,
+            "consensus": 0.49454036,
+            "normalized_error": 0.18845829
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 311.40002441,
+            "consensus": 521.36998174,
+            "normalized_error": 0.40272736
+          },
+          "pressure_mean": {
+            "observed": 0.37578601,
+            "consensus": 0.45242971,
+            "normalized_error": 0.16940465
+          },
+          "direction_changes_total": {
+            "observed": 86,
+            "consensus": 118.5,
+            "normalized_error": 0.2742616
+          },
+          "turn_density_mean": {
+            "observed": 0.79384544,
+            "consensus": 0.86788523,
+            "normalized_error": 0.08531058
+          }
+        },
+        "shape": 0.28530251,
+        "stroke_length": 0.71634989,
+        "stroke_duration": 0.44904,
+        "stroke_velocity": 0.61320038,
+        "stroke_direction": 0.47427204,
+        "stroke_curvature": 0.17769511
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 11,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 11
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 9,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 4,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 10,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 3,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 20,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.13982318,
+      "sequence_descriptor_loss": 0.33905877,
+      "total_loss": 0.25936454,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 7,
+            "consensus": 8.16666667,
+            "normalized_error": 0.14285714
+          },
+          "total_path_length": {
+            "observed": 1659.90622421,
+            "consensus": 1463.54304406,
+            "normalized_error": 0.11829776
+          },
+          "global_aspect_ratio": {
+            "observed": 2.29411765,
+            "consensus": 1.82460758,
+            "normalized_error": 0.20465824
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.44343636,
+            "consensus": 0.52620758,
+            "normalized_error": 0.15729766
+          },
+          "mean_velocity": {
+            "observed": 0.67007732,
+            "consensus": 0.48334298,
+            "normalized_error": 0.27867581
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 587.91437639,
+            "consensus": 509.84855041,
+            "normalized_error": 0.13278435
+          },
+          "pressure_mean": {
+            "observed": 0.42765398,
+            "consensus": 0.45026854,
+            "normalized_error": 0.05022461
+          },
+          "direction_changes_total": {
+            "observed": 130,
+            "consensus": 116.66666667,
+            "normalized_error": 0.1025641
+          },
+          "turn_density_mean": {
+            "observed": 0.92823586,
+            "consensus": 0.86228563,
+            "normalized_error": 0.071049
+          }
+        },
+        "shape": 0.24271065,
+        "stroke_length": 0.48834984,
+        "stroke_duration": 0.44577108,
+        "stroke_velocity": 0.40255046,
+        "stroke_direction": 0.3540893,
+        "stroke_curvature": 0.10088129
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 7,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 7
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 21,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.17718385,
+      "sequence_descriptor_loss": 0.37434333,
+      "total_loss": 0.29547954,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 8,
+            "consensus": 8.125,
+            "normalized_error": 0.01538462
+          },
+          "total_path_length": {
+            "observed": 1175.17999315,
+            "consensus": 1483.73997035,
+            "normalized_error": 0.20796095
+          },
+          "global_aspect_ratio": {
+            "observed": 1.80446927,
+            "consensus": 1.8450096,
+            "normalized_error": 0.02197296
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.58086237,
+            "consensus": 0.52048149,
+            "normalized_error": 0.1039504
+          },
+          "mean_velocity": {
+            "observed": 0.7854862,
+            "consensus": 0.47853427,
+            "normalized_error": 0.39077953
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 328.91247558,
+            "consensus": 520.64029628,
+            "normalized_error": 0.3682539
+          },
+          "pressure_mean": {
+            "observed": 0.37389228,
+            "consensus": 0.45250861,
+            "normalized_error": 0.17373444
+          },
+          "direction_changes_total": {
+            "observed": 86,
+            "consensus": 118.5,
+            "normalized_error": 0.2742616
+          },
+          "turn_density_mean": {
+            "observed": 0.89798943,
+            "consensus": 0.8635459,
+            "normalized_error": 0.03835628
+          }
+        },
+        "shape": 0.25739617,
+        "stroke_length": 0.60064257,
+        "stroke_duration": 0.48616108,
+        "stroke_velocity": 0.41035697,
+        "stroke_direction": 0.4013533,
+        "stroke_curvature": 0.09014989
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 8,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 8
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 22,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.24241155,
+      "sequence_descriptor_loss": 0.52769313,
+      "total_loss": 0.4135805,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 8,
+            "consensus": 8.125,
+            "normalized_error": 0.01538462
+          },
+          "total_path_length": {
+            "observed": 1313.98389055,
+            "consensus": 1477.95647463,
+            "normalized_error": 0.11094548
+          },
+          "global_aspect_ratio": {
+            "observed": 3.33333333,
+            "consensus": 1.78130693,
+            "normalized_error": 0.46560792
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.6637404,
+            "consensus": 0.51702824,
+            "normalized_error": 0.22103846
+          },
+          "mean_velocity": {
+            "observed": 0.3650997,
+            "consensus": 0.49605038,
+            "normalized_error": 0.26398665
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 342.20002093,
+            "consensus": 520.08664856,
+            "normalized_error": 0.34203267
+          },
+          "pressure_mean": {
+            "observed": 0.49306765,
+            "consensus": 0.44754297,
+            "normalized_error": 0.09232948
+          },
+          "direction_changes_total": {
+            "observed": 62,
+            "consensus": 119.5,
+            "normalized_error": 0.48117155
+          },
+          "turn_density_mean": {
+            "observed": 0.70662186,
+            "consensus": 0.87151955,
+            "normalized_error": 0.1892071
+          }
+        },
+        "shape": 0.30355725,
+        "stroke_length": 0.88366558,
+        "stroke_duration": 0.7087904,
+        "stroke_velocity": 0.53147394,
+        "stroke_direction": 0.46125255,
+        "stroke_curvature": 0.27741908
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 8,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 8
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 23,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.23561586,
+      "sequence_descriptor_loss": 0.42029456,
+      "total_loss": 0.34642308,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 6,
+            "consensus": 8.20833333,
+            "normalized_error": 0.26903553
+          },
+          "total_path_length": {
+            "observed": 2067.46273329,
+            "consensus": 1446.56152285,
+            "normalized_error": 0.30032039
+          },
+          "global_aspect_ratio": {
+            "observed": 1.24554184,
+            "consensus": 1.86829824,
+            "normalized_error": 0.33332815
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.68314297,
+            "consensus": 0.5162198,
+            "normalized_error": 0.24434588
+          },
+          "mean_velocity": {
+            "observed": 0.74977647,
+            "consensus": 0.48002218,
+            "normalized_error": 0.35977961
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 648.10005697,
+            "consensus": 507.34081372,
+            "normalized_error": 0.21718752
+          },
+          "pressure_mean": {
+            "observed": 0.54879573,
+            "consensus": 0.44522097,
+            "normalized_error": 0.18873099
+          },
+          "direction_changes_total": {
+            "observed": 99,
+            "consensus": 117.95833333,
+            "normalized_error": 0.16072059
+          },
+          "turn_density_mean": {
+            "observed": 0.90587866,
+            "consensus": 0.86321718,
+            "normalized_error": 0.04709403
+          }
+        },
+        "shape": 0.24544018,
+        "stroke_length": 0.67116479,
+        "stroke_duration": 0.6387841,
+        "stroke_velocity": 0.5648079,
+        "stroke_direction": 0.28929891,
+        "stroke_curvature": 0.11227148
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 6,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 6
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 24,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.18542132,
+      "sequence_descriptor_loss": 0.39886631,
+      "total_loss": 0.31348832,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 9,
+            "consensus": 8.08333333,
+            "normalized_error": 0.10185185
+          },
+          "total_path_length": {
+            "observed": 2261.74926745,
+            "consensus": 1438.46625059,
+            "normalized_error": 0.36400278
+          },
+          "global_aspect_ratio": {
+            "observed": 2.275,
+            "consensus": 1.82540415,
+            "normalized_error": 0.19762455
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.47147827,
+            "consensus": 0.52503917,
+            "normalized_error": 0.10201314
+          },
+          "mean_velocity": {
+            "observed": 0.52203449,
+            "consensus": 0.48951143,
+            "normalized_error": 0.0623006
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 676.86672634,
+            "consensus": 506.1422025,
+            "normalized_error": 0.25222768
+          },
+          "pressure_mean": {
+            "observed": 0.53383588,
+            "consensus": 0.44584429,
+            "normalized_error": 0.16482891
+          },
+          "direction_changes_total": {
+            "observed": 184,
+            "consensus": 114.41666667,
+            "normalized_error": 0.37817029
+          },
+          "turn_density_mean": {
+            "observed": 0.90467623,
+            "consensus": 0.86326728,
+            "normalized_error": 0.04577212
+          }
+        },
+        "shape": 0.27026771,
+        "stroke_length": 0.55394151,
+        "stroke_duration": 0.66170719,
+        "stroke_velocity": 0.43876941,
+        "stroke_direction": 0.33188321,
+        "stroke_curvature": 0.13662885
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 9,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 9
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 5,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 22,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 6,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 17,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 7,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 12,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 8,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 8,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    },
+    {
+      "target_sample_id": 25,
+      "target_weight": 0.04,
+      "reconstruction_mode": "leave_one_out_reference_consensus",
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.15601853,
+      "sequence_descriptor_loss": 0.47179536,
+      "total_loss": 0.34548462,
+      "loss_components": {
+        "global": {
+          "stroke_count": {
+            "observed": 5,
+            "consensus": 8.25,
+            "normalized_error": 0.39393939
+          },
+          "total_path_length": {
+            "observed": 1653.15031236,
+            "consensus": 1463.82454038,
+            "normalized_error": 0.11452423
+          },
+          "global_aspect_ratio": {
+            "observed": 1.76630435,
+            "consensus": 1.8465998,
+            "normalized_error": 0.04348287
+          },
+          "mean_stroke_straightness": {
+            "observed": 0.46830307,
+            "consensus": 0.52517147,
+            "normalized_error": 0.10828539
+          },
+          "mean_velocity": {
+            "observed": 0.56064924,
+            "consensus": 0.48790248,
+            "normalized_error": 0.12975449
+          },
+          "stroke_duration_mean_ms": {
+            "observed": 616.35991211,
+            "consensus": 508.66331976,
+            "normalized_error": 0.17473004
+          },
+          "pressure_mean": {
+            "observed": 0.5796863,
+            "consensus": 0.44393386,
+            "normalized_error": 0.23418259
+          },
+          "direction_changes_total": {
+            "observed": 99,
+            "consensus": 117.95833333,
+            "normalized_error": 0.16072059
+          },
+          "turn_density_mean": {
+            "observed": 0.90356481,
+            "consensus": 0.86331359,
+            "normalized_error": 0.04454713
+          }
+        },
+        "shape": 0.27205641,
+        "stroke_length": 0.80426372,
+        "stroke_duration": 0.57011637,
+        "stroke_velocity": 0.46265619,
+        "stroke_direction": 0.60785086,
+        "stroke_curvature": 0.11382861
+      },
+      "sequence_alignment": {
+        "target_valid_strokes": 5,
+        "peer_max_strokes": 15,
+        "overlapping_positions": 5
+      },
+      "reconstructed_strokes": [
+        {
+          "stroke_index": 0,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 1,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 2,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 3,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        },
+        {
+          "stroke_index": 4,
+          "source": "leave_one_out_reference_consensus",
+          "peer_count": 24,
+          "normalized_shape_reconstructed": true
+        }
+      ],
+      "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+    }
+  ],
+  "status": {
+    "cycle_completed": true,
+    "reference_integrity_preserved": true,
+    "next_step": "STEP 6 — Run first reconstruction cycle",
+    "model_v001": false,
+    "sample_026": false
+  },
+  "important_note": "Cycle v0.1 is a transparent deterministic baseline. It measures reconstruction capability and produces loss. It is not a trained generative model and is not approved for new-name generation."
+}

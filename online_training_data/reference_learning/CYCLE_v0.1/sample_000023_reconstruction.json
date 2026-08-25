@@ -1,0 +1,109 @@
+{
+  "target_sample_id": 23,
+  "target_weight": 0.04,
+  "reconstruction_mode": "leave_one_out_reference_consensus",
+  "peer_sample_count": 24,
+  "peer_weight_each": 0.04166667,
+  "global_descriptor_loss": 0.23561586,
+  "sequence_descriptor_loss": 0.42029456,
+  "total_loss": 0.34642308,
+  "loss_components": {
+    "global": {
+      "stroke_count": {
+        "observed": 6,
+        "consensus": 8.20833333,
+        "normalized_error": 0.26903553
+      },
+      "total_path_length": {
+        "observed": 2067.46273329,
+        "consensus": 1446.56152285,
+        "normalized_error": 0.30032039
+      },
+      "global_aspect_ratio": {
+        "observed": 1.24554184,
+        "consensus": 1.86829824,
+        "normalized_error": 0.33332815
+      },
+      "mean_stroke_straightness": {
+        "observed": 0.68314297,
+        "consensus": 0.5162198,
+        "normalized_error": 0.24434588
+      },
+      "mean_velocity": {
+        "observed": 0.74977647,
+        "consensus": 0.48002218,
+        "normalized_error": 0.35977961
+      },
+      "stroke_duration_mean_ms": {
+        "observed": 648.10005697,
+        "consensus": 507.34081372,
+        "normalized_error": 0.21718752
+      },
+      "pressure_mean": {
+        "observed": 0.54879573,
+        "consensus": 0.44522097,
+        "normalized_error": 0.18873099
+      },
+      "direction_changes_total": {
+        "observed": 99,
+        "consensus": 117.95833333,
+        "normalized_error": 0.16072059
+      },
+      "turn_density_mean": {
+        "observed": 0.90587866,
+        "consensus": 0.86321718,
+        "normalized_error": 0.04709403
+      }
+    },
+    "shape": 0.24544018,
+    "stroke_length": 0.67116479,
+    "stroke_duration": 0.6387841,
+    "stroke_velocity": 0.5648079,
+    "stroke_direction": 0.28929891,
+    "stroke_curvature": 0.11227148
+  },
+  "sequence_alignment": {
+    "target_valid_strokes": 6,
+    "peer_max_strokes": 15,
+    "overlapping_positions": 6
+  },
+  "reconstructed_strokes": [
+    {
+      "stroke_index": 0,
+      "source": "leave_one_out_reference_consensus",
+      "peer_count": 24,
+      "normalized_shape_reconstructed": true
+    },
+    {
+      "stroke_index": 1,
+      "source": "leave_one_out_reference_consensus",
+      "peer_count": 24,
+      "normalized_shape_reconstructed": true
+    },
+    {
+      "stroke_index": 2,
+      "source": "leave_one_out_reference_consensus",
+      "peer_count": 24,
+      "normalized_shape_reconstructed": true
+    },
+    {
+      "stroke_index": 3,
+      "source": "leave_one_out_reference_consensus",
+      "peer_count": 24,
+      "normalized_shape_reconstructed": true
+    },
+    {
+      "stroke_index": 4,
+      "source": "leave_one_out_reference_consensus",
+      "peer_count": 24,
+      "normalized_shape_reconstructed": true
+    },
+    {
+      "stroke_index": 5,
+      "source": "leave_one_out_reference_consensus",
+      "peer_count": 22,
+      "normalized_shape_reconstructed": true
+    }
+  ],
+  "interpretation": "Diagnostic reconstruction baseline only. This output is not MODEL v001 and must not be used as Sample 026."
+}
