@@ -2,9 +2,10 @@
 
 """
 Signature Machine
-Core v0.3
+Core v0.4
 
-Generation Engine: v0.3 whole-signature morphing
+Generation Engine: v0.4 trajectory-based synthesis
+Trajectory Knowledge Layer: v0.1
 
 Architecture:
 - library/ remains available for the legacy Dataset Audit.
@@ -67,9 +68,10 @@ REFERENCE_KNOWLEDGE_FILE = (
 
 REFERENCE_KNOWLEDGE_VERSION = "0.4"
 KNOWLEDGE_STORAGE_VERSION = "1.0"
+TRAJECTORY_SCHEMA_VERSION = "0.1"
 
 RESAMPLE_POINTS = 32
-GENERATION_VERSION = "0.3"
+GENERATION_VERSION = "0.4"
 
 GENERATION_DEFAULT_CANDIDATES = 3
 
@@ -1879,6 +1881,13 @@ class SignatureCore:
 
         return True
 
+    def _sample_trajectory_file(
+        self,
+        sample_dir: Path,
+    ) -> Path:
+        """Return the per-sample motion/trajectory knowledge file."""
+        return Path(sample_dir) / "trajectory.json"
+
     def _sample_knowledge_file(
         self,
         sample_dir: Path,
@@ -1917,6 +1926,151 @@ class SignatureCore:
                 "inter_stroke_gaps_ms": features["inter_stroke_gaps_ms"],
             },
         }
+
+    @classmethod
+    def _build_sample_trajectory(
+        cls,
+        payload: dict[str, Any],
+        features: dict[str, Any],
+        strokes_hash: str,
+    ) -> dict[str, Any]:
+        """
+        Build durable motion knowledge for one real reference sample.
+
+        Raw strokes remain the source of truth. This derived document keeps
+        the execution sequence needed by Generation without copying the
+        complete raw strokes into the central aggregate.
+        """
+        stroke_features = list(features.get("stroke_features", []))
+        normalized_strokes = list(features.get("normalized_strokes", []))
+        gaps = list(features.get("inter_stroke_gaps_ms", []))
+
+        raw_strokes = payload.get("strokes", [])
+        if not isinstance(raw_strokes, list):
+            raise ValueError("Invalid strokes structure.")
+
+        strokes = []
+        valid_index = 0
+
+        for raw_stroke in raw_strokes:
+            if not isinstance(raw_stroke, dict):
+                continue
+            points = raw_stroke.get("points", [])
+            if not isinstance(points, list) or not points:
+                continue
+
+            clean = []
+            for point in points:
+                if not isinstance(point, dict):
+                    continue
+                try:
+                    x = float(point.get("x", 0.0))
+                    y = float(point.get("y", 0.0))
+                    t = float(point.get("time_ms", 0.0))
+                    pressure = float(point.get("pressure", 0.0))
+                except (TypeError, ValueError):
+                    continue
+                if not all(math.isfinite(v) for v in (x, y, t, pressure)):
+                    continue
+                clean.append((x, y, t, max(0.0, min(1.0, pressure))))
+
+            if not clean:
+                continue
+
+            feature = (
+                stroke_features[valid_index]
+                if valid_index < len(stroke_features)
+                else {}
+            )
+            normalized = (
+                normalized_strokes[valid_index]
+                if valid_index < len(normalized_strokes)
+                else []
+            )
+
+            start = clean[0]
+            end = clean[-1]
+
+            strokes.append({
+                "stroke_index": valid_index,
+                "point_count": len(clean),
+                "start": {
+                    "x": start[0],
+                    "y": start[1],
+                    "time_ms": start[2],
+                    "pressure": start[3],
+                },
+                "end": {
+                    "x": end[0],
+                    "y": end[1],
+                    "time_ms": end[2],
+                    "pressure": end[3],
+                },
+                "duration_ms": float(feature.get("duration_ms", 0.0)),
+                "path_length": float(feature.get("path_length", 0.0)),
+                "mean_speed": float(feature.get("mean_speed", 0.0)),
+                "normalized_trajectory": normalized,
+                "speed_profile": list(feature.get("speed_profile", [])),
+                "pressure_profile": list(feature.get("pressure_profile", [])),
+                "direction_profile": list(feature.get("direction_profile", [])),
+                "curvature_profile": list(feature.get("curvature_profile", [])),
+                "tilt_x_profile": list(feature.get("tilt_x_profile", [])),
+                "tilt_y_profile": list(feature.get("tilt_y_profile", [])),
+                "twist_profile": list(feature.get("twist_profile", [])),
+            })
+            valid_index += 1
+
+        if not strokes:
+            raise ValueError("Cannot build trajectory from empty strokes.")
+
+        transitions = []
+        for i in range(len(strokes) - 1):
+            transitions.append({
+                "from_stroke": i,
+                "to_stroke": i + 1,
+                "type": "pen_lift",
+                "gap_ms": float(gaps[i]) if i < len(gaps) else 0.0,
+                "from_end": strokes[i]["end"],
+                "to_start": strokes[i + 1]["start"],
+            })
+
+        return {
+            "trajectory_schema_version": TRAJECTORY_SCHEMA_VERSION,
+            "knowledge_version": REFERENCE_KNOWLEDGE_VERSION,
+            "sample_id": str(
+                features.get("sample_id")
+                or payload.get("sample_id")
+                or ""
+            ),
+            "source": {
+                "source_of_truth": "strokes.json",
+                "strokes_file": "strokes.json",
+                "strokes_sha256": strokes_hash,
+            },
+            "execution": {
+                "stroke_count": len(strokes),
+                "stroke_order": [s["stroke_index"] for s in strokes],
+                "inter_stroke_gaps_ms": gaps,
+                "transitions": transitions,
+            },
+            "strokes": strokes,
+        }
+
+    def _write_sample_trajectory(
+        self,
+        sample_dir: Path,
+        payload: dict[str, Any],
+        features: dict[str, Any],
+        strokes_hash: str,
+    ) -> Path:
+        trajectory = self._build_sample_trajectory(
+            payload,
+            features,
+            strokes_hash,
+        )
+        path = self._sample_trajectory_file(sample_dir)
+        self._write_json_atomic(path, trajectory)
+        return path
 
     def _write_sample_knowledge(
         self,
@@ -2034,6 +2188,23 @@ class SignatureCore:
                 self._sample_knowledge_file(sample_dir),
                 document,
             )
+
+            try:
+                with strokes_path.open("r", encoding="utf-8") as source_file:
+                    payload = json.load(source_file)
+                migrated_features = dict(legacy_sample)
+                migrated_features["sample_id"] = sample_id
+                self._write_sample_trajectory(
+                    sample_dir,
+                    payload,
+                    migrated_features,
+                    strokes_hash,
+                )
+            except Exception:
+                # Migration of legacy knowledge must not destroy the valid
+                # per-sample knowledge document. The normal learning pass
+                # can restore trajectory.json later.
+                pass
 
             knowledge["samples"][sample_id] = {
                 "sample_id": sample_id,
@@ -2214,6 +2385,9 @@ class SignatureCore:
             "strokes_sha256": strokes_hash,
             "knowledge_file": str(
                 self._sample_knowledge_file(sample_dir)
+            ),
+            "trajectory_file": str(
+                self._sample_trajectory_file(sample_dir)
             ),
         }
 
@@ -2635,6 +2809,12 @@ class SignatureCore:
                 features,
                 strokes_hash,
             )
+            self._write_sample_trajectory(
+                strokes_path.parent,
+                payload,
+                features,
+                strokes_hash,
+            )
 
         return {
             "sample_id": sample_id,
@@ -2706,17 +2886,33 @@ class SignatureCore:
                     "restore the original strokes.json or perform an explicit rebuild."
                 )
 
-            if not knowledge_file.is_file():
-                # The aggregate is already correct; recreate only the local
-                # per-sample knowledge document from the raw sample.
+            trajectory_file = self._sample_trajectory_file(sample_dir)
+
+            if (
+                not knowledge_file.is_file()
+                or not trajectory_file.is_file()
+            ):
+                # The central aggregate is already authoritative. Recreate
+                # only missing per-sample derived documents.
                 try:
                     features = self._extract_reference_features(payload)
                     features["sample_id"] = sample_id
-                    self._write_sample_knowledge(
-                        sample_dir,
-                        features,
-                        strokes_hash,
-                    )
+
+                    if not knowledge_file.is_file():
+                        self._write_sample_knowledge(
+                            sample_dir,
+                            features,
+                            strokes_hash,
+                        )
+
+                    if not trajectory_file.is_file():
+                        self._write_sample_trajectory(
+                            sample_dir,
+                            payload,
+                            features,
+                            strokes_hash,
+                        )
+
                     print(f"{sample_id:<20}RESTORED")
                 except Exception as exc:
                     raise RuntimeError(
@@ -2794,9 +2990,14 @@ class SignatureCore:
             sample_id = sample_dir.name
             strokes_path = sample_dir / "strokes.json"
             knowledge_file = self._sample_knowledge_file(sample_dir)
+            trajectory_file = self._sample_trajectory_file(sample_dir)
             index_entry = knowledge.get("samples", {}).get(sample_id, {})
 
-            if sample_id not in learned_ids or not knowledge_file.is_file():
+            if (
+                sample_id not in learned_ids
+                or not knowledge_file.is_file()
+                or not trajectory_file.is_file()
+            ):
                 missing.append(sample_id)
                 continue
 
@@ -3922,318 +4123,28 @@ class SignatureCore:
     # reference samples.
     # --------------------------------------------------------
 
-    @classmethod
     def _sample_generation_stroke_count(
-        cls,
+        self,
         knowledge: dict[str, Any],
         rng: random.Random,
     ) -> int:
-
-        aggregate = knowledge.get(
-            "aggregate",
-            {},
+        trajectory_samples = (
+            self._load_generation_trajectory_samples()
         )
 
-        profiles = aggregate.get(
-            "stroke_profiles",
-            {},
-        )
+        counts = [
+            int(sample["stroke_count"])
+            for sample in trajectory_samples
+            if int(sample.get("stroke_count", 0)) > 0
+        ]
 
-        sample_count = int(
-            knowledge.get(
-                "sample_count",
-                0,
-            )
-            or 0
-        )
-
-        if sample_count <= 0:
+        if not counts:
             raise ValueError(
-                "Cannot determine generation "
-                "stroke count without learned samples."
+                "No trajectory stroke-count knowledge available."
             )
 
-        available = []
+        return rng.choice(counts)
 
-        for key, state in profiles.items():
-
-            try:
-                index = int(key)
-            except (
-                TypeError,
-                ValueError,
-            ):
-                continue
-
-            if not isinstance(
-                state,
-                dict,
-            ):
-                continue
-
-            count = int(
-                state.get(
-                    "count",
-                    0,
-                )
-                or 0
-            )
-
-            if count <= 0:
-                continue
-
-            available.append(
-                (
-                    index,
-                    count,
-                )
-            )
-
-        if not available:
-            raise ValueError(
-                "No learned stroke structure "
-                "is available."
-            )
-
-        available.sort()
-
-        # ----------------------------------------------------
-        # Stroke 0 is structurally mandatory.
-        # ----------------------------------------------------
-
-        max_index = available[-1][0]
-
-        stroke_count = 0
-
-        for index in range(
-            max_index + 1
-        ):
-
-            state = profiles.get(
-                str(index)
-            )
-
-            if not isinstance(
-                state,
-                dict,
-            ):
-                break
-
-            presence_count = int(
-                state.get(
-                    "count",
-                    0,
-                )
-                or 0
-            )
-
-            if presence_count <= 0:
-                break
-
-            probability = (
-                presence_count
-                / sample_count
-            )
-
-            if index == 0:
-                stroke_count = 1
-                continue
-
-            # High-confidence strokes are retained.
-            if probability >= 0.80:
-
-                stroke_count += 1
-                continue
-
-            # Lower-frequency strokes are sampled from
-            # their learned presence probability.
-            if rng.random() < probability:
-
-                stroke_count += 1
-
-            else:
-
-                # Once a sparse late stroke disappears,
-                # do not randomly create later strokes.
-                break
-
-        return max(
-            1,
-            stroke_count,
-        )
-
-    # --------------------------------------------------------
-    # Reconstruct NEW geometry from the learned aggregate.
-    #
-    # stroke_profiles are 32 points × 3 values:
-    #
-    #   x
-    #   y
-    #   pressure
-    #
-    # Geometry is sampled independently from learned
-    # mean/variance. No original reference trajectory is
-    # copied.
-    # --------------------------------------------------------
-
-    @staticmethod
-    def _generation_smooth_noise(
-        count: int,
-        rng: random.Random,
-        control_points: int = 6,
-    ) -> list[float]:
-        """
-        Generate LOW-FREQUENCY correlated noise.
-
-        Generation v0.3 must never perturb every point independently.
-        Independent point noise destroys trajectory continuity and turns
-        a learned signature into a cloud of line segments.
-        """
-
-        if count <= 0:
-            return []
-
-        if count == 1:
-            return [rng.gauss(0.0, 1.0)]
-
-        control_points = max(
-            2,
-            min(control_points, count),
-        )
-
-        anchors = [
-            rng.gauss(0.0, 1.0)
-            for _ in range(control_points)
-        ]
-
-        result = []
-        last = control_points - 1
-
-        for i in range(count):
-            u = i / (count - 1)
-            position = u * last
-            left = int(math.floor(position))
-            right = min(left + 1, last)
-            alpha = position - left
-
-            value = (
-                anchors[left]
-                + (anchors[right] - anchors[left]) * alpha
-            )
-            result.append(value)
-
-        return result
-
-    @staticmethod
-    def _generation_safe_std(
-        state: dict[str, Any],
-        offset: int,
-        count: int,
-        cap: float,
-    ) -> float:
-        """Return a bounded learned standard deviation."""
-
-        mean = state.get("mean", [])
-        m2 = state.get("m2", [])
-
-        if (
-            offset < 0
-            or offset >= len(mean)
-            or offset >= len(m2)
-            or count <= 1
-        ):
-            return 0.0
-
-        variance = max(
-            0.0,
-            float(m2[offset]) / float(count - 1),
-        )
-
-        return min(
-            cap,
-            math.sqrt(variance),
-        )
-
-    @staticmethod
-    def _generation_blend_weights(
-        count: int,
-        rng: random.Random,
-    ) -> list[float]:
-        """Create balanced weights for whole-signature morphing."""
-
-        if count <= 0:
-            return []
-
-        raw = [
-            rng.uniform(0.65, 1.35)
-            for _ in range(count)
-        ]
-
-        total = sum(raw)
-        return [
-            value / total
-            for value in raw
-        ]
-
-    @staticmethod
-    def _generation_smooth_noise(
-        count: int,
-        rng: random.Random,
-        control_points: int = 8,
-    ) -> list[float]:
-        """
-        Low-frequency correlated noise.
-
-        Generation never perturbs each trajectory point independently.
-        """
-
-        if count <= 0:
-            return []
-
-        if count == 1:
-            return [0.0]
-
-        control_points = max(
-            2,
-            min(control_points, count),
-        )
-
-        anchors = [
-            rng.gauss(0.0, 1.0)
-            for _ in range(control_points)
-        ]
-
-        result = []
-        last = control_points - 1
-
-        for i in range(count):
-            position = (
-                i
-                * last
-                / max(count - 1, 1)
-            )
-            left = int(
-                math.floor(position)
-            )
-            right = min(
-                left + 1,
-                last,
-            )
-            alpha = (
-                position - left
-            )
-            result.append(
-                anchors[left]
-                + (
-                    anchors[right]
-                    - anchors[left]
-                )
-                * alpha
-            )
-
-        return result
-
-    @staticmethod
     def _generation_stroke_match_cost(
         a: list[dict[str, float]],
         b: list[dict[str, float]],
@@ -4329,180 +4240,441 @@ class SignatureCore:
 
         return aligned
 
-    @classmethod
-    def _synthesize_generation_geometry(
-        cls,
-        knowledge: dict[str, Any],
-        stroke_count: int,
-        rng: random.Random,
-    ) -> list[
-        list[
-            dict[str, float]
-        ]
-    ]:
+    def _load_generation_trajectory_samples(
+        self,
+    ) -> list[dict[str, Any]]:
         """
-        Generation v0.3 — learned whole-signature morphing.
+        Load the per-sample trajectory knowledge.
 
-        A candidate is synthesized from several complete learned signatures
-        with the SAME stroke count. Their complete trajectories are aligned
-        by stroke role and continuously blended. A single candidate therefore
-        cannot contain "half of sample A + half of sample B" as disconnected
-        pieces. Every generated stroke is a new continuous trajectory.
-
-        After blending, a low-frequency geometric deformation is applied so
-        the candidate is not a plain average or a copy of any reference.
+        Generation v0.4 deliberately reads trajectory.json from each
+        reference sample instead of expecting the old monolithic
+        knowledge["samples"][...]["normalized_strokes"] structure.
         """
 
-        samples = knowledge.get(
-            "samples",
-            {},
-        )
+        documents = []
 
-        groups: dict[int, list[dict[str, Any]]] = {}
+        for sample_dir in self._reference_sample_dirs():
+            trajectory_path = (
+                sample_dir / "trajectory.json"
+            )
 
-        for sample in samples.values():
-            if not isinstance(sample, dict):
+            if not trajectory_path.is_file():
                 continue
 
             try:
-                sample_stroke_count = int(
-                    sample.get(
+                with trajectory_path.open(
+                    "r",
+                    encoding="utf-8",
+                ) as file:
+                    document = json.load(file)
+            except Exception:
+                continue
+
+            if not isinstance(document, dict):
+                continue
+
+            strokes = document.get("strokes", [])
+            execution = document.get("execution", {})
+
+            if not isinstance(strokes, list):
+                continue
+
+            try:
+                stroke_count = int(
+                    execution.get(
                         "stroke_count",
-                        0,
+                        len(strokes),
                     )
                 )
             except (
                 TypeError,
                 ValueError,
             ):
+                stroke_count = len(strokes)
+
+            if stroke_count <= 0 or len(strokes) != stroke_count:
                 continue
 
-            trajectories = sample.get(
-                "normalized_strokes",
-                [],
+            normalized_strokes = []
+
+            valid = True
+
+            for stroke in strokes:
+                trajectory = (
+                    stroke.get(
+                        "normalized_trajectory",
+                        [],
+                    )
+                    if isinstance(stroke, dict)
+                    else []
+                )
+
+                if not isinstance(trajectory, list):
+                    valid = False
+                    break
+
+                clean = []
+
+                for point in trajectory:
+                    if not isinstance(point, dict):
+                        continue
+
+                    try:
+                        x = float(point.get("x", 0.0))
+                        y = float(point.get("y", 0.0))
+                        pressure = float(
+                            point.get("pressure", 0.0)
+                        )
+                    except (
+                        TypeError,
+                        ValueError,
+                    ):
+                        continue
+
+                    if not (
+                        math.isfinite(x)
+                        and math.isfinite(y)
+                        and math.isfinite(pressure)
+                    ):
+                        continue
+
+                    clean.append(
+                        {
+                            "x": x,
+                            "y": y,
+                            "pressure": max(
+                                0.0,
+                                min(1.0, pressure),
+                            ),
+                        }
+                    )
+
+                if len(clean) < 2:
+                    valid = False
+                    break
+
+                normalized_strokes.append(clean)
+
+            if not valid:
+                continue
+
+            documents.append(
+                {
+                    "sample_id": str(
+                        document.get(
+                            "sample_id",
+                            sample_dir.name,
+                        )
+                    ),
+                    "stroke_count": stroke_count,
+                    "strokes": normalized_strokes,
+                    "execution": execution,
+                }
             )
 
-            if (
-                sample_stroke_count != stroke_count
-                or not isinstance(trajectories, list)
-                or len(trajectories) != stroke_count
-            ):
-                continue
+        return documents
 
-            if not all(
-                isinstance(stroke, list)
-                and len(stroke) >= 2
-                for stroke in trajectories
-            ):
-                continue
+    @classmethod
+    def _trajectory_stroke_match_cost(
+        cls,
+        a: list[dict[str, float]],
+        b: list[dict[str, float]],
+    ) -> float:
+        """Compare two complete strokes by start/end/mid geometry."""
 
-            groups.setdefault(
-                stroke_count,
-                [],
-            ).append(sample)
+        if not a or not b:
+            return float("inf")
 
-        eligible = groups.get(
-            stroke_count,
-            [],
+        def endpoint(stroke, index):
+            p = stroke[index]
+            return float(p["x"]), float(p["y"])
+
+        ax0, ay0 = endpoint(a, 0)
+        ax1, ay1 = endpoint(a, -1)
+        bx0, by0 = endpoint(b, 0)
+        bx1, by1 = endpoint(b, -1)
+
+        a_mid = a[len(a) // 2]
+        b_mid = b[len(b) // 2]
+
+        return (
+            0.35 * math.hypot(ax0 - bx0, ay0 - by0)
+            + 0.35 * math.hypot(ax1 - bx1, ay1 - by1)
+            + 0.30 * math.hypot(
+                float(a_mid["x"]) - float(b_mid["x"]),
+                float(a_mid["y"]) - float(b_mid["y"]),
+            )
         )
 
-        if not eligible:
-            raise ValueError(
-                "No learned signatures available "
-                f"for stroke count {stroke_count}."
+    @classmethod
+    def _align_complete_trajectory_strokes(
+        cls,
+        base: list[list[dict[str, float]]],
+        other: list[list[dict[str, float]]],
+    ) -> list[list[dict[str, float]]]:
+        """
+        Align complete strokes only.
+
+        No stroke is cut, spliced, or borrowed partially.
+        """
+
+        if len(base) != len(other):
+            return []
+
+        remaining = list(range(len(other)))
+        aligned = []
+
+        for base_stroke in base:
+            if not remaining:
+                return []
+
+            index = min(
+                remaining,
+                key=lambda i: cls._trajectory_stroke_match_cost(
+                    base_stroke,
+                    other[i],
+                ),
             )
 
-        # Use several complete signatures whenever possible. With only one
-        # signature in a rare stroke-count bucket, the smooth deformation
-        # below still creates a new path rather than returning it unchanged.
+            aligned.append(other[index])
+            remaining.remove(index)
+
+        return aligned
+
+    @staticmethod
+    def _generation_blend_weights(
+        count: int,
+        rng: random.Random,
+    ) -> list[float]:
+        """
+        Return normalized weights for complete trajectory sources.
+
+        The weights provide controlled variation while ensuring every
+        selected source contributes to the whole-signature synthesis.
+        """
+        if count <= 0:
+            raise ValueError(
+                "Blend weight count must be greater than zero."
+            )
+
+        if count == 1:
+            return [1.0]
+
+        raw = [
+            0.70 + rng.random() * 0.60
+            for _ in range(count)
+        ]
+
+        total = sum(raw)
+
+        if total <= 0.0:
+            return [
+                1.0 / count
+                for _ in range(count)
+            ]
+
+        return [
+            value / total
+            for value in raw
+        ]
+
+    @staticmethod
+    def _generation_smooth_noise(
+        point_count: int,
+        rng: random.Random,
+        control_points: int = 8,
+    ) -> list[float]:
+        """
+        Generate low-frequency, smoothly interpolated deformation.
+
+        This deliberately avoids independent point-to-point random noise,
+        which would damage the learned trajectory.
+        """
+        if point_count <= 0:
+            return []
+
+        if point_count == 1:
+            return [0.0]
+
+        control_count = max(
+            2,
+            min(
+                control_points,
+                point_count,
+            ),
+        )
+
+        controls = [
+            rng.uniform(-1.0, 1.0)
+            for _ in range(control_count)
+        ]
+
+        values = []
+
+        for index in range(point_count):
+            position = (
+                index
+                * (control_count - 1)
+                / (point_count - 1)
+            )
+
+            left = int(math.floor(position))
+            right = min(
+                left + 1,
+                control_count - 1,
+            )
+
+            fraction = position - left
+
+            # Smoothstep interpolation.
+            smooth = (
+                fraction
+                * fraction
+                * (3.0 - 2.0 * fraction)
+            )
+
+            value = (
+                controls[left]
+                * (1.0 - smooth)
+                + controls[right]
+                * smooth
+            )
+
+            values.append(value)
+
+        return values
+
+    def _synthesize_generation_geometry(
+        self,
+        knowledge: dict[str, Any],
+        stroke_count: int,
+        rng: random.Random,
+    ) -> list[list[dict[str, float]]]:
+        """
+        Generation v0.4 — trajectory-based new-signature synthesis.
+
+        The generator reads complete trajectories from the decentralized
+        trajectory.json files. It learns a whole-signature geometric pattern
+        from the eligible references, aligns complete strokes, blends their
+        corresponding trajectories, and applies a smooth low-frequency
+        deformation.
+
+        This is NOT source-signature selection and NOT partial-stroke
+        splicing.
+        """
+
+        trajectory_samples = (
+            self._load_generation_trajectory_samples()
+        )
+
+        eligible = [
+            sample
+            for sample in trajectory_samples
+            if sample["stroke_count"] == stroke_count
+        ]
+
+        if not eligible:
+            # If an exact stroke-count bucket is unavailable, choose the
+            # nearest learned bucket rather than failing Generation.
+            available = sorted(
+                {
+                    int(sample["stroke_count"])
+                    for sample in trajectory_samples
+                }
+            )
+
+            if not available:
+                raise ValueError(
+                    "No trajectory knowledge available."
+                )
+
+            nearest = min(
+                available,
+                key=lambda value: abs(value - stroke_count),
+            )
+
+            eligible = [
+                sample
+                for sample in trajectory_samples
+                if sample["stroke_count"] == nearest
+            ]
+
+            stroke_count = nearest
+
         source_count = min(
-            5,
+            8,
             len(eligible),
         )
 
-        selected = rng.sample(
-            eligible,
-            source_count,
-        )
+        if source_count == 1:
+            selected = eligible
+        else:
+            selected = rng.sample(
+                eligible,
+                source_count,
+            )
 
-        weights = cls._generation_blend_weights(
-            source_count,
+        base = selected[0]["strokes"]
+        aligned_sources = [base]
+
+        for sample in selected[1:]:
+            aligned = self._align_complete_trajectory_strokes(
+                base,
+                sample["strokes"],
+            )
+
+            if aligned:
+                aligned_sources.append(aligned)
+
+        if not aligned_sources:
+            raise ValueError(
+                "Trajectory alignment produced no usable sources."
+            )
+
+        weights = self._generation_blend_weights(
+            len(aligned_sources),
             rng,
         )
 
-        base = selected[0][
-            "normalized_strokes"
-        ]
+        generated_strokes = []
 
-        aligned_sources = [
-            base
-        ]
-
-        for sample in selected[1:]:
-            aligned = cls._generation_align_strokes(
-                base,
-                sample[
-                    "normalized_strokes"
-                ],
-            )
-
-            if not aligned:
-                continue
-
-            aligned_sources.append(
-                aligned
-            )
-
-        # Keep weights synchronized with the sources actually used.
-        if len(aligned_sources) != len(weights):
-            weights = cls._generation_blend_weights(
-                len(aligned_sources),
-                rng,
-            )
-
-        strokes = []
-
-        # Candidate-level transform. This is shared by every stroke so the
-        # result remains one coherent signature.
         rotation = math.radians(
-            rng.uniform(
-                -3.5,
-                3.5,
-            )
+            rng.uniform(-3.0, 3.0)
         )
         cos_a = math.cos(rotation)
         sin_a = math.sin(rotation)
+
         scale = rng.uniform(
-            0.94,
-            1.06,
-        )
-        shear = rng.uniform(
-            -0.025,
-            0.025,
+            0.96,
+            1.04,
         )
 
-        for stroke_index in range(
-            stroke_count
-        ):
+        shear = rng.uniform(
+            -0.018,
+            0.018,
+        )
+
+        for stroke_index in range(stroke_count):
             point_count = min(
                 len(source[stroke_index])
                 for source in aligned_sources
             )
 
-            generated = []
+            if point_count < 2:
+                continue
 
-            normal_noise = cls._generation_smooth_noise(
+            noise = self._generation_smooth_noise(
                 point_count,
                 rng,
                 control_points=min(
-                    10,
-                    max(6, point_count // 4),
+                    8,
+                    max(5, point_count // 5),
                 ),
             )
 
-            for point_index in range(
-                point_count
-            ):
+            generated = []
+
+            for point_index in range(point_count):
                 x = 0.0
                 y = 0.0
                 pressure = 0.0
@@ -4515,97 +4687,63 @@ class SignatureCore:
                         stroke_index
                     ][point_index]
 
-                    x += weight * float(
-                        point.get(
-                            "x",
-                            0.0,
-                        )
-                    )
-                    y += weight * float(
-                        point.get(
-                            "y",
-                            0.0,
-                        )
-                    )
-                    pressure += weight * float(
-                        point.get(
-                            "pressure",
-                            0.0,
-                        )
-                    )
-
-                # Smooth normal deformation. The displacement is deliberately
-                # small and correlated across the complete stroke.
-                prev_point = generated[-1] if generated else None
-
-                if point_index + 1 < point_count:
-                    next_point = aligned_sources[0][
-                        stroke_index
-                    ][point_index + 1]
-                else:
-                    next_point = aligned_sources[0][
-                        stroke_index
-                    ][point_index]
-
-                if prev_point is not None:
-                    tx = (
-                        float(next_point["x"])
-                        - float(prev_point["x"])
-                    )
-                    ty = (
-                        float(next_point["y"])
-                        - float(prev_point["y"])
-                    )
-                else:
-                    next_raw = aligned_sources[0][
-                        stroke_index
-                    ][min(1, point_count - 1)]
-                    current_raw = aligned_sources[0][
-                        stroke_index
-                    ][point_index]
-                    tx = (
-                        float(next_raw["x"])
-                        - float(current_raw["x"])
-                    )
-                    ty = (
-                        float(next_raw["y"])
-                        - float(current_raw["y"])
-                    )
-
-                tangent_length = math.hypot(
-                    tx,
-                    ty,
-                )
-
-                if tangent_length <= 1e-9:
-                    tx, ty = 1.0, 0.0
-                    tangent_length = 1.0
-
-                tx /= tangent_length
-                ty /= tangent_length
-                nx = -ty
-                ny = tx
+                    x += weight * point["x"]
+                    y += weight * point["y"]
+                    pressure += weight * point["pressure"]
 
                 u = point_index / max(
                     point_count - 1,
                     1,
                 )
-                endpoint_weight = math.sin(
-                    math.pi * u
-                ) ** 0.85
 
-                offset = (
-                    normal_noise[point_index]
-                    * 0.010
-                    * endpoint_weight
-                )
+                # Smooth normal deformation, strongest in the middle and
+                # approaching zero at stroke endpoints.
+                if point_index == 0:
+                    p0 = aligned_sources[0][
+                        stroke_index
+                    ][0]
+                    p1 = aligned_sources[0][
+                        stroke_index
+                    ][1]
+                elif point_index == point_count - 1:
+                    p0 = aligned_sources[0][
+                        stroke_index
+                    ][point_count - 2]
+                    p1 = aligned_sources[0][
+                        stroke_index
+                    ][point_count - 1]
+                else:
+                    p0 = generated[-1]
+                    p1 = aligned_sources[0][
+                        stroke_index
+                    ][point_index + 1]
 
-                x += nx * offset
-                y += ny * offset
+                tx = p1["x"] - p0["x"]
+                ty = p1["y"] - p0["y"]
 
-                sx = x * scale
+                length = math.hypot(tx, ty)
+
+                if length > 1e-9:
+                    tx /= length
+                    ty /= length
+                    nx = -ty
+                    ny = tx
+
+                    endpoint_weight = (
+                        math.sin(math.pi * u) ** 0.9
+                    )
+
+                    displacement = (
+                        noise[point_index]
+                        * 0.012
+                        * endpoint_weight
+                    )
+
+                    x += nx * displacement
+                    y += ny * displacement
+
+                sx = x * scale + shear * y
                 sy = y * scale
-                sx += shear * sy
 
                 rx = (
                     sx * cos_a
@@ -4616,27 +4754,35 @@ class SignatureCore:
                     + sy * cos_a
                 )
 
-                generated.append({
-                    "x": rx,
-                    "y": ry,
-                    "pressure": max(
-                        0.0,
-                        min(
-                            1.0,
-                            pressure,
+                generated.append(
+                    {
+                        "x": rx,
+                        "y": ry,
+                        "pressure": max(
+                            0.0,
+                            min(
+                                1.0,
+                                pressure,
+                            ),
                         ),
-                    ),
-                })
+                        "u": u,
+                    }
+                )
 
-            strokes.append(
+            generated_strokes.append(
                 generated
             )
 
-        # Final global normalization only. Relative stroke placement remains
-        # untouched, so the result still reads as one signature.
+        if not generated_strokes:
+            raise ValueError(
+                "Trajectory synthesis produced no strokes."
+            )
+
+        # Global normalization keeps the complete generated signature
+        # coherent after the candidate-level transformation.
         all_points = [
             point
-            for stroke in strokes
+            for stroke in generated_strokes
             for point in stroke
         ]
 
@@ -4663,7 +4809,7 @@ class SignatureCore:
             1e-9,
         )
 
-        for stroke in strokes:
+        for stroke in generated_strokes:
             for point in stroke:
                 point["x"] = (
                     point["x"] - min_x
@@ -4672,7 +4818,7 @@ class SignatureCore:
                     point["y"] - min_y
                 ) / global_scale
 
-        return strokes
+        return generated_strokes
 
     # --------------------------------------------------------
     # Learned dynamic profiles
@@ -4926,7 +5072,7 @@ class SignatureCore:
             ),
 
             "generation_method": (
-                "learned_whole_signature_morphing"
+                "trajectory_based_new_signature"
             ),
         }
 

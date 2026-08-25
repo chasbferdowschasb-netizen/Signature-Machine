@@ -1,0 +1,21 @@
+{
+  "workspace_type": "SIGNATURE_MACHINE_WORKSPACE",
+  "workspace_id": "da36ac19-6f83-471d-8fd0-7329f934341e",
+  "schema_version": "1.0",
+  "workspace_version": "0.1",
+  "created_at_utc": "2026-08-24T16:55:52.735147+00:00",
+  "sample_architecture": {
+    "type": "SELF_CONTAINED",
+    "structure_is_universal": true,
+    "all_samples_share_same_structure": true,
+    "existing_samples": "001-025",
+    "future_samples": "026+",
+    "reference_samples_are_immutable": true,
+    "sample_artifacts_stay_inside_sample": true
+  },
+  "security": {
+    "encrypted": false,
+    "hardware_bound": false
+  },
+  "master_identity": null
+}
