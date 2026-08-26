@@ -31,11 +31,20 @@ import math
 from collections import Counter
 from pathlib import Path
 from typing import Any
-
 from PIL import Image
 from PIL import Image, ImageDraw
 
+from workspace_manager import WorkspaceManager
+
 PROJECT_ROOT = Path(__file__).resolve().parent
+
+# ============================================================
+# WORKSPACE
+# ============================================================
+
+WORKSPACE_DIR = PROJECT_ROOT / "workspace"
+
+WORKSPACE_MANAGER = WorkspaceManager(WORKSPACE_DIR)
 
 # ============================================================
 # PATHS

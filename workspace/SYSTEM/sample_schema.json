@@ -1,0 +1,80 @@
+{
+  "schema_type": "SIGNATURE_MACHINE_SAMPLE",
+  "schema_version": "1.0",
+
+  "architecture": {
+    "sample_is_self_contained": true,
+    "sample_structure_is_universal": true,
+    "all_samples_use_same_structure": true,
+    "artifacts_stay_inside_sample": true
+  },
+
+  "sample_directory": {
+    "required_files": [
+      "metadata.json",
+      "raw.png",
+      "strokes.json",
+      "sample_knowledge.json",
+      "trajectory.json"
+    ],
+
+    "required_directories": [
+      "CUSTOMER_PACKAGE"
+    ]
+  },
+
+  "customer_package": {
+    "required_files": [
+      "manifest.json"
+    ],
+
+    "required_directories": [
+      "01_FINAL_ASSETS",
+      "02_TRAINING"
+    ]
+  },
+
+  "final_assets": {
+    "directory": "CUSTOMER_PACKAGE/01_FINAL_ASSETS",
+
+    "required_files": [
+      "01_FINAL_BLACK_ON_WHITE.png",
+      "02_BLACK_TRANSPARENT.png",
+      "03_WHITE_ON_BLACK.png",
+      "04_WHITE_TRANSPARENT.png"
+    ]
+  },
+
+  "training": {
+    "directory": "CUSTOMER_PACKAGE/02_TRAINING",
+
+    "required_files": [
+      "01_PRACTICE.pdf",
+      "01_TRAINING.mp4"
+    ]
+  },
+
+  "metadata": {
+    "file": "metadata.json",
+    "schema_reference": "reference_metadata_v0.2"
+  },
+
+  "customer_package_manifest": {
+    "file": "CUSTOMER_PACKAGE/manifest.json",
+    "schema_reference": "customer_package_archive_v2_3"
+  },
+
+  "immutability_policy": {
+    "existing_samples_001_025": "IMMUTABLE",
+    "sample_internal_structure": "IMMUTABLE",
+    "sample_artifacts_must_not_be_moved": true,
+    "sample_artifacts_must_not_be_split": true,
+    "sample_artifacts_must_not_be_relocated_by_type": true
+  },
+
+  "future_policy": {
+    "first_new_sample": "sample_000026",
+    "future_samples_follow_same_schema": true,
+    "sample_number_has_no_architectural_special_status": true
+  }
+}
