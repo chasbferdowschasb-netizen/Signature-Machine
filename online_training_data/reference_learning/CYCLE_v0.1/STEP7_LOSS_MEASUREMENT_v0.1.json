@@ -1,0 +1,263 @@
+{
+  "version": "0.1",
+  "step": 7,
+  "reference_policy": {
+    "samples": "001..025",
+    "count": 25,
+    "equal_weight": true,
+    "weight_per_sample": 0.04,
+    "priority": "none"
+  },
+  "consensus_policy": {
+    "peer_count_per_target": 24,
+    "peer_weight_each": 0.041666666666666664,
+    "note": "Peer weight belongs to reconstruction consensus and is distinct from the frozen target/reference weight of 0.04."
+  },
+  "baseline": {
+    "cycle": "CYCLE_v0.1",
+    "mean_loss": 0.32439998436125367
+  },
+  "measurement": {
+    "evaluated_samples": 25,
+    "mean_loss": 0.32439998360000005,
+    "weighted_mean_loss": 0.32439998359999994,
+    "difference_from_baseline": -7.612537267220887e-10,
+    "improvement_over_baseline": 7.612537267220887e-10,
+    "better_than_baseline": true
+  },
+  "safety": {
+    "video_used": false,
+    "random_points_used": false,
+    "generated_samples_used": false,
+    "model_v001_created": false,
+    "sample_026_created": false,
+    "reference_samples_modified": false
+  },
+  "per_sample": [
+    {
+      "target_sample_id": 1,
+      "target_weight": 0.04,
+      "total_loss": 0.33151138,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.16178733,
+      "sequence_descriptor_loss": 0.44466075
+    },
+    {
+      "target_sample_id": 2,
+      "target_weight": 0.04,
+      "total_loss": 0.33421875,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.19778896,
+      "sequence_descriptor_loss": 0.42517194
+    },
+    {
+      "target_sample_id": 3,
+      "target_weight": 0.04,
+      "total_loss": 0.31838452,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.17299832,
+      "sequence_descriptor_loss": 0.41530866
+    },
+    {
+      "target_sample_id": 4,
+      "target_weight": 0.04,
+      "total_loss": 0.34663943,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.22750206,
+      "sequence_descriptor_loss": 0.42606435
+    },
+    {
+      "target_sample_id": 5,
+      "target_weight": 0.04,
+      "total_loss": 0.35511347,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.27963275,
+      "sequence_descriptor_loss": 0.40543395
+    },
+    {
+      "target_sample_id": 6,
+      "target_weight": 0.04,
+      "total_loss": 0.33511408,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.21264326,
+      "sequence_descriptor_loss": 0.4167613
+    },
+    {
+      "target_sample_id": 7,
+      "target_weight": 0.04,
+      "total_loss": 0.32416118,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.14285342,
+      "sequence_descriptor_loss": 0.44503302
+    },
+    {
+      "target_sample_id": 8,
+      "target_weight": 0.04,
+      "total_loss": 0.34266526,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.24351051,
+      "sequence_descriptor_loss": 0.40876842
+    },
+    {
+      "target_sample_id": 9,
+      "target_weight": 0.04,
+      "total_loss": 0.33052587,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.19257157,
+      "sequence_descriptor_loss": 0.4224954
+    },
+    {
+      "target_sample_id": 10,
+      "target_weight": 0.04,
+      "total_loss": 0.24359099,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.10065037,
+      "sequence_descriptor_loss": 0.33888474
+    },
+    {
+      "target_sample_id": 11,
+      "target_weight": 0.04,
+      "total_loss": 0.33308447,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.19949522,
+      "sequence_descriptor_loss": 0.42214398
+    },
+    {
+      "target_sample_id": 12,
+      "target_weight": 0.04,
+      "total_loss": 0.30916381,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.14311354,
+      "sequence_descriptor_loss": 0.41986399
+    },
+    {
+      "target_sample_id": 13,
+      "target_weight": 0.04,
+      "total_loss": 0.32661971,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.1182606,
+      "sequence_descriptor_loss": 0.46552578
+    },
+    {
+      "target_sample_id": 14,
+      "target_weight": 0.04,
+      "total_loss": 0.334271,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.195878,
+      "sequence_descriptor_loss": 0.426533
+    },
+    {
+      "target_sample_id": 15,
+      "target_weight": 0.04,
+      "total_loss": 0.28875844,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.1422485,
+      "sequence_descriptor_loss": 0.38643174
+    },
+    {
+      "target_sample_id": 16,
+      "target_weight": 0.04,
+      "total_loss": 0.30390767,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.12350454,
+      "sequence_descriptor_loss": 0.42417642
+    },
+    {
+      "target_sample_id": 17,
+      "target_weight": 0.04,
+      "total_loss": 0.32704632,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.2353407,
+      "sequence_descriptor_loss": 0.3881834
+    },
+    {
+      "target_sample_id": 18,
+      "target_weight": 0.04,
+      "total_loss": 0.28487677,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.10767002,
+      "sequence_descriptor_loss": 0.40301461
+    },
+    {
+      "target_sample_id": 19,
+      "target_weight": 0.04,
+      "total_loss": 0.36652587,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.2373497,
+      "sequence_descriptor_loss": 0.45264332
+    },
+    {
+      "target_sample_id": 20,
+      "target_weight": 0.04,
+      "total_loss": 0.25936454,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.13982318,
+      "sequence_descriptor_loss": 0.33905877
+    },
+    {
+      "target_sample_id": 21,
+      "target_weight": 0.04,
+      "total_loss": 0.29547954,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.17718385,
+      "sequence_descriptor_loss": 0.37434333
+    },
+    {
+      "target_sample_id": 22,
+      "target_weight": 0.04,
+      "total_loss": 0.4135805,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.24241155,
+      "sequence_descriptor_loss": 0.52769313
+    },
+    {
+      "target_sample_id": 23,
+      "target_weight": 0.04,
+      "total_loss": 0.34642308,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.23561586,
+      "sequence_descriptor_loss": 0.42029456
+    },
+    {
+      "target_sample_id": 24,
+      "target_weight": 0.04,
+      "total_loss": 0.31348832,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.18542132,
+      "sequence_descriptor_loss": 0.39886631
+    },
+    {
+      "target_sample_id": 25,
+      "target_weight": 0.04,
+      "total_loss": 0.34548462,
+      "peer_sample_count": 24,
+      "peer_weight_each": 0.04166667,
+      "global_descriptor_loss": 0.15601853,
+      "sequence_descriptor_loss": 0.47179536
+    }
+  ]
+}
