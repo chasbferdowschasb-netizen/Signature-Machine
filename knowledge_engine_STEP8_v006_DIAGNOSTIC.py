@@ -14,6 +14,7 @@ Knowledge Engine
 """
 
 from __future__ import annotations
+import math
 
 import json
 from pathlib import Path
@@ -481,6 +482,7 @@ class SignatureKnowledgeEngine:
                 row = dict(item)
                 row["_sample_id"] = sid
                 rows.append(row)
+
         rows.sort(key=lambda x: x["_sample_id"])
         expected = list(range(1, self.REFERENCE_COUNT + 1))
         actual = [x["_sample_id"] for x in rows]
@@ -499,79 +501,316 @@ class SignatureKnowledgeEngine:
 
     @classmethod
     def _step8_statistics(cls, rows):
-        observations = {}
+        observations: dict[str, list[float]] = {}
+
         for row in rows:
             for key, value in cls._step8_flat_features(row).items():
-                observations.setdefault(key, []).append(float(value))
-        means, scales = {}, {}
+                value = float(value)
+                if not math.isfinite(value):
+                    raise ValueError(
+                        f"STEP 8 found non-finite feature value: {key}={value}"
+                    )
+                observations.setdefault(key, []).append(value)
+
+        stats = {}
+
         for key, values in observations.items():
-            mean = sum(values) / len(values)
-            variance = sum((v - mean) ** 2 for v in values) / len(values)
-            means[key] = mean
-            scales[key] = variance ** 0.5 if variance > 1e-24 else 1.0
-        return observations, means, scales
+            n = len(values)
+            mean = sum(values) / n
+
+            ordered = sorted(values)
+            mid = n // 2
+            median = (
+                ordered[mid]
+                if n % 2
+                else (ordered[mid - 1] + ordered[mid]) / 2.0
+            )
+
+            deviations = sorted(abs(v - median) for v in values)
+            mad_mid = n // 2
+            mad = (
+                deviations[mad_mid]
+                if n % 2
+                else (deviations[mad_mid - 1] + deviations[mad_mid]) / 2.0
+            )
+
+            variance = sum((v - mean) ** 2 for v in values) / n
+            std = math.sqrt(max(variance, 0.0))
+            robust_scale = mad * 1.4826
+            scale = max(std, robust_scale, 1e-9)
+
+            stats[key] = {
+                "mean": mean,
+                "median": median,
+                "std": std,
+                "mad": mad,
+                "scale": scale,
+                "min": min(values),
+                "max": max(values),
+                "observations": n,
+                "learnable": std > 1e-9 or robust_scale > 1e-9,
+            }
+
+        return observations, stats
 
     @classmethod
-    def _step8_loss(cls, rows, prototype, scales):
-        sample_losses = []
+    def _step8_standardized_rows(cls, rows, stats):
+        standardized = []
+
         for row in rows:
-            errors = []
-            for key, observed in cls._step8_flat_features(row).items():
-                if key in prototype:
-                    z = (observed - prototype[key]) / scales.get(key, 1.0)
-                    errors.append(z * z)
-            sample_losses.append(sum(errors) / len(errors) if errors else 0.0)
-        return sum(sample_losses) / len(sample_losses) if sample_losses else 0.0
+            flat = cls._step8_flat_features(row)
+            zrow = {}
+
+            for key, value in flat.items():
+                info = stats[key]
+                zrow[key] = (
+                    (value - info["mean"]) / info["scale"]
+                    if info["learnable"]
+                    else 0.0
+                )
+
+            standardized.append(zrow)
+
+        return standardized
+
+    @classmethod
+    def _step8_reconstruction_loss(
+        cls,
+        standardized_rows,
+        prototype,
+    ) -> float:
+        """
+        Equal-weight reconstruction loss in normalized trajectory space.
+
+        This is deliberately separate from CYCLE v0.1's loss. It measures
+        how well the learned style representation explains the 25 frozen
+        reference trajectories.
+        """
+        if not standardized_rows:
+            return 0.0
+
+        losses = []
+
+        for row in standardized_rows:
+            errors = [
+                (value - prototype[key]) ** 2
+                for key, value in row.items()
+            ]
+            losses.append(
+                sum(errors) / len(errors) if errors else 0.0
+            )
+
+        return sum(losses) / len(losses)
+
+    @classmethod
+    def _step8_feature_weights(cls, standardized_rows):
+        """
+        Equal reference weighting is preserved. Feature weights are only
+        used to prevent a large number of repeated indexed fields from
+        dominating the style representation.
+        """
+        counts = {}
+
+        for row in standardized_rows:
+            for key in row:
+                root = key.split("[", 1)[0]
+                counts[root] = counts.get(root, 0) + 1
+
+        weights = {}
+        for row in standardized_rows:
+            for key in row:
+                root = key.split("[", 1)[0]
+                weights[key] = 1.0 / max(counts.get(root, 1), 1)
+
+        return weights
 
     def _run_step8_iterative_learning(
-        self, *, max_iterations=100, learning_rate=0.25, tolerance=1e-10
+        self,
+        *,
+        max_iterations=250,
+        learning_rate=0.20,
+        tolerance=1e-8,
+        stable_iterations=8,
     ):
         if self.REFERENCE_COUNT != 25:
             raise ValueError("STEP 8 requires exactly 25 frozen references.")
 
         rows = self._step8_reference_rows()
-        observations, means, scales = self._step8_statistics(rows)
-        prototype = {key: 0.0 for key in means}
+        observations, stats = self._step8_statistics(rows)
+        standardized_rows = self._step8_standardized_rows(rows, stats)
+        feature_weights = self._step8_feature_weights(standardized_rows)
+
+        learnable_keys = [
+            key
+            for key, info in stats.items()
+            if info["learnable"]
+        ]
+
+        if not learnable_keys:
+            raise RuntimeError(
+                "STEP 8 found no learnable trajectory features."
+            )
+
+        # Start from the neutral style point, not the answer itself.
+        # This makes the iteration measurable rather than a one-step mean
+        # assignment.
+        prototype = {key: 0.0 for key in learnable_keys}
+
+        def loss_for(candidate):
+            losses = []
+
+            for row in standardized_rows:
+                weighted_errors = []
+                total_weight = 0.0
+
+                for key in learnable_keys:
+                    weight = feature_weights.get(key, 1.0)
+                    error = row.get(key, 0.0) - candidate[key]
+                    weighted_errors.append(weight * error * error)
+                    total_weight += weight
+
+                losses.append(
+                    sum(weighted_errors) / total_weight
+                    if total_weight
+                    else 0.0
+                )
+
+            # Exactly equal weight for all 25 references.
+            return sum(losses) / len(losses)
+
+        initial_loss = loss_for(prototype)
+        if not math.isfinite(initial_loss):
+            raise RuntimeError("STEP 8 initial loss is non-finite.")
+
         history = []
-        previous = self._step8_loss(rows, prototype, scales)
+        previous_loss = initial_loss
+        current_lr = float(learning_rate)
+        stable_count = 0
+        converged = False
 
         for iteration in range(1, max_iterations + 1):
-            for key, values in observations.items():
-                scale = scales[key]
-                gradient = sum(
-                    2.0 * (prototype[key] - value) / (scale * scale)
-                    for value in values
-                ) / len(values)
-                prototype[key] -= learning_rate * gradient
+            gradients = {}
 
-            current = self._step8_loss(rows, prototype, scales)
-            delta = previous - current
-            history.append({"iteration": iteration, "loss": current, "delta": delta})
-            if abs(delta) <= tolerance:
-                break
-            previous = current
+            # Exact gradient of the normalized reconstruction objective.
+            for key in learnable_keys:
+                numerator = 0.0
+                denominator = 0.0
 
-        final_loss = self._step8_loss(rows, prototype, scales)
-        learned = {
-            key: means[key] + prototype[key] * scales[key] for key in means
-        }
+                for row in standardized_rows:
+                    weight = feature_weights.get(key, 1.0)
+                    numerator += weight * (
+                        prototype[key] - row.get(key, 0.0)
+                    )
+                    denominator += weight
 
-        cycle = self._step8_load_cycle_report()
-        baseline = None
-        loss_block = cycle.get("loss")
-        if isinstance(loss_block, dict):
-            for key in ("weighted_total_loss", "weighted_mean_loss", "mean_loss", "total_loss"):
-                value = loss_block.get(key)
-                if isinstance(value, (int, float)):
-                    baseline = float(value)
+                gradients[key] = (
+                    2.0 * numerator / denominator
+                    if denominator
+                    else 0.0
+                )
+
+            accepted = False
+            trial_lr = current_lr
+            candidate_loss = float("nan")
+            update_sq = 0.0
+
+            for _ in range(24):
+                candidate = {
+                    key: prototype[key] - trial_lr * gradients[key]
+                    for key in learnable_keys
+                }
+
+                candidate_loss = loss_for(candidate)
+                update_sq = sum(
+                    (candidate[key] - prototype[key]) ** 2
+                    for key in learnable_keys
+                )
+
+                if math.isfinite(candidate_loss) and (
+                    candidate_loss <= previous_loss + 1e-15
+                ):
+                    prototype = candidate
+                    current_loss = candidate_loss
+                    accepted = True
                     break
 
+                trial_lr *= 0.5
+
+            if not accepted:
+                current_loss = previous_loss
+                stable_count += 1
+            else:
+                delta = previous_loss - current_loss
+
+                if abs(delta) <= tolerance:
+                    stable_count += 1
+                else:
+                    stable_count = 0
+
+                current_lr = min(max(trial_lr * 1.05, 1e-6), 0.5)
+
+            gradient_values = list(gradients.values())
+            gradient_abs = [abs(v) for v in gradient_values] or [0.0]
+
+            history.append({
+                "iteration": iteration,
+                "loss": current_loss,
+                "delta": previous_loss - current_loss,
+                "learning_rate": trial_lr,
+                "accepted": accepted,
+                "stable_count": stable_count,
+
+                # STEP 8 diagnostic trace; does not participate in learning.
+                "diagnostic": {
+                    "gradient_mean": (
+                        sum(gradient_values) / len(gradient_values)
+                        if gradient_values else 0.0
+                    ),
+                    "gradient_abs_max": max(gradient_abs),
+                    "gradient_abs_min": min(gradient_abs),
+                    "update_norm": math.sqrt(max(update_sq, 0.0)),
+                    "candidate_loss": candidate_loss,
+                    "loss_changed": abs(
+                        current_loss - previous_loss
+                    ) > 1e-15,
+                },
+            })
+
+            previous_loss = current_loss
+
+            if stable_count >= stable_iterations:
+                converged = True
+                break
+
+        final_loss = loss_for(prototype)
+
+        if not math.isfinite(final_loss):
+            raise RuntimeError(
+                "STEP 8 ended with non-finite loss; result rejected."
+            )
+
+        learned_profile = {}
+        for key, info in stats.items():
+            if info["learnable"]:
+                learned_profile[key] = (
+                    info["mean"]
+                    + prototype[key] * info["scale"]
+                )
+            else:
+                learned_profile[key] = info["mean"]
+
+        baseline = (
+            self._step8_load_cycle_report()
+            .get("loss", {})
+            .get("weighted_total_loss")
+        )
+
         return {
-            "version": self.STEP8_VERSION,
+            "version": "0.3-diagnostic",
             "type": "trajectory_style_iterative_learning",
             "status": {
                 "complete": True,
-                "converged": len(history) < max_iterations,
+                "converged": converged,
                 "reference_complete": True,
                 "reference_count": 25,
                 "equal_weight": True,
@@ -582,35 +821,67 @@ class SignatureKnowledgeEngine:
                 "reference_samples_modified": False,
                 "model_v001": False,
                 "sample_026_created": False,
+                "finite_loss": True,
+                "monotonic_non_increasing_loss": all(
+                    history[i]["loss"] <= history[i - 1]["loss"] + 1e-15
+                    for i in range(1, len(history))
+                ),
             },
             "reference_policy": {
-                "first": 1, "last": 25, "count": 25,
+                "first": 1,
+                "last": 25,
+                "count": 25,
                 "weight_per_reference": 0.04,
                 "priority_policy": "none",
                 "all_references_equal": True,
             },
             "learning_policy": {
-                "objective": "equal_weight_normalized_trajectory_feature_reconstruction",
-                "optimizer": "deterministic_equal_weight_gradient_descent",
-                "learning_rate": learning_rate,
+                "objective": "equal_weight_standardized_trajectory_style_reconstruction",
+                "optimizer": "deterministic_gradient_descent_with_backtracking",
+                "initial_learning_rate": learning_rate,
                 "max_iterations": max_iterations,
                 "tolerance": tolerance,
-                "feature_count": len(observations),
+                "required_stable_iterations": stable_iterations,
+                "feature_count_total": len(stats),
+                "feature_count_learnable": len(learnable_keys),
+                "constant_features_excluded_from_optimization": (
+                    len(stats) - len(learnable_keys)
+                ),
+                "normalization": "mean_centered_robust_scale",
+                "reference_weighting": "exactly_equal_1_over_25",
+                "feature_repetition_control": "root_feature_balancing",
             },
-            "cycle_v0_1_baseline": {"loss": baseline},
+            "cycle_v0_1_baseline": {
+                "loss": baseline,
+                "not_directly_comparable": True,
+                "reason": (
+                    "CYCLE v0.1 and STEP 8 use different loss spaces."
+                ),
+            },
             "iteration": {
                 "iterations_run": len(history),
-                "initial_normalized_loss": history[0]["loss"] if history else previous,
+                "initial_normalized_loss": initial_loss,
                 "final_normalized_loss": final_loss,
+                "improvement": initial_loss - final_loss,
+                "relative_improvement": (
+                    (initial_loss - final_loss) / initial_loss
+                    if initial_loss
+                    else 0.0
+                ),
                 "history": history,
             },
             "learned_style": {
-                "representation": "trajectory_feature_prototype",
-                "equal_weight_reference_mean": means,
-                "learned_profile": learned,
-                "feature_scales": scales,
+                "representation": "trajectory_style_prototype_v0.3",
+                "learned_profile": learned_profile,
+                "feature_statistics": stats,
+                "feature_weights": feature_weights,
+                "learnable_features": {
+                    key: stats[key]["learnable"]
+                    for key in stats
+                },
                 "feature_observation_counts": {
-                    key: len(values) for key, values in observations.items()
+                    key: len(values)
+                    for key, values in observations.items()
                 },
             },
             "generation_policy": {
@@ -619,8 +890,10 @@ class SignatureKnowledgeEngine:
                 "model_version": None,
             },
             "important_note": (
-                "STEP 8 creates a deterministic trajectory STYLE REPRESENTATION only. "
-                "It is not MODEL v001 and must not be used to create Sample 026."
+                "STEP 8 v0.3 learns a deterministic trajectory STYLE "
+                "representation from the 25 frozen references. It does not "
+                "claim to be a generative signature model, does not use "
+                "video or random points, and must not create Sample 026."
             ),
         }
 
@@ -978,8 +1251,33 @@ if __name__ == "__main__":
     )
 
     if len(sys.argv) > 1 and sys.argv[1].upper() == "STEP8":
-        result = engine.run_step8()
+        result = engine.run_step8(max_iterations=250, learning_rate=0.20, tolerance=1e-8, stable_iterations=8)
         engine.print_step8_report(result)
+
+        print()
+        print("STEP 8 DIAGNOSTIC TRACE")
+        print("-" * 60)
+        iteration_data = result.get("iteration", {})
+        history = iteration_data.get("history", [])
+
+        for item in history[:10]:
+            diag = item.get("diagnostic", {})
+            print(
+                f"Iteration {item.get('iteration')}: "
+                f"loss={item.get('loss')} "
+                f"delta={item.get('delta')} "
+                f"accepted={item.get('accepted')} "
+                f"lr={item.get('learning_rate')}"
+            )
+            print(
+                f"  gradient_mean={diag.get('gradient_mean')} "
+                f"gradient_abs_max={diag.get('gradient_abs_max')} "
+                f"update_norm={diag.get('update_norm')}"
+            )
+            print(
+                f"  candidate_loss={diag.get('candidate_loss')} "
+                f"loss_changed={diag.get('loss_changed')}"
+            )
     else:
         result = engine.save(
             "signature_unified_knowledge.json"
