@@ -1,5 +1,5 @@
-﻿"""
-SIGNATURE MACHINE â€” STEP 8 VALIDATION v0.2
+"""
+SIGNATURE MACHINE — STEP 8 VALIDATION v0.2
 ------------------------------------------------------------
 Purpose:
     Validate the learned STEP 8 trajectory-style representation
@@ -94,7 +94,7 @@ def load_json(path):
 
 def main():
     print("=" * 72)
-    print("SIGNATURE MACHINE â€” STEP 8 VALIDATION v0.2")
+    print("SIGNATURE MACHINE — STEP 8 VALIDATION v0.2")
     print("=" * 72)
     print("[READ-ONLY] No files will be modified.")
     print()
@@ -483,4 +483,3 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-

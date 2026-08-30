@@ -109,6 +109,37 @@ def main():
 
     checks = []
     warnings = []
+        # ------------------------------------------------------------
+    # Frozen reference artifacts — loaded before reference policy
+    # ------------------------------------------------------------
+    freeze_candidates = [
+        REF_DIR / "REFERENCE_FREEZE_v0.1.json",
+        REF_DIR / "REFERENCE_FREEZE_v0.1" / "REFERENCE_FREEZE_v0.1.json",
+    ]
+
+    manifest_candidates = [
+        REF_DIR / "REFERENCE_MANIFEST_v0.1.json",
+        REF_DIR / "REFERENCE_MANIFEST_v0.1" / "REFERENCE_MANIFEST_v0.1.json",
+    ]
+
+    freeze_data = None
+    manifest_data = None
+
+    for p in freeze_candidates:
+        if p.exists():
+            try:
+                freeze_data = load_json(p)
+                break
+            except Exception as exc:
+                warnings.append(f"Could not read freeze marker {p}: {exc}")
+
+    for p in manifest_candidates:
+        if p.exists():
+            try:
+                manifest_data = load_json(p)
+                break
+            except Exception as exc:
+                warnings.append(f"Could not read manifest {p}: {exc}")
 
     # ------------------------------------------------------------
     # Reference policy
