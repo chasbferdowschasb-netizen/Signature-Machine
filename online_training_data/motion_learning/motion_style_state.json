@@ -1,0 +1,15 @@
+﻿{
+  "schema_version": "motion_style_state_v0.1",
+  "learning_mode": "incremental",
+  "source": {
+    "dataset": "online_training_data/reference_learning/samples",
+    "library_dependency": false
+  },
+  "sample_count": 0,
+  "sample_ids": [],
+  "features": {},
+  "feature_statistics": {},
+  "feature_weights": {},
+  "learned_rules": {},
+  "learning_history": []
+}
