@@ -66,11 +66,6 @@ REFERENCE_SAMPLES_DIR = (
     / "samples"
 )
 
-REFERENCE_KNOWLEDGE_FILE = (
-    REFERENCE_LEARNING_DIR
-    / "reference_knowledge.json"
-)
-
 # ============================================================
 # VERSION / CONFIG
 # ============================================================
@@ -171,14 +166,6 @@ class SignatureCore:
             self.reference_knowledge_dir
             / "aggregate.json"
         )
-
-        # Legacy monolithic Knowledge file.
-        # Read-only migration source; never used as the new source of truth.
-        self.reference_knowledge_file = (
-            self.reference_learning_dir
-            / "reference_knowledge.json"
-        )
-
     # ========================================================
     # GENERAL UTILITIES
     # ========================================================
@@ -2134,99 +2121,7 @@ class SignatureCore:
             if self._knowledge_structure_valid(knowledge):
                 return knowledge
 
-        # One-time migration source. The old monolithic file is never written again.
-        if self.reference_knowledge_file.exists():
-            migrated = self._migrate_legacy_reference_knowledge()
-            if migrated is not None:
-                return migrated
-
         return self._new_knowledge()
-
-    def _migrate_legacy_reference_knowledge(
-        self,
-    ) -> dict[str, Any] | None:
-
-        try:
-            with self.reference_knowledge_file.open("r", encoding="utf-8") as file:
-                legacy = json.load(file)
-        except Exception:
-            return None
-
-        if not isinstance(legacy, dict):
-            return None
-
-        legacy_samples = legacy.get("samples")
-        legacy_ids = legacy.get("sample_ids")
-        legacy_aggregate = legacy.get("aggregate")
-
-        if not isinstance(legacy_samples, dict) or not isinstance(legacy_ids, list):
-            return None
-        if not isinstance(legacy_aggregate, dict):
-            return None
-
-        knowledge = self._new_knowledge()
-        knowledge["aggregate"] = legacy_aggregate
-
-        for sample_id in sorted(str(x) for x in legacy_ids):
-            sample_dir = self.reference_samples_dir / sample_id
-            legacy_sample = legacy_samples.get(sample_id)
-
-            if not sample_dir.is_dir() or not isinstance(legacy_sample, dict):
-                continue
-
-            strokes_path = sample_dir / "strokes.json"
-            if not strokes_path.is_file():
-                continue
-
-            strokes_hash = str(legacy_sample.get("strokes_sha256") or self.calculate_hash(strokes_path))
-
-            document = {
-                "knowledge_version": REFERENCE_KNOWLEDGE_VERSION,
-                "storage_version": KNOWLEDGE_STORAGE_VERSION,
-                "sample_id": sample_id,
-                "source": {
-                    "sample_dir": str(sample_dir),
-                    "strokes_file": str(strokes_path),
-                    "strokes_sha256": strokes_hash,
-                    "migrated_from": "reference_knowledge.json",
-                },
-                "features": legacy_sample,
-            }
-
-            self._write_json_atomic(
-                self._sample_knowledge_file(sample_dir),
-                document,
-            )
-
-            try:
-                with strokes_path.open("r", encoding="utf-8") as source_file:
-                    payload = json.load(source_file)
-                migrated_features = dict(legacy_sample)
-                migrated_features["sample_id"] = sample_id
-                self._write_sample_trajectory(
-                    sample_dir,
-                    payload,
-                    migrated_features,
-                    strokes_hash,
-                )
-            except Exception:
-                # Migration of legacy knowledge must not destroy the valid
-                # per-sample knowledge document. The normal learning pass
-                # can restore trajectory.json later.
-                pass
-
-            knowledge["samples"][sample_id] = {
-                "sample_id": sample_id,
-                "strokes_sha256": strokes_hash,
-                "knowledge_file": str(self._sample_knowledge_file(sample_dir)),
-            }
-            knowledge["sample_ids"].append(sample_id)
-
-        knowledge["sample_ids"].sort()
-        knowledge["sample_count"] = len(knowledge["sample_ids"])
-        self._save_reference_knowledge(knowledge)
-
-        return knowledge
 
     def _save_reference_knowledge(
         self,
@@ -4990,6 +4885,198 @@ class SignatureCore:
     # selection.
     # --------------------------------------------------------
 
+    def _load_motion_style_state(
+        self,
+    ) -> dict[str, Any]:
+        """
+        Load the independent Motion Learning state.
+
+        Canonical source:
+            online_training_data/motion_learning/motion_style_state.json
+
+        The builder stores learned profile statistics under:
+            feature_statistics["profiles"]
+
+        The generation engine consumes them through:
+            motion_state["profiles"]
+
+        This loader normalizes the persisted document into the runtime
+        contract without modifying the source JSON structure.
+        """
+
+        path = (
+            PROJECT_ROOT
+            / "online_training_data"
+            / "motion_learning"
+            / "motion_style_state.json"
+        )
+
+        if not path.is_file():
+            return {}
+
+        try:
+            with path.open("r", encoding="utf-8") as file:
+                payload = json.load(file)
+        except Exception:
+            return {}
+
+        if not isinstance(payload, dict):
+            return {}
+
+        # Canonical runtime profile location.
+        profiles = payload.get("profiles")
+
+        # Current builder storage location.
+        if not isinstance(profiles, dict):
+            feature_statistics = payload.get(
+                "feature_statistics",
+                {},
+            )
+
+            if isinstance(feature_statistics, dict):
+                nested_profiles = feature_statistics.get(
+                    "profiles",
+                    {},
+                )
+
+                if isinstance(nested_profiles, dict):
+                    payload["profiles"] = nested_profiles
+
+        return payload
+
+
+    @staticmethod
+    def _motion_profile_state(
+        motion_state: dict[str, Any],
+        profile_name: str,
+    ) -> dict[str, Any]:
+        profiles = motion_state.get("profiles", {})
+        if not isinstance(profiles, dict):
+            return {}
+
+        state = profiles.get(profile_name, {})
+        return state if isinstance(state, dict) else {}
+
+
+    @classmethod
+    def _apply_motion_learning(
+        cls,
+        strokes: list[list[dict[str, float]]],
+        motion_state: dict[str, Any],
+        rng: random.Random,
+    ) -> list[list[dict[str, float]]]:
+        """
+        Apply learned motion behavior to a newly synthesized trajectory.
+
+        Geometry remains untouched here. Motion Learning contributes
+        behavioral metadata such as velocity, pressure, direction,
+        curvature, tilt and twist.
+
+        No reference stroke is copied and no synthetic stroke is created.
+        """
+
+        if not motion_state:
+            return strokes
+
+        for stroke_index, stroke in enumerate(strokes):
+            if not stroke:
+                continue
+
+            point_count = len(stroke)
+
+            profiles = {
+                "speed_profile": cls._motion_profile_state(
+                    motion_state,
+                    "speed_profile",
+                ),
+                "pressure_profile": cls._motion_profile_state(
+                    motion_state,
+                    "pressure_profile",
+                ),
+                "direction_profile": cls._motion_profile_state(
+                    motion_state,
+                    "direction_profile",
+                ),
+                "curvature_profile": cls._motion_profile_state(
+                    motion_state,
+                    "curvature_profile",
+                ),
+                "tilt_x_profile": cls._motion_profile_state(
+                    motion_state,
+                    "tilt_x_profile",
+                ),
+                "tilt_y_profile": cls._motion_profile_state(
+                    motion_state,
+                    "tilt_y_profile",
+                ),
+                "twist_profile": cls._motion_profile_state(
+                    motion_state,
+                    "twist_profile",
+                ),
+            }
+
+            for i, point in enumerate(stroke):
+                u = i / max(point_count - 1, 1)
+                point["u"] = u
+
+                for profile_name, profile_state in profiles.items():
+                    if not profile_state:
+                        continue
+
+                    mean = profile_state.get("mean", [])
+                    std = profile_state.get("std", [])
+
+                    if not isinstance(mean, list) or not mean:
+                        continue
+
+                    j = min(
+                        i,
+                        len(mean) - 1,
+                    )
+
+                    value = float(mean[j])
+
+                    if isinstance(std, list) and j < len(std):
+                        deviation = abs(float(std[j]))
+                        value += (
+                            rng.uniform(-1.0, 1.0)
+                            * deviation
+                            * 0.15
+                        )
+
+                    if profile_name == "speed_profile":
+                        point["velocity"] = max(
+                            0.0,
+                            value,
+                        )
+
+                    elif profile_name == "pressure_profile":
+                        point["pressure"] = max(
+                            0.0,
+                            min(
+                                1.0,
+                                value,
+                            ),
+                        )
+
+                    elif profile_name == "direction_profile":
+                        point["direction_delta"] = value
+
+                    elif profile_name == "curvature_profile":
+                        point["curvature"] = value
+
+                    elif profile_name == "tilt_x_profile":
+                        point["tilt_x"] = value
+
+                    elif profile_name == "tilt_y_profile":
+                        point["tilt_y"] = value
+
+                    elif profile_name == "twist_profile":
+                        point["twist"] = value
+
+        return strokes
+
+
     def _generate_learned_trajectory(
         self,
         knowledge: dict[str, Any],
@@ -5022,6 +5109,18 @@ class SignatureCore:
             self._synthesize_generation_dynamics(
                 knowledge,
                 strokes,
+                rng,
+            )
+        )
+
+        motion_state = (
+            self._load_motion_style_state()
+        )
+
+        strokes = (
+            self._apply_motion_learning(
+                strokes,
+                motion_state,
                 rng,
             )
         )
