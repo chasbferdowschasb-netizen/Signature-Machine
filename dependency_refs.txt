@@ -1,0 +1,60 @@
+F:\signature-machine\build_reference_manifest_v001.py:7: python build_reference_manifest_v001.py
+F:\signature-machine\build_reference_manifest_v001.py:144: print("Run freeze_reference_v001.py first.")
+F:\signature-machine\core.py:37: from workspace_manager import WorkspaceManager
+F:\signature-machine\core.py:47: WORKSPACE_MANAGER = WorkspaceManager(WORKSPACE_DIR)
+F:\signature-machine\freeze_reference_v001.py:21: python freeze_reference_v001.py
+F:\signature-machine\generation_engine.py:9: from stroke_engine import StrokeEngine, StrokeRenderer, save_strokes
+F:\signature-machine\generation_engine.py:107: "signature_unified_knowledge.json"
+F:\signature-machine\generation_evaluation.json:4: "knowledge_file": "signature_unified_knowledge.json",
+F:\signature-machine\generation_evaluator.py:37: "signature_unified_knowledge.json"
+F:\signature-machine\generation_evaluator.py:610: "signature_unified_knowledge.json"
+F:\signature-machine\knowledge_engine_STEP8_v008.py:8: 1. ?????? signature_knowledge.json
+F:\signature-machine\knowledge_engine_STEP8_v008.py:40: knowledge_file: str | Path = "signature_knowledge.json",
+F:\signature-machine\knowledge_engine_STEP8_v008.py:110: visual_analyzer.py
+F:\signature-machine\knowledge_engine_STEP8_v008.py:1176: "signature_unified_knowledge",
+F:\signature-machine\knowledge_engine_STEP8_v008.py:1231: "signature_unified_knowledge.json",
+F:\signature-machine\knowledge_engine_STEP8_v008.py:1384: "signature_knowledge.json"
+F:\signature-machine\knowledge_engine_STEP8_v008.py:1417: "signature_unified_knowledge.json"
+F:\signature-machine\signature_knowledge.json:3: "type": "signature_knowledge",
+F:\signature-machine\signature_knowledge_engine.py:8: 1. ?????? signature_knowledge.json
+F:\signature-machine\signature_knowledge_engine.py:32: knowledge_file: str | Path = "signature_knowledge.json",
+F:\signature-machine\signature_knowledge_engine.py:103: ) != "signature_knowledge":
+F:\signature-machine\signature_unified_knowledge.json:3: "type": "signature_unified_knowledge",
+F:\signature-machine\step1_dependency_audit.py:162: "build_motion_style_state.py",
+F:\signature-machine\step1_dependency_audit.py:163: "build_customer_packages_v2_3.py",
+F:\signature-machine\step1_dependency_audit.py:164: "build_reference_manifest_v001.py",
+F:\signature-machine\step1_dependency_audit.py:168: "reference_feature_extractor.py",
+F:\signature-machine\step1_dependency_audit.py:169: "reference_analyzer.py",
+F:\signature-machine\step1_dependency_audit.py:170: "stroke_engine.py",
+F:\signature-machine\step1_dependency_audit.py:171: "workspace_manager.py",
+F:\signature-machine\step4_dependency_audit.py:8: "knowledge_engine_STEP8_v005.py",
+F:\signature-machine\step4_dependency_audit.py:9: "knowledge_engine_STEP8_v006_DIAGNOSTIC.py",
+F:\signature-machine\step4_dependency_audit.py:10: "knowledge_engine_STEP8_v007.py",
+F:\signature-machine\step4_dependency_audit.py:11: "knowledge_engine_STEP8_v008.py",
+F:\signature-machine\step4_dependency_audit.py:12: "signature_knowledge_engine.py",
+F:\signature-machine\step4_dependency_audit.py:13: "generation_engine.py",
+F:\signature-machine\step4_dependency_audit.py:15: "cycle_v001.py",
+F:\signature-machine\step4_dependency_audit.py:16: "cycle_v001_STEP7.py",
+F:\signature-machine\step4_dependency_audit.py:17: "cycle_v001_STEP7_FIXED.py",
+F:\signature-machine\step4_dependency_audit.py:18: "cycle_v001_STEP7_FIXED_v2.py",
+F:\signature-machine\step4_dependency_audit.py:19: "cycle_v001_STEP7_FIXED_v3.py",
+F:\signature-machine\step4_dependency_audit.py:20: "cycle_v001_STEP7_FIXED_v4.py",
+F:\signature-machine\step4_dependency_audit.py:28: "visual_analyzer.py",
+F:\signature-machine\step4_dependency_audit.py:29: "visual_analyzer_v06_2.py",
+F:\signature-machine\step4_dependency_audit.py:30: "test_visual_analyzer.py",
+F:\signature-machine\step4_dependency_audit.py:31: "test_visual_analyzer_v06_2.py",
+F:\signature-machine\step4_dependency_audit.py:34: "reference_feature_extractor.py",
+F:\signature-machine\step4_dependency_audit.py:35: "stroke_engine.py",
+F:\signature-machine\step4_dependency_audit.py:36: "workspace_manager.py",
+F:\signature-machine\step4_dependency_audit.py:142: "build_motion_style_state.py",
+F:\signature-machine\stroke_engine.py:906: output_file: str = "signature_knowledge.json",
+F:\signature-machine\stroke_engine.py:1068: "type": "signature_knowledge",
+F:\signature-machine\stroke_engine.py:1266: output_file="signature_knowledge.json",
+F:\signature-machine\test_visual_analyzer_v06_2.py:9: - It NEVER updates signature_knowledge.json.
+F:\signature-machine\test_visual_analyzer_v06_2.py:20: from visual_analyzer_v06_2 import DeepVisualAnalyzer
+F:\signature-machine\test_visual_analyzer_v06_2.py:81: print(f"Analyzer module: {__import__('visual_analyzer_v06_2').__file__}")
+F:\signature-machine\visual_analyzer.py:77: KNOWLEDGE_TYPE = "signature_knowledge"
+F:\signature-machine\visual_analyzer.py:86: debug_dir: str | Path = ".signature_knowledge/review",
+F:\signature-machine\visual_analyzer.py:1969: and ".signature_knowledge"
+F:\signature-machine\visual_analyzer.py:1981: knowledge_file: str | Path = "signature_knowledge.json",
+F:\signature-machine\visual_analyzer.py:2258: knowledge_file="signature_knowledge.json",

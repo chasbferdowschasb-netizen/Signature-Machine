@@ -4032,22 +4032,46 @@ class SignatureCore:
         knowledge: dict[str, Any],
         rng: random.Random,
     ) -> int:
-        trajectory_samples = (
-            self._load_generation_trajectory_samples()
-        )
+        """Sample stroke count from aggregate presence statistics only."""
+        profiles = knowledge.get("stroke_profiles", {})
+        if not isinstance(profiles, dict):
+            raise ValueError("No aggregate stroke-count knowledge available.")
 
-        counts = [
-            int(sample["stroke_count"])
-            for sample in trajectory_samples
-            if int(sample.get("stroke_count", 0)) > 0
-        ]
+        presence = {}
+        for key, state in profiles.items():
+            try:
+                index = int(key)
+                count = int(state.get("count", 0)) if isinstance(state, dict) else 0
+            except (TypeError, ValueError):
+                continue
+            if index >= 0 and count > 0:
+                presence[index] = count
 
-        if not counts:
-            raise ValueError(
-                "No trajectory stroke-count knowledge available."
-            )
+        if not presence:
+            raise ValueError("No aggregate stroke-count knowledge available.")
 
-        return rng.choice(counts)
+        max_index = max(presence)
+        probabilities = []
+        previous = 0
+        for index in range(max_index + 1):
+            current = presence.get(index, 0)
+            if current < previous:
+                current = previous
+            exact = current - previous
+            probabilities.append(max(0, exact))
+            previous = current
+
+        if probabilities and probabilities[-1] == 0:
+            probabilities[-1] = previous
+
+        choices = []
+        for index, weight in enumerate(probabilities, start=1):
+            choices.extend([index] * int(weight))
+
+        if not choices:
+            raise ValueError("Aggregate stroke-count distribution is empty.")
+
+        return rng.choice(choices)
 
     def _generation_stroke_match_cost(
         a: list[dict[str, float]],
@@ -4455,273 +4479,109 @@ class SignatureCore:
         rng: random.Random,
     ) -> list[list[dict[str, float]]]:
         """
-        Generation v0.4 — trajectory-based new-signature synthesis.
+        Synthesize geometry from aggregate learned stroke-role statistics.
 
-        The generator reads complete trajectories from the decentralized
-        trajectory.json files. It learns a whole-signature geometric pattern
-        from the eligible references, aligns complete strokes, blends their
-        corresponding trajectories, and applies a smooth low-frequency
-        deformation.
-
-        This is NOT source-signature selection and NOT partial-stroke
-        splicing.
+        Generation never opens historical trajectory.json files and never
+        blends or splices a historical trajectory. Each stroke is rebuilt
+        from its aggregate mean shape plus statistically bounded variation.
         """
+        profiles = knowledge.get("stroke_profiles", {})
+        if not isinstance(profiles, dict):
+            raise ValueError("Aggregate stroke geometry is unavailable.")
 
-        trajectory_samples = (
-            self._load_generation_trajectory_samples()
+        available = sorted(
+            int(key) for key in profiles.keys()
+            if str(key).lstrip("-").isdigit()
         )
-
-        eligible = [
-            sample
-            for sample in trajectory_samples
-            if sample["stroke_count"] == stroke_count
+        available = [
+            index for index in available
+            if isinstance(profiles.get(str(index)), dict)
         ]
-
-        if not eligible:
-            # If an exact stroke-count bucket is unavailable, choose the
-            # nearest learned bucket rather than failing Generation.
-            available = sorted(
-                {
-                    int(sample["stroke_count"])
-                    for sample in trajectory_samples
-                }
-            )
-
-            if not available:
-                raise ValueError(
-                    "No trajectory knowledge available."
-                )
-
-            nearest = min(
-                available,
-                key=lambda value: abs(value - stroke_count),
-            )
-
-            eligible = [
-                sample
-                for sample in trajectory_samples
-                if sample["stroke_count"] == nearest
-            ]
-
-            stroke_count = nearest
-
-        source_count = min(
-            8,
-            len(eligible),
-        )
-
-        if source_count == 1:
-            selected = eligible
-        else:
-            selected = rng.sample(
-                eligible,
-                source_count,
-            )
-
-        base = selected[0]["strokes"]
-        aligned_sources = [base]
-
-        for sample in selected[1:]:
-            aligned = self._align_complete_trajectory_strokes(
-                base,
-                sample["strokes"],
-            )
-
-            if aligned:
-                aligned_sources.append(aligned)
-
-        if not aligned_sources:
-            raise ValueError(
-                "Trajectory alignment produced no usable sources."
-            )
-
-        weights = self._generation_blend_weights(
-            len(aligned_sources),
-            rng,
-        )
+        if not available:
+            raise ValueError("Aggregate stroke geometry is unavailable.")
 
         generated_strokes = []
-
-        rotation = math.radians(
-            rng.uniform(-3.0, 3.0)
-        )
+        rotation = math.radians(rng.uniform(-3.0, 3.0))
         cos_a = math.cos(rotation)
         sin_a = math.sin(rotation)
-
-        scale = rng.uniform(
-            0.96,
-            1.04,
-        )
-
-        shear = rng.uniform(
-            -0.018,
-            0.018,
-        )
+        scale = rng.uniform(0.96, 1.04)
+        shear = rng.uniform(-0.018, 0.018)
 
         for stroke_index in range(stroke_count):
-            point_count = min(
-                len(source[stroke_index])
-                for source in aligned_sources
-            )
+            role = stroke_index if stroke_index in profiles else min(available, key=lambda x: abs(x - stroke_index))
+            state = self._generation_profile_state(knowledge, "stroke_profiles", role)
+            if not state:
+                continue
 
-            if point_count < 2:
+            mean = state["mean"]
+            m2 = state["m2"]
+            count = int(state["count"])
+            point_count = len(mean) // 3
+            if point_count < 2 or len(mean) != len(m2) or len(mean) % 3:
                 continue
 
             noise = self._generation_smooth_noise(
-                point_count,
-                rng,
-                control_points=min(
-                    8,
-                    max(5, point_count // 5),
-                ),
+                point_count, rng, control_points=min(8, max(5, point_count // 5))
             )
-
             generated = []
-
             for point_index in range(point_count):
-                x = 0.0
-                y = 0.0
-                pressure = 0.0
+                base = point_index * 3
+                x = float(mean[base])
+                y = float(mean[base + 1])
+                pressure = float(mean[base + 2])
 
-                for weight, source in zip(
-                    weights,
-                    aligned_sources,
-                ):
-                    point = source[
-                        stroke_index
-                    ][point_index]
+                def std_at(offset: int) -> float:
+                    if count <= 1:
+                        return 0.0
+                    return math.sqrt(max(0.0, float(m2[base + offset]) / float(count - 1)))
 
-                    x += weight * point["x"]
-                    y += weight * point["y"]
-                    pressure += weight * point["pressure"]
-
-                u = point_index / max(
-                    point_count - 1,
-                    1,
-                )
-
-                # Smooth normal deformation, strongest in the middle and
-                # approaching zero at stroke endpoints.
+                u = point_index / max(point_count - 1, 1)
                 if point_index == 0:
-                    p0 = aligned_sources[0][
-                        stroke_index
-                    ][0]
-                    p1 = aligned_sources[0][
-                        stroke_index
-                    ][1]
+                    p0 = mean
+                    tx = float(mean[3]) - float(mean[0])
+                    ty = float(mean[4]) - float(mean[1])
                 elif point_index == point_count - 1:
-                    p0 = aligned_sources[0][
-                        stroke_index
-                    ][point_count - 2]
-                    p1 = aligned_sources[0][
-                        stroke_index
-                    ][point_count - 1]
+                    tx = float(mean[base]) - float(mean[base - 3])
+                    ty = float(mean[base + 1]) - float(mean[base - 2])
                 else:
-                    p0 = generated[-1]
-                    p1 = aligned_sources[0][
-                        stroke_index
-                    ][point_index + 1]
-
-                tx = p1["x"] - p0["x"]
-                ty = p1["y"] - p0["y"]
-
+                    tx = float(mean[base + 3]) - float(mean[base - 3])
+                    ty = float(mean[base + 4]) - float(mean[base - 2])
                 length = math.hypot(tx, ty)
-
                 if length > 1e-9:
-                    tx /= length
-                    ty /= length
-                    nx = -ty
-                    ny = tx
-
-                    endpoint_weight = (
-                        math.sin(math.pi * u) ** 0.9
-                    )
-
-                    displacement = (
-                        noise[point_index]
-                        * 0.012
-                        * endpoint_weight
-                    )
-
+                    nx, ny = -ty / length, tx / length
+                    displacement = noise[point_index] * max(std_at(0), std_at(1), 0.003) * 0.35 * math.sin(math.pi * u) ** 0.9
                     x += nx * displacement
                     y += ny * displacement
 
+                x += rng.gauss(0.0, std_at(0) * 0.12)
+                y += rng.gauss(0.0, std_at(1) * 0.12)
+                pressure = max(0.0, min(1.0, pressure + rng.gauss(0.0, std_at(2) * 0.10)))
+
                 sx = x * scale + shear * y
                 sy = y * scale
+                generated.append({
+                    "x": sx * cos_a - sy * sin_a,
+                    "y": sx * sin_a + sy * cos_a,
+                    "pressure": pressure,
+                    "u": u,
+                })
 
-                rx = (
-                    sx * cos_a
-                    - sy * sin_a
-                )
-                ry = (
-                    sx * sin_a
-                    + sy * cos_a
-                )
-
-                generated.append(
-                    {
-                        "x": rx,
-                        "y": ry,
-                        "pressure": max(
-                            0.0,
-                            min(
-                                1.0,
-                                pressure,
-                            ),
-                        ),
-                        "u": u,
-                    }
-                )
-
-            generated_strokes.append(
-                generated
-            )
+            if generated:
+                generated_strokes.append(generated)
 
         if not generated_strokes:
-            raise ValueError(
-                "Trajectory synthesis produced no strokes."
-            )
+            raise ValueError("Aggregate geometry synthesis produced no strokes.")
 
-        # Global normalization keeps the complete generated signature
-        # coherent after the candidate-level transformation.
-        all_points = [
-            point
-            for stroke in generated_strokes
-            for point in stroke
-        ]
-
-        min_x = min(
-            point["x"]
-            for point in all_points
-        )
-        max_x = max(
-            point["x"]
-            for point in all_points
-        )
-        min_y = min(
-            point["y"]
-            for point in all_points
-        )
-        max_y = max(
-            point["y"]
-            for point in all_points
-        )
-
-        global_scale = max(
-            max_x - min_x,
-            max_y - min_y,
-            1e-9,
-        )
-
+        all_points = [p for stroke in generated_strokes for p in stroke]
+        min_x = min(p["x"] for p in all_points)
+        max_x = max(p["x"] for p in all_points)
+        min_y = min(p["y"] for p in all_points)
+        max_y = max(p["y"] for p in all_points)
+        global_scale = max(max_x - min_x, max_y - min_y, 1e-9)
         for stroke in generated_strokes:
             for point in stroke:
-                point["x"] = (
-                    point["x"] - min_x
-                ) / global_scale
-                point["y"] = (
-                    point["y"] - min_y
-                ) / global_scale
-
+                point["x"] = (point["x"] - min_x) / global_scale
+                point["y"] = (point["y"] - min_y) / global_scale
         return generated_strokes
 
     # --------------------------------------------------------
@@ -5180,7 +5040,7 @@ class SignatureCore:
             ),
 
             "generation_method": (
-                "trajectory_based_new_signature"
+                "aggregate_knowledge_synthesis"
             ),
         }
 
@@ -5205,30 +5065,9 @@ class SignatureCore:
                 "Generation count must be greater than zero."
             )
 
-        sample_dirs = (
-            self._reference_sample_dirs()
-        )
-
-        if not sample_dirs:
-
-            raise FileNotFoundError(
-                "No reference samples available."
-            )
-
         knowledge = (
             self._load_reference_knowledge()
         )
-
-        sync = self.validate_reference_knowledge_sync()
-
-        if not sync["in_sync"]:
-            raise RuntimeError(
-                "REFERENCE KNOWLEDGE OUT OF SYNC: "
-                f"references={sync['reference_sample_count']} "
-                f"knowledge={sync['knowledge_sample_count']} "
-                f"missing={sync['missing']} "
-                f"stale={sync['stale']}"
-            )
 
         knowledge_sample_count = int(
             knowledge.get(
@@ -5276,14 +5115,6 @@ class SignatureCore:
             f"{GENERATION_VERSION}"
         )
         print("=" * 60)
-
-        print(
-            "Reference samples:"
-        )
-
-        print(
-            len(sample_dirs)
-        )
 
         print(
             "Knowledge samples:"
@@ -5382,7 +5213,7 @@ class SignatureCore:
                 knowledge_sample_count
             ),
             "reference_sample_count": (
-                len(sample_dirs)
+                knowledge_sample_count
             ),
             "requested": count,
             "generated": len(
