@@ -4585,165 +4585,10 @@ class SignatureCore:
         return generated_strokes
 
     # --------------------------------------------------------
-    # Learned dynamic profiles
-    #
-    # Geometry is the primary trajectory.
-    #
-    # Velocity / pressure / direction / curvature are
-    # generated from their learned distributions and attached
-    # to the new trajectory as behavioral metadata.
-    # --------------------------------------------------------
-
-    @classmethod
-    def _synthesize_generation_dynamics(
-        cls,
-        knowledge: dict[str, Any],
-        strokes: list[
-            list[
-                dict[str, float]
-            ]
-        ],
-        rng: random.Random,
-    ) -> list[
-        list[
-            dict[str, float]
-        ]
-    ]:
-        """
-        Attach learned behavioral dynamics to the newly synthesized path.
-
-        Direction/curvature are used as style signals, not as independent
-        coordinate noise. Velocity and pressure remain smooth profiles.
-        """
-
-        aggregate = knowledge.get(
-            "aggregate",
-            {},
-        )
-
-        for stroke_index, stroke in enumerate(strokes):
-            if not stroke:
-                continue
-
-            velocity_state = cls._generation_profile_state(
-                aggregate,
-                "stroke_velocity_profiles",
-                stroke_index,
-            )
-            pressure_state = cls._generation_profile_state(
-                aggregate,
-                "stroke_pressure_profiles",
-                stroke_index,
-            )
-            direction_state = cls._generation_profile_state(
-                aggregate,
-                "stroke_direction_profiles",
-                stroke_index,
-            )
-            curvature_state = cls._generation_profile_state(
-                aggregate,
-                "stroke_curvature_profiles",
-                stroke_index,
-            )
-
-            point_count = len(stroke)
-
-            # One smooth stochastic field per behavioral dimension.
-            velocity_noise = cls._generation_smooth_noise(
-                point_count,
-                rng,
-                control_points=5,
-            )
-            pressure_noise = cls._generation_smooth_noise(
-                point_count,
-                rng,
-                control_points=5,
-            )
-
-            for i, point in enumerate(stroke):
-                u = i / max(point_count - 1, 1)
-
-                if velocity_state:
-                    mean = velocity_state["mean"]
-                    m2 = velocity_state["m2"]
-                    count = velocity_state["count"]
-                    j = min(i, len(mean) - 1)
-                    velocity = cls._generation_sample_normal(
-                        mean[j],
-                        m2[j],
-                        count,
-                        rng,
-                        strength=0.10,
-                    )
-                    point["velocity"] = max(
-                        0.0,
-                        velocity + abs(velocity_noise[i]) * max(0.0, velocity) * 0.025,
-                    )
-
-                if pressure_state:
-                    mean = pressure_state["mean"]
-                    m2 = pressure_state["m2"]
-                    count = pressure_state["count"]
-                    j = min(i, len(mean) - 1)
-                    pressure = cls._generation_sample_normal(
-                        mean[j],
-                        m2[j],
-                        count,
-                        rng,
-                        strength=0.10,
-                    )
-                    point["pressure"] = max(
-                        0.0,
-                        min(
-                            1.0,
-                            pressure + 0.02 * pressure_noise[i],
-                        ),
-                    )
-
-                # Keep these as diagnostics/behavioral metadata. They are
-                # not turned into random coordinate jumps.
-                if direction_state:
-                    mean = direction_state["mean"]
-                    m2 = direction_state["m2"]
-                    count = direction_state["count"]
-                    j = min(i, len(mean) - 1)
-                    point["direction_delta"] = max(
-                        0.0,
-                        cls._generation_sample_normal(
-                            mean[j],
-                            m2[j],
-                            count,
-                            rng,
-                            strength=0.08,
-                        ),
-                    )
-
-                if curvature_state:
-                    mean = curvature_state["mean"]
-                    m2 = curvature_state["m2"]
-                    count = curvature_state["count"]
-                    j = min(i, len(mean) - 1)
-                    point["curvature"] = max(
-                        0.0,
-                        cls._generation_sample_normal(
-                            mean[j],
-                            m2[j],
-                            count,
-                            rng,
-                            strength=0.08,
-                        ),
-                    )
-
-                point["u"] = u
-
-        return strokes
-
-    # --------------------------------------------------------
-    # Generate a NEW learned trajectory
-    #
-    # This is deliberately independent from reference sample
-    # selection.
-    # --------------------------------------------------------
+    # Motion behavior is owned by Motion Learning. Aggregate Knowledge keeps
+    # learned dynamics as reference statistics, but Generation does not apply
+    # them separately; this prevents a second dynamics path from overwriting
+    # Motion State values.
 
     def _load_motion_style_state(
         self,
@@ -4828,9 +4673,9 @@ class SignatureCore:
         """
         Apply learned motion behavior to a newly synthesized trajectory.
 
-        Geometry remains untouched here. Motion Learning contributes
-        behavioral metadata such as velocity, pressure, direction,
-        curvature, tilt and twist.
+        Geometry remains untouched here. Motion Learning is the single
+        generation owner of behavioral metadata: velocity, pressure,
+        direction, curvature, tilt and twist.
 
         No reference stroke is copied and no synthetic stroke is created.
         """
@@ -4961,14 +4806,6 @@ class SignatureCore:
             self._synthesize_generation_geometry(
                 knowledge,
                 stroke_count,
-                rng,
-            )
-        )
-
-        strokes = (
-            self._synthesize_generation_dynamics(
-                knowledge,
-                strokes,
                 rng,
             )
         )
